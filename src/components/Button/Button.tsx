@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Button({ label }) {
+function Button({ label }: any) {
   return <div data-testid="button">{label}</div>;
 }
 
