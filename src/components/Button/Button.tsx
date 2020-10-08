@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-function Button({ label }: any) {
+const Button: FC<any> = ({ label }: any) => {
   return <div data-testid="button">{label}</div>;
-}
+};
 
 export default Button;

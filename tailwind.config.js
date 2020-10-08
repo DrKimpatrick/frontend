@@ -21,7 +21,7 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
-
+      cardGradient: 'linear-gradient(90deg, #4d9b62 0%, #1437b1 100% )',
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',

@@ -1,2 +1,1 @@
-// routes
-export {};
+import react from 'react';

@@ -1,13 +1,12 @@
 import React from 'react';
+import Landing from './containers/Landing/Landing';
 import './App.css';
-import './assets/styles/main.css'
+import './assets/styles/main.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>Here is the Project</div>
-      </header>
+    <div>
+      <Landing></Landing>
     </div>
   );
 }
