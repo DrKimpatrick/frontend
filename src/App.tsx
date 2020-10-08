@@ -1,14 +1,10 @@
 import React from 'react';
-import Landing from './containers/Landing/Landing';
 import './App.css';
 import './assets/styles/main.css';
+import RoutesComponent from './routes';
 
 function App() {
-  return (
-    <div>
-      <Landing></Landing>
-    </div>
-  );
+  return <RoutesComponent />;
 }
 
 export default App;

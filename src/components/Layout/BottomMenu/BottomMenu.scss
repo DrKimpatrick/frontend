@@ -1,0 +1,9 @@
+.MuiBottomNavigation-root {
+  button:focus {
+    outline: none !important;
+  }
+
+  .MuiBottomNavigationAction-root.Mui-selected {
+    color: #616161;
+  }
+}

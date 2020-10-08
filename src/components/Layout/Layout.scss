@@ -1,0 +1,18 @@
+.main {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.main-background {
+  background-image: url(../../assets/images/motif-image.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  width: 100%;
+  mix-blend-mode: luminosity;
+  opacity: 0.2;
+  padding-bottom: 70px;
+  height: 340px;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}

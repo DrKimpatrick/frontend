@@ -16,11 +16,6 @@ import {
 const Landing: FC<any> = () => {
   return (
     <div>
-      <div className="nav-bar">
-        <p>Logo</p>
-        <p>Login</p>
-        <p>About us</p>
-      </div>
       <div className="front-view">
         <FrontView
           title={frontData.title}

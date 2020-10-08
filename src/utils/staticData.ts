@@ -131,7 +131,7 @@ export const testmonials = [
       'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there is not anything embarrassing hidden in the middle of text.',
     userInfo: {
       userImage:
-      'https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png',
+        'https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png',
       name: 'joe Doe',
       position: 'Co-Founder at Snow Media'
     }
@@ -142,7 +142,7 @@ export const testmonials = [
       'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there is not anything embarrassing hidden in the middle of text.',
     userInfo: {
       userImage:
-      'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
+        'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
       name: 'Joe Doe',
       position: 'CTO at Snow Media'
     }
