@@ -19,7 +19,7 @@ const Testmonials: FC<testmonialProps> = ({ testData }) => {
   };
 
   return (
-    <div className="w-1/2 width-testm">
+    <div className="w-1/2 width-testm mb-12">
       <Slider {...settings}>
         {testData.map(test => (
           <div key={Math.random()}>

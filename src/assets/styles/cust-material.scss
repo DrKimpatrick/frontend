@@ -1,3 +1,67 @@
+.light-fonts {
+  color: #747474 !important;
+}
+
+.medium-fonts {
+  color: #3b3a3a;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.verified-color {
+  color: #178f1d;
+}
+
+.verify-progress-color {
+  color: #30a3e6;
+}
+
+.not-verified-color {
+  color: #8f2517;
+}
+
+.bg-card-preview {
+  li {
+    &:nth-of-type(odd) {
+      background: #e6e6e6;
+    }
+  }
+}
+
+.accordion-menu-custom {
+  width: 50%;
+}
+
+// authentication
+
+.authentication-custom {
+flex-wrap: nowrap;
+  .auth-bg{
+    background: linear-gradient(0deg, #010a26 0%, #021247 100%);
+  }
+  .auth-btn {
+    background: #2661EB;
+  }
+  .auth-icon {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 786px) {
+  .authentication-custom{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .auth-bg {
+    width: 100%;
+  }
+  .auth-image{
+    display: none;
+  }
+  .accordion-menu-custom {
+    width: 100%;
+  }
+}
 .overide {
     width: 40% !important;
     height: 100% !important;

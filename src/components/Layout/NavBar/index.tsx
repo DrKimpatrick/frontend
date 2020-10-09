@@ -1,6 +1,7 @@
 import React from 'react';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -20,7 +21,8 @@ const useStyles = makeStyles(() =>
     root: {
       display: 'flex',
       overflowWrap: 'normal',
-      whiteSpace: 'normal'
+      whiteSpace: 'normal',
+      paddingRight: '2.5rem'
     }
   })
 );
@@ -29,7 +31,7 @@ const typedUseSelector: TypedUseSelectorHook<InitialStateInterface> = useSelecto
 
 interface Props {}
 
-const NavBar = (props: Props) => {
+const NavBar = (props: any) => {
   const { currentUser } = typedUseSelector(({ users }) => users);
   const size = useWindowSize();
 
@@ -42,6 +44,16 @@ const NavBar = (props: Props) => {
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
   };
+
+  const signup = () => {
+    props.history.push('/register')
+  }
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
+
 
   const handleClose = (event: React.MouseEvent<EventTarget>) => {
     if (
@@ -71,10 +83,10 @@ const NavBar = (props: Props) => {
 
   const renderUser = () => {
     const { isLoggedIn, data } = currentUser;
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
       return (
         <div className="user-info lg:inline-flex items-center">
-          <div className="px-8 lg:inline-flex items-center space-x-6">
+          <div className="px-8 lg:inline-flex items-center">
             <div className={classes.root}>
               <div>
                 <ClickAwayListener onClickAway={handleNotificationClose}>
@@ -187,7 +199,7 @@ const NavBar = (props: Props) => {
                         </div>
                       </MenuItem>
                       <MenuItem onClick={handleClose} className="text-gray-600">
-                        <div className="text-gray-600 w-56 space-x-3 text-sm py-2">
+                        <div className="text-gray-600 w-56 space-x-3 text-sm py-2" onClick = {logout}>
                           <PowerSettingsNewIcon />
                           <span>Logout</span>
                         </div>
@@ -204,18 +216,19 @@ const NavBar = (props: Props) => {
     return (
       <>
         <Link
-          to="#"
+          to="/Login"
           className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
         >
           <span>Login</span>
         </Link>
 
-        <Link
-          to="#"
+        <button
+          
           className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-getstartColor hover:bg-blue-800 text-white"
+          onClick={signup}
         >
           <span>Get started</span>
-        </Link>
+        </button>
       </>
     );
   };
@@ -257,4 +270,4 @@ const NavBar = (props: Props) => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
