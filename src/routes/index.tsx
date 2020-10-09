@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import LandingPage from 'containers/Landing/Landing';
-import Home from 'containers/Home';
 import Authentication from 'components/authentication/Authentication';
 import GetStarted from 'components/getStarted/GetStarted'
 
