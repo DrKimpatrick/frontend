@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import LandingPage from 'containers/Landing/Landing';
 import Authentication from 'components/authentication/Authentication';
-import GetStarted from 'components/getStarted/GetStarted'
-
+import GetStarted from 'components/getStarted/GetStarted';
 
 const RoutesComponent: React.FC = () => {
   const routes = [
