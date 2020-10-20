@@ -1,0 +1,66 @@
+.employment-history-section {
+  .title {
+    font-size: 22px;
+    color: #747474;
+    text-decoration: none solid rgb(116, 116, 116);
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+
+  .input-height {
+    height: 40px;
+    border-radius: 4px;
+    color: #747474;
+    font-size: 14px;
+  }
+
+  .card {
+    border-radius: 2px;
+
+    .card-title {
+      font-size: 15px;
+      background-color: #38727e;
+    }
+
+    .card-content {
+      color: #303030;
+      font-size: 14px;
+    }
+  }
+
+  .add-employer-btn {
+    height: 41px;
+    align-items: center;
+    background-color: #3e8074;
+  }
+}
+
+@media (max-width: 786px) {
+  .employment-history-section {
+    width: 50%;
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .employment-history-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}

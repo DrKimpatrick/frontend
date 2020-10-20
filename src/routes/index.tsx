@@ -7,6 +7,8 @@ import GetStarted from 'components/getStarted/GetStarted';
 import CurrentRole from 'components/CurrentRole/CurrentRole';
 import SkillRanking from 'components/SkillRanking/SkillRanking';
 import RecentEmployer from 'components/RecentEmployer/RecentEmployer';
+import EmploymentHistory from 'components/EmploymentHistory/EmploymentHistory';
+import EmploymentHistoryList from 'components/EmploymentHistoryList/EmploymentHistoryList';
 
 const RoutesComponent: React.FC = () => {
   const routes = [
@@ -18,7 +20,17 @@ const RoutesComponent: React.FC = () => {
     { path: '/notification', exact: true, component: <GetStarted /> },
     { path: '/current-role', exact: true, component: <CurrentRole /> },
     { path: '/skill-ranking', exact: true, component: <SkillRanking /> },
-    { path: '/recent-employer', exact: true, component: <RecentEmployer /> }
+    { path: '/recent-employer', exact: true, component: <RecentEmployer /> },
+    {
+      path: '/employment-history',
+      exact: true,
+      component: <EmploymentHistory />
+    },
+    {
+      path: '/employment-history-list',
+      exact: true,
+      component: <EmploymentHistoryList />
+    }
   ];
   return (
     <Router>
