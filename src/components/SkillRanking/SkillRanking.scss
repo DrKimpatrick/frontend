@@ -1,0 +1,48 @@
+.skill-ranking-section {
+  .title {
+    font-size: 22px;
+    color: #747474;
+    text-decoration: none solid rgb(116, 116, 116);
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+}
+
+.draggle-area {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 220px;
+  max-height: 320px;
+  overflow-x: auto;
+}
+
+@media (max-width: 786px) {
+  .skill-ranking-section {
+    width: 60%;
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .skill-ranking-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.current-role-section {
+  .title {
+    font-size: 22px;
+    color: #747474;
+    text-decoration: none solid rgb(116, 116, 116);
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 786px) {
+  .current-role-section {
+    width: 50%;
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .current-role-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}

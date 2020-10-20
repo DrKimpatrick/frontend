@@ -2,10 +2,13 @@ import React, { FC } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { title } from 'process';
 
 type testmonialProps = {
-  testData: { title: string; description: string; userInfo : { userImage: string; name: string; position: string;}}[];
+  testData: {
+    title: string;
+    description: string;
+    userInfo: { userImage: string; name: string; position: string };
+  }[];
 };
 
 const Testmonials: FC<testmonialProps> = ({ testData }) => {

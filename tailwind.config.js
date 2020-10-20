@@ -30,6 +30,8 @@ module.exports = {
 
       getstartColor: '#366e82',
       footerBg: '#021345',
+      textGray: '#747474',
+      borderGray: '#dadada',
 
       gray: {
         100: '#f7fafc',

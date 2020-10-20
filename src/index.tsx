@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/styles/index.scss';
 import { Provider } from 'react-redux';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import './assets/styles/index.scss';
 import store from './redux/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +12,9 @@ import './assets/styles/index.scss';
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <DndProvider backend={HTML5Backend}>
+        <App />
+      </DndProvider>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')

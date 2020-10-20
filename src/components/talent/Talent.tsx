@@ -41,7 +41,7 @@ const Talent: FC<talentProps> = ({
           </div>
         ))}
         <div className="mt-8">
-          <p className="ml-2 text-gray-600 text-sm text-sm">
+          <p className="ml-2 text-gray-600 text-sm">
             {!priceMonthly ? 'Free' : `Monthly $ ${priceMonthly}`}
           </p>
           <div className="flex">
@@ -61,7 +61,7 @@ const Talent: FC<talentProps> = ({
             <p className="ml-2 text-gray-600 text-sm">
               {!priceAnnually ? '' : `Annually $ ${priceAnnually}`}
             </p>
-            <p ml-2 className="text-green-600 text-xs">
+            <p className="text-green-600 text-xs">
               {!priceAnnually ? '' : '15%'}
             </p>
           </div>

@@ -4,20 +4,18 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import loginImage from 'assets/images/work_images-two.png';
 
 type props = {};
 const Authentication: FC<props> = () => {
-  const [hidden, setHidden] = useState(true)
-
+  const [hidden, setHidden] = useState(true);
 
   const toggleShow = () => {
-    setHidden(!hidden)
-  }
+    setHidden(!hidden);
+  };
   return (
     <Fragment>
       <section className="flex authentication-custom my-20 justify-between ">
-        <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
+        <section className="flex flex-col w-2/5 px-6 auth-bg items-center rounded-sm">
           <div className="w-1/2">
             <h3 className="text-gray-200 ont-bold text-3xl font-extrabold pt-8">
               Sign In

@@ -21,7 +21,7 @@ function Layout({ children }: Props): ReactElement {
             <div className="main-background" />
           )}
         </div>
-        {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
+        {/* {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />} */}
       </div>
     </div>
   );

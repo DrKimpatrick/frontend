@@ -4,16 +4,19 @@ import Layout from 'components/Layout';
 import LandingPage from 'containers/Landing/Landing';
 import Authentication from 'components/authentication/Authentication';
 import GetStarted from 'components/getStarted/GetStarted';
+import CurrentRole from 'components/CurrentRole/CurrentRole';
+import SkillRanking from 'components/SkillRanking/SkillRanking';
 
 const RoutesComponent: React.FC = () => {
   const routes = [
     { path: '/', exact: true, component: <LandingPage /> },
     { path: '/login', exact: true, component: <Authentication /> },
-    { path: '/logins', exact: true, component: <Authentication /> },
     { path: '/register', exact: true, component: <GetStarted /> },
     { path: '/home', exact: true, component: <LandingPage /> },
     { path: '/account', exact: true, component: <Authentication /> },
-    { path: '/notification', exact: true, component: <GetStarted /> }
+    { path: '/notification', exact: true, component: <GetStarted /> },
+    { path: '/current-role', exact: true, component: <CurrentRole /> },
+    { path: '/skill-ranking', exact: true, component: <SkillRanking /> }
   ];
   return (
     <Router>
