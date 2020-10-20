@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`AddEducation\` component matches the snapshot 1`] = `
+<section
+  className="add-education-section w-1/3 m-auto text-textGray"
+>
+  <div
+    className="flex relative h-auto my-8"
+  >
+    <div
+      className="back-arrow cursor-pointer"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+        />
+      </svg>
+    </div>
+    <h1
+      className="font-bold text-xl title"
+    >
+      What was the last school you attended?
+    </h1>
+  </div>
+  <div
+    className="text-textGray mt-8"
+  >
+    <input
+      className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+      placeholder="School Name"
+      type="text"
+    />
+  </div>
+  <div
+    className="text-textGray mt-4"
+  >
+    <input
+      className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+      placeholder="Level"
+      type="text"
+    />
+  </div>
+  <div
+    className="text-textGray mt-4"
+  >
+    <input
+      className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+      placeholder="Specializations"
+      type="text"
+    />
+  </div>
+  <div
+    className="text-textGray mt-4"
+  >
+    <input
+      className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+      placeholder="Degree or Certification Received"
+      type="text"
+    />
+  </div>
+  <div
+    className="flex justify-between text-textGray mt-4"
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root makeStyles-textField-3"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+        data-shrink={true}
+        htmlFor="date"
+        id="date-label"
+      >
+        Start Date
+      </label>
+      <div
+        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiInput-input"
+          defaultValue="2017-05-24"
+          disabled={false}
+          id="date"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="date"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiFormControl-root MuiTextField-root makeStyles-textField-3"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+        data-shrink={true}
+        htmlFor="date"
+        id="date-label"
+      >
+        Send Date
+      </label>
+      <div
+        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiInput-input"
+          defaultValue="22017-05-24"
+          disabled={false}
+          id="date"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="date"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="text-textGray mt-4"
+  >
+    <textarea
+      className="border outline-none bg-transparent rounded w-full p-3 text-textGray h-48"
+      cols={30}
+      name="accomplishments"
+      placeholder="Accomplishments"
+      rows={7}
+    />
+  </div>
+  <div
+    className="flex justify-center mt-12"
+  >
+    <button
+      className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+      data-testid="next-button"
+    >
+      <span
+        className=""
+      >
+        Next
+      </span>
+       
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
+        />
+      </svg>
+    </button>
+  </div>
+</section>
+`;

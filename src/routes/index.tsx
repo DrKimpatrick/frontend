@@ -9,6 +9,7 @@ import SkillRanking from 'components/SkillRanking/SkillRanking';
 import RecentEmployer from 'components/RecentEmployer/RecentEmployer';
 import EmploymentHistory from 'components/EmploymentHistory/EmploymentHistory';
 import EmploymentHistoryList from 'components/EmploymentHistoryList/EmploymentHistoryList';
+import AddEducation from 'components/AddEducation/AddEducation';
 
 const RoutesComponent: React.FC = () => {
   const routes = [
@@ -30,7 +31,8 @@ const RoutesComponent: React.FC = () => {
       path: '/employment-history-list',
       exact: true,
       component: <EmploymentHistoryList />
-    }
+    },
+    { path: '/add-education', exact: true, component: <AddEducation /> }
   ];
   return (
     <Router>
