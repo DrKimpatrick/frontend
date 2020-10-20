@@ -5,7 +5,7 @@ import { useTextFieldStyle, themeTextFields } from './DatePicker.style';
 
 type props = {
   label: string;
-  defaultValue: string;
+  defaultValue?: string;
 };
 const DatePicker: FC<props> = ({ label, defaultValue }: any) => {
   const classes = useTextFieldStyle();

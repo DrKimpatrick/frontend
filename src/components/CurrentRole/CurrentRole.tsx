@@ -2,12 +2,11 @@ import React, { FC } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
-import Select from 'react-select';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import DatePicker from 'components/DatePicker/DatePicker';
-import { selectStyles, multiSelectStyles } from './CurrentRole.style';
+import Select from 'components/SelectOption/SelectOption';
 import { createStyles } from '@material-ui/core/styles';
 
 const styles: any = createStyles({
@@ -45,12 +44,7 @@ const CurrentRole: FC<props> = (props: any) => {
       <div className="mt-6">
         <span>What is your current role?</span>
         <div className="text-textGray mt-2">
-          <Select
-            placeholder="Select role"
-            options={options}
-            styles={selectStyles}
-            className="outline-none placeholder-textGray placeholder-opacity-50"
-          />
+          <Select placeholder="Select role" options={options} />
         </div>
       </div>
       <div className="mt-6">
@@ -84,9 +78,7 @@ const CurrentRole: FC<props> = (props: any) => {
           <Select
             placeholder="Select your amazing skills"
             options={options}
-            styles={multiSelectStyles}
             isMulti
-            className="outline-none placeholder-textGray placeholder-opacity-50"
           />
         </div>
       </div>

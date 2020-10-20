@@ -1,0 +1,48 @@
+.recent-employer-section {
+  .title {
+    font-size: 22px;
+    color: #747474;
+    text-decoration: none solid rgb(116, 116, 116);
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+
+  .input-height {
+    height: 47px !important;
+    border-radius: 4px;
+    color: #747474;
+    &::placeholder {
+      color: #c9c9c9;
+    }
+  }
+}
+
+@media (max-width: 786px) {
+  .recent-employer-section {
+    width: 60%;
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .recent-employer-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import Authentication from 'components/authentication/Authentication';
 import GetStarted from 'components/getStarted/GetStarted';
 import CurrentRole from 'components/CurrentRole/CurrentRole';
 import SkillRanking from 'components/SkillRanking/SkillRanking';
+import RecentEmployer from 'components/RecentEmployer/RecentEmployer';
 
 const RoutesComponent: React.FC = () => {
   const routes = [
@@ -16,7 +17,8 @@ const RoutesComponent: React.FC = () => {
     { path: '/account', exact: true, component: <Authentication /> },
     { path: '/notification', exact: true, component: <GetStarted /> },
     { path: '/current-role', exact: true, component: <CurrentRole /> },
-    { path: '/skill-ranking', exact: true, component: <SkillRanking /> }
+    { path: '/skill-ranking', exact: true, component: <SkillRanking /> },
+    { path: '/recent-employer', exact: true, component: <RecentEmployer /> }
   ];
   return (
     <Router>
