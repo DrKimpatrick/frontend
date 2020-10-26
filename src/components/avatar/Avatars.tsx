@@ -7,8 +7,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     '& > *': {
       // margin: theme.spacing(8),
-    width: theme.spacing(8),
-    height: theme.spacing(8)
+      width: '120px',
+      height: '120px',
+      marginLeft: '4rem'
     }
   },
   large: {
@@ -23,7 +24,7 @@ const Avatars: FC = () => {
     <Fragment>
       <div className={classes.root}>
         <Avatar
-            sizes='20px'
+          sizes="20px"
           alt="Remy Sharp"
           src="https://artriva.com/media/k2/items/cache/c889234799e865bbe90cee71f6cd2e53_XL.jpg"
         />

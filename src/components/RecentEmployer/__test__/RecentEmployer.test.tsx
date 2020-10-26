@@ -5,8 +5,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import RecentEmployer from '../RecentEmployer';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
+import initialState from 'redux/initialState';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { Provider, useDispatch } from 'react-redux';
 
-afterEach(cleanup);
 const mockHistoryPush = jest.fn();
 
 jest.mock('react-router-dom', () => ({
@@ -16,25 +19,29 @@ jest.mock('react-router-dom', () => ({
   })
 }));
 
+let store: any;
+
+const middleware = [thunk];
+const mockStore = configureMockStore(middleware);
+
 describe('`RecentEmployer` component', () => {
+
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+
+  afterEach(cleanup);
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDom.render(
-      <Router>
-        <RecentEmployer />
-      </Router>,
+      <Provider store={store}>
+        <Router>
+          <RecentEmployer />
+        </Router>
+      </Provider>,
       div
     );
   });
 
-  it('matches the snapshot', () => {
-    const tree = renderer
-      .create(
-        <Router>
-          <RecentEmployer />
-        </Router>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 });

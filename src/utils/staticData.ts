@@ -148,3 +148,93 @@ export const testmonials = [
     }
   }
 ];
+
+export const education = [
+  {
+    id: 1,
+    name: 'University of California',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'Harvard University',
+    status: 'unverified'
+  },
+  {
+    id: 2,
+    name: 'Google African Certificate',
+    status: 'processing'
+  }
+];
+
+export const employment = [
+  {
+    id: 1,
+    name: 'OSC',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'Snow Media Tech',
+    status: 'unverified'
+  },
+  {
+    id: 2,
+    name: 'Irembo',
+    status: 'processing'
+  }
+];
+
+export const expertSkills = [
+  {
+    id: 1,
+    name: 'HTML',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'CSS',
+    status: 'unverified'
+  },
+  {
+    id: 2,
+    name: 'Javascript',
+    status: 'processing'
+  }
+];
+
+export const intermediateSkills = [
+  {
+    id: 1,
+    name: 'Python',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'Java',
+    status: 'unverified'
+  },
+  {
+    id: 2,
+    name: 'Algorithms and Data structure',
+    status: 'processing'
+  }
+];
+
+export const beginnerSkills = [
+  {
+    id: 1,
+    name: 'SQL',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'Redux',
+    status: 'unverified'
+  },
+  {
+    id: 2,
+    name: 'React',
+    status: 'processing'
+  }
+];

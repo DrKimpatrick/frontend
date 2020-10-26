@@ -6,7 +6,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import LayersIcon from '@material-ui/icons/Layers';
 import { useHistory } from 'react-router-dom';
-import './BottomMenu.scss';
 
 const useStyles = makeStyles({
   root: {

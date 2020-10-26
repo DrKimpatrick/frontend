@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import './RecentEmployer.scss';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import Select from 'components/SelectOption/SelectOption';
 import DatePicker from 'components/DatePicker/DatePicker';
+import NavBar from 'components/Layout/NavBar/NavBar';
 
 type props = {};
 const RecentEmployer: FC<props> = (props: any) => {
@@ -20,92 +21,106 @@ const RecentEmployer: FC<props> = (props: any) => {
     { value: 'Product Designer2', label: 'Product Designer2' }
   ];
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      props.history.push('/login');
+    }
+  });
+
   return (
-    <section className="recent-employer-section w-1/3 m-auto text-textGray">
-      <div className="flex relative h-auto my-8">
-        <div className="back-arrow cursor-pointer">
-          <ArrowBackTwoToneIcon />
+    <Fragment>
+      <NavBar />
+      <section className="recent-employer-section w-1/3 m-auto text-textGray">
+        <div className="flex relative h-auto my-8">
+          <div
+            className="back-arrow cursor-pointer"
+            onClick={() => props.history.push('/skill-ranking')}
+          >
+            <ArrowBackTwoToneIcon />
+          </div>
+          <h1 className="font-bold text-base title">
+            Who was your most recent employer?
+          </h1>
         </div>
-        <h1 className="font-bold text-base title">
-          Who was your most recent employer?
-        </h1>
-      </div>
-      <div className="text-textGray mt-8">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
-          placeholder="Company Name"
-        />
-      </div>
+        <div className="text-textGray mt-8">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+            placeholder="Company Name"
+          />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <Select
-          options={[
-            { value: 'Staffing', label: 'Staffing' },
-            { value: 'Employee', label: 'Employee' },
-            { value: 'HR', label: 'HR' }
-          ]}
-          placeholder="Select your supervisor"
-        />
-      </div>
-      <div className="text-textGray mt-4">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-          placeholder="Your Title"
-        />
-      </div>
+        <div className="text-textGray mt-4">
+          <Select
+            options={[
+              { value: 'Staffing', label: 'Staffing' },
+              { value: 'Employee', label: 'Employee' },
+              { value: 'HR', label: 'HR' }
+            ]}
+            placeholder="Select your supervisor"
+          />
+        </div>
+        <div className="text-textGray mt-4">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            placeholder="Your Title"
+          />
+        </div>
 
-      <div className="flex justify-between text-textGray mt-4">
-        <DatePicker label="Start Date" defaultValue="2017-05-24" />
-        <DatePicker label="Send Date" defaultValue="22017-05-24" />
-      </div>
+        <div className="flex justify-between text-textGray mt-4">
+          <DatePicker label="Start Date" defaultValue="2017-05-24" />
+          <DatePicker label="Send Date" defaultValue="22017-05-24" />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-          placeholder="Company phone"
-        />
-      </div>
+        <div className="text-textGray mt-4">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            placeholder="Company phone"
+          />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <Select isMulti options={options} placeholder="Select skills used" />
-      </div>
+        <div className="text-textGray mt-4">
+          <Select isMulti options={options} placeholder="Select skills used" />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-          placeholder="Responsibilities"
-        />
-      </div>
+        <div className="text-textGray mt-4">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            placeholder="Responsibilities"
+          />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-          placeholder="Accomplishments"
-        />
-      </div>
+        <div className="text-textGray mt-4">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            placeholder="Accomplishments"
+          />
+        </div>
 
-      <div className="text-textGray mt-4">
-        <input
-          type="text"
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-          placeholder="Favorite project you built or contributed to?"
-        />
-      </div>
+        <div className="text-textGray mt-4">
+          <input
+            type="text"
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            placeholder="Favorite project you built or contributed to?"
+          />
+        </div>
 
-      <div className="flex justify-center mt-12">
-        <button
-          data-testid="next-button"
-          className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-        >
-          <span className="">Next</span> <ArrowRightAltTwoToneIcon />
-        </button>
-      </div>
-    </section>
+        <div className="flex justify-center mt-12">
+          <button
+            data-testid="next-button"
+            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+            onClick={() => props.history.push('/employment-history')}
+          >
+            <span className="">Next</span> <ArrowRightAltTwoToneIcon />
+          </button>
+        </div>
+      </section>
+    </Fragment>
   );
 };
 

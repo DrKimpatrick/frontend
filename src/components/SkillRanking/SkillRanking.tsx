@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, Fragment, useState, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import SkillComponent from './SkillComponent';
 import DraggableArea from './DraggableArea';
 import { SKILL_RANKING } from 'constants/draggable-types';
+import NavBar from 'components/Layout/NavBar/NavBar';
 
 const rawSkills = [
   { id: 5, label: 'BDD' },
@@ -47,6 +48,13 @@ const SkillRanking: FC<props> = (props: any) => {
       label: string;
     }[]
   >([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      props.history.push('/login');
+    }
+  });
 
   const onDropSkill = ({ skill, index, area }: any, droppedOn: string) => {
     if (area === droppedOn) {
@@ -176,99 +184,105 @@ const SkillRanking: FC<props> = (props: any) => {
   };
 
   return (
-    <section className="skill-ranking-section w-1/3 m-auto text-textGray">
-      <div className="flex relative h-auto my-8">
-        <div
-          className="back-arrow cursor-pointer"
-          onClick={() => history.push('/current-role')}
-        >
-          <ArrowBackTwoToneIcon />
+    <Fragment>
+      <NavBar />
+      <section className="skill-ranking-section w-1/3 m-auto text-textGray">
+        <div className="flex relative h-auto my-8">
+          <div
+            className="back-arrow cursor-pointer"
+            onClick={() => history.push('/current-role')}
+          >
+            <ArrowBackTwoToneIcon />
+          </div>
+          <h1 className="font-bold text-xl title">Rank your skillset!</h1>
         </div>
-        <h1 className="font-bold text-xl title">Rank your skillset!</h1>
-      </div>
 
-      <div className="mt-6">
-        <DraggableArea
-          types={SKILL_RANKING}
-          onDrop={(e: any) => onDropSkill(e, 'skills')}
-          title="My Skills"
-        >
-          {skills.map((skill, index) => (
-            <SkillComponent
-              area="skills"
-              key={Math.random()}
-              index={index}
-              skill={skill}
-              onRemove={onRemove}
-              moveSkill={onDropSkill}
-            />
-          ))}
-        </DraggableArea>
-      </div>
-      <div className="mt-6">
-        <DraggableArea
-          types={SKILL_RANKING}
-          onDrop={(e: any) => onDropSkill(e, 'beginner')}
-          title="Beginner"
-          titleClass="text-green-700"
-        >
-          {beginnerskills.map((skill, index) => (
-            <SkillComponent
-              area="beginner"
-              key={Math.random()}
-              index={index}
-              skill={skill}
-              onRemove={onRemove}
-              moveSkill={onDropSkill}
-            />
-          ))}
-        </DraggableArea>
-      </div>
-      <div className="mt-6">
-        <DraggableArea
-          types={SKILL_RANKING}
-          onDrop={(e: any) => onDropSkill(e, 'intermediate')}
-          title="Intermediate"
-          titleClass="text-blue-700"
-        >
-          {intermediateskills.map((skill, index) => (
-            <SkillComponent
-              area="intermediate"
-              key={Math.random()}
-              index={index}
-              skill={skill}
-              onRemove={onRemove}
-              moveSkill={onDropSkill}
-            />
-          ))}
-        </DraggableArea>
-      </div>
-      <div className="mt-6">
-        <span className=""></span>
-        <DraggableArea
-          types={SKILL_RANKING}
-          onDrop={(e: any) => onDropSkill(e, 'advanced')}
-          title="Advanced"
-          titleClass="text-black"
-        >
-          {advancedskills.map((skill, index) => (
-            <SkillComponent
-              area="advanced"
-              key={Math.random()}
-              index={index}
-              skill={skill}
-              onRemove={onRemove}
-              moveSkill={onDropSkill}
-            />
-          ))}
-        </DraggableArea>
-      </div>
-      <div className="flex justify-center mt-12">
-        <button className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around">
-          <span className="">Next</span> <ArrowRightAltTwoToneIcon />
-        </button>
-      </div>
-    </section>
+        <div className="mt-6">
+          <DraggableArea
+            types={SKILL_RANKING}
+            onDrop={(e: any) => onDropSkill(e, 'skills')}
+            title="My Skills"
+          >
+            {skills.map((skill, index) => (
+              <SkillComponent
+                area="skills"
+                key={Math.random()}
+                index={index}
+                skill={skill}
+                onRemove={onRemove}
+                moveSkill={onDropSkill}
+              />
+            ))}
+          </DraggableArea>
+        </div>
+        <div className="mt-6">
+          <DraggableArea
+            types={SKILL_RANKING}
+            onDrop={(e: any) => onDropSkill(e, 'beginner')}
+            title="Beginner"
+            titleClass="text-green-700"
+          >
+            {beginnerskills.map((skill, index) => (
+              <SkillComponent
+                area="beginner"
+                key={Math.random()}
+                index={index}
+                skill={skill}
+                onRemove={onRemove}
+                moveSkill={onDropSkill}
+              />
+            ))}
+          </DraggableArea>
+        </div>
+        <div className="mt-6">
+          <DraggableArea
+            types={SKILL_RANKING}
+            onDrop={(e: any) => onDropSkill(e, 'intermediate')}
+            title="Intermediate"
+            titleClass="text-blue-700"
+          >
+            {intermediateskills.map((skill, index) => (
+              <SkillComponent
+                area="intermediate"
+                key={Math.random()}
+                index={index}
+                skill={skill}
+                onRemove={onRemove}
+                moveSkill={onDropSkill}
+              />
+            ))}
+          </DraggableArea>
+        </div>
+        <div className="mt-6">
+          <span className=""></span>
+          <DraggableArea
+            types={SKILL_RANKING}
+            onDrop={(e: any) => onDropSkill(e, 'advanced')}
+            title="Advanced"
+            titleClass="text-black"
+          >
+            {advancedskills.map((skill, index) => (
+              <SkillComponent
+                area="advanced"
+                key={Math.random()}
+                index={index}
+                skill={skill}
+                onRemove={onRemove}
+                moveSkill={onDropSkill}
+              />
+            ))}
+          </DraggableArea>
+        </div>
+        <div className="flex justify-center mt-12">
+          <button
+            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+            onClick={() => history.push('/recent-employer')}
+          >
+            <span className="">Next</span> <ArrowRightAltTwoToneIcon />
+          </button>
+        </div>
+      </section>
+    </Fragment>
   );
 };
 

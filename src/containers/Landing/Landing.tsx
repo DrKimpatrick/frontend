@@ -1,10 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import FrontView from '../../components/frontView/FrontView';
 import Steps from '../../components/steps/Steps';
 import AccountType from '../../components/accountType/AccountType';
 import './Landing.scss';
 import Talent from 'components/talent/Talent';
 import Testmonials from 'components/testmonials/Testmonials';
+import NavBar from 'components/Layout/NavBar/NavBar';
+import useWindowSize from 'utils/useWindowSize';
+import Footer from 'components/Layout/Footer';
+import BottomMenu from 'components/Layout/BottomMenu'
 import {
   frontData,
   steps,
@@ -12,10 +16,27 @@ import {
   subscriptions,
   testmonials
 } from 'utils/staticData';
-
-const Landing: FC<any> = () => {
+import { withRouter } from 'react-router-dom';
+// type Props = {
+//   history?: any
+// }
+const Landing: FC<any> = (props) => {
+  const size = useWindowSize();
+  
+  useEffect(()=> {
+    const data:any = new URLSearchParams(props.history.location.search).get('data');
+    if(data){
+      localStorage.setItem('token', data);
+      const token = localStorage.getItem('token');
+      return props.history.push('/');
+      
+    }
+    return props.history.push('/')
+    
+  }, [])
   return (
     <div>
+      <NavBar />
       <div className="front-view">
         <FrontView
           title={frontData.title}
@@ -115,11 +136,14 @@ const Landing: FC<any> = () => {
           ))}
         </div>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center mb-16">
         <Testmonials key={Math.random()} testData={testmonials}></Testmonials>
       </div>
+      {size?.width && size?.width > 768 && (
+            <div className="main-background"/>
+      )}
     </div>
   );
 };
 
-export default Landing;
+export default withRouter(Landing);

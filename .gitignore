@@ -26,3 +26,5 @@ yarn-error.log*
 
 /dist
 node_modules
+
+.env

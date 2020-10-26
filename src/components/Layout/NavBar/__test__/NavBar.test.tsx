@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router } from 'react-router-dom';
-import NavBar from '../index';
+import NavBar from '../NavBar';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
 import initialState from '../../../../redux/initialState';

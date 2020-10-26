@@ -55,10 +55,26 @@
   }
   .auth-btn {
     background: #2661eb;
+    outline: none;
+    border: none;
   }
   .auth-icon {
     font-size: 35px;
   }
+}
+
+.verify-background {
+  background: linear-gradient(0deg, #00330e 0%, #00701e 100%) !important;
+}
+
+.verify-back-error {
+  background: linear-gradient(0deg, #681010 0%, #d92c44 100%) !important;
+}
+
+.back-btn {
+  background: #2661eb;
+  outline: none !important;
+  border: none !important;
 }
 
 @media (max-width: 786px) {
@@ -129,6 +145,14 @@
   transition: opacity 0.5s ease-in-out;
 }
 
+.icon-fonts {
+  font-size: 2rem !important;
+}
+
+.back-for {
+  background: linear-gradient(0deg, #010a26 0%, #021247 100%);
+}
+
 @media screen and (max-width: 480px) {
   .display-grid {
     display: grid !important;
@@ -156,6 +180,22 @@
 
   .front-mob {
     width: 100% !important;
+  }
+
+  .front-mob-reset {
+    padding: 0 2rem;
+    width: 100% !important;
+  }
+
+  .header-container .header-background {
+    width: 0 !important;
+  }
+
+  .mobile-verify {
+    padding-top: 9rem !important;
+    padding-bottom: 9rem !important;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
   }
 }
 

@@ -6,14 +6,14 @@ interface HttpOptions {
   headers: object;
 }
 
-const { REACT_APP_API_URL } = process.env;
+const { REACT_APP_BACKEND_API } = process.env;
 
 export default (httpOptions?: HttpOptions) => {
   const { token, baseURL, headers } = httpOptions || {};
   const userToken = token || localStorage.token;
 
   return axios.create({
-    baseURL: baseURL || REACT_APP_API_URL,
+    baseURL: baseURL || REACT_APP_BACKEND_API,
     headers: {
       ...headers,
       'Content-Type': 'application/json',

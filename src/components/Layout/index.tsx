@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import NavBar from './NavBar';
+import NavBar from './NavBar/NavBar';
 import Footer from './Footer';
-import './Layout.scss';
 import useWindowSize from 'utils/useWindowSize';
 import BottomMenu from './BottomMenu/index';
 
@@ -14,14 +13,10 @@ function Layout({ children }: Props): ReactElement {
   return (
     <div className="dashboard_layout">
       <div className="grid-container">
-        <NavBar />
         <div className="main">
           <main>{children}</main>
-          {size?.width && size?.width > 768 && (
-            <div className="main-background" />
-          )}
         </div>
-        {/* {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />} */}
+        {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
       </div>
     </div>
   );

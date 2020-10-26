@@ -3,11 +3,18 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 
-const Verification: FC = () => {
+type props = {
+  monitor?: Boolean;
+};
+const Verification: FC<props> = ({ monitor }) => {
   return (
     <Fragment>
       <div className="w-full">
-        <ul className="p-0 m-0">
+        <ul
+          className={`${
+            (monitor && 'flex justify-between mx-auto w-4/5') || 'p-0 m-0'
+          }`}
+        >
           <li className="pb-4">
             <div className="flex flex-row text-sm">
               <VerifiedUserIcon className="verified-color" />

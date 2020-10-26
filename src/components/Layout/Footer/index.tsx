@@ -7,7 +7,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import iosIcon from 'assets/images/ios-icon.svg';
 import androidIcon from 'assets/images/android-icon.svg';
 import useWindowSize from 'utils/useWindowSize';
-import './Footer.scss';
 
 interface Props {}
 

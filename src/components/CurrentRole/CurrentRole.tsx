@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import DatePicker from 'components/DatePicker/DatePicker';
 import Select from 'components/SelectOption/SelectOption';
 import { createStyles } from '@material-ui/core/styles';
+import NavBar from 'components/Layout/NavBar/NavBar';
 
 const styles: any = createStyles({
   formControlLabel: {
@@ -32,66 +33,69 @@ const CurrentRole: FC<props> = (props: any) => {
   ];
 
   return (
-    <section className="current-role-section w-1/3 m-auto text-textGray">
-      <div className="flex relative h-auto my-8">
-        <div className="back-arrow cursor-pointer">
-          <ArrowBackTwoToneIcon />
+    <Fragment>
+      <NavBar />
+      <section className="current-role-section w-1/3 m-auto text-textGray">
+        <div className="flex relative h-auto my-8">
+          <div className="back-arrow cursor-pointer">
+            <ArrowBackTwoToneIcon />
+          </div>
+          <h1 className="font-bold text-xl title">
+            Tell us how awesome you are!
+          </h1>
         </div>
-        <h1 className="font-bold text-xl title">
-          Tell us how awesome you are!
-        </h1>
-      </div>
-      <div className="mt-6">
-        <span>What is your current role?</span>
-        <div className="text-textGray mt-2">
-          <Select placeholder="Select role" options={options} />
+        <div className="mt-6">
+          <span>What is your current role?</span>
+          <div className="text-textGray mt-2">
+            <Select placeholder="Select role" options={options} />
+          </div>
         </div>
-      </div>
-      <div className="mt-6">
-        <span>How long have you been at your current role?</span>
-        <div className="flex justify-between text-textGray mt-2">
-          <DatePicker label="Start Date" defaultValue="2017-05-24" />
-          <DatePicker label="End Date" defaultValue="22017-05-24" />
-        </div>
+        <div className="mt-6">
+          <span>How long have you been at your current role?</span>
+          <div className="flex justify-between text-textGray mt-2">
+            <DatePicker label="Start Date" defaultValue="2017-05-24" />
+            <DatePicker label="End Date" defaultValue="22017-05-24" />
+          </div>
 
-        <FormControlLabel
-          control={
-            <Checkbox
-              defaultChecked
-              color="default"
-              inputProps={{ 'aria-label': 'checkbox with default color' }}
-              style={{
-                width: '0.7em !important'
-              }}
-            />
-          }
-          label={
-            <Typography style={styles.formControlLabel}>
-              Currently working here
-            </Typography>
-          }
-        />
-      </div>
-      <div className="mt-6">
-        <span>List all of your amazing skills</span>
-        <div className="text-textGray mt-2">
-          <Select
-            placeholder="Select your amazing skills"
-            options={options}
-            isMulti
+          <FormControlLabel
+            control={
+              <Checkbox
+                defaultChecked
+                color="default"
+                inputProps={{ 'aria-label': 'checkbox with default color' }}
+                style={{
+                  width: '0.7em !important'
+                }}
+              />
+            }
+            label={
+              <Typography style={styles.formControlLabel}>
+                Currently working here
+              </Typography>
+            }
           />
         </div>
-      </div>
-      <div className="flex justify-center mt-12">
-        <button
-          onClick={() => history.push('/skill-ranking')}
-          data-testid="next-button"
-          className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-        >
-          <span className="">Next</span> <ArrowRightAltTwoToneIcon />
-        </button>
-      </div>
-    </section>
+        <div className="mt-6">
+          <span>List all of your amazing skills</span>
+          <div className="text-textGray mt-2">
+            <Select
+              placeholder="Select your amazing skills"
+              options={options}
+              isMulti
+            />
+          </div>
+        </div>
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => history.push('/skill-ranking')}
+            data-testid="next-button"
+            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+          >
+            <span className="">Next</span> <ArrowRightAltTwoToneIcon />
+          </button>
+        </div>
+      </section>
+    </Fragment>
   );
 };
 

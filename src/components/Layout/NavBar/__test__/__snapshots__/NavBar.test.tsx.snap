@@ -22,24 +22,26 @@ exports[`\`NavBar\` component matches the snapshot 1`] = `
     <div
       className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
     >
-      <a
-        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
-        href="/"
-        onClick={[Function]}
-      >
-        <span>
-          How it works
-        </span>
-      </a>
-      <a
-        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
-        href="/"
-        onClick={[Function]}
-      >
-        <span>
-          About us
-        </span>
-      </a>
+      <div>
+        <a
+          className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+          href="/"
+          onClick={[Function]}
+        >
+          <span>
+            How it works
+          </span>
+        </a>
+        <a
+          className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+          href="/"
+          onClick={[Function]}
+        >
+          <span>
+            About us
+          </span>
+        </a>
+      </div>
       <a
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
         href="/Login"
@@ -84,24 +86,26 @@ exports[`\`NavBar\` component matches the snapshot on a small screen 1`] = `
     <div
       className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
     >
-      <a
-        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
-        href="/"
-        onClick={[Function]}
-      >
-        <span>
-          How it works
-        </span>
-      </a>
-      <a
-        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
-        href="/"
-        onClick={[Function]}
-      >
-        <span>
-          About us
-        </span>
-      </a>
+      <div>
+        <a
+          className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+          href="/"
+          onClick={[Function]}
+        >
+          <span>
+            How it works
+          </span>
+        </a>
+        <a
+          className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+          href="/"
+          onClick={[Function]}
+        >
+          <span>
+            About us
+          </span>
+        </a>
+      </div>
       <a
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
         href="/Login"

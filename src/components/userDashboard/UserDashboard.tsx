@@ -1,6 +1,7 @@
 import AccordionMenu from 'components/accordion/AccordionMenu';
 import Avatars from 'components/avatar/Avatars';
-import React, { Fragment, FC } from 'react';
+import React, { Fragment, FC, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import Verification from './Verification';
 import FilterListOutlinedIcon from '@material-ui/icons/FilterListOutlined';
 import Headline from './Headline';
@@ -9,28 +10,17 @@ import FingerprintOutlinedIcon from '@material-ui/icons/FingerprintOutlined';
 import FolderSharedIcon from '@material-ui/icons/FolderShared';
 import DesktopWindowsOutlinedIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import SchoolIcon from '@material-ui/icons/School';
+import CoverImage from 'coverImage/CoverImage';
+import NavBar from 'components/Layout/NavBar/NavBar';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import useWindowSize from 'utils/useWindowSize';
+import Footer from 'components/Layout/Footer';
+import motif from '../../assets/images/motif-image.png';
+import { employment, expertSkills, beginnerSkills, intermediateSkills, education } from 'utils/staticData'
 
 type props = {
   //   test: number;
 };
-
-export const data = [
-  {
-    id: 1,
-    name: 'angula',
-    status: 'verified'
-  },
-  {
-    id: 3,
-    name: 'Reat',
-    status: 'unverified'
-  },
-  {
-    id: 2,
-    name: 'aPy',
-    status: 'processing'
-  }
-];
 
 const components = [
   {
@@ -45,12 +35,16 @@ const components = [
   },
   {
     id: 2,
-    headline: (
-      <Headline headline="SkillSet" icon={<FolderSharedIcon />} />
-    ),
+    headline: <Headline headline="SkillSet" icon={<FolderSharedIcon />} />,
     details: [
-      <UserInformationCard data={data} level="Beginner" />,
-      <UserInformationCard data={data} level="Expert" />
+      <UserInformationCard type="skills" data={beginnerSkills} level="Beginner" />,
+      <UserInformationCard type="skills" data={intermediateSkills} level="Intermediate" />,
+      <UserInformationCard
+        type="skills"
+        data={expertSkills}
+        level="Expert"
+        index={true}
+      />
     ]
   },
   {
@@ -59,55 +53,117 @@ const components = [
       <Headline headline="Employment" icon={<DesktopWindowsOutlinedIcon />} />
     ),
     details: [
-      <UserInformationCard data={data} level="Beginner" />,
-      <UserInformationCard data={data} level="Expert" />
+      <UserInformationCard type="employment" data={employment} />,
     ]
   },
   {
     id: 4,
-    headline: (
-      <Headline headline="Education" icon={<SchoolIcon />} />
-    ),
+    headline: <Headline headline="Education" icon={<SchoolIcon />} />,
     details: [
-      <UserInformationCard data={data} level="Beginner" />,
-      <UserInformationCard data={data} level="Expert" />
+      <UserInformationCard type="education" data={education} />,
     ]
   }
 ];
 
-const UserDashboard: FC<props> = () => {
+const UserDashboard: FC<props> = (props:any) => {
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      props.history.push('/login');
+    }
+  });
+
+  const size = useWindowSize();
   return (
     <Fragment>
-      <div className="container mx-auto">
-        <section className="flex mx-auto w-2/4 justify-center items-center">
-          <div className="my-3 mx-3 flex-initial">
-            <Avatars />
-          </div>
-          <small className="flex-1 font-medium text-left text-base pl-2 pr-3 my-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis quisquam modi distinctio libero quo mollitia asperiores
-            laboriosam? Nobis molestias distinctio suscipit cupiditate
-            necessitatibus, ab corporis repellendus aut explicabo. Temporibus,
-            enim.
-          </small>
-        </section>
-        <section className="flex flex-row flex-no-wrap justify-center my-5 mx-auto w-2/4">
-          <input
-            type="text"
-            className="border border-grey-600 w-full  h-10 rounded-sm px-3 placeholder-gray-500 placeholder-opacity-25"
-            placeholder="Search"
-          />
-          <div className="flex text-blue-600 hover:text-red-600 text-1xl py-2 mx-2">
-            <FilterListOutlinedIcon />
-            <span>Filter</span>
-          </div>
-        </section>
-        <section>
-          <AccordionMenu components={components} />
-        </section>
+      <div>
+        <CoverImage />
       </div>
+      <div>
+        <NavBar userDashboard={true} />
+
+        <div className="user-dashboard-container mx-auto bg-gray-300">
+          <section className="w-4/6 py-10 mx-auto ">
+            <small className="flex-1 font-medium text-center text-base pl-2 pr-3 my-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis quisquam modi distinctio libero quo mollitia
+              asperiores laboriosam? Nobis molestias distinctio suscipit
+              cupiditate necessitatibus, ab corporis repellendus aut explicabo.
+              Temporibus, enim. Lorem ipsum dolor sit, amet consectetur
+              adipisicing elit. Consequuntur veniam earum, vitae quasi autem
+              eaque quam officiis adipisci nostrum hic dolorem ipsa ipsum, odio
+              ratione. Error voluptatum asperiores consequuntur laudantium!
+            </small>
+          </section>
+          {size?.width && size?.width > 768 ? (
+            <div className="flex flex-nowrap mx-auto w-5/6">
+              <Verification monitor={true} />
+            </div>
+          ) : (
+            ''
+          )}
+          <section className="mb-48">
+            {size?.width && size?.width > 768 ? (
+              <div className="flex flex-nowrap w-full justify-evenly">
+                <div className="flex flex-col w-1/4 mt-12">
+                  <section className="mb-16">
+                    <Headline
+                      headline="Employment"
+                      icon={<DesktopWindowsOutlinedIcon />}
+                    />
+                    <UserInformationCard
+                      type="employment"
+                      data={employment}
+                      index={true}
+                    />
+                  </section>
+                  <section>
+                    <Headline headline="Education" icon={<SchoolIcon />} />
+                    <UserInformationCard
+                      type="education"
+                      data={education}
+                      index={true}
+                    />
+                  </section>
+                </div>
+                <div className="flex flex-col w-1/4 mt-12">
+                  <section>
+                    <Headline headline="SkillSet" icon={<FolderSharedIcon />} />
+                    <UserInformationCard
+                      type="skills"
+                      data={beginnerSkills}
+                      level="Beginner"
+                    />
+                    <UserInformationCard
+                      type="skills"
+                      data={intermediateSkills}
+                      level="Intermediate"
+                    />
+                    <UserInformationCard
+                      type="skills"
+                      data={expertSkills}
+                      level="Expert"
+                      index={true}
+                    />
+                  </section>
+                </div>
+              </div>
+            ) : (
+              <AccordionMenu components={components} />
+            )}
+          </section>
+        </div>
+        {/* c6b7b7 */}
+      </div>
+      {size?.width && size?.width > 768 && (
+        <div
+          className="main-background"
+          style={{ backgroundColor: '#c6b7b7' }}
+        />
+      )}
     </Fragment>
   );
 };
 
-export default UserDashboard;
+export default withRouter(UserDashboard);

@@ -1,49 +1,129 @@
-import React, { FC, Fragment, useState } from 'react';
+import React, { FC, Fragment, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import NavBar from 'components/Layout/NavBar/NavBar';
+import loginImage from 'assets/images/work_images-two.png';
+import { LoginAction } from 'redux/actions/login';
+import { validEmailRegex, validateForm, passwordRegex } from 'utils/index';
+import BeatLoader from 'react-spinners/BeatLoader';
+import Loader from 'components/loader/Loader';
 
 type props = {};
-const Authentication: FC<props> = () => {
+const Authentication: FC<props> = (props: any) => {
   const [hidden, setHidden] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
+  const [data, setData] = useState({
+    username: '',
+    password: ''
+  });
+  const [dataError, setDataError] = useState({
+    email: '',
+    password: ''
+  });
+
+  const dispatch = useDispatch();
+  const user: any = useSelector((state: any) => state.users);
+  useEffect(() => {
+    if (submitted && !user.errorLogin && user.currentUser.token) {
+      localStorage.setItem('token', user.currentUser.token);
+      props.history.push('/current-role');
+    }
+  });
+
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [event.target.name]: event.target.value });
+  };
+
+  const login = () => {
+    if (validateForm(dataError)) {
+      LoginAction(data)(dispatch);
+      setSubmitted(true);
+    }
+  };
 
   const toggleShow = () => {
     setHidden(!hidden);
   };
+
+  const githubSocialAuth = () => {
+    window.location.assign(`${process.env.REACT_APP_BACKEND_API}/auth/github`);
+  };
+  const googleSocialAuth = () => {
+    window.location.assign(`${process.env.REACT_APP_BACKEND_API}/auth/google`);
+  };
+  const linkedInSocialAuth = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_BACKEND_API}/auth/linkedin`
+    );
+  };
+
   return (
     <Fragment>
-      <section className="flex authentication-custom my-20 justify-between ">
-        <section className="flex flex-col w-2/5 px-6 auth-bg items-center rounded-sm">
-          <div className="w-1/2">
-            <h3 className="text-gray-200 ont-bold text-3xl font-extrabold pt-8">
+      <NavBar />
+      <section className="flex authentication-custom justify-between ">
+        <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
+          {' '}
+          {user.resetSuccess && (
+            <small className="text-center text-sm text-indigo-800 bg-white px-2 py-4 rounded-t-none rounded">
+              Your password has been reset successfully, please login with your
+              new password
+            </small>
+          )}
+          <div className="w-1/2 front-mob">
+            <h3 className="text-gray-200 font-bold text-3xl font-extrabold pt-8">
               Sign In
             </h3>
             <div className="flex flex-no-wrap justify-between mt-10">
-              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-1 rounded shadow">
+              <button
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-1 rounded shadow"
+                onClick={linkedInSocialAuth}
+              >
                 <LinkedInIcon className="auth-icon" />
               </button>
-              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 rounded shadow">
+              <button
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 rounded shadow"
+                onClick={githubSocialAuth}
+              >
                 <GitHubIcon />
               </button>
-              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 rounded shadow">
-                <TwitterIcon />
+              <button
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 w-12 rounded shadow"
+                onClick={googleSocialAuth}
+              >
+                <img src="https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/2659939281579738432-512.png" alt=""/>
               </button>
             </div>
           </div>
-          <div className="w-3/5 my-3">
+          <div className="w-2/4 my-3 front-mob">
+            {user.errorLogin ? (
+              <div className="my-8 text-red-800 text-sm">
+                <p>{user.errorLogin}</p>
+              </div>
+            ) : (
+              ''
+            )}
+
             <input
               type="email"
+              name="username"
               className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full my-8 outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50"
               placeholder="Email address"
+              onChange={onChangeInput}
             />
 
             <div className="flex">
               <input
                 type={hidden ? 'password' : 'text'}
+                name="password"
                 className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full my-8 outline-none  h-10 px-3 placeholder-gray-100 placeholder-opacity-50"
                 placeholder="Password"
+                onChange={onChangeInput}
               />
               {hidden ? (
                 <VisibilityIcon
@@ -58,14 +138,27 @@ const Authentication: FC<props> = () => {
               )}
             </div>
           </div>
-          <div className="w-3/5 flex flex-col my-3">
-            <button className="auth-btn text-white hover:bg-gray-100 font-semibold h-12 py-1 px-1 rounded-sm shadow">
-              Sign In
+          <div className="w-2/4 flex flex-col my-3 front-mob">
+            <button
+              className="auth-btn text-white hover:bg-gray-100 font-semibold h-12 py-1 px-1 rounded-sm shadow"
+              onClick={login}
+            >
+              <Loader loading={user?.loading} command="Sign In" />
             </button>
-            <small className="mt-4 text-white text-sm font-bold">
-              <span>No account?</span>{' '}
-              <span className="text-blue-700 font-bold">Sign Up</span>
-            </small>
+            <div className="flex justify-between">
+              <small className="mt-4 text-white text-xs font-bold">
+                <span>No account?</span>{' '}
+                <Link className="text-blue-700 font-bold" to="/register">
+                  Sign Up
+                </Link>
+              </small>
+              <Link
+                className="mt-4 text-blue-700 text-xs font-bold"
+                to="/forgot-password"
+              >
+                Forgot Password
+              </Link>
+            </div>
             <small className="mt-4 text-white text-xs font-medium pb-12">
               By signing in you agree to all{' '}
               <span className="text-blue-700">terms </span> and
@@ -90,4 +183,4 @@ const Authentication: FC<props> = () => {
   );
 };
 
-export default Authentication;
+export default withRouter(Authentication);

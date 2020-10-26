@@ -1,8 +1,10 @@
 const users = {
   currentUser: {
-    isLoggedIn: !localStorage.getItem('token'),
+    isLoggedIn: localStorage.getItem('token') ? true : false,
     loading: false,
     error: null,
+    message: null,
+    created: false,
     data: {
       firstName: 'John',
       lastName: 'Smith',

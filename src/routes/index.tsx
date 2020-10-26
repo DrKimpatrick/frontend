@@ -10,9 +10,13 @@ import RecentEmployer from 'components/RecentEmployer/RecentEmployer';
 import EmploymentHistory from 'components/EmploymentHistory/EmploymentHistory';
 import EmploymentHistoryList from 'components/EmploymentHistoryList/EmploymentHistoryList';
 import AddEducation from 'components/AddEducation/AddEducation';
+import UserDashboard from 'components/userDashboard/UserDashboard';
+import MessagePage from 'components/messagePage/MessagePage';
+import ForgotPass from 'components/forgotPassword/ForgotPass';
+import ResetPass from 'components/resetPassword/ResetPass';
 
 const RoutesComponent: React.FC = () => {
-  const routes = [
+  const authRoutes = [
     { path: '/', exact: true, component: <LandingPage /> },
     { path: '/login', exact: true, component: <Authentication /> },
     { path: '/register', exact: true, component: <GetStarted /> },
@@ -32,14 +36,18 @@ const RoutesComponent: React.FC = () => {
       exact: true,
       component: <EmploymentHistoryList />
     },
-    { path: '/add-education', exact: true, component: <AddEducation /> }
+    { path: '/add-education', exact: true, component: <AddEducation /> },
+    { path: '/user/dashboard', exact: true, component: <UserDashboard /> },
+    { path: '/verify-account', exact: true, component: <MessagePage />},
+    { path: '/forgot-password', exact:true, component: <ForgotPass />},
+    { path: '/reset-password', exact: true, component: <ResetPass />}
   ];
   return (
     <Router>
       <Switch>
         <Layout>
           <>
-            {routes.map((route, index) => (
+            {authRoutes.map((route, index) => (
               <Route path={route.path} exact={route.exact} key={index}>
                 {route.component}
               </Route>

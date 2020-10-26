@@ -54,7 +54,6 @@ const AccordionMenu: FC<elements> = ({ components }) => {
   ) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   return (
     <Fragment>
       <div>
