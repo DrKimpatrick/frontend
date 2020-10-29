@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { withRouter } from 'react-router-dom';
-import './AddEducation.scss';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import DatePicker from 'components/DatePicker/DatePicker';

@@ -17,6 +17,8 @@ import ResetPass from 'components/resetPassword/ResetPass';
 import PremiumBilling from 'components/PremiumBilling/PremiumBilling';
 import StandardBilling from 'components/StandardBilling/StandardBilling';
 import GetHired from 'components/GetHired/GetHired';
+import EducationHistory from 'components/EducationHistory/EducationHistory';
+import EducationHistoryList from 'components/EducationHistoryList/EducationHistoryList';
 
 const RoutesComponent: React.FC = () => {
   const authRoutes = [
@@ -46,7 +48,17 @@ const RoutesComponent: React.FC = () => {
     { path: '/reset-password', exact: true, component: <ResetPass /> },
     { path: '/premium-billing', exact: true, component: <PremiumBilling /> },
     { path: '/standard-billing', exact: true, component: <StandardBilling /> },
-    { path: '/get-hired', exact: true, component: <GetHired /> }
+    { path: '/get-hired', exact: true, component: <GetHired /> },
+    {
+      path: '/education-history',
+      exact: true,
+      component: <EducationHistory />
+    },
+    {
+      path: '/education-history-list',
+      exact: true,
+      component: <EducationHistoryList />
+    }
   ];
 
   return (

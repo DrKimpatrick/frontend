@@ -1,6 +1,5 @@
 import React, { FC, Fragment, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import './EmploymentHistory.scss';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
