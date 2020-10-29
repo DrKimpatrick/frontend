@@ -14,6 +14,8 @@ import UserDashboard from 'components/userDashboard/UserDashboard';
 import MessagePage from 'components/messagePage/MessagePage';
 import ForgotPass from 'components/forgotPassword/ForgotPass';
 import ResetPass from 'components/resetPassword/ResetPass';
+import PremiumBilling from 'components/PremiumBilling/PremiumBilling';
+import StandardBilling from 'components/StandardBilling/StandardBilling';
 
 const RoutesComponent: React.FC = () => {
   const authRoutes = [
@@ -38,9 +40,11 @@ const RoutesComponent: React.FC = () => {
     },
     { path: '/add-education', exact: true, component: <AddEducation /> },
     { path: '/user/dashboard', exact: true, component: <UserDashboard /> },
-    { path: '/verify-account', exact: true, component: <MessagePage />},
-    { path: '/forgot-password', exact:true, component: <ForgotPass />},
-    { path: '/reset-password', exact: true, component: <ResetPass />}
+    { path: '/verify-account', exact: true, component: <MessagePage /> },
+    { path: '/forgot-password', exact: true, component: <ForgotPass /> },
+    { path: '/reset-password', exact: true, component: <ResetPass /> },
+    { path: '/premium-billing', exact: true, component: <PremiumBilling /> },
+    { path: '/standard-billing', exact: true, component: <StandardBilling /> }
   ];
   return (
     <Router>

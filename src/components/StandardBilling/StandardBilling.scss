@@ -1,0 +1,123 @@
+.standard-billing-section {
+  color: #747474;
+  .title {
+    font-size: 22px;
+    color: #747474;
+    text-decoration: none solid rgb(116, 116, 116);
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+
+  .card {
+    border-radius: 2px;
+    display: flex;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+
+    .check-icon {
+      color: #178f1d;
+    }
+
+    .card-content {
+      width: 50%;
+      .card-title {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .card-description {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .bottom-card {
+    .pricing {
+      width: 48%;
+      border-radius: 2px;
+      span {
+        font-weight: 700;
+      }
+      button {
+        font-size: 22px;
+        border-radius: 2px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .monthly {
+      background-color: #1437b1;
+    }
+
+    .annually {
+      background-color: #4d9b62;
+    }
+
+    .promo-code {
+      border-radius: 2px;
+      height: 48px;
+      background-color: #dadada;
+      color: #747474;
+      text-align: center;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .add-employer-btn {
+    height: 41px;
+    align-items: center;
+    background-color: #3e8074;
+  }
+  ::placeholder {
+    color: #747474;
+  }
+}
+
+@media (max-width: 786px) {
+  .standard-billing-section {
+    width: 60%;
+
+    .back-arrow {
+      display: none;
+    }
+
+    .bottom-card {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .standard-billing-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+      margin: auto;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+
+    .card {
+      .check-icon {
+        padding-left: 34px;
+        padding-right: 34px;
+      }
+
+      .card-content {
+        width: 60%;
+      }
+    }
+  }
+}
