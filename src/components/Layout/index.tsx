@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
-import NavBar from './NavBar/NavBar';
-import Footer from './Footer';
 import useWindowSize from 'utils/useWindowSize';
+import Footer from './Footer';
 import BottomMenu from './BottomMenu/index';
+import NavBar from './NavBar/NavBar';
+import './Layout.scss';
 
 interface Props {
   children: ReactElement;

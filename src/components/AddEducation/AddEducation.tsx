@@ -6,7 +6,7 @@ import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import DatePicker from 'components/DatePicker/DatePicker';
 
 type props = {};
-const AddEducation: FC<props> = (props: any) => {
+const AddEducation: FC<props> = () => {
   const options = [
     { value: 'Software Engineer', label: 'Software Engineer' },
     { value: 'Product Manager', label: 'Product Manager' },

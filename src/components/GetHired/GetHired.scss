@@ -1,0 +1,93 @@
+.main {
+  padding-bottom: 0px !important;
+}
+.get-hired-section {
+  .title {
+    font-size: 16px;
+    width: 100%;
+    text-decoration: none solid rgb(116, 116, 116);
+    background: linear-gradient(90deg, #3e8074 0%, #1437b1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+  }
+
+  .back-arrow {
+    position: absolute;
+    color: #747474;
+    left: -43px;
+    top: 0px;
+    font-size: 22px;
+  }
+
+  .input-height {
+    height: 40px;
+    border-radius: 4px;
+    color: #747474;
+    font-size: 14px;
+  }
+
+  .percent-card {
+    width: 71px;
+    height: 61px;
+    border-radius: 4px;
+    background: #4d9b62;
+    position: relative;
+
+    span:first-child {
+      font-size: 30px;
+    }
+
+    span:last-child {
+      font-size: 13px;
+    }
+
+    .check-icon {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+    }
+  }
+
+  .verified-checks {
+    background: #ffffff;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+    border: 0.5px solid #ececec;
+    border-radius: 4px;
+
+    .check-circle-icon {
+      color: #4d9b62 !important;
+    }
+  }
+}
+
+@media (max-width: 786px) {
+  .get-hired-section {
+    width: 50%;
+
+    .back-arrow {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .get-hired-section {
+    width: 90%;
+
+    .title {
+      text-align: center;
+    }
+
+    .back-arrow {
+      display: none;
+    }
+
+    .verified-checks {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}

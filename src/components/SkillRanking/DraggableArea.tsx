@@ -19,7 +19,7 @@ const DraggableAreaComponent: FC<props> = ({
 }: any) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: types,
-    drop: (item, monitor) => {
+    drop: (item, _monitor) => {
       onDrop(item);
     },
     canDrop: canDrop,

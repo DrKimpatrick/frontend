@@ -1,5 +1,5 @@
 export const selectStyles = {
-  control: (styles: any, state: any) => ({
+  control: (styles: any, _state: any) => ({
     ...styles,
     backgroundColor: 'white',
     outline: 'none',
@@ -35,7 +35,7 @@ export const selectStyles = {
 };
 
 export const multiSelectStyles = {
-  control: (styles: any, state: any) => ({
+  control: (styles: any, _state: any) => ({
     ...styles,
     height: '97px',
     alignItems: null,
