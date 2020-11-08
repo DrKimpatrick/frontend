@@ -27,7 +27,7 @@ const RoutesComponent: React.FC = () => {
     { path: '/register', exact: true, component: <GetStarted /> },
     { path: '/home', exact: true, component: <LandingPage /> },
     { path: '/account', exact: true, component: <Authentication /> },
-    { path: '/notification', exact: true, component: <GetStarted /> },
+    { path: '/notification', exact: true, component: <UserDashboard /> },
     { path: '/current-role', exact: true, component: <CurrentRole /> },
     { path: '/skill-ranking', exact: true, component: <SkillRanking /> },
     { path: '/recent-employer', exact: true, component: <RecentEmployer /> },

@@ -1,0 +1,44 @@
+.warningModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+.warning {
+  position: relative;
+  width: 400px;
+  background-color: white;
+  border-radius: 4px;
+  height: 180px;
+  padding: 20px;
+  padding-top: 30px;
+  .message {
+    color: #8c8b8b;
+  }
+  .deleteIcon {
+    font-size: 37px;
+  }
+  .buttons {
+    margin-top: 1.5rem;
+    float: right;
+    .no, .yes{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-family: 'Quicksand', sans-serif;
+        text-transform: capitalize;
+        color: white;
+        font-weight: bold;
+    }
+    .no {
+      background: #8f2517;
+    }
+    .yes{
+        background: #2d3748;
+    }
+  }
+}

@@ -1,134 +1,66 @@
-import AccordionMenu from 'components/accordion/AccordionMenu';
-import Avatars from 'components/avatar/Avatars';
-import React, { Fragment, FC, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import Verification from './Verification';
-import FilterListOutlinedIcon from '@material-ui/icons/FilterListOutlined';
-import Headline from './Headline';
-import UserInformationCard from './UserInformationCard';
-import FingerprintOutlinedIcon from '@material-ui/icons/FingerprintOutlined';
+import React, { FC } from 'react';
+import { withRouter, useHistory } from 'react-router-dom';
 import FolderSharedIcon from '@material-ui/icons/FolderShared';
 import DesktopWindowsOutlinedIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import SchoolIcon from '@material-ui/icons/School';
 import CoverImage from 'coverImage/CoverImage';
 import NavBar from 'components/Layout/NavBar/NavBar';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import useWindowSize from 'utils/useWindowSize';
-import Footer from 'components/Layout/Footer';
-import motif from '../../assets/images/motif-image.png';
-import { employment, expertSkills, beginnerSkills, intermediateSkills, education } from 'utils/staticData'
+import {
+  expertSkills,
+  beginnerSkills,
+  intermediateSkills
+} from 'utils/staticData';
 
-type props = {
-  //   test: number;
-};
+import UserInformationCard from './UserInformationCard';
+import Headline from './Headline';
+import Verification from './Verification';
+import { Employment } from './Employment';
+import { Education } from './Education';
 
-const components = [
-  {
-    id: 1,
-    headline: (
-      <Headline
-        headline="verification and Access"
-        icon={<FingerprintOutlinedIcon />}
-      />
-    ),
-    details: [<Verification />]
-  },
-  {
-    id: 2,
-    headline: <Headline headline="SkillSet" icon={<FolderSharedIcon />} />,
-    details: [
-      <UserInformationCard type="skills" data={beginnerSkills} level="Beginner" />,
-      <UserInformationCard type="skills" data={intermediateSkills} level="Intermediate" />,
-      <UserInformationCard
-        type="skills"
-        data={expertSkills}
-        level="Expert"
-        index={true}
-      />
-    ]
-  },
-  {
-    id: 3,
-    headline: (
-      <Headline headline="Employment" icon={<DesktopWindowsOutlinedIcon />} />
-    ),
-    details: [
-      <UserInformationCard type="employment" data={employment} />,
-    ]
-  },
-  {
-    id: 4,
-    headline: <Headline headline="Education" icon={<SchoolIcon />} />,
-    details: [
-      <UserInformationCard type="education" data={education} />,
-    ]
-  }
-];
-
-const UserDashboard: FC<props> = (props:any) => {
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      props.history.push('/login');
-    }
-  });
-
+const UserDashboard: FC = () => {
   const size = useWindowSize();
+
+  const history = useHistory();
+
   return (
-    <Fragment>
+    <>
       <div>
         <CoverImage />
       </div>
       <div>
-        <NavBar userDashboard={true} />
-
+        <NavBar userDashboard />
         <div className="user-dashboard-container mx-auto bg-gray-300">
-          <section className="w-4/6 py-10 mx-auto ">
+          <div className="w-4/6 py-10 mx-auto ">
             <small className="flex-1 font-medium text-center text-base pl-2 pr-3 my-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perspiciatis quisquam modi distinctio libero quo mollitia
-              asperiores laboriosam? Nobis molestias distinctio suscipit
-              cupiditate necessitatibus, ab corporis repellendus aut explicabo.
-              Temporibus, enim. Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Consequuntur veniam earum, vitae quasi autem
-              eaque quam officiis adipisci nostrum hic dolorem ipsa ipsum, odio
-              ratione. Error voluptatum asperiores consequuntur laudantium!
+              this is profile
             </small>
-          </section>
+          </div>
           {size?.width && size?.width > 768 ? (
             <div className="flex flex-nowrap mx-auto w-5/6">
-              <Verification monitor={true} />
+              <Verification monitor />
             </div>
           ) : (
             ''
           )}
-          <section className="mb-48">
+          <div className="pb-48">
             {size?.width && size?.width > 768 ? (
               <div className="flex flex-nowrap w-full justify-evenly">
                 <div className="flex flex-col w-1/4 mt-12">
-                  <section className="mb-16">
+                  <div className="mb-16">
                     <Headline
                       headline="Employment"
                       icon={<DesktopWindowsOutlinedIcon />}
                     />
-                    <UserInformationCard
-                      type="employment"
-                      data={employment}
-                      index={true}
-                    />
-                  </section>
-                  <section>
+                    <Employment />
+                  </div>
+                  <div>
                     <Headline headline="Education" icon={<SchoolIcon />} />
-                    <UserInformationCard
-                      type="education"
-                      data={education}
-                      index={true}
-                    />
-                  </section>
+                    <Education />
+                  </div>
                 </div>
                 <div className="flex flex-col w-1/4 mt-12">
-                  <section>
+                  <div>
                     <Headline headline="SkillSet" icon={<FolderSharedIcon />} />
                     <UserInformationCard
                       type="skills"
@@ -144,25 +76,18 @@ const UserDashboard: FC<props> = (props:any) => {
                       type="skills"
                       data={expertSkills}
                       level="Expert"
-                      index={true}
+                      index
                     />
-                  </section>
+                  </div>
                 </div>
               </div>
             ) : (
-              <AccordionMenu components={components} />
+              ''
             )}
-          </section>
+          </div>
         </div>
-        {/* c6b7b7 */}
       </div>
-      {size?.width && size?.width > 768 && (
-        <div
-          className="main-background"
-          style={{ backgroundColor: '#c6b7b7' }}
-        />
-      )}
-    </Fragment>
+    </>
   );
 };
 

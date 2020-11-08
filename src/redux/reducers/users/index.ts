@@ -23,6 +23,9 @@ import {
   ForgotDispatchTypes
 } from 'redux/action-types/forgotPass';
 
+import { UserTypeActions } from 'redux/action-types/user';
+import { UserTypes } from 'redux/actions/user';
+
 import {
   ResetFail,
   RESET_FAIL,
@@ -46,6 +49,7 @@ const usersReducer = (
     | ForgotDispatchTypes
     | ResetDispatchTypes
     | VerifyDispatchTypes
+    | UserTypeActions
 ) => {
   switch (action.type) {
     case REGISTER_FAIL:
@@ -149,6 +153,12 @@ const usersReducer = (
         errorVerify: null,
         loading: false
       };
+
+    case UserTypes.CurrentUser:
+      return { ...state, user: action.payload.data, loading: false };
+
+    case UserTypes.Errors:
+      return { ...state, errors: action.payload.errors, loading: false };
 
     default:
       return state;

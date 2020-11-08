@@ -10,7 +10,13 @@ module.exports = {
     'import/no-unresolved': 0,
     'import/extensions': 0,
     'no-undef': 0,
-    'consistent-return': 0
+    'consistent-return': 0,
+    'import/prefer-default-export': 0,
+    'no-underscore-dangle': 0,
+    'noImplicitReturns': 0,
+    'import/no-cycle': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'no-case-declarations': 0
   }
   // env: {
   //   'jest/globals': true,

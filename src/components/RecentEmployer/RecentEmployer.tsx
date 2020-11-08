@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import './RecentEmployer.scss';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
@@ -8,19 +8,18 @@ import DatePicker from 'components/DatePicker/DatePicker';
 import NavBar from 'components/Layout/NavBar/NavBar';
 
 type props = {};
+export const options = [
+  { value: 'Software Engineer', label: 'Software Engineer' },
+  { value: 'Product Manager', label: 'Product Manager' },
+  { value: 'Product Designer', label: 'Product Designer' },
+  { value: 'Software Engineer1', label: 'Software Engineer1' },
+  { value: 'Product Manager1', label: 'Product Manager1' },
+  { value: 'Product Designer1', label: 'Product Designer1' },
+  { value: 'Software Engineer2', label: 'Software Engineer2' },
+  { value: 'Product Manager2', label: 'Product Manager2' },
+  { value: 'Product Designer2', label: 'Product Designer2' }
+];
 const RecentEmployer: FC<props> = (props: any) => {
-  const options = [
-    { value: 'Software Engineer', label: 'Software Engineer' },
-    { value: 'Product Manager', label: 'Product Manager' },
-    { value: 'Product Designer', label: 'Product Designer' },
-    { value: 'Software Engineer1', label: 'Software Engineer1' },
-    { value: 'Product Manager1', label: 'Product Manager1' },
-    { value: 'Product Designer1', label: 'Product Designer1' },
-    { value: 'Software Engineer2', label: 'Software Engineer2' },
-    { value: 'Product Manager2', label: 'Product Manager2' },
-    { value: 'Product Designer2', label: 'Product Designer2' }
-  ];
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -29,7 +28,7 @@ const RecentEmployer: FC<props> = (props: any) => {
   });
 
   return (
-    <Fragment>
+    <>
       <NavBar />
       <section className="recent-employer-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
@@ -120,7 +119,7 @@ const RecentEmployer: FC<props> = (props: any) => {
           </button>
         </div>
       </section>
-    </Fragment>
+    </>
   );
 };
 

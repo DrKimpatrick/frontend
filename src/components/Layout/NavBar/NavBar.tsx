@@ -55,6 +55,7 @@ const NavBar = (props: any) => {
                 onClick={(event: MouseEvent<EventTarget>) =>
                   selectItem(event, item.id)
                 }
+                key={i}
               >
                 <div className="flex flex-nowrap text-sm text-gray-600">
                   <span className="px-2 text-xs">{item.icon}</span>{' '}

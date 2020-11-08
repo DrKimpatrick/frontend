@@ -55,7 +55,7 @@ const AccordionMenu: FC<elements> = ({ components }) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <Fragment>
+    <>
       <div>
         <ul className="flex flex-col items-center">
           {components.map((component: any) => (
@@ -88,7 +88,7 @@ const AccordionMenu: FC<elements> = ({ components }) => {
           ))}
         </ul>
       </div>{' '}
-    </Fragment>
+    </>
   );
 };
 
