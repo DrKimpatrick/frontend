@@ -18,7 +18,7 @@ import Headline from './Headline';
 import Verification from './Verification';
 import { Employment } from './Employment';
 import { Education } from './Education';
-import './userDashboard.scss';
+import './style.scss';
 
 const UserDashboard: FC = () => {
   const size = useWindowSize();
