@@ -1,4 +1,6 @@
-import React, { Fragment, useState, useRef, MouseEvent } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useRef, MouseEvent } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -28,7 +30,7 @@ const IsLoggedIn = (props: any) => {
   const { currentUser } = typedUseSelector(({ users }) => users);
   const { isLoggedIn, data } = currentUser;
   const classes = useStyles();
-  const { userDashboard } = props;
+  const { userDashboard, user } = props;
   const [open, setOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -44,7 +46,7 @@ const IsLoggedIn = (props: any) => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    window.location.reload();
+    window.location.href = '/';
   };
 
   const handleClose = (event: MouseEvent<EventTarget>) => {
@@ -72,7 +74,6 @@ const IsLoggedIn = (props: any) => {
   const handleToggleNotification = () => {
     setNotificationOpen(prevOpen => !prevOpen);
   };
-
 
   if (isLoggedIn) {
     return (
@@ -153,9 +154,11 @@ const IsLoggedIn = (props: any) => {
             <LayersIcon />
           </div>
         </div>
-        <div className="text-gray-600">
-          <span>{data.firstName}</span>&nbsp;<span>{data.lastName}</span>
-        </div>
+        {user && (
+          <div className="text-gray-600">
+            <span>{user.username}</span>
+          </div>
+        )}
 
         <div className={classes.root}>
           <div>
@@ -212,7 +215,7 @@ const IsLoggedIn = (props: any) => {
     );
   }
   return (
-    <Fragment>
+    <>
       <Link
         to="/Login"
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
@@ -223,10 +226,11 @@ const IsLoggedIn = (props: any) => {
       <button
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-getstartColor hover:bg-blue-800 text-white"
         onClick={signup}
+        type="button"
       >
         <span>Get started</span>
       </button>
-    </Fragment>
+    </>
   );
 };
 

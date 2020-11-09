@@ -10,7 +10,7 @@ import RecentEmployer from 'components/RecentEmployer/RecentEmployer';
 import EmploymentHistory from 'components/EmploymentHistory/EmploymentHistory';
 import EmploymentHistoryList from 'components/EmploymentHistoryList/EmploymentHistoryList';
 import AddEducation from 'components/AddEducation/AddEducation';
-import UserDashboard from 'components/userDashboard/UserDashboard';
+import UserDashboard from 'components/UserDashboard/UserDashboard';
 import MessagePage from 'components/messagePage/MessagePage';
 import ForgotPass from 'components/forgotPassword/ForgotPass';
 import ResetPass from 'components/resetPassword/ResetPass';
@@ -32,7 +32,7 @@ const RoutesComponent: React.FC = () => {
     { path: '/skill-ranking', exact: true, component: <SkillRanking /> },
     { path: '/recent-employer', exact: true, component: <RecentEmployer /> },
     {
-      path: '/employment-history',
+      path: '/employment-history/:id',
       exact: true,
       component: <EmploymentHistory />
     },

@@ -1,25 +1,28 @@
 exports.__esModule = true;
-const react_1 = require('react');
-const TextField_1 = require('@material-ui/core/TextField');
-const styles_1 = require('@material-ui/styles');
-const DatePicker_style_1 = require('./DatePicker.style');
-
-const DatePicker = function (_a) {
-  const { label } = _a;
-  const { defaultValue } = _a;
-  const classes = DatePicker_style_1.useTextFieldStyle();
-  return react_1.default.createElement(
+var react_1 = require('react');
+var TextField_1 = require('@material-ui/core/TextField');
+var styles_1 = require('@material-ui/styles');
+var DatePicker_style_1 = require('./DatePicker.style');
+var DatePicker = function (_a) {
+  var label = _a.label,
+    defaultValue = _a.defaultValue,
+    onChangeValue = _a.onChangeValue,
+    name = _a.name;
+  var classes = DatePicker_style_1.useTextFieldStyle();
+  return react_1['default'].createElement(
     styles_1.ThemeProvider,
     { theme: DatePicker_style_1.themeTextFields },
-    react_1.default.createElement(TextField_1.default, {
+    react_1['default'].createElement(TextField_1['default'], {
       id: 'date',
-      label,
+      name: name,
+      label: label,
       type: 'date',
-      defaultValue,
+      defaultValue: defaultValue,
       className: classes.textField,
       InputLabelProps: {
         shrink: true
-      }
+      },
+      onChange: onChangeValue
     })
   );
 };

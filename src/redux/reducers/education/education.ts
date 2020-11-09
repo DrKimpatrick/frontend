@@ -26,7 +26,8 @@ export const educationReducer = (
           ...state.educations,
           action.payload.data
         ],
-        loading: false
+        loading: false,
+        education: action.payload.data
       };
 
     case EducationTypes.DeleteEducation:

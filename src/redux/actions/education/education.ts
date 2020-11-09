@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { InitialValue } from 'components/userDashboard/Education';
+import { InitialEducationValue as InitialValue } from 'components/UserDashboard/Education';
 import ApiAction from '../../../helpers/apiAction';
 import { setMessage } from '../message';
 

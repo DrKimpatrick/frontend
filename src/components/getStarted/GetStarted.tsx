@@ -11,6 +11,7 @@ import { Register } from 'redux/action-types/getStarted';
 import { GetStartedAction } from 'redux/actions/getStarted';
 import NavBar from 'components/Layout/NavBar/NavBar';
 import Loader from 'components/loader/Loader';
+import { MainBackground } from 'components/Layout/MainBackground';
 
 type props = {};
 const GetStarted: FC<props> = (props: any) => {
@@ -234,6 +235,7 @@ const GetStarted: FC<props> = (props: any) => {
           </div>
         </section>
       </section>
+      <MainBackground />
     </>
   );
 };

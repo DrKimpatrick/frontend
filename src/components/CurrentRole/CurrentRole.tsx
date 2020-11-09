@@ -1,101 +1,194 @@
-import React, { FC, Fragment } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
+import { withRouter, useHistory, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
+import Select from 'react-select';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
-import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
-import DatePicker from 'components/DatePicker/DatePicker';
-import Select from 'components/SelectOption/SelectOption';
-import { createStyles } from '@material-ui/core/styles';
 import NavBar from 'components/Layout/NavBar/NavBar';
+import { ArrowRightAltTwoTone } from '@material-ui/icons';
+import { RootState } from 'redux/store';
+import { addEmployment, listEmployments } from 'redux/actions/employment';
+import MainBackground from '../Layout/MainBackground/MainBackground';
+import { currentRoleSchema } from './Schema';
 
-const styles: any = createStyles({
-  formControlLabel: {
-    '& label': { color: '#747474', fontSize: '14px' }
-  }
-});
-
-type props = {};
-const CurrentRole: FC<props> = (props: any) => {
+const CurrentRole: FC = () => {
   const history = useHistory();
 
-  const options = [
-    { value: 'Software Engineer', label: 'Software Engineer' },
-    { value: 'Product Manager', label: 'Product Manager' },
-    { value: 'Product Designer', label: 'Product Designer' },
-    { value: 'Software Engineer1', label: 'Software Engineer1' },
-    { value: 'Product Manager1', label: 'Product Manager1' },
-    { value: 'Product Designer1', label: 'Product Designer1' },
-    { value: 'Software Engineer2', label: 'Software Engineer2' },
-    { value: 'Product Manager2', label: 'Product Manager2' },
-    { value: 'Product Designer2', label: 'Product Designer2' }
-  ];
+  const getErrors = (field: string) => {
+    return null;
+  };
+
+  const dispatch = useDispatch();
+
+  const reducer = useSelector((state: RootState) => {
+    const { loading, errors, employment, employments } = state.employments;
+    const { message } = state.messages;
+    return { message, loading, errors, employment, employments };
+  });
+
+  useEffect(() => {
+    if (reducer.message && reducer.employment) {
+      history.push('/skill-ranking');
+    }
+  }, [reducer.message, reducer.employment, history]);
+
+  const { employments } = reducer;
+
+  useEffect(() => {
+    listEmployments()(dispatch);
+  }, [dispatch]);
+
+  if (employments && employments.length > 0) {
+    window.location.href = '/user/dashboard';
+  }
 
   return (
-    <Fragment>
+    <>
       <NavBar />
       <section className="current-role-section w-1/3 m-auto text-textGray">
-        <div className="flex relative h-auto my-8">
-          <div className="back-arrow cursor-pointer">
-            <ArrowBackTwoToneIcon />
+        <div className="containers">
+          <div className="recent-employer-section">
+            <div className="flex relative h-auto my-8">
+              <div className="back-arrow cursor-pointer">
+                <ArrowBackTwoToneIcon />
+              </div>
+              <h1 className="font-bold text-xl title">
+                Tell us how awesome you are!
+              </h1>
+            </div>
+            <Formik
+              validateOnChange={false}
+              validationSchema={currentRoleSchema}
+              initialValues={{
+                companyName: '',
+                supervisor: '',
+                title: '',
+                startDate: '',
+                isCurrentPosition: true
+              }}
+              onSubmit={values => addEmployment(values)(dispatch)}
+            >
+              {formik => {
+                const { errors, values } = formik;
+                return (
+                  <form onSubmit={formik.handleSubmit} autoComplete="off">
+                    <div className="text-textGray mt-8">
+                      <label>What is your company name ? </label>
+                      <input
+                        type="text"
+                        className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+                        placeholder="Company Name"
+                        name="companyName"
+                        value={values.companyName}
+                        onChange={formik.handleChange}
+                      />
+                      {errors && errors.companyName && (
+                        <div className="inputError">{errors.companyName}</div>
+                      )}
+                      {!errors ||
+                        (!errors.companyName && getErrors('companyName'))}
+                    </div>
+                    <div className="text-textGray mt-4">
+                      <label>What is your current role?</label>
+                      <input
+                        type="text"
+                        className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        placeholder="Your Title"
+                        value={values.title}
+                        onChange={formik.handleChange}
+                        name="title"
+                      />
+                      {errors && errors.title && (
+                        <div className="inputError">{errors.title}</div>
+                      )}
+                      {!errors || (!errors.title && getErrors('title'))}
+                    </div>
+                    <div className="text-textGray mt-4">
+                      <label>Your supervisor </label>
+                      <Select
+                        options={[
+                          { value: 'Staffing', label: 'Staffing' },
+                          { value: 'Employee', label: 'Employee' },
+                          { value: 'HR', label: 'HR' }
+                        ]}
+                        placeholder="Select your supervisor"
+                        name="supervisor"
+                        onChange={v =>
+                          formik.setFieldValue(
+                            'supervisor',
+                            (v as any).value,
+                            true
+                          )
+                        }
+                        values={
+                          values.supervisor !== ''
+                            ? {
+                                value: values.supervisor,
+                                label: values.supervisor
+                              }
+                            : null
+                        }
+                        isMulti={false}
+                        styles={{
+                          control: base => ({
+                            ...base,
+                            border: 0,
+                            boxShadow: 'none'
+                          })
+                        }}
+                        className="select"
+                        defaultValue={
+                          values.supervisor !== ''
+                            ? {
+                                value: values.supervisor,
+                                label: values.supervisor
+                              }
+                            : null
+                        }
+                      />
+                      {errors && errors.supervisor && (
+                        <div className="inputError">{errors.supervisor}</div>
+                      )}
+                      {!errors ||
+                        (!errors.supervisor && getErrors('supervisor'))}
+                    </div>
+                    <div
+                      className="flex justify-between text-textGray mt-4 dateContainer"
+                      style={{ flexDirection: 'column', alignItems: 'start' }}
+                    >
+                      <div className="item" style={{ width: '100%' }}>
+                        <label>Start Date</label>
+                        <input
+                          id="date"
+                          type="date"
+                          name="startDate"
+                          onChange={formik.handleChange}
+                          value={values.startDate}
+                        />
+                      </div>
+                      {errors && errors.startDate && (
+                        <div className="inputError">{errors.startDate}</div>
+                      )}
+                    </div>
+                    <div className="flex justify-center mt-4">
+                      <button
+                        data-testid="next-button"
+                        className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+                        type="submit"
+                      >
+                        <label className="">Next</label>{' '}
+                        <ArrowRightAltTwoTone />
+                      </button>
+                    </div>
+                  </form>
+                );
+              }}
+            </Formik>
           </div>
-          <h1 className="font-bold text-xl title">
-            Tell us how awesome you are!
-          </h1>
-        </div>
-        <div className="mt-6">
-          <span>What is your current role?</span>
-          <div className="text-textGray mt-2">
-            <Select placeholder="Select role" options={options} />
-          </div>
-        </div>
-        <div className="mt-6">
-          <span>How long have you been at your current role?</span>
-          <div className="flex justify-between text-textGray mt-2">
-            <DatePicker label="Start Date" defaultValue="2017-05-24" />
-            <DatePicker label="End Date" defaultValue="22017-05-24" />
-          </div>
-
-          <FormControlLabel
-            control={
-              <Checkbox
-                defaultChecked
-                color="default"
-                inputProps={{ 'aria-label': 'checkbox with default color' }}
-                style={{
-                  width: '0.7em !important'
-                }}
-              />
-            }
-            label={
-              <Typography style={styles.formControlLabel}>
-                Currently working here
-              </Typography>
-            }
-          />
-        </div>
-        <div className="mt-6">
-          <span>List all of your amazing skills</span>
-          <div className="text-textGray mt-2">
-            <Select
-              placeholder="Select your amazing skills"
-              options={options}
-              isMulti
-            />
-          </div>
-        </div>
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={() => history.push('/skill-ranking')}
-            data-testid="next-button"
-            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-          >
-            <span className="">Next</span> <ArrowRightAltTwoToneIcon />
-          </button>
         </div>
       </section>
-    </Fragment>
+      <MainBackground />
+    </>
   );
 };
 

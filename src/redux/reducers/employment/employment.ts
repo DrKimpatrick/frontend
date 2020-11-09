@@ -27,7 +27,8 @@ export const employmentReducer = (
         loading: false,
         employments: state.employments
           ? [action.payload.data, ...state.employments]
-          : [action.payload.data]
+          : [action.payload.data],
+        employment: action.payload.data
       };
 
     case EmploymentTypes.ListEmployments:

@@ -1,13 +1,39 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { format } from 'date-fns';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import NavBar from 'components/Layout/NavBar/NavBar';
-import MainBackground from '../Layout/MainBackground/MainBackground';
+import { useDispatch, useSelector } from 'react-redux';
+import { listEducation } from 'redux/actions/education';
+import { RootState } from 'redux/store';
+import { MainBackground } from '../Layout/MainBackground';
 
-type props = {};
-const EducationHistory: FC<props> = () => {
+const EducationHistory: FC = () => {
+  const dispatch = useDispatch();
+
+  const getMonthAndYear = (value: string) => {
+    const date = format(new Date(value), 'MMMM yyyy');
+
+    return date;
+  };
+
+  useEffect(() => {
+    listEducation()(dispatch);
+  }, [dispatch]);
+
+  const reducer = useSelector((state: RootState) => {
+    const { loading, errors, educations } = state.educations;
+    const { message } = state.messages;
+    return { message, loading, errors, educations };
+  });
+
+  const { loading, educations } = reducer;
+
+  if (loading && loading === true) {
+    return null;
+  }
   return (
     <>
       <NavBar />
@@ -19,58 +45,21 @@ const EducationHistory: FC<props> = () => {
           <h1 className="font-bold text-xl title">Education History</h1>
         </div>
 
-        <div className="text-textGray mt-8 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            hack Reactor
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
-
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            hack Reactor
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            hack Reactor
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
-
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            hack Reactor
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
-
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            hack Reactor
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
-
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            Accomplishments
-          </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
-          </div>
-        </div>
+        {educations &&
+          educations.map((item, i) => (
+            <div
+              className="text-textGray mt-4 border border-borderGray card"
+              key={i}
+            >
+              <div className=" text-white font-bold py-3 px-4 card-title">
+                {item.schoolName}
+              </div>
+              <div className="py-3 px-4 card-content">
+                {getMonthAndYear(item.startDate)}{' '}
+                {item.endDate && ` to ${getMonthAndYear(item.endDate)}`}
+              </div>
+            </div>
+          ))}
 
         <div className="flex justify-center mt-12">
           <button

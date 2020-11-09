@@ -1,37 +1,35 @@
-import React, { FC, Fragment, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import NavBar from 'components/Layout/NavBar/NavBar';
 import EmailIcon from '@material-ui/icons/Email';
 import { VerifyAccAction } from 'redux/actions/verifyAcc';
+import { MainBackground } from 'components/Layout/MainBackground';
 
 const MessagePage: FC<any> = (props: any) => {
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const state: any = useSelector((state: any) => state.users);
 
-  useEffect(() => {
-
-    if(state.error) {
-      setError(state.errorVerify)
-    }
-
-    verifyRequest()
-  
-  }, [])
-
   const verifyRequest = () => {
+    const tokenValue = queryString.parse(props.history.location.search);
 
-    const tokenValue = queryString.parse(props.history.location.search)
-
-    if(tokenValue.token) {
-      VerifyAccAction({token: tokenValue.token})(dispatch)
+    if (tokenValue.token) {
+      VerifyAccAction({ token: tokenValue.token })(dispatch);
     }
-  }
+  };
+
+  useEffect(() => {
+    if (state.error) {
+      setError(state.errorVerify);
+    }
+
+    verifyRequest();
+  }, [state.error, state.errorVerify, verifyRequest]);
 
   return (
-    <Fragment>
+    <>
       <NavBar />
       <div className="flex justify-center">
         <div
@@ -57,16 +55,17 @@ const MessagePage: FC<any> = (props: any) => {
                 </p>
               ) : (
                 <p className="text-sm">
-                    {
-                      state.message ? 'Your Account was verified, Procced to Login': 'Please check Email sent to your link to verify'
-                  }
+                  {state.message
+                    ? 'Your Account was verified, Procced to Login'
+                    : 'Please check Email sent to your link to verify'}
                 </p>
               )}
             </div>
           </div>
         </div>
       </div>
-    </Fragment>
+      <MainBackground />
+    </>
   );
 };
 

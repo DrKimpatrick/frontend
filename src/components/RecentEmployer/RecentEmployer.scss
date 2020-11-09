@@ -1,4 +1,5 @@
 .recent-employer-section {
+  position: relative;
   .title {
     font-size: 22px;
     color: #747474;
@@ -16,6 +17,13 @@
   .input-height {
     height: 40px !important;
     border-radius: 4px;
+    color: #747474;
+    &::placeholder {
+      color: #c9c9c9;
+    }
+  }
+
+  .input-height-input {
     color: #747474;
     &::placeholder {
       color: #c9c9c9;

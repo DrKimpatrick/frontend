@@ -56,6 +56,8 @@ const SkillRanking: FC<props> = (props: any) => {
     }
   });
 
+
+  console.log('greeeeeeee', beginnerskills, intermediateskills, advancedskills)
   const onDropSkill = ({ skill, index, area }: any, droppedOn: string) => {
     if (area === droppedOn) {
       return;

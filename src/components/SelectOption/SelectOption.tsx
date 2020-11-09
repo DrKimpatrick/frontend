@@ -6,8 +6,9 @@ type props = {
   isMulti?: boolean;
   placeholder?: string;
   options: { value: string; label: string }[];
+  onChangeValue: any;
 };
-const SelectOption: FC<props> = ({ isMulti, placeholder, options }: any) => {
+const SelectOption: FC<props> = ({ isMulti, placeholder, options, onChangeValue }: any) => {
   return (
     <Select
       placeholder={placeholder}
@@ -15,6 +16,7 @@ const SelectOption: FC<props> = ({ isMulti, placeholder, options }: any) => {
       styles={isMulti ? multiSelectStyles : selectStyles}
       isMulti={isMulti}
       className="outline-none placeholder-textGray placeholder-opacity-50"
+      onChange={onChangeValue}
     />
   );
 };

@@ -1,0 +1,47 @@
+.listAction {
+  margin-right: 10px;
+  border-right: 1px solid #cccccc;
+}
+.listAction button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.listAction .delete {
+  color: #b74646;
+}
+.listAction .edit {
+  color: #6b6b6b;
+}
+
+.current-role-section .title {
+  font-size: 22px;
+  color: #747474;
+  text-decoration: none solid #747474;
+}
+.current-role-section .back-arrow {
+  position: absolute;
+  color: #747474;
+  left: -43px;
+  top: 0px;
+  font-size: 22px;
+}
+
+@media (max-width: 786px) {
+  .current-role-section {
+    width: 50%;
+  }
+  .current-role-section .back-arrow {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .current-role-section {
+    width: 90%;
+  }
+  .current-role-section .title {
+    text-align: center;
+  }
+  .current-role-section .back-arrow {
+    display: none;
+  }
+}

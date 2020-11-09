@@ -17,16 +17,12 @@ export const LoginAction = (userData: Login) => {
           dispatch({ type: LOGIN_LOADING });
         },
         onSuccess: (data: any) => (dispatch: any) => {
-          // const res = data.data;
-          // localStorage.setItem('token', res.token);
-          // localStorage.setItem('refreshToken', res.refreshToken);
           dispatch({
             type: LOGIN_SUCCESS,
             payload: Array.isArray(data) ? data[0] : data
           });
         },
         onFailure: (err: any) => (dispatch: any) => {
-          console.log(err);
           const error = Array.isArray(err) ? err[0] : err;
           const { response } = error;
 

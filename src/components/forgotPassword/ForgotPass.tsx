@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from 'components/Layout/NavBar/NavBar';
@@ -6,6 +6,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import { validEmailRegex, validateForm, passwordRegex } from 'utils/index';
 import { ForgotPassAction } from 'redux/actions/forgotPass';
 import Loader from 'components/loader/Loader';
+import { MainBackground } from 'components/Layout/MainBackground';
 
 const ForgotPass: FC<any> = (props: any) => {
   const [emailValue, setEmailValue] = useState('');
@@ -37,7 +38,7 @@ const ForgotPass: FC<any> = (props: any) => {
     setSubmitted(true);
   };
   return (
-    <Fragment>
+    <>
       <NavBar />
       <div className="flex justify-center mt-16">
         <div className="flex justify-center w-2/4 back-for rounded text-white front-mob">
@@ -83,7 +84,8 @@ const ForgotPass: FC<any> = (props: any) => {
           </div>
         </div>
       </div>
-    </Fragment>
+      <MainBackground />
+    </>
   );
 };
 

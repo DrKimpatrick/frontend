@@ -1,124 +1,85 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import './RecentEmployer.scss';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
-import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
-import Select from 'components/SelectOption/SelectOption';
-import DatePicker from 'components/DatePicker/DatePicker';
 import NavBar from 'components/Layout/NavBar/NavBar';
+import { addEmployment } from 'redux/actions/employment';
+import {
+  EmploymentInput,
+  InitialEmploymentValue
+} from 'components/UserDashboard';
+import { RootState } from 'redux/store';
+import { MainBackground } from 'components/Layout/MainBackground';
 
-type props = {};
-export const options = [
-  { value: 'Software Engineer', label: 'Software Engineer' },
-  { value: 'Product Manager', label: 'Product Manager' },
-  { value: 'Product Designer', label: 'Product Designer' },
-  { value: 'Software Engineer1', label: 'Software Engineer1' },
-  { value: 'Product Manager1', label: 'Product Manager1' },
-  { value: 'Product Designer1', label: 'Product Designer1' },
-  { value: 'Software Engineer2', label: 'Software Engineer2' },
-  { value: 'Product Manager2', label: 'Product Manager2' },
-  { value: 'Product Designer2', label: 'Product Designer2' }
-];
-const RecentEmployer: FC<props> = (props: any) => {
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      props.history.push('/login');
-    }
+const RecentEmployer: FC = () => {
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const reducer = useSelector((state: RootState) => {
+    const { loading, errors, employment } = state.employments;
+    const { message } = state.messages;
+    return { message, loading, errors, employment };
   });
+
+  useEffect(() => {
+    if (reducer.message && reducer.employment) {
+      history.push(`/employment-history/${reducer.employment._id}`);
+    }
+  }, [reducer.message, reducer.employment, history]);
 
   return (
     <>
       <NavBar />
-      <section className="recent-employer-section w-1/3 m-auto text-textGray">
-        <div className="flex relative h-auto my-8">
+      <div className="containers">
+        <div className="recent-employer-section w-1/3 m-auto text-textGray">
           <div
-            className="back-arrow cursor-pointer"
-            onClick={() => props.history.push('/skill-ranking')}
+            className="flex relative h-auto my-8"
+            style={{ flexDirection: 'column' }}
           >
-            <ArrowBackTwoToneIcon />
+            <div style={{ display: 'flex' }}>
+              <div
+                className="back-arrow cursor-pointer"
+                onClick={() => history.push('/skill-ranking')}
+              >
+                <ArrowBackTwoToneIcon />
+              </div>
+              <h1 className="font-bold text-base title">
+                Who was your most recent employer?
+              </h1>
+            </div>
+
+            <EmploymentInput
+              initialValue={{
+                companyName: '',
+                title: '',
+                supervisor: '',
+                isCurrentPosition: false,
+                responsibilities: [],
+                skillsUsed: [],
+                favoriteProject: '',
+                accomplishments: [],
+                responsibility: '',
+                accomplishment: '',
+                startDate: '',
+                endDate: ''
+              }}
+              submit={(values: InitialEmploymentValue) =>
+                addEmployment(values)(dispatch)
+              }
+              backendErrors={
+                reducer.errors && reducer.errors.errors && reducer.errors.errors
+              }
+              loading={!!reducer.loading}
+              buttonName="Next"
+            />
           </div>
-          <h1 className="font-bold text-base title">
-            Who was your most recent employer?
-          </h1>
         </div>
-        <div className="text-textGray mt-8">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
-            placeholder="Company Name"
-          />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <Select
-            options={[
-              { value: 'Staffing', label: 'Staffing' },
-              { value: 'Employee', label: 'Employee' },
-              { value: 'HR', label: 'HR' }
-            ]}
-            placeholder="Select your supervisor"
-          />
-        </div>
-        <div className="text-textGray mt-4">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-            placeholder="Your Title"
-          />
-        </div>
-
-        <div className="flex justify-between text-textGray mt-4">
-          <DatePicker label="Start Date" defaultValue="2017-05-24" />
-          <DatePicker label="Send Date" defaultValue="22017-05-24" />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-            placeholder="Company phone"
-          />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <Select isMulti options={options} placeholder="Select skills used" />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-            placeholder="Responsibilities"
-          />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-            placeholder="Accomplishments"
-          />
-        </div>
-
-        <div className="text-textGray mt-4">
-          <input
-            type="text"
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-            placeholder="Favorite project you built or contributed to?"
-          />
-        </div>
-
-        <div className="flex justify-center mt-12">
-          <button
-            data-testid="next-button"
-            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-            onClick={() => props.history.push('/employment-history')}
-          >
-            <span className="">Next</span> <ArrowRightAltTwoToneIcon />
-          </button>
-        </div>
-      </section>
+      </div>
+      <MainBackground />
     </>
   );
 };

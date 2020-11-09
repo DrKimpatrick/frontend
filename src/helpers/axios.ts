@@ -15,9 +15,8 @@ export default (httpOptions?: HttpOptions) => {
   return axios.create({
     baseURL: baseURL || REACT_APP_BACKEND_API,
     headers: {
-      ...headers,
       'Content-Type': 'application/json',
-      From: userToken || undefined
+      Authorization: `Bearer ${userToken}`
     }
   });
 };

@@ -54,6 +54,7 @@ exports[`\`NavBar\` component matches the snapshot 1`] = `
       <button
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-getstartColor hover:bg-blue-800 text-white"
         onClick={[Function]}
+        type="button"
       >
         <span>
           Get started
@@ -118,6 +119,7 @@ exports[`\`NavBar\` component matches the snapshot on a small screen 1`] = `
       <button
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-getstartColor hover:bg-blue-800 text-white"
         onClick={[Function]}
+        type="button"
       >
         <span>
           Get started

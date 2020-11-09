@@ -1,0 +1,49 @@
+.recent-employer-section {
+  position: relative;
+}
+.recent-employer-section .title {
+  font-size: 22px;
+  color: #747474;
+  text-decoration: none solid #747474;
+}
+.recent-employer-section .back-arrow {
+  position: absolute;
+  color: #747474;
+  left: -43px;
+  top: 0px;
+  font-size: 22px;
+}
+.recent-employer-section .input-height {
+  height: 40px !important;
+  border-radius: 4px;
+  color: #747474;
+}
+.recent-employer-section .input-height::placeholder {
+  color: #c9c9c9;
+}
+.recent-employer-section .input-height-input {
+  color: #747474;
+}
+.recent-employer-section .input-height-input::placeholder {
+  color: #c9c9c9;
+}
+
+@media (max-width: 786px) {
+  .recent-employer-section {
+    width: 60%;
+  }
+  .recent-employer-section .back-arrow {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .recent-employer-section {
+    width: 90%;
+  }
+  .recent-employer-section .title {
+    text-align: center;
+  }
+  .recent-employer-section .back-arrow {
+    display: none;
+  }
+}

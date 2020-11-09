@@ -1,11 +1,16 @@
-import React, { useRef, MouseEvent, useEffect, useState } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { MouseEvent, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import logo from 'assets/images/logo-image.png';
 import useWindowSize from 'utils/useWindowSize';
-import IsLoggedIn from './IsLoggedIn';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
+import { RootState } from 'redux/store';
+import IsLoggedIn from './IsLoggedIn';
 
 const dashboardItems = [
   {
@@ -27,10 +32,16 @@ const dashboardItems = [
 
 const NavBar = (props: any) => {
   const size = useWindowSize();
+
   const { userDashboard } = props;
+
   const [active, setActive] = useState(dashboardItems[0]?.id);
 
-  // use
+  const reducer = useSelector((state: RootState) => {
+    const { user } = state.users;
+
+    return { user };
+  });
 
   const selectItem = (event: MouseEvent<EventTarget>, id: any) => {
     event.preventDefault();
@@ -91,7 +102,7 @@ const NavBar = (props: any) => {
               </Link>
             </div>
           )}
-          <IsLoggedIn userDashboard={userDashboard} />
+          <IsLoggedIn userDashboard={userDashboard} user={reducer.user} />
         </div>
       </div>
     </nav>

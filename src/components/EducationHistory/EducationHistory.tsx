@@ -1,13 +1,49 @@
-import React, { FC } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { format } from 'date-fns';
+import { withRouter, useLocation } from 'react-router-dom';
+import { RootState } from 'redux/store';
+import { listSpecificEducation } from 'redux/actions/education';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import NavBar from '../Layout/NavBar/NavBar';
-import MainBackground from '../Layout/MainBackground/MainBackground';
+import { MainBackground } from '../Layout/MainBackground';
 
-type props = {};
-const EducationHistory: FC<props> = () => {
+const EducationHistory: FC = () => {
+  const dispatch = useDispatch();
+
+  const location = useLocation<{ educationId: string }>();
+
+  const getMonthAndYear = (value: string) => {
+    const date = format(new Date(value), 'MMMM yyyy');
+
+    return date;
+  };
+
+  const reducer = useSelector((state: RootState) => {
+    const { education, loading } = state.educations;
+
+    const { user } = state.users;
+
+    return { user, loading, education };
+  });
+
+  const { education, loading } = reducer;
+
+  useEffect(() => {
+    if (reducer.user && location.state && location.state.educationId) {
+      listSpecificEducation(
+        reducer.user._id,
+        location.state.educationId
+      )(dispatch);
+    }
+  }, [reducer.user, location.state.educationId, dispatch, location.state]);
+
+  if (!education || !location.state.educationId || loading) {
+    return null;
+  }
+
   return (
     <>
       <NavBar />
@@ -24,7 +60,7 @@ const EducationHistory: FC<props> = () => {
             School
           </div>
           <div className="py-3 px-4 card-content border border-borderGray">
-            hack Reactor
+            {education.schoolName}
           </div>
         </div>
 
@@ -33,7 +69,7 @@ const EducationHistory: FC<props> = () => {
             Level
           </div>
           <div className="py-3 px-4 card-content border border-borderGray">
-            Technical Bootcamp
+            {education.level}
           </div>
         </div>
         <div className="text-textGray mt-4 card">
@@ -41,34 +77,43 @@ const EducationHistory: FC<props> = () => {
             Certification
           </div>
           <div className="py-3 px-4 card-content border border-borderGray">
-            Full-stack Developer
+            {education.degreeOrCertification}
           </div>
         </div>
 
         <div className="text-textGray mt-4 card">
           <div className=" text-white font-bold py-3 px-4 card-title">Date</div>
           <div className="py-3 px-4 card-content border border-borderGray">
-            July, 2015 - September, 2015
+            {getMonthAndYear(education.startDate)}
+            {education.endDate && ` - ${getMonthAndYear(education.endDate)}`}
           </div>
         </div>
 
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            Specialities
+        {education.specializations && education.specializations.length > 0 && (
+          <div className="text-textGray mt-4 card">
+            <div className=" text-white font-bold py-3 px-4 card-title">
+              Specialities
+            </div>
+            <div className="py-3 px-4 card-content border border-borderGray">
+              {education.specializations.map((item, index) => (
+                <p key={index}> - {item}</p>
+              ))}
+            </div>
           </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            Backend infrastructure
-          </div>
-        </div>
+        )}
 
-        <div className="text-textGray mt-4 card">
-          <div className=" text-white font-bold py-3 px-4 card-title">
-            Accomplishments
+        {education.accomplishments && education.accomplishments.length > 0 && (
+          <div className="text-textGray mt-4 card">
+            <div className=" text-white font-bold py-3 px-4 card-title">
+              Accomplishments
+            </div>
+            <div className="py-3 px-4 card-content border border-borderGray">
+              {education.accomplishments.map((item, index) => (
+                <p key={index}>- {item}</p>
+              ))}
+            </div>
           </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
-            Graduated Top of class
-          </div>
-        </div>
+        )}
 
         <div className="flex justify-center mt-12">
           <button
