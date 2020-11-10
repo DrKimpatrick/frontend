@@ -210,6 +210,9 @@ const EducationInput: FC<Props> = props => {
                       </Button>
                     </div>
                     {getErrors('specializations')}
+                    {errors && errors.specializations && (
+                      <div className="inputError">{errors.specializations}</div>
+                    )}
                   </div>
                 );
               }}

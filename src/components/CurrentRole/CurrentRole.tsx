@@ -1,8 +1,9 @@
 import React, { FC, useEffect } from 'react';
-import { withRouter, useHistory, Redirect } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import Select from 'react-select';
+import { map } from 'lodash';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import NavBar from 'components/Layout/NavBar/NavBar';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
@@ -14,17 +15,36 @@ import { currentRoleSchema } from './Schema';
 const CurrentRole: FC = () => {
   const history = useHistory();
 
-  const getErrors = (field: string) => {
-    return null;
-  };
-
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors, employment, employments } = state.employments;
+    const { loading, errors, employment } = state.employments;
     const { message } = state.messages;
-    return { message, loading, errors, employment, employments };
+    return { message, loading, errors, employment };
   });
+
+  const getErrors = (field: string) => {
+    const { errors } = reducer;
+
+    if (
+      errors &&
+      errors.errors &&
+      Array.isArray(errors.errors) &&
+      errors.errors.length > 0 &&
+      map(errors.errors, field)
+    ) {
+      return (
+        <>
+          {map(map(errors.errors, field), (item, i) => (
+            <div key={i} className="inputError">
+              {item}
+            </div>
+          ))}
+        </>
+      );
+    }
+    return null;
+  };
 
   useEffect(() => {
     if (reducer.message && reducer.employment) {
@@ -32,15 +52,9 @@ const CurrentRole: FC = () => {
     }
   }, [reducer.message, reducer.employment, history]);
 
-  const { employments } = reducer;
-
   useEffect(() => {
     listEmployments()(dispatch);
   }, [dispatch]);
-
-  if (employments && employments.length > 0) {
-    window.location.href = '/user/dashboard';
-  }
 
   return (
     <>
@@ -71,7 +85,11 @@ const CurrentRole: FC = () => {
               {formik => {
                 const { errors, values } = formik;
                 return (
-                  <form onSubmit={formik.handleSubmit} autoComplete="off">
+                  <form
+                    onSubmit={formik.handleSubmit}
+                    autoComplete="off"
+                    data-testid="submit-form"
+                  >
                     <div className="text-textGray mt-8">
                       <label>What is your company name ? </label>
                       <input
@@ -169,6 +187,8 @@ const CurrentRole: FC = () => {
                       {errors && errors.startDate && (
                         <div className="inputError">{errors.startDate}</div>
                       )}
+                      {!errors ||
+                        (!errors.supervisor && getErrors('startDate'))}
                     </div>
                     <div className="flex justify-center mt-4">
                       <button

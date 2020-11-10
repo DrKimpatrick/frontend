@@ -1,14 +1,14 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter as Router, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import CurrentRole from '../CurrentRole';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
-import initialState from 'redux/initialState';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
+import { initialState } from '../__mock__';
 
 const mockHistoryPush = jest.fn();
 
@@ -25,7 +25,6 @@ const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 describe('`CurrentRole` component', () => {
-
   beforeEach(() => {
     store = mockStore(initialState);
   });
@@ -50,23 +49,70 @@ describe('`CurrentRole` component', () => {
         <Provider store={store}>
           <Router>
             <CurrentRole />
-        </Router>
+          </Router>
         </Provider>
       )
       .toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
-  it('should redirect to skill ranking', () => {
-    const { getByTestId } = render(
+  it('should submit a form', async () => {
+    const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
+        <Router>
           <CurrentRole />
-        </MemoryRouter>
+        </Router>
       </Provider>
     );
+    const companyName: Element | any = container.querySelector(
+      'input[name="companyName"]'
+    );
 
-    fireEvent.click(getByTestId('next-button'));
+    const title: Element | any = container.querySelector('input[name="title"]');
+
+    const startDate: Element | any = container.querySelector(
+      'input[name="startDate"]'
+    );
+
+    const form: Element | any = container.querySelector('form');
+
+    await waitFor(() => {
+      fireEvent.change(companyName, {
+        target: {
+          value: 'companyName'
+        }
+      });
+    });
+
+
+    await waitFor(() => {
+      fireEvent.change(startDate, {
+        target: {
+          value: '2020-05-05'
+        }
+      });
+    });
+
+    await waitFor(() => {
+      fireEvent.change(title, {
+        target: {
+          value: 'title'
+        }
+      });
+    });
+
+    await waitFor(() => {
+      fireEvent.submit(form);
+    });
+
+    expect(companyName.value).toEqual('companyName');
+
+    expect(title.value).toEqual('title');
+
+    expect(startDate.value).toEqual('2020-05-05');
+
     expect(mockHistoryPush).toHaveBeenCalledWith('/skill-ranking');
+
   });
 });

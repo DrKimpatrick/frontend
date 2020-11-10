@@ -1,13 +1,12 @@
-import { cleanup } from '@testing-library/react';
+import { cleanup, render, waitFor, fireEvent } from '@testing-library/react';
 import React from 'react';
 import ReactDom from 'react-dom';
-import thunk from 'redux-thunk';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import EducationHistoryList from '../EducationHistoryList';
-import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
+import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { AddEducation } from '..';
 import { initialState } from '../__mock__';
 
 let store: any;
@@ -16,34 +15,21 @@ const middleware = [thunk];
 
 const mockStore = configureMockStore(middleware);
 
-describe('`EducationHistoryList` component', () => {
+jest.mock('@material-ui/core/Modal');
+describe('Add Education', () => {
   beforeEach(() => {
     store = mockStore(initialState);
   });
 
   afterEach(cleanup);
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDom.render(
       <Provider store={store}>
-        <Router>
-          <EducationHistoryList />
-        </Router>
+        <AddEducation close={() => jest.fn()} />
       </Provider>,
       div
     );
-  });
-
-  it('matches the snapshot', () => {
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <Router>
-            <EducationHistoryList />
-          </Router>
-        </Provider>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
   });
 });

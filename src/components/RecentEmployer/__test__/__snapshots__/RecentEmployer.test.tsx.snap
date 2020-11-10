@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`\`CurrentRole\` component matches the snapshot 1`] = `
+exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
 Array [
   <nav
     className="flex items-center bg-white-800 px-20 py-5 flex-wrap"
@@ -284,20 +284,30 @@ Array [
       </div>
     </div>
   </nav>,
-  <section
-    className="current-role-section w-1/3 m-auto text-textGray"
+  <div
+    className="containers"
   >
     <div
-      className="containers"
+      className="recent-employer-section w-1/3 m-auto text-textGray"
     >
       <div
-        className="recent-employer-section"
+        className="flex relative h-auto my-8"
+        style={
+          Object {
+            "flexDirection": "column",
+          }
+        }
       >
         <div
-          className="flex relative h-auto my-8"
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
         >
           <div
             className="back-arrow cursor-pointer"
+            onClick={[Function]}
           >
             <svg
               aria-hidden={true}
@@ -311,22 +321,18 @@ Array [
             </svg>
           </div>
           <h1
-            className="font-bold text-xl title"
+            className="font-bold text-base title"
           >
-            Tell us how awesome you are!
+            Who was your most recent employer?
           </h1>
         </div>
         <form
           autoComplete="off"
-          data-testid="submit-form"
           onSubmit={[Function]}
         >
           <div
             className="text-textGray mt-8"
           >
-            <label>
-              What is your company name ? 
-            </label>
             <input
               className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
               name="companyName"
@@ -339,24 +345,6 @@ Array [
           <div
             className="text-textGray mt-4"
           >
-            <label>
-              What is your current role?
-            </label>
-            <input
-              className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-              name="title"
-              onChange={[Function]}
-              placeholder="Your Title"
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            className="text-textGray mt-4"
-          >
-            <label>
-              Your supervisor 
-            </label>
             <div
               className="select css-2b097c-container"
               onKeyDown={[Function]}
@@ -391,7 +379,7 @@ Array [
                         autoComplete="off"
                         autoCorrect="off"
                         disabled={false}
-                        id="react-select-3-input"
+                        id="react-select-4-input"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -467,24 +455,27 @@ Array [
             </div>
           </div>
           <div
+            className="text-textGray mt-4"
+          >
+            <input
+              className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+              name="title"
+              onChange={[Function]}
+              placeholder="Your Title"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
             className="flex justify-between text-textGray mt-4 dateContainer"
-            style={
-              Object {
-                "alignItems": "start",
-                "flexDirection": "column",
-              }
-            }
           >
             <div
               className="item"
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
             >
-              <label>
-                Start Date
+              <label
+                htmlFor="start date"
+              >
+                Start date
               </label>
               <input
                 id="date"
@@ -494,20 +485,358 @@ Array [
                 value=""
               />
             </div>
+            <div
+              className="item"
+            >
+              <label
+                htmlFor="end date"
+              >
+                End date
+              </label>
+              <input
+                id="date"
+                name="endDate"
+                onChange={[Function]}
+                type="date"
+                value=""
+              />
+            </div>
           </div>
           <div
-            className="flex justify-center mt-4"
+            className="text-textGray flex"
+            style={
+              Object {
+                "alignItems": "center",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "width": "50%",
+                }
+              }
+            />
+            <div
+              style={
+                Object {
+                  "flexGrow": 1,
+                  "width": "50%",
+                }
+              }
+            />
+          </div>
+          <div
+            className="text-textGray flex"
+            style={
+              Object {
+                "alignItems": "center",
+              }
+            }
+          >
+            <span
+              aria-disabled={false}
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-2 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <input
+                  aria-label="uncontrolled-checkbox"
+                  checked={false}
+                  className="PrivateSwitchBase-input-5"
+                  data-indeterminate={false}
+                  name="isCurrentPosition"
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
+            </span>
+            <label
+              htmlFor=""
+            >
+              I am currently working here
+            </label>
+          </div>
+          <div
+            className="text-textGray mt-4"
+          >
+            <div
+              className="select css-2b097c-container"
+              onKeyDown={[Function]}
+            >
+              <div
+                className=" css-c8odyh-control"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  className=" css-g1d714-ValueContainer"
+                >
+                  <div
+                    className=" css-1wa3eu0-placeholder"
+                  >
+                    Select skills used
+                  </div>
+                  <div
+                    className="css-b8ldur-Input"
+                  >
+                    <div
+                      className=""
+                      style={
+                        Object {
+                          "display": "inline-block",
+                        }
+                      }
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        disabled={false}
+                        id="react-select-5-input"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        spellCheck="false"
+                        style={
+                          Object {
+                            "background": 0,
+                            "border": 0,
+                            "boxSizing": "content-box",
+                            "color": "inherit",
+                            "fontSize": "inherit",
+                            "label": "input",
+                            "opacity": 1,
+                            "outline": 0,
+                            "padding": 0,
+                            "width": "1px",
+                          }
+                        }
+                        tabIndex="0"
+                        type="text"
+                        value=""
+                      />
+                      <div
+                        style={
+                          Object {
+                            "height": 0,
+                            "left": 0,
+                            "overflow": "scroll",
+                            "position": "absolute",
+                            "top": 0,
+                            "visibility": "hidden",
+                            "whiteSpace": "pre",
+                          }
+                        }
+                      >
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className=" css-1hb7zxy-IndicatorsContainer"
+                >
+                  <span
+                    className=" css-1okebmr-indicatorSeparator"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className=" css-tlfecz-indicatorContainer"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="css-6q0nyr-Svg"
+                      focusable="false"
+                      height={20}
+                      viewBox="0 0 20 20"
+                      width={20}
+                    >
+                      <path
+                        d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <input
+                  name="skillsUsed"
+                  type="hidden"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="text-textGray mt-4 divider"
+            style={
+              Object {
+                "border": "none",
+              }
+            }
+          >
+            <div
+              className="responsibilities addBorder"
+            >
+              <input
+                className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                name="responsibility"
+                onChange={[Function]}
+                placeholder="Responsibilities"
+                type="text"
+                value=""
+              />
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text add"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            className="text-textGray mt-4 divider"
+            style={
+              Object {
+                "border": "none",
+              }
+            }
+          >
+            <div
+              className="responsibilities addBorder"
+            >
+              <input
+                className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                name="accomplishment"
+                onChange={[Function]}
+                placeholder="Accomplishments"
+                type="text"
+                value=""
+              />
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text add"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            className="text-textGray mt-4"
+          >
+            <input
+              className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+              name="favoriteProject"
+              onChange={[Function]}
+              placeholder="Favorite project you built or contributed to?"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="flex justify-center mt-12"
           >
             <button
               className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
               data-testid="next-button"
+              disabled={false}
               type="submit"
             >
-              <label
+              <span
                 className=""
               >
                 Next
-              </label>
+              </span>
                
               <svg
                 aria-hidden={true}
@@ -524,7 +853,7 @@ Array [
         </form>
       </div>
     </div>
-  </section>,
+  </div>,
   <div
     className="mainBackground"
   >

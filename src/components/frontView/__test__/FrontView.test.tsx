@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import FrontView from '../FrontView';

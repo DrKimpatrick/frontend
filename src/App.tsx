@@ -25,7 +25,7 @@ const App = () => {
     if (reducer.message) {
       setTimeout(() => {
         setMessage()(dispatch);
-      }, 2000);
+      }, 1000);
     }
   }, [dispatch, reducer.message]);
 

@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import initialState from '../../../redux/initialState';
+import { initialState } from '../__mock__';
 
 let store: any;
 
@@ -16,12 +16,14 @@ const middleware = [thunk];
 
 const mockStore = configureMockStore(middleware);
 
-const mockHistoryPush = jest.fn();
+const mockUseLocation = {
+  educationId: 'id'
+};
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
+  useLocation: () => ({
+    state: mockUseLocation
   })
 }));
 

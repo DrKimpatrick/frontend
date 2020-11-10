@@ -21,6 +21,7 @@ const Warning: FC<Props> = props => {
 
   const { message, cancel, accept } = props;
 
+  // @jest-ignore
   const classes = useStyles();
 
   return (

@@ -1,169 +1,633 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`\`AddEducation\` component matches the snapshot 1`] = `
-<section
-  className="add-education-section w-1/3 m-auto text-textGray"
->
-  <div
-    className="flex relative h-auto my-8"
+Array [
+  <nav
+    className="flex items-center bg-white-800 px-20 py-5 flex-wrap"
   >
+    <a
+      className="text-gray-800"
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        className="logo w-24"
+        src="logo-image.png"
+      />
+    </a>
     <div
-      className="back-arrow cursor-pointer"
+      className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+      id="navigation"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
-        />
-      </svg>
-    </div>
-    <h1
-      className="font-bold text-xl title"
-    >
-      What was the last school you attended?
-    </h1>
-  </div>
-  <div
-    className="text-textGray mt-8"
-  >
-    <input
-      className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
-      placeholder="School Name"
-      type="text"
-    />
-  </div>
-  <div
-    className="text-textGray mt-4"
-  >
-    <input
-      className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
-      placeholder="Level"
-      type="text"
-    />
-  </div>
-  <div
-    className="text-textGray mt-4"
-  >
-    <input
-      className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-      placeholder="Specializations"
-      type="text"
-    />
-  </div>
-  <div
-    className="text-textGray mt-4"
-  >
-    <input
-      className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-      placeholder="Degree or Certification Received"
-      type="text"
-    />
-  </div>
-  <div
-    className="flex justify-between text-textGray mt-4"
-  >
-    <div
-      className="MuiFormControl-root MuiTextField-root makeStyles-textField-3"
-    >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-        data-shrink={true}
-        htmlFor="date"
-        id="date-label"
-      >
-        Start Date
-      </label>
       <div
-        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-        onClick={[Function]}
+        className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
       >
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiInput-input"
-          defaultValue="2017-05-24"
-          disabled={false}
-          id="date"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="date"
-        />
+        <div>
+          <a
+            className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              How it works
+            </span>
+          </a>
+          <a
+            className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              About us
+            </span>
+          </a>
+        </div>
+        <div
+          className="lg:inline-flex items-center undefined"
+        >
+          <div
+            className="px-8 lg:inline-flex items-center"
+          >
+            <div
+              className="makeStyles-root-1"
+            >
+              <div>
+                <div
+                  aria-haspopup="true"
+                  className="notification-container"
+                  onClick={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className="text-gray-600 relative notification-icon"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="bg-white text-red-600 h-3 w-3 rounded-full absolute right-0 top-0 flex items-center justify-center border-red-600 border border-solid"
+                      style={
+                        Object {
+                          "fontSize": "6px",
+                        }
+                      }
+                    >
+                      <span>
+                        9+
+                      </span>
+                    </div>
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root cursor-pointer"
+                      focusable="false"
+                      style={
+                        Object {
+                          "color": "#ff0000",
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    className="header-popup tri-right border right-top hide"
+                  >
+                    <div
+                      className="text-gray-600 w-56 space-x-2 text-sm py-2 flex "
+                    >
+                      <span
+                        className="text-red-600 font-bold"
+                      >
+                        1
+                      </span>
+                      <div
+                        className="flex flex-col w-full flex-wrap"
+                      >
+                        <span
+                          className="text-red-600 font-bold"
+                        >
+                          You have been verified
+                        </span>
+                        <p
+                          className="break-normal"
+                        >
+                          Check your email for the link verification
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className="text-gray-600 w-56 space-x-2 text-sm py-2 flex "
+                    >
+                      <span
+                        className="text-red-600 font-bold"
+                      >
+                        1
+                      </span>
+                      <div
+                        className="flex flex-col w-full flex-wrap"
+                      >
+                        <span
+                          className="text-red-600 font-bold"
+                        >
+                          You have been verified
+                        </span>
+                        <p
+                          className="break-normal"
+                        >
+                          Check your email for the link verification
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="text-gray-600 relative"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="text-gray-600"
+          >
+            <span>
+              username
+            </span>
+          </div>
+          <div
+            className="makeStyles-root-1"
+          >
+            <div>
+              <div
+                aria-haspopup="true"
+                className="profile-container"
+                onClick={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  aria-haspopup="true"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="avatar"
+                    className="inline-block ml-2 h-12 w-12 rounded-full text-white shadow-solid cursor-pointer"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  />
+                </div>
+                <div
+                  className="header-popup tri-left border right-top hide"
+                >
+                  <ul
+                    className="MuiList-root MuiList-padding"
+                    onKeyDown={[Function]}
+                    role="menu"
+                    tabIndex={-1}
+                  >
+                    <li
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root text-gray-600 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="menuitem"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="text-gray-600 w-56 space-x-3 text-sm py-2"
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
+                            transform="scale(1.2, 1.2)"
+                          />
+                        </svg>
+                        <span>
+                          Settings
+                        </span>
+                      </div>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </li>
+                    <li
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root text-gray-600 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="menuitem"
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="text-gray-600 w-56 space-x-3 text-sm py-2"
+                        onClick={[Function]}
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"
+                          />
+                        </svg>
+                        <span>
+                          Logout
+                        </span>
+                      </div>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </nav>,
+  <div
+    className="containers"
+  >
     <div
-      className="MuiFormControl-root MuiTextField-root makeStyles-textField-3"
+      className="recent-employer-section w-1/3 m-auto text-textGray"
     >
-      <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-        data-shrink={true}
-        htmlFor="date"
-        id="date-label"
-      >
-        Send Date
-      </label>
       <div
-        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-        onClick={[Function]}
+        className="flex relative h-auto my-8"
       >
-        <input
-          aria-invalid={false}
-          autoFocus={false}
-          className="MuiInputBase-input MuiInput-input"
-          defaultValue="22017-05-24"
-          disabled={false}
-          id="date"
-          onAnimationStart={[Function]}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={false}
-          type="date"
-        />
+        <button
+          className="back-arrow cursor-pointer"
+          type="button"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            />
+          </svg>
+        </button>
+        <h1
+          className="font-bold text-base title"
+        >
+          What was the last school you attended?
+        </h1>
       </div>
+      <form
+        autoComplete="off"
+        onSubmit={[Function]}
+      >
+        <div
+          className="text-textGray mt-8"
+        >
+          <input
+            className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+            name="schoolName"
+            onChange={[Function]}
+            placeholder="School Name"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="text-textGray mt-4"
+        >
+          <input
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            name="level"
+            onChange={[Function]}
+            placeholder="Level"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="text-textGray mt-4"
+        >
+          <input
+            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+            name="degreeOrCertification"
+            onChange={[Function]}
+            placeholder="Degree or Certification Received"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="flex justify-between text-textGray mt-4 dateContainer"
+        >
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="start date"
+            >
+              Start date
+            </label>
+            <input
+              id="date"
+              name="startDate"
+              onChange={[Function]}
+              type="date"
+              value=""
+            />
+          </div>
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="end date"
+            >
+              End date
+            </label>
+            <input
+              id="date"
+              name="endDate"
+              onChange={[Function]}
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="text-textGray flex"
+          style={
+            Object {
+              "alignItems": "center",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "flexGrow": 1,
+                "width": "50%",
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "flexGrow": 1,
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="text-textGray flex"
+          style={
+            Object {
+              "alignItems": "center",
+            }
+          }
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-2 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                aria-label="uncontrolled-checkbox"
+                checked={false}
+                className="PrivateSwitchBase-input-5"
+                data-indeterminate={false}
+                name="isCurrentEducation"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </span>
+          <label
+            htmlFor=""
+          >
+            I am currently studying here
+          </label>
+        </div>
+        <div
+          className="text-textGray mt-4 divider"
+          style={
+            Object {
+              "border": "none",
+            }
+          }
+        >
+          <div
+            className="responsibilities addBorder"
+          >
+            <input
+              className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+              name="specialization"
+              onChange={[Function]}
+              placeholder="Specializations"
+              type="text"
+              value=""
+            />
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-text add"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="text-textGray mt-4 divider"
+          style={
+            Object {
+              "border": "none",
+            }
+          }
+        >
+          <div
+            className="responsibilities addBorder"
+          >
+            <input
+              className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+              name="accomplishment"
+              onChange={[Function]}
+              placeholder="Accomplishments"
+              type="text"
+              value=""
+            />
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-text add"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="flex justify-center mt-12"
+        >
+          <button
+            className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+            data-testid="next-button"
+            disabled={false}
+            type="submit"
+          >
+            <span
+              className=""
+            >
+              Next
+            </span>
+             
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
-  </div>
+  </div>,
   <div
-    className="text-textGray mt-4"
+    className="mainBackground"
   >
-    <textarea
-      className="border outline-none bg-transparent rounded w-full p-3 text-textGray h-48"
-      cols={30}
-      name="accomplishments"
-      placeholder="Accomplishments"
-      rows={7}
+    <img
+      alt=""
+      src="motif-image.png"
+      style={
+        Object {
+          "backgroundColor": "none",
+        }
+      }
     />
-  </div>
-  <div
-    className="flex justify-center mt-12"
-  >
-    <button
-      className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-      data-testid="next-button"
-    >
-      <span
-        className=""
-      >
-        Next
-      </span>
-       
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
-        />
-      </svg>
-    </button>
-  </div>
-</section>
+  </div>,
+]
 `;
