@@ -1,18 +1,8 @@
 import { Dispatch } from 'redux';
+import { EmploymentTypes } from 'redux/action-types/employment';
 import ApiAction from '../../../helpers/apiAction';
 import { EmploymentParam } from '../../action-types/employment';
 import { setMessage } from '../message';
-
-export enum EmploymentTypes {
-  AddEmployment = 'employment/AddEmployment',
-  DeleteEmployment = 'employment/DeleteEmployment',
-  ListEmployments = 'employment/ListEmployments',
-  ListSpecificEmployment = 'employment/ListSpecificEmployment',
-  UpdateEmployment = 'employment/UpdateEmployment',
-  Errors = 'employment/Errors',
-  Loading = 'employment/Loading',
-  Success = 'employment/Success'
-}
 
 export const addEmployment = (data: EmploymentParam) => async (
   dispatchAction: Dispatch

@@ -1,4 +1,7 @@
-import { MessageTypes } from '../actions/message';
+export enum MessageTypes {
+  Message = 'UserType/Message',
+  Error = 'MessageType/Error'
+}
 
 export interface SetMessage {
   type: typeof MessageTypes.Message;

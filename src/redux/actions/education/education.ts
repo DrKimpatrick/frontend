@@ -1,17 +1,8 @@
 import { Dispatch } from 'redux';
-import { InitialEducationValue as InitialValue } from 'components/UserDashboard/Education';
+import { InitialEducationValue as InitialValue } from 'components/Talent/Dashboard/Education';
+import { EducationTypes } from 'redux/action-types/education';
 import ApiAction from '../../../helpers/apiAction';
 import { setMessage } from '../message';
-
-export enum EducationTypes {
-  AddEducation = 'Education/AddEducation',
-  DeleteEducation = 'Education/DeleteEducation',
-  UpdateEducation = 'Education/UpdateEducation',
-  ListEducation = 'Education/ListEducation',
-  ListSpecificEducation = 'Education/ListSpecificEducation',
-  Errors = 'Education/Errors',
-  Loading = 'Education/Loading'
-}
 
 export const addEducation = (data: InitialValue) => (
   dispatchAction: Dispatch

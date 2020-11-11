@@ -1,8 +1,10 @@
 import { map } from 'lodash';
-import { EducationTypes } from '../../actions/education';
-import { MessageActionType } from '../../action-types/message';
-import { EducationActionTypes, Education } from '../../action-types/education';
-import { MessageTypes } from '../../actions/message';
+import { MessageActionType, MessageTypes } from '../../action-types/message';
+import {
+  EducationActionTypes,
+  Education,
+  EducationTypes
+} from '../../action-types/education';
 
 interface InitialState {
   readonly message?: string;

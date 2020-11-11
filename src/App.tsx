@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import RoutesComponent from './routes';
+import { Router } from './components/Router';
 import { RootState } from './redux/store';
 import { setMessage } from './redux/actions/message/message';
 import { listCurrentUser } from './redux/actions/user';
@@ -33,7 +33,7 @@ const App = () => {
     listCurrentUser()(dispatch);
   }, [dispatch]);
 
-  return <RoutesComponent />;
+  return <Router />;
 };
 
 export default App;

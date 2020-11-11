@@ -1,9 +1,5 @@
 import { Dispatch } from 'redux';
-
-export enum MessageTypes {
-  Message = 'UserType/Message',
-  Error = 'MessageType/Error'
-}
+import { MessageTypes } from 'redux/action-types/message';
 
 export const setMessage = (message?: string) => (dispatch: Dispatch) => {
   dispatch({ type: MessageTypes.Message, payload: { message } });

@@ -1,11 +1,10 @@
 import { map } from 'lodash';
-import { EmploymentTypes } from '../../actions/employment';
-import { MessageActionType } from '../../action-types/message';
+import { MessageActionType, MessageTypes } from '../../action-types/message';
 import {
   EmploymentActionTypes,
-  Employment
+  Employment,
+  EmploymentTypes
 } from '../../action-types/employment';
-import { MessageTypes } from '../../actions/message';
 interface InitialState {
   readonly message?: string;
   readonly errors?: any;

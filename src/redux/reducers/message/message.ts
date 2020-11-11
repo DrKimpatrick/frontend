@@ -1,5 +1,4 @@
-import { MessageTypes } from '../../actions/message';
-import { MessageActionType } from '../../action-types/message';
+import { MessageActionType, MessageTypes } from '../../action-types/message';
 
 interface InitialState {
   readonly message?: string;

@@ -1,7 +1,9 @@
 {
   "compile-hero.disable-compile-files-on-did-save-code": false,
   "cSpell.words": [
+    "Testmonials",
     "datepicker",
-    "semibold"
+    "semibold",
+    "unmock"
   ]
 }

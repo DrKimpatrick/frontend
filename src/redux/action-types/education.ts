@@ -1,4 +1,12 @@
-import { EducationTypes } from '../actions/education';
+export enum EducationTypes {
+  AddEducation = 'Education/AddEducation',
+  DeleteEducation = 'Education/DeleteEducation',
+  UpdateEducation = 'Education/UpdateEducation',
+  ListEducation = 'Education/ListEducation',
+  ListSpecificEducation = 'Education/ListSpecificEducation',
+  Errors = 'Education/Errors',
+  Loading = 'Education/Loading'
+}
 
 export enum VerificationStatus {
   Unverified = 'unverified',

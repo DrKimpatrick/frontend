@@ -1,4 +1,13 @@
-import { EmploymentTypes } from '../actions/employment';
+export enum EmploymentTypes {
+  AddEmployment = 'employment/AddEmployment',
+  DeleteEmployment = 'employment/DeleteEmployment',
+  ListEmployments = 'employment/ListEmployments',
+  ListSpecificEmployment = 'employment/ListSpecificEmployment',
+  UpdateEmployment = 'employment/UpdateEmployment',
+  Errors = 'employment/Errors',
+  Loading = 'employment/Loading',
+  Success = 'employment/Success'
+}
 
 export enum VerificationStatus {
   UNVERIFIED = 'unverified',
