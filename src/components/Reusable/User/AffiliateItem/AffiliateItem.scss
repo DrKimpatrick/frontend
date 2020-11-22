@@ -1,0 +1,12 @@
+@import '../UserItem/UserItem.scss';
+
+.affiliateContainer {
+  border: none !important;
+  .userItemList {
+    min-height: 0px !important;
+  }
+  .affiliateItems {
+    border: 2px solid #dadada5e;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoItemFound should create snapshot 1`] = `
+<div
+  className="noItemFound"
+>
+  <div
+    className="notItemImage"
+  >
+    <img
+      alt=""
+      src="itemNotFound.png"
+    />
+  </div>
+  <div
+    className="message"
+  >
+    no result found
+  </div>
+</div>
+`;

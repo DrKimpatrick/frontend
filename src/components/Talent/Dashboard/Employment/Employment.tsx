@@ -18,7 +18,7 @@ import {
 import { deleteEmployment, listEmployments } from 'redux/actions/employment';
 import { RootState } from 'redux/store';
 import { AddNewEmployment, EditEmployment } from '.';
-import './style.scss';
+import './Employment.scss';
 
 const useStyles = makeStyles(() => ({
   actionIcon: {

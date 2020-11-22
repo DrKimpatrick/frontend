@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import useWindowSize from 'utils/useWindowSize';
 import { BottomMenu, Footer } from '.';
-import './styles.scss';
+import './Layout.scss';
 
 interface Props {
   children: ReactElement;

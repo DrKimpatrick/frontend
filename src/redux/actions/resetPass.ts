@@ -1,24 +1,22 @@
-import { Dispatch } from 'redux';
 import apiAction from 'helpers/apiAction';
 import {
-    ResetFail,
-    RESET_FAIL,
-    RESET_LOADING,
-    RESET_SUCCESS,
-    ResetDispatchTypes,
-    ResetPass
+  RESET_FAIL,
+  RESET_LOADING,
+  RESET_SUCCESS,
+  ResetPass
 } from 'redux/action-types/resetPass';
 
-export const ResetPassAction = (data : ResetPass) => {
+export const ResetPassAction = (data: ResetPass) => {
   return (dispatchAction: any) =>
     dispatchAction(
       apiAction({
         method: 'POST',
         url: '/auth/reset-password',
-        data: data,
+        data,
         onStart: () => (dispatch: any) => {
           dispatch({ type: RESET_LOADING });
         },
+        // eslint-disable-next-line no-shadow
         onSuccess: (data: any) => (dispatch: any) => {
           dispatch({
             type: RESET_SUCCESS,

@@ -23,46 +23,105 @@ import {
   GetHired,
   Layout
 } from 'components/Reusable';
+import {
+  AdminDashboard,
+  HrAdmin,
+  UserProfile,
+  Affiliate,
+  AcceptedCourse,
+  PendingCourse,
+  DeclinedCourse,
+  TrainingAffiliate,
+  Company,
+  Recruiter
+} from 'components/Admin';
+import { RouteUrl } from 'utils/routes';
 
 const AppRouter: React.FC = () => {
   const authRoutes = [
     { path: '/', exact: true, component: <Landing /> },
-    { path: '/login', exact: true, component: <Login /> },
-    { path: '/register', exact: true, component: <CreateAccount /> },
-    { path: '/home', exact: true, component: <Landing /> },
-    { path: '/account', exact: true, component: <Login /> },
-    { path: '/notification', exact: true, component: <Dashboard /> },
-    { path: '/current-role', exact: true, component: <CurrentRole /> },
-    { path: '/skill-ranking', exact: true, component: <SkillRanking /> },
-    { path: '/recent-employer', exact: true, component: <RecentEmployer /> },
+    { path: RouteUrl.Login, exact: true, component: <Login /> },
+    { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
+    { path: RouteUrl.Home, exact: true, component: <Landing /> },
+    { path: RouteUrl.Account, exact: true, component: <Login /> },
+    { path: RouteUrl.Notification, exact: true, component: <Dashboard /> },
+    { path: RouteUrl.CurrentRole, exact: true, component: <CurrentRole /> },
+    { path: RouteUrl.SkillRanking, exact: true, component: <SkillRanking /> },
     {
-      path: '/employment-history/:id',
+      path: RouteUrl.RecentEmployer,
+      exact: true,
+      component: <RecentEmployer />
+    },
+    {
+      path: RouteUrl.EmploymentHistoryById,
       exact: true,
       component: <EmploymentHistory />
     },
     {
-      path: '/employment-history-list',
+      path: RouteUrl.EmploymentHistoryList,
       exact: true,
       component: <EmploymentHistoryList />
     },
-    { path: '/add-education', exact: true, component: <AddEducation /> },
-    { path: '/user/dashboard', exact: true, component: <Dashboard /> },
-    { path: '/verify-account', exact: true, component: <MessagePage /> },
-    { path: '/forgot-password', exact: true, component: <ForgotPassword /> },
-    { path: '/reset-password', exact: true, component: <ResetPassword /> },
-    { path: '/premium-billing', exact: true, component: <PremiumBilling /> },
-    { path: '/standard-billing', exact: true, component: <StandardBilling /> },
-    { path: '/get-hired', exact: true, component: <GetHired /> },
+    { path: RouteUrl.AddEducation, exact: true, component: <AddEducation /> },
+    { path: RouteUrl.UserDashboard, exact: true, component: <Dashboard /> },
+    { path: RouteUrl.VerifyAccount, exact: true, component: <MessagePage /> },
     {
-      path: '/education-history',
+      path: RouteUrl.ForgotPassword,
+      exact: true,
+      component: <ForgotPassword />
+    },
+    { path: RouteUrl.ResetPassword, exact: true, component: <ResetPassword /> },
+    {
+      path: RouteUrl.PremiumBilling,
+      exact: true,
+      component: <PremiumBilling />
+    },
+    {
+      path: RouteUrl.StandardBilling,
+      exact: true,
+      component: <StandardBilling />
+    },
+    { path: RouteUrl.GetHired, exact: true, component: <GetHired /> },
+    {
+      path: RouteUrl.EducationHistory,
       exact: true,
       component: <EducationHistory />
     },
     {
-      path: '/education-history-list',
+      path: RouteUrl.EducationHistoryList,
       exact: true,
       component: <EducationHistoryList />
-    }
+    },
+    {
+      path: RouteUrl.SuperAdminDashboard,
+      exact: true,
+      component: <AdminDashboard />
+    },
+    { path: RouteUrl.HrAdmin, exact: true, component: <HrAdmin /> },
+    {
+      path: RouteUrl.AdminViewUserProfile,
+      exact: true,
+      component: <UserProfile />
+    },
+    { path: RouteUrl.Affiliate, exact: true, component: <Affiliate /> },
+    {
+      path: RouteUrl.AcceptedCourse,
+      exact: true,
+      component: <AcceptedCourse />
+    },
+    { path: RouteUrl.PendingCourse, exact: true, component: <PendingCourse /> },
+    {
+      path: RouteUrl.DeclinedCourse,
+      exact: true,
+      component: <DeclinedCourse />
+    },
+    {
+      path: RouteUrl.TrainingAffiliate,
+      exact: true,
+      component: <TrainingAffiliate />
+    },
+    { path: RouteUrl.Company, exact: true, component: <Company /> },
+    { path: RouteUrl.Recruiter, exact: true, component: <Recruiter /> }
   ];
 
   return (

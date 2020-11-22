@@ -11,7 +11,7 @@ import { RootState } from 'redux/store';
 import { addEmployment, listEmployments } from 'redux/actions/employment';
 import MainBackground from '../../Layout/MainBackground/MainBackground';
 import { currentRoleSchema } from './Schema';
-import './styles.scss';
+import './CurrentRole.scss';
 
 const CurrentRole: FC = () => {
   const history = useHistory();

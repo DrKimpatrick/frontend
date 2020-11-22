@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -8,9 +10,10 @@ import { VerifyAccAction } from 'redux/actions/verifyAcc';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 
 const MessagePage: FC<any> = (props: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState('');
   const dispatch = useDispatch();
-  const state: any = useSelector((state: any) => state.users);
+  const state: any = useSelector((appState: any) => appState.users);
 
   const verifyRequest = () => {
     const tokenValue = queryString.parse(props.history.location.search);

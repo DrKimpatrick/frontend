@@ -1,13 +1,11 @@
-import React, { FC, Fragment, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import loginImage from 'assets/images/work_images-two.png';
 import { validEmailRegex, validateForm, passwordRegex } from 'utils/index';
-import { Register } from 'redux/action-types/getStarted';
 import { GetStartedAction } from 'redux/actions/getStarted';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import Loader from 'components/Reusable/Loader/Loader';

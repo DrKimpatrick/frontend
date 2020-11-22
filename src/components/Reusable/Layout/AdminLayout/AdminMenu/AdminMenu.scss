@@ -1,0 +1,33 @@
+.adminMenu {
+  width: 200px;
+  .parent {
+    li {
+      padding: 0.5rem;
+    }
+    a {
+      display: flex;
+      color: #7a7a7a;
+      h5 {
+        margin-left: 10px;
+      }
+    }
+  }
+  .childMenu {
+    padding: 25px;
+    padding-bottom: 0;
+    li {
+      padding: 0.5rem;
+    }
+    a{
+      font-size: 14px;
+    }
+  }
+  .active {
+    background: #7a7a7a;
+    border-radius: 1px;
+    a {
+      color: white;
+      text-align: center;
+    }
+  }
+}

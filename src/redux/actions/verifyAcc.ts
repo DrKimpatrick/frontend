@@ -1,22 +1,22 @@
-import { Dispatch } from 'redux';
 import apiAction from 'helpers/apiAction';
 import {
-    VerifyPass,
-    VERIFY_FAIL,
-    VERIFY_LOADING,
-    VERIFY_SUCCESS
+  VerifyPass,
+  VERIFY_FAIL,
+  VERIFY_LOADING,
+  VERIFY_SUCCESS
 } from 'redux/action-types/verifyAcc';
 
-export const VerifyAccAction = (data : VerifyPass) => {
+export const VerifyAccAction = (data: VerifyPass) => {
   return (dispatchAction: any) =>
     dispatchAction(
       apiAction({
         method: 'POST',
         url: '/auth/verify-account',
-        data: data,
+        data,
         onStart: () => (dispatch: any) => {
           dispatch({ type: VERIFY_LOADING });
         },
+        // eslint-disable-next-line no-shadow
         onSuccess: (data: any) => (dispatch: any) => {
           dispatch({
             type: VERIFY_SUCCESS,
@@ -29,7 +29,9 @@ export const VerifyAccAction = (data : VerifyPass) => {
 
           dispatch({
             type: VERIFY_FAIL,
-            payload: response ? response.data.message || response.data.error : 'Please try again'
+            payload: response
+              ? response.data.message || response.data.error
+              : 'Please try again'
           });
         }
       })

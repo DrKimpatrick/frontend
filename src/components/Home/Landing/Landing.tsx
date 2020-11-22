@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useEffect } from 'react';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';

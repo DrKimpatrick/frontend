@@ -9,7 +9,7 @@ interface HttpOptions {
 const { REACT_APP_BACKEND_API } = process.env;
 
 export default (httpOptions?: HttpOptions) => {
-  const { token, baseURL, headers } = httpOptions || {};
+  const { token, baseURL } = httpOptions || {};
   const userToken = token || localStorage.token;
 
   return axios.create({

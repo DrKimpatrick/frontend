@@ -1,9 +1,6 @@
-import { Dispatch } from 'redux';
-import axios, { AxiosResponse } from 'axios';
 import apiAction from 'helpers/apiAction';
 import {
   Register,
-  RegisterDispatchTypes,
   REGISTER_LOADING,
   REGISTER_FAIL,
   REGISTER_SUCCESS

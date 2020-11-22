@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'assets/images/motif-image.png';
-import './style.scss';
+import './MainBackground.scss';
 
 interface Props {
   allowImageColor?: boolean;

@@ -1,0 +1,44 @@
+.listItems {
+  position: relative;
+  color: #3b3a3a;
+  li {
+    padding: 5px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    h5 {
+      font-size: 15px;
+    }
+    .selectItems {
+      position: relative;
+      width: 150px;
+      border: none;
+      border-radius: 5px;
+      background: none;
+      select {
+        color: #727272;
+        width: 100%;
+        border: none;
+        padding: 8px;
+        background: none;
+        appearance: none;
+        font-size: 15px;
+      }
+      .customArrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: none;
+        width: 2rem;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

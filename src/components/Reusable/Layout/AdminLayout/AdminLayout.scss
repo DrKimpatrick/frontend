@@ -1,0 +1,39 @@
+.adminLayout {
+  position: relative;
+  .pageDirection {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    ul {
+      display: flex;
+      flex-direction: row;
+      li {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-left: 1px solid #ababab;
+        &:first-child {
+          border-left: none;
+          padding-left: 0px;
+        }
+        a {
+          font-size: 13px;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  .customBackground {
+    height: 350px;
+    .mainBackground {
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+  .layoutContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+}

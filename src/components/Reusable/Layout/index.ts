@@ -6,3 +6,4 @@ import NavBar from './NavBar/NavBar';
 export { Layout, Footer, BottomMenu, NavBar };
 
 export * from './MainBackground';
+export * from './AdminLayout';

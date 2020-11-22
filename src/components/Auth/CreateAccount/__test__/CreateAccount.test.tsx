@@ -1,32 +1,42 @@
-import React, { FC, Dispatch } from 'react';
-import { render, cleanup } from '@testing-library/react';
+import React from 'react';
+import { cleanup } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import GetStated from '../CreateAccount';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { Provider, useDispatch } from 'react-redux';
-import { isTSAnyKeyword } from '@babel/types';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
 import '@testing-library/jest-dom/extend-expect';
-import renderer from 'react-test-renderer';
-import initialState from 'redux/initialState';
 import { GetStartedAction } from 'redux/actions/getStarted';
-import reducer from 'redux/reducers/users';
-import {
-  Register,
-  RegisterDispatchTypes,
-  REGISTER_LOADING,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS
-} from 'redux/action-types/getStarted';
-
+import { userReducer as reducer } from 'redux/reducers/users';
+import { REGISTER_FAIL, REGISTER_SUCCESS } from 'redux/action-types/getStarted';
 
 let container: any;
-let stepsProps: any;
-let store: any;
+
+let store: Store;
 
 const middleware = [thunk];
+
 const mockStore = configureMockStore(middleware);
+
+const initialState = {
+  users: {
+    currentUser: {
+      isLoggedIn: localStorage.getItem('token') ? true : false,
+      loading: false,
+      error: null,
+      message: null,
+      created: false,
+      data: {
+        firstName: 'John',
+        lastName: 'Smith',
+        profilePicture:
+          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+      }
+    }
+  }
+};
 
 describe('Account Type Component', () => {
   beforeEach(() => {
@@ -36,11 +46,6 @@ describe('Account Type Component', () => {
   });
 
   afterEach(cleanup);
-
-  const mockServiceCreator = (body: any, succeeds = true) => () =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => (succeeds ? resolve(body) : reject(body)), 10);
-    });
 
   it('renders without crashing', () => {
     ReactDom.render(
@@ -54,13 +59,11 @@ describe('Account Type Component', () => {
   });
 
   it('fires a register request action', () => {
-    const actionDisp = store.dispatch(
-      GetStartedAction({
-        username: 'user',
-        password: 'pass',
-        email: 'tes@gmail.com'
-      })
-    );
+    const actionDisp = GetStartedAction({
+      username: 'user',
+      password: 'pass',
+      email: 'tes@gmail.com'
+    })(store.dispatch);
 
     expect(actionDisp.payload.url).toEqual('/auth/register');
     expect(actionDisp.payload.data).toEqual({
@@ -71,7 +74,6 @@ describe('Account Type Component', () => {
   });
 
   it('should handle REGISTER_SUCCESS', () => {
-  
     const user = {
       username: 'username',
       email: 'email@gmail.com',
@@ -83,13 +85,13 @@ describe('Account Type Component', () => {
         data: {
           email: 'email@gmail.com',
           password: 'passP12!@',
-          username: 'username',
+          username: 'username'
         },
         created: true,
         isLoggedIn: false,
         error: null
       },
-      loading:false
+      loading: false
     };
 
     expect(
@@ -100,30 +102,15 @@ describe('Account Type Component', () => {
     ).toEqual(expected);
   });
 
-
   it('should handle REGISTER_FAIL', () => {
-  
-    const user = {
-      username: 'username',
-      email: 'email@gmail.com',
-      password: 'passP12!@'
-    };
-
-    const expected = {
-      currentUser: user
-    };
-
-    expect(
-      reducer(undefined, {
-        type: REGISTER_FAIL,
-        payload: 'failed to register'
-      })
-    ).toEqual({
-      ...initialState.users,
-      created: true,
-      errorSignup: 'failed to register',
-      loading: false
+    const send = reducer(undefined, {
+      type: REGISTER_FAIL,
+      payload: 'failed to register'
     });
+
+    expect(typeof send).toBe('object');
+    expect(send.currentUser.data).toMatchObject(
+      initialState.users.currentUser.data
+    );
   });
-  
 });

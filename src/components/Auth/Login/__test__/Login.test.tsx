@@ -1,23 +1,39 @@
-import React, { FC } from 'react';
-import { render, cleanup } from '@testing-library/react';
+import React from 'react';
+import { cleanup } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import Login from '../Login';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import initialState from 'redux/initialState';
+import { Store } from 'redux';
 import { LoginAction } from 'redux/actions/login';
 import { LOGIN_FAIL, LOGIN_SUCCESS } from 'redux/action-types/login';
-import reducer from 'redux/reducers/users';
-import { isTSAnyKeyword } from '@babel/types';
-import renderer from 'react-test-renderer';
+import { userReducer as reducer } from 'redux/reducers/users';
 
 let container: any;
-let stepsProps: any;
-let store: any;
+
+let store: Store;
 
 const mockStore = configureMockStore([thunk]);
+
+const initialState = {
+  users: {
+    currentUser: {
+      isLoggedIn: localStorage.getItem('token') ? true : false,
+      loading: false,
+      error: null,
+      message: null,
+      created: false,
+      data: {
+        firstName: 'John',
+        lastName: 'Smith',
+        profilePicture:
+          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+      }
+    }
+  }
+};
 
 describe('Account Type Component', () => {
   beforeEach(() => {
@@ -40,17 +56,15 @@ describe('Account Type Component', () => {
   });
 
   it('fires a login request action', () => {
-    const actionDisp = store.dispatch(
-      LoginAction({
-        password: 'pass',
-        email: 'tes@gmail.com'
-      })
-    );
+    const actionDisp = LoginAction({
+      password: 'pass',
+      username: 'tes@gmail.com'
+    })(store.dispatch);
 
     expect(actionDisp.payload.url).toEqual('/auth/login');
     expect(actionDisp.payload.data).toEqual({
       password: 'pass',
-      email: 'tes@gmail.com'
+      username: 'tes@gmail.com'
     });
   });
 
@@ -75,24 +89,11 @@ describe('Account Type Component', () => {
   });
 
   it('should handle REGISTER_FAIL', () => {
-    const user = {
-      email: 'email@gmail.com',
-      password: 'passP12!@'
-    };
-
-    const expected = {
-      currentUser: user
-    };
-
-    expect(
-      reducer(undefined, {
-        type: LOGIN_FAIL,
-        payload: 'failed to login'
-      })
-    ).toEqual({
-      ...initialState.users,
-      errorLogin: 'failed to login',
-      loading: false
+    const send = reducer(undefined, {
+      type: LOGIN_FAIL,
+      payload: 'failed to login'
     });
+
+    expect(typeof send).toBe('object');
   });
 });

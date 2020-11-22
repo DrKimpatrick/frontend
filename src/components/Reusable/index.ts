@@ -14,3 +14,6 @@ export * from './GetHired';
 export * from './CoverImage';
 export * from './Avatar';
 export * from './Accordion';
+export * from './User';
+export * from './Loading';
+export * from './NotFound';

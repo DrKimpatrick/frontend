@@ -16,7 +16,8 @@ module.exports = {
     'noImplicitReturns': 0,
     'import/no-cycle': 0,
     'jsx-a11y/label-has-associated-control': 0,
-    'no-case-declarations': 0
+    'no-case-declarations': 0,
+    'jsx-a11y/anchor-is-valid': 0
   }
   // env: {
   //   'jest/globals': true,

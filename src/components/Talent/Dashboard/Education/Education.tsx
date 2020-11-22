@@ -18,7 +18,7 @@ import {
   VerificationStatus
 } from 'redux/action-types/education';
 import { AddEducation, EditEducation } from '.';
-import './style.scss';
+import './Education.scss';
 
 const useStyles = makeStyles(() => ({
   actionIcon: {

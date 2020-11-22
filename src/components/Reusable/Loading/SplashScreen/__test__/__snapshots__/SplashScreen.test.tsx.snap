@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SplashScreen should create snapshot 1`] = `
+<div
+  className="splashScreen"
+>
+  <div
+    className="logo"
+  >
+    <img
+      alt="logo"
+      src="logo-image.png"
+    />
+  </div>
+  <div
+    className="loading"
+  >
+    <h5>
+      Loading
+    </h5>
+    <div
+      className="css-10q6n6d"
+    >
+      <div
+        className="css-14wk343"
+      />
+      <div
+        className="css-13zqm2w"
+      />
+      <div
+        className="css-14wk343"
+      />
+    </div>
+  </div>
+</div>
+`;

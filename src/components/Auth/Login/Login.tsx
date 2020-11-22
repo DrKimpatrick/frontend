@@ -17,9 +17,10 @@ const Login: FC<Props> = (props: any) => {
   const [hidden, setHidden] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState({
-    username: '',
-    password: ''
+    username: 'admin',
+    password: 'Hacker@12'
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dataError, setDataError] = useState({
     email: '',
     password: ''

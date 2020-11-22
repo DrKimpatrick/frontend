@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import FolderSharedIcon from '@material-ui/icons/FolderShared';
 import DesktopWindowsOutlinedIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import SchoolIcon from '@material-ui/icons/School';
@@ -21,8 +21,6 @@ import './style.scss';
 
 const Dashboard: FC = () => {
   const size = useWindowSize();
-
-  const history = useHistory();
 
   return (
     <>

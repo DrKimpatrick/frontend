@@ -1,0 +1,25 @@
+@import '../../Reusable/User/UserItem/UserItem.scss';
+
+.affiliates {
+  position: relative;
+  border: 2px solid #dadada5e;
+  border-radius: 5px;
+  li {
+    .action {
+      width: auto;
+      h5 {
+        font-size: 40px;
+        font-weight: bold;
+      }
+      .accepted {
+        color: #4d9b62;
+      }
+      .pending {
+        color: #1437b1;
+      }
+      .declined {
+        color: #8f2517;
+      }
+    }
+  }
+}

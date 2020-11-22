@@ -27,8 +27,8 @@ export interface Employment {
   favoriteProject?: string;
   responsibilities?: string[];
   isCurrentPosition: boolean;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
   _id: string;
   verificationStatus: VerificationStatus;
 }

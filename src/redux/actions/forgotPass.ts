@@ -1,21 +1,17 @@
-import { Dispatch } from 'redux';
-import axios, { AxiosResponse } from 'axios';
 import apiAction from 'helpers/apiAction';
 import {
-  ForgotPass,
-  ForgotDispatchTypes,
   FORGOT_LOADING,
   FORGOT_FAIL,
   FORGOT_SUCCESS
 } from 'redux/action-types/forgotPass';
 
-export const ForgotPassAction = (email : any) => {
+export const ForgotPassAction = (email: any) => {
   return (dispatchAction: any) =>
     dispatchAction(
       apiAction({
         method: 'POST',
         url: '/auth/forget-password',
-        data: {email},
+        data: { email },
         onStart: () => (dispatch: any) => {
           dispatch({ type: FORGOT_LOADING });
         },

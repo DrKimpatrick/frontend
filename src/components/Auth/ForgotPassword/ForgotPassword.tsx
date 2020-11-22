@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import LockIcon from '@material-ui/icons/Lock';
-import { validEmailRegex, validateForm, passwordRegex } from 'utils/index';
+import { validEmailRegex } from 'utils/index';
 import { ForgotPassAction } from 'redux/actions/forgotPass';
 import Loader from 'components/Reusable/Loader/Loader';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
@@ -11,13 +11,14 @@ import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 const ForgotPassword: FC<any> = (props: any) => {
   const [emailValue, setEmailValue] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [emailError, setEmailError] = useState({
     email: ''
   });
 
   const dispatch = useDispatch();
 
-  const state: any = useSelector((state: any) => state.users);
+  const state: any = useSelector((appState: any) => appState.users);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailValue(event.target.value);

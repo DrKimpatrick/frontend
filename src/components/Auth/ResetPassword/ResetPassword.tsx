@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
-import { validateForm, passwordRegex } from 'utils/index';
+import { passwordRegex } from 'utils/index';
 import Rotate90DegreesCcwIcon from '@material-ui/icons/Rotate90DegreesCcw';
 import { ResetPassAction } from 'redux/actions/resetPass';
 import queryString from 'query-string';
@@ -23,7 +23,7 @@ const RestPassword: FC<any> = (props: any) => {
 
   const dispatch = useDispatch();
 
-  const state: any = useSelector((state: any) => state.users);
+  const state: any = useSelector((appState: any) => appState.users);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [event.target.name]: event.target.value });
