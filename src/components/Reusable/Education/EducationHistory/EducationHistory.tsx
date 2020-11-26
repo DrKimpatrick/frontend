@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns';
-import { withRouter, useLocation } from 'react-router-dom';
+import { withRouter, useLocation, useHistory } from 'react-router-dom';
 import { RootState } from 'redux/store';
 import { listSpecificEducation } from 'redux/actions/education';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
@@ -14,6 +14,8 @@ import './EducationHistory.scss';
 const EducationHistory: FC = () => {
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const location = useLocation<{ educationId: string }>();
 
   const getMonthAndYear = (value: string) => {
@@ -25,7 +27,7 @@ const EducationHistory: FC = () => {
   const reducer = useSelector((state: RootState) => {
     const { education, loading } = state.educations;
 
-    const { user } = state.users;
+    const { user }: any = state.users;
 
     return { user, loading, education };
   });
@@ -121,6 +123,7 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="add-education-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
             type="button"
+            onClick={() => history.push('/add-education')}
           >
             <span className="">Add another school</span>
             <AddCircleOutlineOutlinedIcon />
@@ -131,6 +134,7 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             type="button"
+            onClick={() => history.push('/education-history-list')}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>

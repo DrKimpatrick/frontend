@@ -19,7 +19,7 @@ export const LoginAction = (userData: Login) => {
         onSuccess: (data: any) => (dispatch: any) => {
           dispatch({
             type: LOGIN_SUCCESS,
-            payload: Array.isArray(data) ? data[0] : data
+            payload: Array.isArray(data) ? {...data[0], isLoggedIn: true} : {...data, isLoggedIn: true}
           });
         },
         onFailure: (err: any) => (dispatch: any) => {

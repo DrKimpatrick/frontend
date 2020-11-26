@@ -19,6 +19,7 @@ export interface LoginFail {
 export interface LoginSuccess {
   type: typeof LOGIN_SUCCESS;
   payload: any;
+  isLoggedIn: boolean;
 }
 
 export type LoginDispatchTypes = LoginLoading | LoginFail | LoginSuccess;

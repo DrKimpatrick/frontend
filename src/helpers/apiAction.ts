@@ -44,9 +44,7 @@ export default ({
       url,
       method,
       httpOptions,
-      data: {
-        ...data
-      },
+      data,
       queries: urlQueries,
       onStart,
       onSuccess,

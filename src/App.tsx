@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Router } from './components/Router';
 import { RootState } from './redux/store';
 import { setMessage } from './redux/actions/message/message';
-import { listCurrentUser } from './redux/actions/user';
+import { listCurrentUser, listAllSkill } from './redux/actions/user';
 
 axios.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
   'token'
@@ -30,7 +30,12 @@ const App = () => {
   }, [dispatch, reducer.message]);
 
   useEffect(() => {
-    listCurrentUser()(dispatch);
+    const fetchInitial = async () => {
+      await listCurrentUser()(dispatch);
+      await listAllSkill()(dispatch);
+    }
+
+    fetchInitial()
   }, [dispatch]);
 
   return <Router />;

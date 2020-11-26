@@ -29,7 +29,7 @@ const MessagePage: FC<any> = (props: any) => {
     }
 
     verifyRequest();
-  }, [state.error, state.errorVerify, verifyRequest]);
+  }, [state]);
 
   return (
     <>

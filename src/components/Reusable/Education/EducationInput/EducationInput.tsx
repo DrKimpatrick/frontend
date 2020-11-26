@@ -103,7 +103,7 @@ const EducationInput: FC<Props> = props => {
             </div>
 
             <div className="flex justify-between text-textGray mt-4 dateContainer">
-              <div className="item">
+              <div className="item w-full h-full pt-2 mt-2">
                 <label htmlFor="start date">Start date</label>
                 <input
                   id="date"
@@ -115,7 +115,7 @@ const EducationInput: FC<Props> = props => {
               </div>
 
               {values.isCurrentEducation === false && (
-                <div className="item">
+                <div className="item w-full h-full pt-2 mt-2">
                   <label htmlFor="end date">End date</label>
                   <input
                     id="date"

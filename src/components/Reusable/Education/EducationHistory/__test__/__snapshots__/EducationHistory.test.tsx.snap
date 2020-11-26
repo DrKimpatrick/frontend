@@ -407,6 +407,7 @@ Array [
       <button
         className="add-education-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
         data-testid="next-button"
+        onClick={[Function]}
         type="button"
       >
         <span
@@ -432,6 +433,7 @@ Array [
       <button
         className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
         data-testid="next-button"
+        onClick={[Function]}
         type="button"
       >
         <span

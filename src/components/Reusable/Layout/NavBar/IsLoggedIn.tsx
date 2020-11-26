@@ -29,12 +29,17 @@ const typedUseSelector: TypedUseSelectorHook<InitialStateInterface> = useSelecto
 const IsLoggedIn = (props: any) => {
   const { currentUser } = typedUseSelector(({ users }) => users);
   const { isLoggedIn, data } = currentUser;
+  console.log('current user', data);
   const classes = useStyles();
   const { userDashboard, user } = props;
   const [open, setOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
   const anchorNotificationRef = useRef<HTMLDivElement>(null);
+
+  const userState: any = useSelector((state: any) => state.users);
+
+  console.log('test this one', userState);
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
@@ -75,7 +80,9 @@ const IsLoggedIn = (props: any) => {
     setNotificationOpen(prevOpen => !prevOpen);
   };
 
-  if (isLoggedIn) {
+  console.log('ssssaasss', userState?.isLoggedIn);
+
+  if (isLoggedIn || userState?.isLoggedIn) {
     return (
       <div
         className={`lg:inline-flex items-center ${userDashboard && '-mt-24'}`}
@@ -179,7 +186,11 @@ const IsLoggedIn = (props: any) => {
                     className={`inline-block ml-2 ${
                       (userDashboard && 'h-24 w-24') || 'h-12 w-12'
                     } rounded-full text-white shadow-solid cursor-pointer`}
-                    src={data.profilePicture}
+                    src={
+                      data && data.profilePicture
+                        ? data.profilePicture
+                        : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+                    }
                     alt="avatar"
                   />
                 </div>

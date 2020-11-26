@@ -358,7 +358,7 @@ Array [
           className="flex justify-between text-textGray mt-4 dateContainer"
         >
           <div
-            className="item"
+            className="item w-full h-full pt-2 mt-2"
           >
             <label
               htmlFor="start date"
@@ -374,7 +374,7 @@ Array [
             />
           </div>
           <div
-            className="item"
+            className="item w-full h-full pt-2 mt-2"
           >
             <label
               htmlFor="end date"

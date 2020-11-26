@@ -7,66 +7,95 @@ import DraggableArea from './DraggableArea';
 import { SKILL_RANKING } from 'constants/draggable-types';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import './SkillRanking.scss';
+import MainBackground from '../Layout/MainBackground/MainBackground';
+import { addedSkillsUser } from 'redux/actions/user';
+import { AddSkill } from 'redux/action-types/skill';
+import { VerificationStatus } from 'redux/action-types/education';
+import { useDispatch, useSelector } from 'react-redux';
 
-
-const rawSkills = [
-  { id: 5, label: 'BDD' },
-  { id: 5, label: 'SQL' },
-  { id: 5, label: 'HTML' },
-  { id: 5, label: 'BDD' },
-  { id: 5, label: 'SQL' },
-  { id: 5, label: 'HTML' },
-  { id: 5, label: 'BDD' },
-  { id: 5, label: 'SQL' },
-  { id: 5, label: 'HTML' },
-  { id: 5, label: 'React' }
-];
 
 type props = {};
 const SkillRanking: FC<props> = (props: any) => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const reducer = useSelector((state: any) => state.users);
+
+  console.log('asasa', reducer);
   const [skills, setSkills] = useState<
     {
-      id: number;
-      label: string;
+      _id: string;
+      skill: string;
     }[]
-  >(rawSkills);
+  >([]);
 
   const [beginnerskills, setBeginnerskills] = useState<
     {
-      id: number;
-      label: string;
+      _id: string;
+      skill: string;
     }[]
   >([]);
   const [intermediateskills, setIntermediateskills] = useState<
     {
-      id: number;
-      label: string;
+      _id: string;
+      skill: string;
     }[]
   >([]);
   const [advancedskills, setAdvancedskills] = useState<
     {
-      id: number;
-      label: string;
+      _id: string;
+      skill: string;
     }[]
   >([]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      props.history.push('/login');
+    if (reducer.skills) {
+      setSkills(reducer.skills);
     }
-  });
+  }, [reducer.loading]);
 
+  const submitSkills = async () => {
+    let allSkills: AddSkill[] = [];
 
-  console.log('greeeeeeee', beginnerskills, intermediateskills, advancedskills)
+    beginnerskills.map(skill =>
+      allSkills.push({
+        skill: skill._id,
+        level: 'beginner',
+        verificationStatus: VerificationStatus.Unverified
+      })
+    );
+    intermediateskills.map(skill =>
+      allSkills.push({
+        skill: skill._id,
+        level: 'intermediate',
+        verificationStatus: VerificationStatus.Unverified
+      })
+    );
+    advancedskills.map(skill =>
+      allSkills.push({
+        skill: skill._id,
+        level: 'advanced',
+        verificationStatus: VerificationStatus.Unverified
+      })
+    );
+
+    await addedSkillsUser(allSkills)(dispatch);
+
+    if (!reducer.errors) {
+      history.push('/add-employment')
+    }
+  };
+
   const onDropSkill = ({ skill, index, area }: any, droppedOn: string) => {
     if (area === droppedOn) {
       return;
     }
     switch (area) {
       case 'skills': {
-        const newSkills = skills.filter((_, i) => i !== index);
+        const newSkills = skills.filter(
+          (_: any, i: any) => i !== index
+        );
         setSkills(newSkills);
 
         switch (droppedOn) {
@@ -280,12 +309,13 @@ const SkillRanking: FC<props> = (props: any) => {
         <div className="flex justify-center mt-12">
           <button
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-            onClick={() => history.push('/recent-employer')}
+            onClick={submitSkills}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
         </div>
       </section>
+      <MainBackground />
     </Fragment>
   );
 };

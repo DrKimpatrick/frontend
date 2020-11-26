@@ -95,7 +95,7 @@ const CurrentRole: FC = () => {
                       <label>What is your company name ? </label>
                       <input
                         type="text"
-                        className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+                        className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
                         placeholder="Company Name"
                         name="companyName"
                         value={values.companyName}
@@ -111,7 +111,7 @@ const CurrentRole: FC = () => {
                       <label>What is your current role?</label>
                       <input
                         type="text"
-                        className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height mt-2"
                         placeholder="Your Title"
                         value={values.title}
                         onChange={formik.handleChange}
@@ -155,7 +155,7 @@ const CurrentRole: FC = () => {
                             boxShadow: 'none'
                           })
                         }}
-                        className="select"
+                        className="select mt-2"
                         defaultValue={
                           values.supervisor !== ''
                             ? {
@@ -175,7 +175,7 @@ const CurrentRole: FC = () => {
                       className="flex justify-between text-textGray mt-4 dateContainer"
                       style={{ flexDirection: 'column', alignItems: 'start' }}
                     >
-                      <div className="item" style={{ width: '100%' }}>
+                      <div className="item w-full h-full pt-2 mt-2">
                         <label>Start Date</label>
                         <input
                           id="date"
@@ -191,7 +191,7 @@ const CurrentRole: FC = () => {
                       {!errors ||
                         (!errors.supervisor && getErrors('startDate'))}
                     </div>
-                    <div className="flex justify-center mt-4">
+                    <div className="flex justify-center mt-10">
                       <button
                         data-testid="next-button"
                         className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"

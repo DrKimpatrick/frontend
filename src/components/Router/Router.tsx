@@ -39,7 +39,7 @@ import { RouteUrl } from 'utils/routes';
 
 const AppRouter: React.FC = () => {
   const authRoutes = [
-    { path: '/', exact: true, component: <Landing /> },
+    // { path: '/', exact: true, component: <Landing /> },
     { path: RouteUrl.Login, exact: true, component: <Login /> },
     { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
     { path: RouteUrl.Home, exact: true, component: <Landing /> },
@@ -127,6 +127,7 @@ const AppRouter: React.FC = () => {
   return (
     <Router>
       <Switch>
+        <Route component={Landing} path='/' exact = {true}/>
         <Layout>
           <>
             {authRoutes.map((route, index) => (

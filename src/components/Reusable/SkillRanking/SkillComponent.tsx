@@ -98,7 +98,7 @@ const SkillComponent: FC<props> = ({
         </div>
 
         <div className="label-text cursor-move">
-          <span>{skill.label}</span>
+          <span>{skill.skill}</span>
         </div>
       </div>
       <Menu

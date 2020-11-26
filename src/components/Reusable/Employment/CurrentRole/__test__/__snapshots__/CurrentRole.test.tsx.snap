@@ -328,7 +328,7 @@ Array [
               What is your company name ? 
             </label>
             <input
-              className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+              className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
               name="companyName"
               onChange={[Function]}
               placeholder="Company Name"
@@ -343,7 +343,7 @@ Array [
               What is your current role?
             </label>
             <input
-              className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+              className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height mt-2"
               name="title"
               onChange={[Function]}
               placeholder="Your Title"
@@ -358,7 +358,7 @@ Array [
               Your supervisor 
             </label>
             <div
-              className="select css-2b097c-container"
+              className="select mt-2 css-2b097c-container"
               onKeyDown={[Function]}
             >
               <div
@@ -476,12 +476,7 @@ Array [
             }
           >
             <div
-              className="item"
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
+              className="item w-full h-full pt-2 mt-2"
             >
               <label>
                 Start Date
@@ -496,7 +491,7 @@ Array [
             </div>
           </div>
           <div
-            className="flex justify-center mt-4"
+            className="flex justify-center mt-10"
           >
             <button
               className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"

@@ -1,3 +1,4 @@
+import { AddedSkill, addSkillTypes, AddSkillUserTypes } from 'redux/action-types/skill';
 import {
   RegisterDispatchTypes,
   REGISTER_LOADING,
@@ -58,6 +59,7 @@ interface InitialState {
     users?: User[];
     currentPage?: number;
   };
+  // skills?: AddedSkill[];
 }
 
 const initialState: InitialState = {
@@ -83,6 +85,7 @@ export const userReducer = (
     | ResetDispatchTypes
     | VerifyDispatchTypes
     | UserTypeActions
+    | AddSkillUserTypes
 ) => {
   switch (action.type) {
     case REGISTER_FAIL:
@@ -201,6 +204,24 @@ export const userReducer = (
 
     case UserTypes.ListUserSkill:
       return { ...state, userSkill: action.payload.data, loading: false };
+
+    case addSkillTypes.GetSkillsFail:
+      return { ...state, errors: action.payload, loading: false };
+
+    case addSkillTypes.GetSkillsLoading:
+      return { ...state, loading: true };
+
+    case addSkillTypes.GetSkillsSuccess:
+      return { ...state, skills: action.payload, loading: false };
+    
+    case addSkillTypes.SkillFail: 
+      return { ...state, errors: action.payload, loading: false }
+    
+    case addSkillTypes.SkillSuccess:
+      return { ...state, addedSkill: action.payload, loading: false }
+    
+    case addSkillTypes.SkillLoading:
+      return { ...state, loading: true}
 
     case UserTypes.ListUserByRole:
       return {

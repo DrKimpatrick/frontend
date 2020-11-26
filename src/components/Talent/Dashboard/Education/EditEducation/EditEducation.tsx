@@ -21,7 +21,7 @@ const EditEducation: FC<Props> = props => {
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors } = state.educations;
-    const { user } = state.users;
+    const { user }:any = state.users;
 
     const { message } = state.messages;
 

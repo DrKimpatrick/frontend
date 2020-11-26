@@ -11,7 +11,6 @@ import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
 import initialState from 'redux/initialState';
 import { GetStartedAction } from 'redux/actions/getStarted';
-import reducer from 'redux/reducers/users';
 
 
 let container: any;

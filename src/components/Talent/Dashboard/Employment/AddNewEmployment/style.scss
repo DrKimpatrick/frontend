@@ -111,10 +111,11 @@
     .item {
       flex-grow: 1;
       margin: 2px;
+      margin-top: 0.5rem !important;
       display: flex;
       flex-direction: column;
-      height: 40px;
-      border: 1px solid #dadada;
+      // height: 40px;
+      border: 1.5px solid #dadada;
       border-radius: 4px;
       label {
         font-size: 10px;
@@ -139,4 +140,9 @@
     color: rgb(255, 0, 0);
     font-size: 12px;
   }
+}
+
+.css-c8odyh-control {
+  margin-top: .2rem;
+  margin-bottom: 0.2rem;
 }

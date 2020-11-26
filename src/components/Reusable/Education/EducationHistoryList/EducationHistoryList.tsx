@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { format } from 'date-fns';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
@@ -20,6 +20,8 @@ const EducationHistory: FC = () => {
     return date;
   };
 
+  const history = useHistory();
+  
   useEffect(() => {
     listEducation()(dispatch);
   }, [dispatch]);
@@ -77,6 +79,7 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             type="button"
+            onClick={() => history.push('/user/dashboard')}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
