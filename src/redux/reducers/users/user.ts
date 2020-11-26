@@ -1,4 +1,4 @@
-import { AddedSkill, addSkillTypes, AddSkillUserTypes } from 'redux/action-types/skill';
+import { SkillTypes, SkillActionTypes } from 'redux/action-types/skill';
 import {
   RegisterDispatchTypes,
   REGISTER_LOADING,
@@ -60,6 +60,8 @@ interface InitialState {
     currentPage?: number;
   };
   // skills?: AddedSkill[];
+  activePath: string | null;
+  errors?: any;
 }
 
 const initialState: InitialState = {
@@ -73,7 +75,8 @@ const initialState: InitialState = {
       profilePicture:
         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
     }
-  }
+  },
+  activePath: null
 };
 
 export const userReducer = (
@@ -85,7 +88,7 @@ export const userReducer = (
     | ResetDispatchTypes
     | VerifyDispatchTypes
     | UserTypeActions
-    | AddSkillUserTypes
+    | SkillActionTypes
 ) => {
   switch (action.type) {
     case REGISTER_FAIL:
@@ -200,28 +203,33 @@ export const userReducer = (
       return { ...state, loading: action.payload.loading };
 
     case UserTypes.ListSpecificUser:
-      return { ...state, specificUser: action.payload.data, loading: false };
+      return {
+        ...state,
+        specificUser: action.payload.data,
+        loading: false,
+        errors: undefined
+      };
 
     case UserTypes.ListUserSkill:
       return { ...state, userSkill: action.payload.data, loading: false };
 
-    case addSkillTypes.GetSkillsFail:
+    case SkillTypes.GetSkillsFail:
       return { ...state, errors: action.payload, loading: false };
 
-    case addSkillTypes.GetSkillsLoading:
+    case SkillTypes.GetSkillsLoading:
       return { ...state, loading: true };
 
-    case addSkillTypes.GetSkillsSuccess:
+    case SkillTypes.GetSkillsSuccess:
       return { ...state, skills: action.payload, loading: false };
-    
-    case addSkillTypes.SkillFail: 
-      return { ...state, errors: action.payload, loading: false }
-    
-    case addSkillTypes.SkillSuccess:
-      return { ...state, addedSkill: action.payload, loading: false }
-    
-    case addSkillTypes.SkillLoading:
-      return { ...state, loading: true}
+
+    case SkillTypes.SkillFail:
+      return { ...state, errors: action.payload, loading: false };
+
+    case SkillTypes.SkillSuccess:
+      return { ...state, addedSkill: action.payload, loading: false };
+
+    case SkillTypes.SkillLoading:
+      return { ...state, loading: true };
 
     case UserTypes.ListUserByRole:
       return {
@@ -233,6 +241,9 @@ export const userReducer = (
         },
         loading: false
       };
+
+    case UserTypes.ActivePath:
+      return { ...state, activePath: action.payload.data };
 
     default:
       return state;

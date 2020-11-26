@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound should render without crashing 1`] = `
+<div
+  className="pageNotFound"
+>
+  <div
+    className="items"
+  >
+    <ul>
+      <li>
+        <h1
+          className="status"
+        >
+          404
+        </h1>
+      </li>
+      <li>
+        <div
+          className="flex justify-center items-center"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            style={
+              Object {
+                "color": "#d10000",
+                "height": "50px",
+                "width": "50px",
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69L5.69 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.69L18.31 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z"
+            />
+          </svg>
+          <div
+            className="mx-2"
+          >
+            Not Found
+          </div>
+        </div>
+      </li>
+      <li>
+        <div
+          style={
+            Object {
+              "fontSize": 15,
+            }
+          }
+        >
+          Page not found, please click on the button below to go back
+        </div>
+      </li>
+      <li>
+        <div
+          className="flex justify-center items-center"
+          style={
+            Object {
+              "fontSize": 15,
+            }
+          }
+        >
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              style={
+                Object {
+                  "height": "25px",
+                  "width": "25px",
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+          </button>
+          <div
+            className="mx-2"
+          >
+            go back
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

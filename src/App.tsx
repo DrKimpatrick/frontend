@@ -30,12 +30,8 @@ const App = () => {
   }, [dispatch, reducer.message]);
 
   useEffect(() => {
-    const fetchInitial = async () => {
-      await listCurrentUser()(dispatch);
-      await listAllSkill()(dispatch);
-    }
-
-    fetchInitial()
+    listCurrentUser()(dispatch);
+    listAllSkill()(dispatch);
   }, [dispatch]);
 
   return <Router />;

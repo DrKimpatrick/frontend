@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import Select from 'react-select';
@@ -9,6 +9,7 @@ import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import { addEmployment, listEmployments } from 'redux/actions/employment';
+import { RouteUrl } from 'utils/routes';
 import MainBackground from '../../Layout/MainBackground/MainBackground';
 import { currentRoleSchema } from './Schema';
 import './CurrentRole.scss';
@@ -191,7 +192,7 @@ const CurrentRole: FC = () => {
                       {!errors ||
                         (!errors.supervisor && getErrors('startDate'))}
                     </div>
-                    <div className="flex justify-center mt-10">
+                    <div className="flex justify-center mt-10 flex-col items-center">
                       <button
                         data-testid="next-button"
                         className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
@@ -200,6 +201,12 @@ const CurrentRole: FC = () => {
                         <label className="">Next</label>{' '}
                         <ArrowRightAltTwoTone />
                       </button>
+                      <Link
+                        to={RouteUrl.SkillRanking}
+                        className="my-5 font-bold"
+                      >
+                        Skip
+                      </Link>
                     </div>
                   </form>
                 );

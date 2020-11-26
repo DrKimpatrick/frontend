@@ -1,16 +1,19 @@
 import React, { FC, useEffect } from 'react';
 import './Affiliate.scss';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AdminLayout, SplashScreen } from 'components/Reusable';
 import { listCourseByStatus } from 'redux/actions/course';
 import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { RootState } from 'redux/store';
+import { setActivePath } from 'redux/actions/user';
 
 const Affiliate: FC = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
     const {
@@ -43,7 +46,9 @@ const Affiliate: FC = () => {
       types: CourseTypes.ListDeclinedCourse,
       status: CourseStatus.Declined
     })(dispatch);
-  }, [dispatch]);
+
+    setActivePath(location.pathname)(dispatch);
+  }, [dispatch, location.pathname]);
 
   if (reducer.loading) {
     return <SplashScreen />;

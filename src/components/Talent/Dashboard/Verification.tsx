@@ -1,14 +1,14 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 
 type props = {
-  monitor?: Boolean;
+  monitor?: boolean;
 };
 const Verification: FC<props> = ({ monitor }) => {
   return (
-    <Fragment>
+    <>
       <div className="w-full">
         <ul
           className={`${
@@ -37,7 +37,7 @@ const Verification: FC<props> = ({ monitor }) => {
           </li>
         </ul>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -2,12 +2,13 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import thunk from 'redux-thunk';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { cleanup, render } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import UserProfile from '../UserProfile';
+import { UserRole } from 'redux/action-types/user';
 
 let store: Store;
 
@@ -18,12 +19,13 @@ const mockStore = configureMockStore(middleware);
 const initialState = {
   users: {
     user: {
-      courses: [],
+      username: 'username',
+      roles: [UserRole.SuperAdmin],
+      email: 'email@gmail.com',
       _id: 'id',
-      username: 'gramdb',
-      email: 'gramdb@gmail.com',
-      dateRegistered: '2020-10-30T07:41:16.417Z',
-      updatedAt: '2020-11-11T13:13:36.270Z'
+      employmentHistory: [],
+      educationHistory: [],
+      courses: []
     },
     currentUser: {
       isLoggedIn: true,
@@ -58,15 +60,19 @@ const initialState = {
           schoolName: 'companyName',
           verificationStatus: 'status'
         }
+      ],
+      roles: [
+        UserRole.Talent,
+        UserRole.CompanyAdmin,
+        UserRole.HrAdmin,
+        UserRole.RecruitmentAdmin,
+        UserRole.TrainingAffiliate,
+        UserRole.SuperAdmin
       ]
     },
     loading: false,
     userSkill: []
   }
-};
-
-const mockUseLocation = {
-  userId: 'user id'
 };
 
 describe('UserProfile', () => {
@@ -215,6 +221,34 @@ describe('UserProfile', () => {
           </Router>
         </Provider>
       );
+    });
+  });
+
+  describe('return ProfileNotFound', () => {
+    beforeEach(() => {
+      store = mockStore({
+        ...initialState,
+        users: {
+          ...initialState.users,
+          specificUser: null,
+          errors: 'something wrong'
+        }
+      });
+    });
+    it('should return Profile Not Found when there is no profile', () => {
+      const { container } = render(
+        <Provider store={store}>
+          <Router>
+            <UserProfile />
+          </Router>
+        </Provider>
+      );
+
+      const div: Element | any = container.querySelector(
+        '.profileNotFound .notFoundContainer .message'
+      );
+
+      expect(div).toHaveTextContent('Profile is not available');
     });
   });
 });

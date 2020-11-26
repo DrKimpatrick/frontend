@@ -1,3 +1,4 @@
+import { VerificationStatus, SkillLevel } from 'redux/action-types/skill';
 export const initialState = {
   users: {
     currentUser: {
@@ -79,5 +80,46 @@ export const initialState = {
     errors: {
       errors: null
     }
+  },
+  skills: {
+    userSkill: [
+      {
+        skill: {
+          skill: 'php',
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        _id: 'id',
+        level: SkillLevel.Beginner,
+        verificationStatus: VerificationStatus.Unverified,
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+      },
+      {
+        skill: {
+          skill: 'typescript',
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        _id: 'id',
+        level: SkillLevel.Advanced,
+        verificationStatus: VerificationStatus.Unverified,
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+      },
+      {
+        skill: {
+          skill: 'typescript',
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        _id: 'id',
+        level: SkillLevel.Intermediate,
+        verificationStatus: VerificationStatus.Unverified,
+        createdAt: new Date().toDateString(),
+        updatedAt: new Date().toDateString()
+      }
+    ],
+    loading: false
   }
 };

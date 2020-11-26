@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { listUserByRole } from 'redux/actions/user';
+import { listUserByRole, setActivePath } from 'redux/actions/user';
 import {
   AdminLayout,
   SplashScreen,
@@ -19,6 +19,8 @@ const HrAdmin: FC = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
     const { loading, usersByRole } = state.users;
@@ -44,6 +46,10 @@ const HrAdmin: FC = () => {
     })(dispatch);
   }, [dispatch, page]);
 
+  useEffect(() => {
+    setActivePath(location.pathname)(dispatch);
+  }, [dispatch, location.pathname]);
+
   if (loading) {
     return <SplashScreen />;
   }
@@ -51,18 +57,13 @@ const HrAdmin: FC = () => {
   return (
     <AdminLayout>
       <div>
-        {usersByRole && usersByRole.totalDocs && (
+        {usersByRole && (
           <UserItem
             items={usersByRole.users}
-            view={value =>
-              history.push({
-                pathname: `/profile/${value.username}`,
-                state: { userId: value.userId }
-              })
-            }
+            view={value => history.push(`/profile/${value.username}`)}
             pageChange={pageChange}
             currentPage={page}
-            totalItems={usersByRole.totalDocs}
+            totalItems={usersByRole.totalDocs ? usersByRole.totalDocs : 0}
             itemPerPage={itemPerPage}
           />
         )}

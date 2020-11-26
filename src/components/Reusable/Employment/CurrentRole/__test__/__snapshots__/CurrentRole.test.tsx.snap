@@ -491,7 +491,7 @@ Array [
             </div>
           </div>
           <div
-            className="flex justify-center mt-10"
+            className="flex justify-center mt-10 flex-col items-center"
           >
             <button
               className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
@@ -515,6 +515,13 @@ Array [
                 />
               </svg>
             </button>
+            <a
+              className="my-5 font-bold"
+              href="/skill-ranking"
+              onClick={[Function]}
+            >
+              Skip
+            </a>
           </div>
         </form>
       </div>

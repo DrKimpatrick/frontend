@@ -1,8 +1,13 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { ArrowBack } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'redux/store';
+import { listCurrentUser } from 'redux/actions/user';
+import { SplashScreen } from 'components/Reusable';
+import { UserRole } from 'redux/action-types/user';
 import { NavBar, MainBackground } from '..';
 import { AdminMenu } from '.';
 import './AdminLayout.scss';
@@ -14,6 +19,36 @@ interface Props {
 
 export const AdminLayout: FC<Props & WithStyles> = props => {
   const { children, classes, topMenu } = props;
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const reducer = useSelector((state: RootState) => {
+    const { user, loading } = state.users;
+
+    return { user, loading };
+  });
+
+  const { user, loading } = reducer;
+
+  useEffect(() => {
+    listCurrentUser()(dispatch);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      const roles = user.roles.find(item => item === UserRole.SuperAdmin);
+      if (!roles) {
+        history.goBack();
+      }
+    }
+  }, [history, user]);
+
+  if (loading) {
+    return <SplashScreen />;
+  }
+
   return (
     <div className="adminLayout">
       <NavBar />
@@ -28,7 +63,11 @@ export const AdminLayout: FC<Props & WithStyles> = props => {
       >
         {topMenu && (
           <div className="pageDirection">
-            <Button type="button" className={classes.backButton}>
+            <Button
+              type="button"
+              className={classes.backButton}
+              onClick={() => history.goBack()}
+            >
               <ArrowBack />
             </Button>
             <ul>

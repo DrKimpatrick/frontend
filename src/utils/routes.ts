@@ -23,7 +23,7 @@ export enum RouteUrl {
 
   Register = '/register',
 
-  Home = '/home',
+  Home = '/',
 
   Account = '/Account',
 
@@ -57,5 +57,7 @@ export enum RouteUrl {
 
   EducationHistory = '/education-history',
 
-  EducationHistoryList = '/education-history-list'
+  EducationHistoryList = '/education-history-list',
+
+  AddEmployment = '/add-employment'
 }

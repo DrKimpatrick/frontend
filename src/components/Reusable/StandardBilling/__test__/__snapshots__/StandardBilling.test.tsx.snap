@@ -45,7 +45,7 @@ Array [
         </div>
         <a
           className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
-          href="/Login"
+          href="/login"
           onClick={[Function]}
         >
           <span>

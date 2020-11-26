@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';

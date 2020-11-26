@@ -1,8 +1,10 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './AdminMenu.scss';
-import { SupervisorAccount } from '@material-ui/icons';
+import { SupervisorAccount, AddComment } from '@material-ui/icons';
 import { RouteUrl } from 'utils/routes';
+import { RootState } from 'redux/store';
+import { useSelector } from 'react-redux';
 
 enum ActiveMenu {
   Admin = 'Admin',
@@ -10,15 +12,97 @@ enum ActiveMenu {
   Affiliate = 'Affiliate',
   TrainingAffiliate = 'TrainingAffiliate',
   Company = 'Company',
-  Recruiter = 'Recruiter'
+  Recruiter = 'Recruiter',
+  Skills = 'Skills',
+  Education = 'Education',
+  Employment = 'Employment'
 }
+
+const menuList = [
+  {
+    name: 'Users',
+    url: '#',
+    icon: <SupervisorAccount />,
+    active: '',
+    child: [
+      {
+        name: 'Talent',
+        url: RouteUrl.SuperAdminDashboard,
+        active: ActiveMenu.Admin
+      },
+      {
+        name: 'Hr Admin',
+        url: RouteUrl.HrAdmin,
+        active: ActiveMenu.HrAdmin
+      },
+      {
+        name: 'Affiliates',
+        url: RouteUrl.Affiliate,
+        active: ActiveMenu.Affiliate
+      }
+    ]
+  },
+  {
+    name: 'Admins',
+    url: '#',
+    icon: <SupervisorAccount />,
+    active: '',
+    child: [
+      {
+        name: 'Recruiter',
+        url: RouteUrl.Recruiter,
+        active: ActiveMenu.Recruiter
+      },
+      {
+        name: 'Company',
+        url: RouteUrl.Company,
+        active: ActiveMenu.Company
+      },
+      {
+        name: 'Training',
+        url: RouteUrl.TrainingAffiliate,
+        active: ActiveMenu.TrainingAffiliate
+      }
+    ]
+  },
+  {
+    name: 'Create',
+    url: '#',
+    icon: <AddComment />,
+    active: '',
+    child: [
+      {
+        name: 'Skills',
+        url: '#',
+        active: ActiveMenu.Skills
+      },
+      {
+        name: 'Education',
+        url: '#',
+        active: ActiveMenu.Education
+      },
+      {
+        name: 'Employment',
+        url: '#',
+        active: ActiveMenu.Employment
+      }
+    ]
+  }
+];
+
 const AdminMenu: FC = () => {
   const [active, setActive] = useState<string>();
 
-  const location = useLocation();
+  const reducer = useSelector((state: RootState) => {
+    const { activePath } = state.users;
+
+    return { activePath };
+  });
+
+  const { activePath } = reducer;
 
   useEffect(() => {
-    switch (location.pathname) {
+    switch (activePath) {
       case RouteUrl.SuperAdminDashboard:
         setActive(ActiveMenu.Admin);
         break;
@@ -28,6 +112,9 @@ const AdminMenu: FC = () => {
         break;
 
       case RouteUrl.Affiliate:
+      case RouteUrl.PendingCourse:
+      case RouteUrl.AcceptedCourse:
+      case RouteUrl.DeclinedCourse:
         setActive(ActiveMenu.Affiliate);
         break;
       case RouteUrl.TrainingAffiliate:
@@ -45,69 +132,35 @@ const AdminMenu: FC = () => {
       default:
         setActive(undefined);
     }
-  }, [location.pathname]);
+  }, [activePath]);
 
   return (
     <div className="adminMenu">
       <ul className="parent">
-        <li>
-          <Link to="#" className="link">
-            <SupervisorAccount />
-            <h5>Users</h5>
-          </Link>
-          <ul className="childMenu">
-            <li
-              className={active && active === ActiveMenu.Admin ? 'active' : ''}
-            >
-              <Link to={RouteUrl.SuperAdminDashboard}>Talent</Link>
+        {menuList &&
+          menuList.length > 0 &&
+          menuList.map((item, i) => (
+            <li key={i}>
+              <Link to={item.url} className="link">
+                {item.icon}
+                <h5>{item.name}</h5>
+              </Link>
+              {item.child && item.child.length > 0 && (
+                <ul className="childMenu">
+                  {item.child.map((child, index) => (
+                    <li
+                      className={
+                        active && active === child.active ? 'active' : ''
+                      }
+                      key={index}
+                    >
+                      <Link to={child.url}>{child.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
-            <li
-              className={
-                active && active === ActiveMenu.HrAdmin ? 'active' : ''
-              }
-            >
-              <Link to={RouteUrl.HrAdmin}>HR Admin</Link>
-            </li>
-            <li
-              className={
-                active && active === ActiveMenu.Affiliate ? 'active' : ''
-              }
-            >
-              <Link to={RouteUrl.Affiliate}>Affiliates</Link>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <Link to="#" className="link">
-            <SupervisorAccount />
-            <h5>Admins</h5>
-          </Link>
-          <ul className="childMenu">
-            <li
-              className={
-                active && active === ActiveMenu.Recruiter ? 'active' : ''
-              }
-            >
-              <Link to={RouteUrl.Recruiter}>Recruiter</Link>
-            </li>
-            <li
-              className={
-                active && active === ActiveMenu.Company ? 'active' : ''
-              }
-            >
-              <Link to={RouteUrl.Company}>Company</Link>
-            </li>
-            <li
-              className={
-                active && active === ActiveMenu.TrainingAffiliate
-                  ? 'active'
-                  : ''
-              }
-            >
-              <Link to={RouteUrl.TrainingAffiliate}>Training</Link>
-            </li>
-          </ul>
-        </li>
+          ))}
       </ul>
     </div>
   );

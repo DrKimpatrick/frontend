@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { UserTypes } from 'redux/action-types/user';
-import { AddSkill, addSkillTypes } from 'redux/action-types/skill';
+import { AddSkill, SkillTypes } from 'redux/action-types/skill';
 import ApiAction from '../../../helpers/apiAction';
 
 export const listCurrentUser = () => (dispatchAction: Dispatch) => {
@@ -80,17 +80,20 @@ export const listAllSkill = () => (dispatchAction: Dispatch) => {
       url: `/skills`,
       method: 'GET',
       onStart: () => (dispatch: Dispatch) => {
-        dispatch({ type: addSkillTypes.GetSkillsLoading, payload: { loading: true } });
+        dispatch({
+          type: SkillTypes.GetSkillsLoading,
+          payload: { loading: true }
+        });
       },
       onSuccess: res => (dispatch: Dispatch) => {
         dispatch({
-          type: addSkillTypes.GetSkillsSuccess,
+          type: SkillTypes.GetSkillsSuccess,
           payload: res.data
         });
       },
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
-          type: addSkillTypes.GetSkillsFail,
+          type: SkillTypes.GetSkillsFail,
           payload: { errors: error.response.data }
         });
       }
@@ -125,30 +128,39 @@ export const listUserByRole = (data: {
       }
     })
   );
-  };
+};
 
-export const addedSkillsUser = (dataValues: AddSkill[]) => (dispatchAction: Dispatch) => {
-  console.log('data values', dataValues)
-    return dispatchAction(
-      ApiAction({
-        url: '/skills/me',
-        method: 'POST',
-        data: dataValues,
-        onStart: () => (dispatch: Dispatch) => {
-          dispatch({ type: addSkillTypes.SkillLoading, payload: { loading: true } });
-        },
-        onSuccess: res => (dispatch: Dispatch) => {
-          dispatch({
-            type: addSkillTypes.SkillSuccess,
-            payload: { data: res }
-          });
-        },
-        onFailure: error => (dispatch: Dispatch) => {
-          dispatch({
-            type: addSkillTypes.SkillFail,
-            payload: { errors: error.response.data }
-          });
-        }
-      })
-    );
-    };
+export const addedSkillsUser = (dataValues: AddSkill[]) => (
+  dispatchAction: Dispatch
+) => {
+  console.log('data values', dataValues);
+  return dispatchAction(
+    ApiAction({
+      url: '/skills/me',
+      method: 'POST',
+      data: dataValues,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.SkillLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.SkillSuccess,
+          payload: { data: res }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.SkillFail,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};
+
+export const setActivePath = (pathname: string) => (dispatch: Dispatch) => {
+  dispatch({ type: UserTypes.ActivePath, payload: { data: pathname } });
+};

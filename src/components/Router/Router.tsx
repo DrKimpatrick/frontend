@@ -21,7 +21,8 @@ import {
   AddEducation,
   MessagePage,
   GetHired,
-  Layout
+  Layout,
+  NotFound
 } from 'components/Reusable';
 import {
   AdminDashboard,
@@ -39,16 +40,14 @@ import { RouteUrl } from 'utils/routes';
 
 const AppRouter: React.FC = () => {
   const authRoutes = [
-    // { path: '/', exact: true, component: <Landing /> },
     { path: RouteUrl.Login, exact: true, component: <Login /> },
     { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
-    { path: RouteUrl.Home, exact: true, component: <Landing /> },
     { path: RouteUrl.Account, exact: true, component: <Login /> },
     { path: RouteUrl.Notification, exact: true, component: <Dashboard /> },
     { path: RouteUrl.CurrentRole, exact: true, component: <CurrentRole /> },
     { path: RouteUrl.SkillRanking, exact: true, component: <SkillRanking /> },
     {
-      path: RouteUrl.RecentEmployer,
+      path: RouteUrl.AddEmployment,
       exact: true,
       component: <RecentEmployer />
     },
@@ -127,17 +126,13 @@ const AppRouter: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route component={Landing} path='/' exact = {true}/>
-        <Layout>
-          <>
-            {authRoutes.map((route, index) => (
-              <Route path={route.path} exact={route.exact} key={index}>
-                {route.component}
-              </Route>
-            ))}
-          </>
-        </Layout>
-        {/* <Route component={NotFoundPageComponent} /> */}
+        <Route component={Landing} path={RouteUrl.Home} exact />
+        {authRoutes.map((route, index) => (
+          <Route path={route.path} exact={route.exact} key={index}>
+            <Layout>{route.component}</Layout>
+          </Route>
+        ))}
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );

@@ -1,12 +1,19 @@
-import { VerificationStatus } from './education';
-
-export enum addSkillTypes {
+export enum SkillTypes {
   SkillLoading = 'Skill/Loading',
-  SkillSuccess = 'Skill/Success',
-  SkillFail = 'Skill/Fail',
-  GetSkillsLoading = 'SkillsGet/Loading',
-  GetSkillsSuccess = 'SkillsGet/Success',
-  GetSkillsFail = 'SkillsFail/Fail',
+  SkillSuccess = 'Skill/SkillSuccess',
+  SkillFail = 'Skill/SkillFail',
+  GetSkillsLoading = 'Skill/Loading',
+  GetSkillsSuccess = 'Skill/GetSkillsSuccess',
+  GetSkillsFail = 'Skill/GetSkillsFail',
+  ListUserSkill = 'Skill/ListUserSkill',
+  Errors = 'Skill/Errors',
+  Loading = 'Skill/LoadingSkill'
+}
+
+export enum VerificationStatus {
+  Unverified = 'unverified',
+  InProgress = 'inProgress',
+  Verified = 'verified'
 }
 
 export interface Skill {
@@ -16,6 +23,14 @@ export interface Skill {
   updatedAt?: string;
 }
 
+export interface UserSkill {
+  _id: string;
+  skill: Skill;
+  createdAt?: string;
+  updatedAt: string;
+  level: string;
+  verificationStatus: VerificationStatus;
+}
 export interface AddedSkill {
   _id: string;
   skill: string;
@@ -37,36 +52,59 @@ export enum SkillLevel {
 }
 
 export interface AddSkillLoading {
-  type: addSkillTypes.SkillLoading;
+  type: SkillTypes.SkillLoading;
 }
 
 export interface AddSkillFail {
-  type: addSkillTypes.SkillFail;
+  type: SkillTypes.SkillFail;
   payload: string;
 }
 
 export interface AddSkillSuccess {
-  type: addSkillTypes.SkillSuccess;
+  type: SkillTypes.SkillSuccess;
   payload: AddedSkill;
 }
 
 export interface GetSkillsLoading {
-  type: addSkillTypes.GetSkillsLoading
+  type: SkillTypes.GetSkillsLoading;
 }
 
 export interface GetSkillsFail {
-  type: addSkillTypes.GetSkillsFail,
-  payload: string
+  type: SkillTypes.GetSkillsFail;
+  payload: string;
 }
 
 export interface GetSkillsSuccess {
-  type: addSkillTypes.GetSkillsSuccess,
-  payload: Skill
+  type: SkillTypes.GetSkillsSuccess;
+  payload: Skill;
 }
-export type AddSkillUserTypes =
+
+interface ListUserSkill {
+  type: typeof SkillTypes.ListUserSkill;
+  payload: {
+    data: UserSkill[];
+  };
+}
+interface Errors {
+  type: typeof SkillTypes.Errors;
+  payload: {
+    errors: any;
+  };
+}
+
+interface Loading {
+  type: typeof SkillTypes.Loading;
+  payload: {
+    loading: boolean;
+  };
+}
+export type SkillActionTypes =
   | AddSkillLoading
   | AddSkillSuccess
   | AddSkillFail
   | GetSkillsFail
   | GetSkillsSuccess
-  | GetSkillsLoading;
+  | GetSkillsLoading
+  | ListUserSkill
+  | Errors
+  | Loading;

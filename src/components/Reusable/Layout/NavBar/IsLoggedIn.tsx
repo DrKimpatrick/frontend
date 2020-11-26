@@ -13,6 +13,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Link, withRouter } from 'react-router-dom';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import InitialStateInterface from 'types/initialState';
+import { RouteUrl } from 'utils/routes';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -29,7 +30,6 @@ const typedUseSelector: TypedUseSelectorHook<InitialStateInterface> = useSelecto
 const IsLoggedIn = (props: any) => {
   const { currentUser } = typedUseSelector(({ users }) => users);
   const { isLoggedIn, data } = currentUser;
-  console.log('current user', data);
   const classes = useStyles();
   const { userDashboard, user } = props;
   const [open, setOpen] = useState(false);
@@ -39,14 +39,12 @@ const IsLoggedIn = (props: any) => {
 
   const userState: any = useSelector((state: any) => state.users);
 
-  console.log('test this one', userState);
-
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
   };
 
   const signup = () => {
-    props.history.push('/register');
+    props.history.push(RouteUrl.Register);
   };
 
   const logout = () => {
@@ -79,8 +77,6 @@ const IsLoggedIn = (props: any) => {
   const handleToggleNotification = () => {
     setNotificationOpen(prevOpen => !prevOpen);
   };
-
-  console.log('ssssaasss', userState?.isLoggedIn);
 
   if (isLoggedIn || userState?.isLoggedIn) {
     return (
@@ -228,7 +224,7 @@ const IsLoggedIn = (props: any) => {
   return (
     <>
       <Link
-        to="/Login"
+        to={RouteUrl.Login}
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
       >
         <span>Login</span>

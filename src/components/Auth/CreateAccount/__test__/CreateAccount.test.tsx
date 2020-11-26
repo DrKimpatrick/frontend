@@ -98,8 +98,8 @@ describe('Account Type Component', () => {
       reducer(undefined, {
         type: REGISTER_SUCCESS,
         payload: user
-      })
-    ).toEqual(expected);
+      }).currentUser
+    ).toEqual(expected.currentUser);
   });
 
   it('should handle REGISTER_FAIL', () => {

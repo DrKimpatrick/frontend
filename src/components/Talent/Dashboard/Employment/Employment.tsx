@@ -144,6 +144,12 @@ const Employment: FC = () => {
               ))}
           </ul>
         )}
+
+        {reducer.employments && reducer.employments.length <= 0 && (
+          <div className="notFound my-4">
+            <h5>There are no employment</h5>
+          </div>
+        )}
         <button
           className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow"
           type="button"

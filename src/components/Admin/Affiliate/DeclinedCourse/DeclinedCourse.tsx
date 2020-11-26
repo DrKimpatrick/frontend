@@ -9,8 +9,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { listCourseByStatus } from 'redux/actions/course';
 import { RootState } from 'redux/store';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import { RouteUrl } from 'utils/routes';
+import { setActivePath } from 'redux/actions/user';
 
 const DeclinedCourse: FC = () => {
   const itemPerPage = 5;
@@ -20,6 +21,8 @@ const DeclinedCourse: FC = () => {
   const [page = 0, setPage] = useState<number>();
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
     const { loading, declinedCourse } = state.courses;
@@ -36,6 +39,10 @@ const DeclinedCourse: FC = () => {
       status: CourseStatus.Declined
     })(dispatch);
   }, [dispatch, offset]);
+
+  useEffect(() => {
+    setActivePath(location.pathname)(dispatch);
+  }, [dispatch, location.pathname]);
 
   const pageChange: OnPageChangeCallback = value => {
     const selectedPage = value.selected;

@@ -1,36 +1,105 @@
-import React, { FC, useEffect, useMemo } from 'react';
-import { withRouter, useLocation, Redirect } from 'react-router-dom';
+import React, { FC, useEffect, useMemo, useState } from 'react';
+import { withRouter, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { Computer, School, Work } from '@material-ui/icons';
 import { AdminLayout as Layout, SplashScreen } from 'components/Reusable';
-import { listSpecificUser, listUserSkill } from 'redux/actions/user';
+import {
+  listSpecificUser,
+  listUserSkill,
+  setActivePath
+} from 'redux/actions/user';
 import { RootState } from 'redux/store';
 import Avatar from 'assets/images/avatar.jpg';
 import { SkillLevel } from 'redux/action-types/skill';
 import { RouteUrl } from 'utils/routes';
-import { ListItem, ListItemProps } from '.';
+import { UserRole } from 'redux/action-types/user';
+import { ListItem, ListItemProps, ProfileNotFound } from '.';
 import './UserProfile.scss';
 
 const UserProfile: FC = () => {
+  const [topMenu = [], setTopMenu] = useState<
+    { url: string; name: string }[]
+  >();
+
   const location = useLocation<{ userId: string }>();
 
   const dispatch = useDispatch();
 
-  const reducer = useSelector((state: RootState) => {
-    const { specificUser, loading, userSkill } = state.users;
+  const params = useParams<{ username: string }>();
 
-    return { specificUser, loading, userSkill };
+  const reducer = useSelector((state: RootState) => {
+    const { specificUser, loading, userSkill, errors } = state.users;
+
+    return { specificUser, loading, userSkill, errors };
   });
 
-  const { specificUser, loading, userSkill } = reducer;
+  const { specificUser, loading, userSkill, errors } = reducer;
 
   useEffect(() => {
-    if (location && location.state && location.state.userId) {
-      listSpecificUser(location.state.userId)(dispatch);
-      listUserSkill(location.state.userId)(dispatch);
+    listSpecificUser(params.username)(dispatch);
+  }, [dispatch, params.username]);
+
+  useEffect(() => {
+    if (specificUser) {
+      listUserSkill(specificUser._id)(dispatch);
     }
-  }, [dispatch, location]);
+  }, [dispatch, specificUser]);
+
+  useEffect(() => {
+    if (specificUser) {
+      const roles = specificUser.roles ? specificUser.roles : [];
+      const profilePath = { name: 'Profile', url: location.pathname };
+
+      roles.map(item => {
+        switch (item) {
+          case UserRole.CompanyAdmin:
+            setActivePath(RouteUrl.Company)(dispatch);
+            setTopMenu([
+              { url: RouteUrl.Company, name: 'Company' },
+              profilePath
+            ]);
+            break;
+
+          case UserRole.HrAdmin:
+            setActivePath(RouteUrl.Company)(dispatch);
+            setTopMenu([
+              { url: RouteUrl.HrAdmin, name: 'Hr Admin' },
+              profilePath
+            ]);
+            break;
+
+          case UserRole.TrainingAffiliate:
+            setActivePath(RouteUrl.TrainingAffiliate)(dispatch);
+            setTopMenu([
+              { url: RouteUrl.TrainingAffiliate, name: 'Training Affiliate' },
+              profilePath
+            ]);
+            break;
+
+          case UserRole.Talent:
+            setActivePath(RouteUrl.SuperAdminDashboard)(dispatch);
+            setTopMenu([
+              { url: RouteUrl.SuperAdminDashboard, name: 'Talent' },
+              profilePath
+            ]);
+            break;
+
+          case UserRole.RecruitmentAdmin:
+            setActivePath(RouteUrl.Recruiter)(dispatch);
+            setTopMenu([
+              { url: RouteUrl.Recruiter, name: 'Recruiter' },
+              profilePath
+            ]);
+            break;
+
+          default:
+            return undefined;
+        }
+        return undefined;
+      });
+    }
+  }, [dispatch, location, specificUser]);
 
   const educationHistory = useMemo(() => {
     if (specificUser && specificUser.educationHistory) {
@@ -140,21 +209,20 @@ const UserProfile: FC = () => {
     return null;
   }, [userSkill]);
 
-  if (location && !location.state) {
-    return <Redirect to={RouteUrl.SuperAdminDashboard} />;
-  }
-
   if (loading) {
     return <SplashScreen />;
   }
 
+  if (errors || !specificUser) {
+    return (
+      <Layout topMenu={topMenu}>
+        <ProfileNotFound />
+      </Layout>
+    );
+  }
+
   return (
-    <Layout
-      topMenu={[
-        { name: 'Talent', url: '/admin-dashboard' },
-        { name: 'Profile', url: location.pathname }
-      ]}
-    >
+    <Layout topMenu={topMenu}>
       {specificUser && (
         <div className="userProfile">
           <div className="profilePreview">

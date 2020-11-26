@@ -6,10 +6,12 @@ import {
   OnPageChangeCallback
 } from 'components/Reusable';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { listCourseByStatus } from 'redux/actions/course';
 import { RootState } from 'redux/store';
 import { RouteUrl } from 'utils/routes';
+import { setActivePath } from 'redux/actions/user';
 
 const AcceptedCourse: FC = () => {
   const itemPerPage = 5;
@@ -19,6 +21,8 @@ const AcceptedCourse: FC = () => {
   const [page = 0, setPage] = useState<number>();
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
     const { acceptedCourse, loading } = state.courses;
@@ -49,6 +53,10 @@ const AcceptedCourse: FC = () => {
   useEffect(() => {
     loadItems();
   }, [loadItems, offset]);
+
+  useEffect(() => {
+    setActivePath(location.pathname)(dispatch);
+  }, [dispatch, location.pathname]);
 
   if (loading) {
     return <SplashScreen />;

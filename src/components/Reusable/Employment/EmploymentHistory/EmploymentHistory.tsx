@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC, useEffect } from 'react';
 import { withRouter, useParams, useHistory } from 'react-router-dom';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
@@ -11,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './EmploymentHistory.scss';
+import { RouteUrl } from 'utils/routes';
 
 const EmploymentHistory: FC = () => {
   const dispatch = useDispatch();
@@ -44,7 +43,7 @@ const EmploymentHistory: FC = () => {
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
-            onClick={() => history.push('/recent-employer')}
+            onClick={() => history.push(RouteUrl.AddEmployment)}
           >
             <ArrowBackTwoToneIcon />
           </div>
@@ -129,7 +128,7 @@ const EmploymentHistory: FC = () => {
           <button
             data-testid="next-button"
             className="add-employer-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
-            onClick={() => history.push('/recent-employer')}
+            onClick={() => history.push(RouteUrl.AddEmployment)}
             type="button"
           >
             <span className="">Add another employer</span>

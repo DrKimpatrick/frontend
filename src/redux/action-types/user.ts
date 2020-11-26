@@ -14,7 +14,8 @@ export enum UserTypes {
   ListAffiliateUser = 'User/ListAffiliateUser',
   ListHrAdminUser = 'User/ListHrAdminUser',
   ListTrainingUser = 'User/ListTrainingUser',
-  ListRecruiterUser = 'User/ListRecruiterUser'
+  ListRecruiterUser = 'User/ListRecruiterUser',
+  ActivePath = 'User/ActivePath'
 }
 
 export enum UserRole {
@@ -95,10 +96,19 @@ interface ListUserByRole {
     };
   };
 }
+
+interface ActivePath {
+  type: typeof UserTypes.ActivePath;
+  payload: {
+    data: string;
+  };
+}
+
 export type UserTypeActions =
   | CurrentUser
   | Errors
   | ListSpecificUser
   | Loading
   | ListUserSkill
-  | ListUserByRole;
+  | ListUserByRole
+  | ActivePath;

@@ -339,7 +339,7 @@ exports[`Admin Affiliate it should create snapshot 1`] = `
                   href="/hr-admin"
                   onClick={[Function]}
                 >
-                  HR Admin
+                  Hr Admin
                 </a>
               </li>
               <li
@@ -405,6 +405,61 @@ exports[`Admin Affiliate it should create snapshot 1`] = `
                   onClick={[Function]}
                 >
                   Training
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              className="link"
+              href="/"
+              onClick={[Function]}
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM17 11h-4v4h-2v-4H7V9h4V5h2v4h4v2z"
+                />
+              </svg>
+              <h5>
+                Create
+              </h5>
+            </a>
+            <ul
+              className="childMenu"
+            >
+              <li
+                className=""
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                >
+                  Skills
+                </a>
+              </li>
+              <li
+                className=""
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                >
+                  Education
+                </a>
+              </li>
+              <li
+                className=""
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                >
+                  Employment
                 </a>
               </li>
             </ul>

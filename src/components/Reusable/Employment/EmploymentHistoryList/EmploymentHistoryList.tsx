@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { FC, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +9,7 @@ import { RootState } from 'redux/store';
 import { listEmployments } from 'redux/actions/employment';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './EmploymentHistoryList.scss';
+import { RouteUrl } from 'utils/routes';
 
 const EmploymentHistoryList: FC = () => {
   const dispatch = useDispatch();
@@ -66,7 +65,7 @@ const EmploymentHistoryList: FC = () => {
           <button
             data-testid="next-button"
             className="add-employer-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
-            onClick={() => history.push('/recent-employer')}
+            onClick={() => history.push(RouteUrl.AddEmployment)}
             type="button"
           >
             <span className="">Add another employer</span>

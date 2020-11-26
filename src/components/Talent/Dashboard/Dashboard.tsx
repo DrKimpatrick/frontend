@@ -1,22 +1,14 @@
 import React, { FC } from 'react';
 import { withRouter } from 'react-router-dom';
-import FolderSharedIcon from '@material-ui/icons/FolderShared';
-import DesktopWindowsOutlinedIcon from '@material-ui/icons/DesktopWindowsOutlined';
-import SchoolIcon from '@material-ui/icons/School';
+import { DesktopWindowsOutlined, School } from '@material-ui/icons';
 import { CoverImage, MainBackground } from 'components/Reusable';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
-import {
-  expertSkills,
-  beginnerSkills,
-  intermediateSkills
-} from 'utils/staticData';
-
-import UserInformationCard from './UserInformationCard';
 import Headline from './Headline';
 import Verification from './Verification';
 import { Employment } from './Employment';
 import { Education } from './Education';
+import { UserSkill } from './UserSkill';
 import './style.scss';
 
 const Dashboard: FC = () => {
@@ -49,36 +41,16 @@ const Dashboard: FC = () => {
                   <div className="mb-16">
                     <Headline
                       headline="Employment"
-                      icon={<DesktopWindowsOutlinedIcon />}
+                      icon={<DesktopWindowsOutlined />}
                     />
                     <Employment />
                   </div>
                   <div>
-                    <Headline headline="Education" icon={<SchoolIcon />} />
+                    <Headline headline="Education" icon={<School />} />
                     <Education />
                   </div>
                 </div>
-                <div className="flex flex-col w-1/4 mt-12">
-                  <div>
-                    <Headline headline="SkillSet" icon={<FolderSharedIcon />} />
-                    <UserInformationCard
-                      type="skills"
-                      data={beginnerSkills}
-                      level="Beginner"
-                    />
-                    <UserInformationCard
-                      type="skills"
-                      data={intermediateSkills}
-                      level="Intermediate"
-                    />
-                    <UserInformationCard
-                      type="skills"
-                      data={expertSkills}
-                      level="Expert"
-                      index
-                    />
-                  </div>
-                </div>
+                <UserSkill />
               </div>
             ) : (
               ''

@@ -4,9 +4,13 @@
 }
 
 .motif-image-user-dashboard {
-  background:#c5c5c5  !important;
+  background: #c5c5c5 !important;
   height: 24rem;
   word-wrap: break-word;
   opacity: 0.2;
   mix-blend-mode: luminosity;
+}
+
+.notFound {
+  color: #5b5a5a;
 }

@@ -1,7 +1,7 @@
 import { cleanup } from '@testing-library/react';
 import React from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import EmploymentHistoryList from '../EmploymentHistoryList';
 import renderer from 'react-test-renderer';
 import { initialState } from '../__mock__';
