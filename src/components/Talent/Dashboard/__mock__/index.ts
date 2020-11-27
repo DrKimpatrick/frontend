@@ -1,4 +1,5 @@
 import { VerificationStatus, SkillLevel } from 'redux/action-types/skill';
+
 export const initialState = {
   users: {
     currentUser: {

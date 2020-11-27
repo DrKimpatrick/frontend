@@ -1,0 +1,614 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account Types it should create snapshot 1`] = `
+Array [
+  <nav
+    className="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+  >
+    <a
+      className="text-gray-800"
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        className="logo w-24"
+        src="logo-image.png"
+      />
+    </a>
+    <div
+      className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+      id="navigation"
+    >
+      <div
+        className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
+      >
+        <div>
+          <a
+            className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              How it works
+            </span>
+          </a>
+          <a
+            className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+            href="/"
+            onClick={[Function]}
+          >
+            <span>
+              About us
+            </span>
+          </a>
+        </div>
+        <div
+          className="lg:inline-flex items-center undefined"
+        >
+          <div
+            className="px-8 lg:inline-flex items-center"
+          >
+            <div
+              className="makeStyles-root-1"
+            >
+              <div>
+                <div
+                  aria-haspopup="true"
+                  className="notification-container"
+                  onClick={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className="text-gray-600 relative notification-icon"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="bg-white text-red-600 h-3 w-3 rounded-full absolute right-0 top-0 flex items-center justify-center border-red-600 border border-solid"
+                      style={
+                        Object {
+                          "fontSize": "6px",
+                        }
+                      }
+                    >
+                      <span>
+                        9+
+                      </span>
+                    </div>
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root cursor-pointer"
+                      focusable="false"
+                      style={
+                        Object {
+                          "color": "#ff0000",
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    className="header-popup tri-right border right-top hide"
+                  >
+                    <div
+                      className="text-gray-600 w-56 space-x-2 text-sm py-2 flex "
+                    >
+                      <span
+                        className="text-red-600 font-bold"
+                      >
+                        1
+                      </span>
+                      <div
+                        className="flex flex-col w-full flex-wrap"
+                      >
+                        <span
+                          className="text-red-600 font-bold"
+                        >
+                          You have been verified
+                        </span>
+                        <p
+                          className="break-normal"
+                        >
+                          Check your email for the link verification
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className="text-gray-600 w-56 space-x-2 text-sm py-2 flex "
+                    >
+                      <span
+                        className="text-red-600 font-bold"
+                      >
+                        1
+                      </span>
+                      <div
+                        className="flex flex-col w-full flex-wrap"
+                      >
+                        <span
+                          className="text-red-600 font-bold"
+                        >
+                          You have been verified
+                        </span>
+                        <p
+                          className="break-normal"
+                        >
+                          Check your email for the link verification
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="text-gray-600 relative"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="text-gray-600"
+          >
+            <span>
+              username
+            </span>
+          </div>
+          <div
+            className="makeStyles-root-1"
+          >
+            <div>
+              <div
+                aria-haspopup="true"
+                className="profile-container"
+                onClick={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  aria-haspopup="true"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="avatar"
+                    className="inline-block ml-2 h-12 w-12 rounded-full text-white shadow-solid cursor-pointer"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  />
+                </div>
+                <div
+                  className="header-popup tri-left border right-top hide"
+                >
+                  <ul
+                    className="MuiList-root MuiList-padding"
+                    onKeyDown={[Function]}
+                    role="menu"
+                    tabIndex={-1}
+                  >
+                    <li
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root text-gray-600 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="menuitem"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="text-gray-600 w-56 space-x-3 text-sm py-2"
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
+                            transform="scale(1.2, 1.2)"
+                          />
+                        </svg>
+                        <span>
+                          Settings
+                        </span>
+                      </div>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </li>
+                    <li
+                      aria-disabled={false}
+                      className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root text-gray-600 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role="menuitem"
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="text-gray-600 w-56 space-x-3 text-sm py-2"
+                        onClick={[Function]}
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"
+                          />
+                        </svg>
+                        <span>
+                          Logout
+                        </span>
+                      </div>
+                      <span
+                        className="MuiTouchRipple-root"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>,
+  <section
+    className="account-types-section pt-12"
+  >
+    <div
+      className="flex flex-col items-center"
+    >
+      <div
+        className="title-container flex flex-col items-center"
+      >
+        <h1
+          className="font-bold text-xl title text-center"
+        >
+          What type of account do you want?
+        </h1>
+        <p
+          className="subtitle mt-1.5"
+        >
+          Once you select an account, you can not change it, you will need to contact admin to change your account type incase you need to it.
+        </p>
+      </div>
+      <div
+        className="account-types mt-12 flex flex-wrap md:items-center"
+      >
+        <div
+          className="account-types-item"
+          onClick={[Function]}
+        >
+          <div
+            className="account-type"
+            data-testid="accountType"
+          >
+            <div
+              className="rounded overflow-hidden shadow-lg mainColor"
+            >
+              <div
+                className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+                  />
+                </svg>
+                <p
+                  className="pl-4"
+                >
+                  TALENT
+                </p>
+              </div>
+              <section
+                className="account-status flex items-center"
+              >
+                <div
+                  className="px-6 py-4"
+                >
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Stay up to date on the latest changes and training in your skillset.
+                  </p>
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Get hired faster with pre certified employment and education records and verified technical skills.
+                  </p>
+                </div>
+                <div
+                  className="account-hovered  px-6 py-4 border-t-2 flex items-center justify-center"
+                >
+                  <div
+                    className="text-white flex justify-center"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                      />
+                    </svg>
+                    <p
+                      className="pl-4"
+                    >
+                      Recommended
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div
+          className="account-types-item"
+          onClick={[Function]}
+        >
+          <div
+            className="account-type"
+            data-testid="accountType"
+          >
+            <div
+              className="rounded overflow-hidden shadow-lg mainColor"
+            >
+              <div
+                className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"
+                  />
+                </svg>
+                <p
+                  className="pl-4"
+                >
+                  EDUCATION
+                </p>
+              </div>
+              <section
+                className="account-status flex items-center"
+              >
+                <div
+                  className="px-6 py-4"
+                >
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Ensure your students are receiving real time technical skills training.
+                  </p>
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Create a direct pipeline with companies looking to hire.
+                  </p>
+                </div>
+                <div
+                  className="account-hovered  px-6 py-4 border-t-2 flex items-center justify-center"
+                >
+                  <div
+                    className="text-white flex justify-center"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"
+                      />
+                    </svg>
+                    <p
+                      className="pl-4"
+                    >
+                      Trending
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div
+          className="account-types-item"
+          onClick={[Function]}
+        >
+          <div
+            className="account-type"
+            data-testid="accountType"
+          >
+            <div
+              className="rounded overflow-hidden shadow-lg mainColor"
+            >
+              <div
+                className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17.5 4.5c-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .65.73.45.75.45C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.41.21.75-.19.75-.45V6c-1.49-1.12-3.63-1.5-5.5-1.5zm3.5 14c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"
+                  />
+                </svg>
+                <p
+                  className="pl-4"
+                >
+                  TRAINING
+                </p>
+              </div>
+              <section
+                className="account-status flex items-center"
+              >
+                <div
+                  className="px-6 py-4"
+                >
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Submit your training application to be a premiere training partner.
+                  </p>
+                </div>
+                <div
+                  className="account-hovered  px-6 py-4 border-t-2 flex items-center justify-center"
+                >
+                  <div
+                    className="text-white flex justify-center"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"
+                      />
+                    </svg>
+                    <p
+                      className="pl-4"
+                    >
+                      Trending
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div
+          className="account-types-item"
+          onClick={[Function]}
+        >
+          <div
+            className="account-type"
+            data-testid="accountType"
+          >
+            <div
+              className="rounded overflow-hidden shadow-lg mainColor"
+            >
+              <div
+                className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
+                  />
+                </svg>
+                <p
+                  className="pl-4"
+                >
+                  HR RECRUITMENT
+                </p>
+              </div>
+              <section
+                className="account-status flex items-center"
+              >
+                <div
+                  className="px-6 py-4"
+                >
+                  <p
+                    className="text-gray-700 text-sm"
+                  >
+                    Save time and money on candidate recruitment with access to pre verified and certified candidates.
+                  </p>
+                </div>
+                <div
+                  className="account-hovered  px-6 py-4 border-t-2 flex items-center justify-center"
+                >
+                  <div
+                    className="text-white flex justify-center"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"
+                      />
+                    </svg>
+                    <p
+                      className="pl-4"
+                    >
+                      Trending
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>,
+  <div
+    className="mainBackground"
+  >
+    <img
+      alt=""
+      src="motif-image.png"
+      style={
+        Object {
+          "backgroundColor": "none",
+        }
+      }
+    />
+  </div>,
+]
+`;

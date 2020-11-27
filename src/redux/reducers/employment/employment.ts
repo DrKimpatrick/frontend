@@ -5,6 +5,7 @@ import {
   Employment,
   EmploymentTypes
 } from '../../action-types/employment';
+
 interface InitialState {
   readonly message?: string;
   readonly errors?: any;

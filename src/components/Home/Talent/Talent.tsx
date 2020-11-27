@@ -33,9 +33,9 @@ const Talent: FC<talentProps> = ({
         {details.map((value: any) => (
           <div key={Math.random()} className="flex mt-4">
             {value.status ? (
-              <CloseIcon className="text-red-600 customFont"></CloseIcon>
+              <CloseIcon className="text-red-600 customFont" />
             ) : (
-              <CheckIcon className="text-green-700 customFont"></CheckIcon>
+              <CheckIcon className="text-green-700 customFont" />
             )}
             <p className="text-gray-800 ml-4">{value.name}</p>
           </div>
@@ -54,7 +54,7 @@ const Talent: FC<talentProps> = ({
                   : 'flex bg-black text-white text-sm font-normal py-2 px-2 rounded ml-2'
               }
             >
-              I WANT TO BE SEEN <DoneAllIcon className="ml-4"></DoneAllIcon>
+              I WANT TO BE SEEN <DoneAllIcon className="ml-4" />
             </button>
           </div>
           <div className="flex">

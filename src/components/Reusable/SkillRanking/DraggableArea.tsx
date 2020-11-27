@@ -19,10 +19,11 @@ const DraggableAreaComponent: FC<props> = ({
 }: any) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: types,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     drop: (item, _monitor) => {
       onDrop(item);
     },
-    canDrop: canDrop,
+    canDrop,
     collect: monitor => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop()

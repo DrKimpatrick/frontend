@@ -39,24 +39,28 @@ export const steps = [
 
 export const accounts = [
   {
+    id: 'talent', // Id matches with a role in database
     title: 'Talent',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+      'Stay up to date on the latest changes and training in your skillset.\nGet hired faster with pre certified employment and education records and verified technical skills.'
   },
   {
+    id: 'education',
     title: 'Education',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+      'Ensure your students are receiving real time technical skills training.\nCreate a direct pipeline with companies looking to hire.'
   },
   {
+    id: 'training_admin',
     title: 'Training',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+      'Submit your training application to be a premiere training partner.'
   },
   {
+    id: 'recruitment_admin',
     title: 'HR Recruitment',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+      'Save time and money on candidate recruitment with access to pre verified and certified candidates.'
   }
 ];
 
@@ -148,6 +152,14 @@ export const testmonials = [
     }
   }
 ];
+
+export const pageTexts = {
+  account: {
+    title: 'What type of account do you want?',
+    subTitle:
+      'Once you select an account, you can not change it, you will need to contact admin to change your account type incase you need to it.'
+  }
+};
 
 export const education = [
   {

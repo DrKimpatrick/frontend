@@ -33,8 +33,7 @@ const GetStarted: FC<props> = (props: any) => {
     setData({ ...data, [event.target.name]: event.target.value });
 
     const { name, value } = event.target;
-    let errors = dataError;
-
+    const errors = dataError;
     switch (name) {
       case 'email':
         errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid';
@@ -66,18 +65,17 @@ const GetStarted: FC<props> = (props: any) => {
     }
   });
   const signup = async () => {
-    
-    let errors = dataError;
-    if(data.email.length < 1) {
-      errors.email = 'The email field should not be empty'
+    const errors = dataError;
+    if (data.email.length < 1) {
+      errors.email = 'The email field should not be empty';
     }
-    if(data.username.length < 1) {
-      errors.username = 'The username should not be empty'
+    if (data.username.length < 1) {
+      errors.username = 'The username should not be empty';
     }
-    if(data.password.length < 1) {
-      errors.password = 'The password should not be empty'
+    if (data.password.length < 1) {
+      errors.password = 'The password should not be empty';
     }
-    setDataError(errors)
+    setDataError(errors);
     if (validateForm(dataError)) {
       await GetStartedAction(data)(dispatch);
       setSubmitted(true);
@@ -150,7 +148,7 @@ const GetStarted: FC<props> = (props: any) => {
                 onChange={onChangeInput}
               />
               <p className="text-red-600 text-xs">
-              {user?.errorSignup
+                {user?.errorSignup
                   ? sortErrors(user?.errorSignup, 'email')
                   : dataError?.email}
               </p>
@@ -165,7 +163,7 @@ const GetStarted: FC<props> = (props: any) => {
                 onChange={onChangeInput}
               />
               <p className="text-red-600 text-xs">
-              {user?.errorSignup
+                {user?.errorSignup
                   ? sortErrors(user?.errorSignup, 'username')
                   : dataError?.username}
               </p>
@@ -191,12 +189,8 @@ const GetStarted: FC<props> = (props: any) => {
                   />
                 )}
               </div>
-              {dataError.password.length > 1  ? (
-                <div
-                  className=
-                      'text-xs text-white mt-2'
-                  
-                >
+              {dataError.password.length > 1 ? (
+                <div className="text-xs text-white mt-2">
                   <p>* Password must contain one uppercase</p>
                   <p>* Password must contain one lowercase</p>
                   <p>* Password must contain one special carracter</p>

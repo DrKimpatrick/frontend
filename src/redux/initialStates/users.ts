@@ -1,6 +1,6 @@
-const users:any = {
+const users: any = {
   currentUser: {
-    isLoggedIn: localStorage.getItem('token') ? true : false,
+    isLoggedIn: !!localStorage.getItem('token'),
     loading: false,
     error: null,
     message: null,

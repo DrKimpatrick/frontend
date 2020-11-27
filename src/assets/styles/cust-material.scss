@@ -127,6 +127,10 @@
 }
 .account-status {
   position: relative;
+  height: 160px;
+  & p:not(:last-child) {
+    margin-bottom: 10px;
+  }
 }
 .account-hovered {
   position: absolute;
@@ -140,7 +144,8 @@
   opacity: 0;
 }
 
-.account-hovered:hover {
+.account-hovered:hover,
+.clicked {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
@@ -203,10 +208,10 @@
   }
 
   .cover-image {
-    width: 18rem
+    width: 18rem;
   }
 
-  .cust-width{
+  .cust-width {
     width: 86%;
   }
 }

@@ -15,7 +15,8 @@ export enum UserTypes {
   ListHrAdminUser = 'User/ListHrAdminUser',
   ListTrainingUser = 'User/ListTrainingUser',
   ListRecruiterUser = 'User/ListRecruiterUser',
-  ActivePath = 'User/ActivePath'
+  ActivePath = 'User/ActivePath',
+  UpdateUser = 'User/UpdateUser'
 }
 
 export enum UserRole {
@@ -72,6 +73,7 @@ interface Loading {
     loading: boolean;
   };
 }
+
 interface ListSpecificUser {
   type: typeof UserTypes.ListSpecificUser;
   payload: {
@@ -104,6 +106,13 @@ interface ActivePath {
   };
 }
 
+interface UpdateUser {
+  type: typeof UserTypes.UpdateUser;
+  payload: {
+    data: User;
+  };
+}
+
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -111,4 +120,5 @@ export type UserTypeActions =
   | Loading
   | ListUserSkill
   | ListUserByRole
-  | ActivePath;
+  | ActivePath
+  | UpdateUser;

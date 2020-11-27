@@ -164,3 +164,33 @@ export const addedSkillsUser = (dataValues: AddSkill[]) => (
 export const setActivePath = (pathname: string) => (dispatch: Dispatch) => {
   dispatch({ type: UserTypes.ActivePath, payload: { data: pathname } });
 };
+
+export const updateUser = (data: any, userId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/users/${userId}`,
+      method: 'PATCH',
+      data,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({ type: UserTypes.Loading, payload: { loading: true } });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        delete res.profile.__v;
+        setTimeout(() => {
+          dispatch({
+            type: UserTypes.UpdateUser,
+            payload: { data: res.profile }
+          });
+        }, [1000]);
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};

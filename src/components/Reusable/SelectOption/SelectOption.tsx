@@ -8,7 +8,12 @@ type props = {
   options: { value: string; label: string }[];
   onChangeValue: any;
 };
-const SelectOption: FC<props> = ({ isMulti, placeholder, options, onChangeValue }: any) => {
+const SelectOption: FC<props> = ({
+  isMulti,
+  placeholder,
+  options,
+  onChangeValue
+}: any) => {
   return (
     <Select
       placeholder={placeholder}

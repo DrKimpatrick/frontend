@@ -3,6 +3,7 @@ import { Modal, Button } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import './Warning.scss';
+
 interface Props {
   message: string;
   cancel: () => void;

@@ -21,7 +21,7 @@ const EducationHistory: FC = () => {
   };
 
   const history = useHistory();
-  
+
   useEffect(() => {
     listEducation()(dispatch);
   }, [dispatch]);

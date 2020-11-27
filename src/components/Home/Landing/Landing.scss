@@ -1,10 +1,14 @@
 .nav-bar {
-    display: flex;
-    flex-direction: row-reverse;
-    background-color: grey;
-    padding-top: 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: grey;
+  padding-top: 1rem;
 }
 
 .front-view {
-    width: 100%;
+  width: 100%;
+}
+
+.account-type-wrap {
+  width: 280px;
 }

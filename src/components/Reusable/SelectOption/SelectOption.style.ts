@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const selectStyles = {
   control: (styles: any, _state: any) => ({
     ...styles,

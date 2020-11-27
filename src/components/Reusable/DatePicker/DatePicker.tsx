@@ -9,7 +9,12 @@ type props = {
   onChangeValue: any;
   name: string;
 };
-const DatePicker: FC<props> = ({ label, defaultValue, onChangeValue , name }: any) => {
+const DatePicker: FC<props> = ({
+  label,
+  defaultValue,
+  onChangeValue,
+  name
+}: any) => {
   const classes = useTextFieldStyle();
 
   return (

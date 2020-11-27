@@ -10,6 +10,7 @@ import { LoginAction } from 'redux/actions/login';
 import { validateForm } from 'utils/index';
 import Loader from 'components/Reusable/Loader/Loader';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
+import { RouteUrl } from 'utils/routes';
 
 type Props = {};
 
@@ -31,7 +32,11 @@ const Login: FC<Props> = (props: any) => {
   useEffect(() => {
     if (submitted && !user.errorLogin && user.currentUser.token) {
       localStorage.setItem('token', user.currentUser.token);
-      props.history.push('/current-role');
+      if (user.currentUser.profile.roles.length !== 0) {
+        props.history.push(RouteUrl.CurrentRole);
+      } else {
+        props.history.push(RouteUrl.Account);
+      }
     }
   });
 

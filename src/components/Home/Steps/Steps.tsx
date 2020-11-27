@@ -10,7 +10,7 @@ const Steps: FC<stepsProps> = ({ step, details }) => {
   return (
     <div data-testid="step" className="">
       <div className="flex justify-center">
-        <PeopleOutlineIcon className="w-5/12 h-full overide"></PeopleOutlineIcon>
+        <PeopleOutlineIcon className="w-5/12 h-full overide" />
       </div>
       <p className="flex justify-center text-gray-600 text-base font-semibold">
         Step {step}

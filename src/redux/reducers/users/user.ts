@@ -52,6 +52,7 @@ interface InitialState {
   };
   user?: User;
   loading?: boolean;
+  errors?: any;
   specificUser?: User;
   userSkill?: UserSkill[];
   usersByRole?: {
@@ -61,7 +62,6 @@ interface InitialState {
   };
   // skills?: AddedSkill[];
   activePath: string | null;
-  errors?: any;
 }
 
 const initialState: InitialState = {
@@ -200,7 +200,7 @@ export const userReducer = (
       return { ...state, errors: action.payload.errors, loading: false };
 
     case UserTypes.Loading:
-      return { ...state, loading: action.payload.loading };
+      return { ...state, loading: action.payload.loading, errors: null };
 
     case UserTypes.ListSpecificUser:
       return {
@@ -220,13 +220,18 @@ export const userReducer = (
       return { ...state, loading: true };
 
     case SkillTypes.GetSkillsSuccess:
-      return { ...state, skills: action.payload, loading: false };
+      return { ...state, skills: action.payload, loading: false, errors: null };
 
     case SkillTypes.SkillFail:
       return { ...state, errors: action.payload, loading: false };
 
     case SkillTypes.SkillSuccess:
-      return { ...state, addedSkill: action.payload, loading: false };
+      return {
+        ...state,
+        addedSkill: action.payload,
+        loading: false,
+        errors: null
+      };
 
     case SkillTypes.SkillLoading:
       return { ...state, loading: true };
@@ -244,6 +249,14 @@ export const userReducer = (
 
     case UserTypes.ActivePath:
       return { ...state, activePath: action.payload.data };
+
+    case UserTypes.UpdateUser:
+      return {
+        ...state,
+        user: action.payload.data,
+        loading: false,
+        errors: null
+      };
 
     default:
       return state;

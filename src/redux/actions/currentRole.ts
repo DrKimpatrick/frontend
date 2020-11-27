@@ -1,9 +1,5 @@
-import { Dispatch } from 'redux';
-import axios, { AxiosResponse } from 'axios';
 import apiAction from 'helpers/apiAction';
 import {
-  CurrentRole,
-  CurrentRoleDispatchTypes,
   CURRENT_ROLE_LOADING,
   CURRENT_ROLE_FAIL,
   CURRENT_ROLE_SUCCESS
@@ -15,7 +11,7 @@ export const CurrentRoleAction = (data: any) => {
       apiAction({
         method: 'POST',
         url: '/auth/register',
-        data: data,
+        data,
         onStart: () => (dispatch: any) => {
           dispatch({ type: CURRENT_ROLE_LOADING });
         },

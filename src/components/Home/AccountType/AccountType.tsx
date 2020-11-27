@@ -9,11 +9,16 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 type accountsProps = {
   title: string;
   description: string;
+  clicked?: boolean;
 };
 
-const AccountType: FC<accountsProps> = ({ title, description }) => {
+const AccountType: FC<accountsProps> = ({
+  title,
+  description,
+  clicked = false
+}) => {
   return (
-    <div data-testid="accountType" className="mt-12 ml-4 mr-4 account-type">
+    <div data-testid="accountType" className="account-type">
       <div className="rounded overflow-hidden shadow-lg mainColor">
         <div className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4">
           {title === 'Talent' ? (
@@ -27,13 +32,21 @@ const AccountType: FC<accountsProps> = ({ title, description }) => {
           )}
           <p className="pl-4">{title.toUpperCase()}</p>
         </div>
-        <section className="account-status">
-          <div className="px-6 py-4 ">
+        <section className="account-status flex items-center">
+          <div className="px-6 py-4">
             {/* <div className="font-bold text-xl mb-2">The Coldest Sunset</div> */}
-            <p className="text-gray-700 text-base">{description}</p>
+            {description.split('\n').map((str, index) => (
+              <p key={index} className="text-gray-700 text-sm">
+                {str}
+              </p>
+            ))}
           </div>
-          <div className="account-hovered px-6 py-4 border-t-2 ">
-            <div className="text-white flex justify-center mt-8">
+          <div
+            className={`account-hovered ${
+              clicked ? 'clicked' : ''
+            } px-6 py-4 border-t-2 flex items-center justify-center`}
+          >
+            <div className="text-white flex justify-center">
               {title === 'Talent' ? <CheckCircleIcon /> : <TrendingUpIcon />}
 
               {title === 'Talent' ? (

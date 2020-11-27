@@ -7,6 +7,7 @@ import { EducationInput, InitialEducationValue } from 'components/Reusable';
 import { Education } from 'redux/action-types/education';
 import { updateEducation } from 'redux/actions/education';
 import { RootState } from 'redux/store';
+
 interface Props {
   close: () => void;
   education: Education;
@@ -21,7 +22,7 @@ const EditEducation: FC<Props> = props => {
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors } = state.educations;
-    const { user }:any = state.users;
+    const { user }: any = state.users;
 
     const { message } = state.messages;
 

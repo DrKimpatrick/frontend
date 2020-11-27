@@ -16,9 +16,9 @@ const App = () => {
   const reducer = useSelector((state: RootState) => {
     const { message, error } = state.messages;
 
-    const { user } = state.users;
+    const { user, currentUser } = state.users;
 
-    return { message, error, user };
+    return { message, error, user, currentUser };
   });
 
   useEffect(() => {
@@ -30,9 +30,11 @@ const App = () => {
   }, [dispatch, reducer.message]);
 
   useEffect(() => {
-    listCurrentUser()(dispatch);
-    listAllSkill()(dispatch);
-  }, [dispatch]);
+    if (reducer.currentUser.isLoggedIn) {
+      listCurrentUser()(dispatch);
+      listAllSkill()(dispatch);
+    }
+  }, [dispatch, reducer.currentUser.isLoggedIn]);
 
   return <Router />;
 };

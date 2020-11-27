@@ -1,0 +1,35 @@
+.account-types-section {
+  .title-container {
+    max-width: 410px;
+    .title {
+      font-size: 24px;
+      color: #737373;
+    }
+    .subtitle {
+      max-width: 96%;
+      font-size: 13px;
+      color: #b0b0b0;
+    }
+  }
+}
+.account-types {
+  width: 670px;
+  &-item {
+    width: 280px;
+    margin-bottom: 48px;
+  }
+  &-item:nth-child(odd) {
+    margin-right: 110px;
+  }
+}
+
+@media (max-width: 786px) {
+  .account-types {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    &-item:nth-child(odd) {
+      margin-right: 0;
+    }
+  }
+}

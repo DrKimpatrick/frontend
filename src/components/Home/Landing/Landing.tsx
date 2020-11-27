@@ -93,13 +93,11 @@ const Landing: FC<any> = props => {
         <h2 className="flex justify-center mt-8 text-gray-600 font-black text-2xl type-title">
           What type of account do you want?
         </h2>
-        <div className="flex justify-center mr-4 ml-4 display-grid">
+        <div className="flex flex-wrap justify-center mr-4 ml-4">
           {accounts.map(acc => (
-            <AccountType
-              key={Math.random()}
-              title={acc.title}
-              description={acc.description}
-            />
+            <div key={acc.id} className="account-type-wrap mt-12 ml-4 mr-4">
+              <AccountType title={acc.title} description={acc.description} />
+            </div>
           ))}
         </div>
       </div>

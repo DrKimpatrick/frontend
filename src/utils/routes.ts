@@ -25,7 +25,7 @@ export enum RouteUrl {
 
   Home = '/',
 
-  Account = '/Account',
+  Account = '/account',
 
   Notification = '/Notification',
 

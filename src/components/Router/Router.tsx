@@ -5,7 +5,8 @@ import {
   Login,
   CreateAccount,
   ForgotPassword,
-  ResetPassword
+  ResetPassword,
+  AccountTypes
 } from 'components/Auth';
 import { Dashboard } from 'components/Talent';
 import {
@@ -42,7 +43,7 @@ const AppRouter: React.FC = () => {
   const authRoutes = [
     { path: RouteUrl.Login, exact: true, component: <Login /> },
     { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
-    { path: RouteUrl.Account, exact: true, component: <Login /> },
+    { path: RouteUrl.Account, exact: true, component: <AccountTypes /> },
     { path: RouteUrl.Notification, exact: true, component: <Dashboard /> },
     { path: RouteUrl.CurrentRole, exact: true, component: <CurrentRole /> },
     { path: RouteUrl.SkillRanking, exact: true, component: <SkillRanking /> },

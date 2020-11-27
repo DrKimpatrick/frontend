@@ -37,6 +37,7 @@ const AccordionSummary = withStyles({
   expanded: {}
 })(MuiAccordionSummary);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AccordionDetails = withStyles(theme => ({
   root: {}
 }))(MuiAccordionDetails);
