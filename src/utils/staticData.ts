@@ -1,7 +1,9 @@
 export const frontData = {
-  title: 'Test this title',
-  description:
-    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.'
+  title: 'Tech Talent QA',
+  description1:
+    'Certified education and employment Verified technical ability Continuous skills monitoring and updates',
+  description2: `Tech Talent ensures members are current on the latest technology changes. 
+  Companies are equipped with quality developers HR save time and money on recruiting potential candidates`
 };
 
 export const steps = [
@@ -248,5 +250,120 @@ export const beginnerSkills = [
     id: 2,
     name: 'React',
     status: 'processing'
+  }
+];
+
+export const talentStep = [
+  {
+    number: '01',
+    description: 'Select Talent Account'
+  },
+  {
+    number: '02',
+    description:
+      'Confirm your education, employment, and skills level or build your profile from scratch.'
+  },
+  {
+    number: '03',
+    description:
+      'Choose your goal Recruiters are 86% more likely to hire pre verified talent.'
+  },
+  {
+    number: '04',
+    description:
+      'If you want to be hired choose a premium plan that includes education/employment verification and 3 skill certifications'
+  },
+  {
+    number: '05',
+    description:
+      'If you want to be hired choose the standard plan that verifies your employment and education.'
+  }
+];
+
+export const schoolStep = [
+  {
+    number: '01',
+    description: 'Select School Account'
+  },
+  {
+    number: '02',
+    description: 'Enter your school information'
+  },
+  {
+    number: '03',
+    description: 'Enter the amount of students you want to subsidize'
+  },
+  {
+    number: '04',
+    description:
+      'Elevate your students with real time technical training applicable to current standards'
+  }
+];
+
+export const trainingStep = [
+  {
+    number: '01',
+    description: 'Select Training Account'
+  },
+  {
+    number: '02',
+    description:
+      'Enter your training information to be considered as a premiere training partner'
+  },
+  {
+    number: '03',
+    description: 'You’ve applied to be a premiere training partner'
+  },
+  {
+    number: '04',
+    description:
+      'Tech Talent partners will reply with the status of your application within 14 business days'
+  }
+];
+
+export const humanResourceStep = [
+  {
+    number: '01',
+    description: 'Select Human Resource account'
+  },
+  {
+    number: '02',
+    description:
+      'Enter your HR/Recruiter information to start searching for pre verified talent'
+  },
+  {
+    number: '03',
+    description:
+      'Save 23% in expenses by viewing pre verified and certified technical talent'
+  },
+  {
+    number: '04',
+    description:
+      'Message 500 pre verified talent, view skill certification results, and interview questions a month with a premium plan'
+  },
+  {
+    number: '05',
+    description:
+      'Message 200 pre verified talent a month re verified talent, view skill certification results, and interview questions a month with a standard plan'
+  }
+];
+
+export const companyStep = [
+  {
+    number: '01',
+    description: 'Select company account'
+  },
+  {
+    number: '02',
+    description: 'Enter your company information'
+  },
+  {
+    number: '03',
+    description: 'Enter the amount of employees you want to subsidize'
+  },
+  {
+    number: '04',
+    description:
+      'Ensure your employees stay certified with the latest technical changes in cybersecurity and your company chosen tech stack'
   }
 ];

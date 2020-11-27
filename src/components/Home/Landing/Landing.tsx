@@ -1,59 +1,34 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
-import {
-  frontData,
-  steps,
-  accounts,
-  subscriptions,
-  testmonials
-} from 'utils/staticData';
-import { withRouter } from 'react-router-dom';
-import { Steps, Testmonials, FrontView, Talent, AccountType } from '..';
+import { accounts, subscriptions, testmonials } from 'utils/staticData';
+import { withRouter, useHistory } from 'react-router-dom';
+import { Testmonials, FrontView, Talent, AccountType, HowItWork } from '..';
 import './Landing.scss';
 
-const Landing: FC<any> = props => {
+const Landing: FC = () => {
+  const [stepName, setStepName] = useState<string>();
+
   const size = useWindowSize();
 
+  const history = useHistory();
+
   useEffect(() => {
-    const data: any = new URLSearchParams(props.history.location.search).get(
-      'data'
-    );
+    const data: any = new URLSearchParams(history.location.search).get('data');
     if (data) {
       localStorage.setItem('token', data);
-      const token = localStorage.getItem('token');
-      return props.history.push('/');
+      return history.push('/');
     }
-    return props.history.push('/');
-  }, [props.history]);
+    return history.push('/');
+  }, [history]);
+
   return (
     <div>
       <NavBar />
       <div className="front-view">
-        <FrontView
-          title={frontData.title}
-          description={frontData.description}
-        />
+        <FrontView />
       </div>
-      <div>
-        <h2
-          data-testid="howItWorks"
-          className="flex justify-center mt-16 text-gray-600 font-black text-2xl"
-        >
-          How it works
-        </h2>
-        <div className="flex justify-center pl-12 pr-12 mt-12 mb-32 display-grid">
-          {steps.map(st => (
-            <Steps
-              key={Math.random()}
-              step={st.step}
-              details={st.stepDetails}
-            />
-          ))}
-        </div>
-      </div>
+      <HowItWork setStepName={setStepName} />
       <div className="w-full h-full mainColor mt-16 pb-16">
         <h2 className="flex justify-center pt-4 pb-12 text-gray-700 font-normal text-xl">
           Trusted by 20B+ Business
@@ -96,7 +71,11 @@ const Landing: FC<any> = props => {
         <div className="flex flex-wrap justify-center mr-4 ml-4">
           {accounts.map(acc => (
             <div key={acc.id} className="account-type-wrap mt-12 ml-4 mr-4">
-              <AccountType title={acc.title} description={acc.description} />
+              <AccountType
+                title={acc.title}
+                description={acc.description}
+                setStepName={setStepName}
+              />
             </div>
           ))}
         </div>
@@ -104,13 +83,13 @@ const Landing: FC<any> = props => {
       <div className="w-full h-full pb-16 mainColor">
         <div className="flex justify-center pt-8">
           <div className="flex justify-center w-1/2">
-            <div className="flex w-1/2 py-5 mr-8">
+            <div className="flex w-1/3 py-5 mr-8">
               <hr className="w-full flex justify-center border border-gray-500" />
             </div>
-            <h2 className="flex justify-center text-gray-700 font-black text-2xl">
-              TALENT
+            <h2 className="flex justify-center text-gray-700 font-black text-2xl uppercase">
+              {stepName}
             </h2>
-            <div className="flex w-1/2 py-5 ml-8">
+            <div className="flex w-1/3 py-5 ml-8">
               <hr className="w-full flex justify-center border border-gray-500" />
             </div>
           </div>

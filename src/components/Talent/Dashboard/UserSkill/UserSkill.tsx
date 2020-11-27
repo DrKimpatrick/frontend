@@ -32,11 +32,6 @@ const Skill = () => {
       if (listBeginnerSkill && listBeginnerSkill.length > 0) {
         return <SkillItem level="Beginner" userSkill={listBeginnerSkill} />;
       }
-      return (
-        <div className="notFound my-4">
-          <h5>There are no beginner skills</h5>
-        </div>
-      );
     }
     return <></>;
   }, [userSkill]);
@@ -52,11 +47,6 @@ const Skill = () => {
           <SkillItem level="Intermediate" userSkill={listIntermediateSkill} />
         );
       }
-      return (
-        <div className="notFound my-4">
-          <h5>There are no intermediate skills</h5>
-        </div>
-      );
     }
     return <></>;
   }, [userSkill]);
@@ -70,11 +60,6 @@ const Skill = () => {
       if (listAdvancedSkill && listAdvancedSkill.length > 0) {
         return <SkillItem level="Advanced" userSkill={listAdvancedSkill} />;
       }
-      return (
-        <div className="notFound my-4">
-          <h5>There are no advanced skills</h5>
-        </div>
-      );
     }
     return <></>;
   }, [userSkill]);

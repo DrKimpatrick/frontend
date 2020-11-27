@@ -1,0 +1,45 @@
+.howItWorkSection {
+  position: relative;
+  color: #737373;
+  background: white;
+  .buttons {
+    padding: 8px 10px 8px 10px;
+    outline: none;
+    box-shadow: none;
+    font-size: 15px;
+  }
+  .active {
+    background: #4d9b62;
+    color: white;
+    border-radius: 2px;
+  }
+
+  .stepDetail {
+    font-size: 14px;
+    .stepNumber {
+      position: relative;
+    }
+    .description {
+      width: 250px;
+      margin-top: 1rem;
+      min-height: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .howItWorkSection {
+    .stepDetail {
+      li {
+        margin-top: 1rem !important;
+      }
+      .description {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        padding: 0px 10px 0px 10px;
+        margin-top: .1rem;
+      }
+    }
+  }
+}

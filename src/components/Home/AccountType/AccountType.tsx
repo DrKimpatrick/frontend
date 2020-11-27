@@ -10,15 +10,25 @@ type accountsProps = {
   title: string;
   description: string;
   clicked?: boolean;
+  setStepName?: (value: string) => void;
 };
 
 const AccountType: FC<accountsProps> = ({
   title,
   description,
-  clicked = false
+  clicked = false,
+  setStepName
 }) => {
   return (
-    <div data-testid="accountType" className="account-type">
+    <div
+      data-testid="accountType"
+      className="account-type"
+      onClick={() => {
+        if (setStepName) {
+          setStepName(title);
+        }
+      }}
+    >
       <div className="rounded overflow-hidden shadow-lg mainColor">
         <div className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4">
           {title === 'Talent' ? (
@@ -34,7 +44,6 @@ const AccountType: FC<accountsProps> = ({
         </div>
         <section className="account-status flex items-center">
           <div className="px-6 py-4">
-            {/* <div className="font-bold text-xl mb-2">The Coldest Sunset</div> */}
             {description.split('\n').map((str, index) => (
               <p key={index} className="text-gray-700 text-sm">
                 {str}
