@@ -40,6 +40,14 @@ import {
   VERIFY_FAIL,
   VerifyDispatchTypes
 } from 'redux/action-types/verifyAcc';
+import {
+  EducationTypes,
+  EducationActionTypes
+} from 'redux/action-types/education';
+import {
+  EmploymentTypes,
+  EmploymentActionTypes
+} from 'redux/action-types/employment';
 
 interface InitialState {
   currentUser: {
@@ -62,6 +70,34 @@ interface InitialState {
   };
   // skills?: AddedSkill[];
   activePath: string | null;
+  userTrainingAffiliate?: {
+    totalDocs?: number;
+    users?: User[];
+    currentPage?: number;
+  };
+  userHrAdmin?: {
+    totalDocs?: number;
+    users?: User[];
+    currentPage?: number;
+  };
+  userRecruiter?: {
+    totalDocs?: number;
+    users?: User[];
+    currentPage?: number;
+  };
+  userCompany?: {
+    totalDocs?: number;
+    users?: User[];
+    currentPage?: number;
+  };
+  userTalent?: {
+    totalDocs?: number;
+    users?: User[];
+    currentPage?: number;
+  };
+  userEducationLoading?: boolean;
+  userEmploymentLoading?: boolean;
+  userSkillLoading?: boolean;
 }
 
 const initialState: InitialState = {
@@ -89,6 +125,8 @@ export const userReducer = (
     | VerifyDispatchTypes
     | UserTypeActions
     | SkillActionTypes
+    | EducationActionTypes
+    | EmploymentActionTypes
 ) => {
   switch (action.type) {
     case REGISTER_FAIL:
@@ -197,17 +235,27 @@ export const userReducer = (
       return { ...state, user: action.payload.data, loading: false };
 
     case UserTypes.Errors:
-      return { ...state, errors: action.payload.errors, loading: false };
+      return {
+        ...state,
+        errors: action.payload.errors,
+        loading: false,
+        userSkillLoading: false,
+        userEducationLoading: false,
+        userEmploymentLoading: false
+      };
 
     case UserTypes.Loading:
-      return { ...state, loading: action.payload.loading, errors: null };
+      return { ...state, loading: action.payload.loading };
 
     case UserTypes.ListSpecificUser:
       return {
         ...state,
         specificUser: action.payload.data,
         loading: false,
-        errors: undefined
+        errors: undefined,
+        userEducationLoading: false,
+        userEmploymentLoading: false,
+        userSkillLoading: false
       };
 
     case UserTypes.ListUserSkill:
@@ -247,6 +295,61 @@ export const userReducer = (
         loading: false
       };
 
+    case UserTypes.ListHrAdminUser:
+      return {
+        ...state,
+        userHrAdmin: {
+          users: action.payload.data.data,
+          totalDocs: action.payload.data.totalDocs,
+          currentPage: action.payload.data.currentPage
+        },
+        loading: false
+      };
+
+    case UserTypes.ListTalentUser:
+      return {
+        ...state,
+        userTalent: {
+          users: action.payload.data.data,
+          totalDocs: action.payload.data.totalDocs,
+          currentPage: action.payload.data.currentPage
+        },
+        loading: false
+      };
+
+    case UserTypes.ListCompanyUser:
+      return {
+        ...state,
+        userCompany: {
+          users: action.payload.data.data,
+          totalDocs: action.payload.data.totalDocs,
+          currentPage: action.payload.data.currentPage
+        },
+        loading: false
+      };
+
+    case UserTypes.ListAffiliateUser:
+      return {
+        ...state,
+        userTrainingAffiliate: {
+          users: action.payload.data.data,
+          totalDocs: action.payload.data.totalDocs,
+          currentPage: action.payload.data.currentPage
+        },
+        loading: false
+      };
+
+    case UserTypes.ListRecruiterUser:
+      return {
+        ...state,
+        userRecruiter: {
+          users: action.payload.data.data,
+          totalDocs: action.payload.data.totalDocs,
+          currentPage: action.payload.data.currentPage
+        },
+        loading: false
+      };
+
     case UserTypes.ActivePath:
       return { ...state, activePath: action.payload.data };
 
@@ -257,6 +360,80 @@ export const userReducer = (
         loading: false,
         errors: null
       };
+
+    case UserTypes.UserEducationLoading:
+      return { ...state, userEducationLoading: action.payload.loading };
+
+    case UserTypes.UserEmploymentLoading:
+      return { ...state, userEmploymentLoading: action.payload.loading };
+
+    case UserTypes.UserSkillLoading:
+      return { ...state, userSkillLoading: action.payload.loading };
+
+    case EducationTypes.ChangeEducationStatus:
+      if (
+        state.specificUser &&
+        state.specificUser.educationHistory &&
+        state.specificUser.educationHistory.length > 0
+      ) {
+        const educations = state.specificUser.educationHistory;
+
+        const educationIndex = educations.findIndex(
+          item => item._id === action.payload.data._id
+        );
+
+        educations[educationIndex] = action.payload.data;
+
+        return {
+          ...state,
+          specificUser: { ...state.specificUser, educationHistory: educations },
+          userEducationLoading: false
+        };
+      }
+      return state;
+
+    case EmploymentTypes.ChangeEmploymentStatus:
+      if (
+        state.specificUser &&
+        state.specificUser.employmentHistory &&
+        state.specificUser.employmentHistory.length > 0
+      ) {
+        const employments = state.specificUser.employmentHistory;
+
+        const employmentIndex = employments.findIndex(
+          item => item._id === action.payload.data._id
+        );
+
+        employments[employmentIndex] = action.payload.data;
+
+        return {
+          ...state,
+          specificUser: {
+            ...state.specificUser,
+            employmentHistory: employments
+          },
+          userEmploymentLoading: false
+        };
+      }
+      return state;
+
+    case SkillTypes.ChangeSkillStatus:
+      if (state.userSkill && state.userSkill && state.userSkill.length > 0) {
+        const skills = state.userSkill;
+
+        const skillIndex = skills.findIndex(
+          item => item._id === action.payload.data._id
+        );
+
+        skills[skillIndex] = action.payload.data;
+
+        return {
+          ...state,
+          userSkill: skills,
+          userSkillLoading: false
+        };
+      }
+      return state;
 
     default:
       return state;

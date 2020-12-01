@@ -6,6 +6,8 @@
   position: relative;
   width: 100%;
   height: auto;
+  z-index: -200;
+  margin-top: -200px;
   &::after {
     content: '';
     position: absolute;

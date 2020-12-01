@@ -1,8 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
 import { accounts, subscriptions, testmonials } from 'utils/staticData';
 import { withRouter, useHistory } from 'react-router-dom';
+import {
+  Footer,
+  NavBar,
+  BottomMenu,
+  MainBackground
+} from 'components/Reusable';
 import { Testmonials, FrontView, Talent, AccountType, HowItWork } from '..';
 import './Landing.scss';
 
@@ -110,7 +115,8 @@ const Landing: FC = () => {
       <div className="w-full flex justify-center mb-16">
         <Testmonials key={Math.random()} testData={testmonials} />
       </div>
-      {size?.width && size?.width > 768 && <div className="main-background" />}
+      {size?.width && size?.width > 768 && <MainBackground />}
+      {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
     </div>
   );
 };

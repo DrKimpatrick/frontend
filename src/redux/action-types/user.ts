@@ -15,8 +15,18 @@ export enum UserTypes {
   ListHrAdminUser = 'User/ListHrAdminUser',
   ListTrainingUser = 'User/ListTrainingUser',
   ListRecruiterUser = 'User/ListRecruiterUser',
+  ListCompanyUser = 'User/ListCompany',
   ActivePath = 'User/ActivePath',
-  UpdateUser = 'User/UpdateUser'
+  UpdateUser = 'User/UpdateUser',
+  UserEducationLoading = 'User/UserEducationLoading',
+  UserEmploymentLoading = 'User/UserEmploymentLoading',
+  UserSkillLoading = 'User/UserSkillLoading'
+}
+
+export enum VerificationStatus {
+  Verified = 'verified',
+  Unverified = 'unverified',
+  InProgress = 'inProgress'
 }
 
 export enum UserRole {
@@ -113,6 +123,93 @@ interface UpdateUser {
   };
 }
 
+interface ListTalentUser {
+  type: typeof UserTypes.ListTalentUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface ListHrAdminUser {
+  type: typeof UserTypes.ListHrAdminUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface ListRecruiterUser {
+  type: typeof UserTypes.ListRecruiterUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface ListCompanyUser {
+  type: typeof UserTypes.ListCompanyUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface ListAffiliateUser {
+  type: typeof UserTypes.ListAffiliateUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface ListTrainingAffiliateUser {
+  type: typeof UserTypes.ListTrainingUser;
+  payload: {
+    data: {
+      totalDocs: number;
+      data: User[];
+      currentPage: number;
+    };
+  };
+}
+
+interface UserEducationLoading {
+  type: typeof UserTypes.UserEducationLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface UserEmploymentLoading {
+  type: typeof UserTypes.UserEmploymentLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface UserSkillLoading {
+  type: typeof UserTypes.UserSkillLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -121,4 +218,13 @@ export type UserTypeActions =
   | ListUserSkill
   | ListUserByRole
   | ActivePath
-  | UpdateUser;
+  | UpdateUser
+  | ListTalentUser
+  | ListAffiliateUser
+  | ListTrainingAffiliateUser
+  | ListRecruiterUser
+  | ListCompanyUser
+  | ListHrAdminUser
+  | UserEducationLoading
+  | UserEmploymentLoading
+  | UserSkillLoading;

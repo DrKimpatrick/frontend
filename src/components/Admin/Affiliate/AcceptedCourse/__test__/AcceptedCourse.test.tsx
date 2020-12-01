@@ -92,17 +92,17 @@ describe('Accepted Course', () => {
     });
 
     it('it should return splashScreen when loading is true', () => {
-      const { container } = render(
-        <Provider store={store}>
-          <Router>
-            <AcceptedCourse />
-          </Router>
-        </Provider>
-      );
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Router>
+              <AcceptedCourse />
+            </Router>
+          </Provider>
+        )
+        .toJSON();
 
-      const h5: Element | any = container.querySelector('.loading h5');
-
-      expect(h5).toHaveTextContent('Loading');
+      expect(tree).toBeTruthy();
     });
   });
 
@@ -134,5 +134,4 @@ describe('Accepted Course', () => {
       expect(div).toHaveTextContent('No result found');
     });
   });
-
 });

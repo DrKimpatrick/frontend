@@ -7,7 +7,8 @@ export enum SkillTypes {
   GetSkillsFail = 'Skill/GetSkillsFail',
   ListUserSkill = 'Skill/ListUserSkill',
   Errors = 'Skill/Errors',
-  Loading = 'Skill/LoadingSkill'
+  Loading = 'Skill/LoadingSkill',
+  ChangeSkillStatus = 'Skill/ChangeSkillStatus'
 }
 
 export enum VerificationStatus {
@@ -98,6 +99,13 @@ interface Loading {
     loading: boolean;
   };
 }
+
+interface ChangeSkillStatus {
+  type: typeof SkillTypes.ChangeSkillStatus;
+  payload: {
+    data: UserSkill;
+  };
+}
 export type SkillActionTypes =
   | AddSkillLoading
   | AddSkillSuccess
@@ -107,4 +115,5 @@ export type SkillActionTypes =
   | GetSkillsLoading
   | ListUserSkill
   | Errors
-  | Loading;
+  | Loading
+  | ChangeSkillStatus;

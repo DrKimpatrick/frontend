@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side Loading should create a snapshot 1`] = `
+<div
+  className="sideLoading"
+>
+  <div
+    className="css-6fk06n"
+  />
+</div>
+`;

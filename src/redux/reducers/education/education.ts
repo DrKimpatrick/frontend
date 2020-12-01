@@ -1,10 +1,10 @@
 import { map } from 'lodash';
-import { MessageActionType, MessageTypes } from '../../action-types/message';
+import { MessageActionType, MessageTypes } from 'redux/action-types/message';
 import {
   EducationActionTypes,
   Education,
   EducationTypes
-} from '../../action-types/education';
+} from 'redux/action-types/education';
 
 interface InitialState {
   readonly message?: string;
@@ -72,6 +72,18 @@ export const educationReducer = (
     case MessageTypes.Error:
     case MessageTypes.Message:
       return { ...state, loading: false };
+
+    case EducationTypes.ChangeEducationStatus:
+      if (state.educations) {
+        const changeStatus = state.educations.map(item => {
+          if (item._id === action.payload.data._id) {
+            item.verificationStatus = action.payload.data.verificationStatus;
+          }
+          return item;
+        });
+        return { ...state, educations: changeStatus };
+      }
+      return { ...state };
 
     default:
       return state;

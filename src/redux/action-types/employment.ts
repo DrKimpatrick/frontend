@@ -1,12 +1,13 @@
 export enum EmploymentTypes {
-  AddEmployment = 'employment/AddEmployment',
-  DeleteEmployment = 'employment/DeleteEmployment',
-  ListEmployments = 'employment/ListEmployments',
-  ListSpecificEmployment = 'employment/ListSpecificEmployment',
-  UpdateEmployment = 'employment/UpdateEmployment',
-  Errors = 'employment/Errors',
-  Loading = 'employment/Loading',
-  Success = 'employment/Success'
+  AddEmployment = 'Employment/AddEmployment',
+  DeleteEmployment = 'Employment/DeleteEmployment',
+  ListEmployments = 'Employment/ListEmployments',
+  ListSpecificEmployment = 'Employment/ListSpecificEmployment',
+  UpdateEmployment = 'Employment/UpdateEmployment',
+  Errors = 'Employment/Errors',
+  Loading = 'Employment/Loading',
+  Success = 'Employment/Success',
+  ChangeEmploymentStatus = 'Employment/ChangeEducationStatus'
 }
 
 export enum VerificationStatus {
@@ -99,6 +100,13 @@ export interface EmploymentParam {
   responsibilities?: string[];
   isCurrentPosition: boolean;
 }
+
+interface ChangeEmploymentStatus {
+  type: typeof EmploymentTypes.ChangeEmploymentStatus;
+  payload: {
+    data: Employment;
+  };
+}
 export type EmploymentActionTypes =
   | AddEmployment
   | UpdateEmployment
@@ -107,4 +115,5 @@ export type EmploymentActionTypes =
   | ListSpecificEmployment
   | Success
   | Loading
-  | Errors;
+  | Errors
+  | ChangeEmploymentStatus;

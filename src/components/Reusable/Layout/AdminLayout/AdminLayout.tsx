@@ -6,7 +6,6 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store';
 import { listCurrentUser } from 'redux/actions/user';
-import { SplashScreen } from 'components/Reusable';
 import { UserRole } from 'redux/action-types/user';
 import { NavBar, MainBackground } from '..';
 import { AdminMenu } from '.';
@@ -30,7 +29,7 @@ export const AdminLayout: FC<Props & WithStyles> = props => {
     return { user, loading };
   });
 
-  const { user, loading } = reducer;
+  const { user } = reducer;
 
   useEffect(() => {
     listCurrentUser()(dispatch);
@@ -44,10 +43,6 @@ export const AdminLayout: FC<Props & WithStyles> = props => {
       }
     }
   }, [history, user]);
-
-  if (loading) {
-    return <SplashScreen />;
-  }
 
   return (
     <div className="adminLayout">

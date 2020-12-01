@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listUserByRole, setActivePath } from 'redux/actions/user';
 import {
   AdminLayout,
-  SplashScreen,
   UserItem,
-  OnPageChangeCallback
+  OnPageChangeCallback,
+  SideLoading
 } from 'components/Reusable';
 import { UserRole } from 'redux/action-types/user';
 import { RootState } from 'redux/store';
@@ -28,7 +28,7 @@ const Recruiter: FC = () => {
     return { loading, usersByRole };
   });
 
-  const { loading, usersByRole } = reducer;
+  const { usersByRole, loading } = reducer;
 
   const pageChange: OnPageChangeCallback = value => {
     const selectedPage = value.selected;
@@ -51,7 +51,13 @@ const Recruiter: FC = () => {
   }, [dispatch, location.pathname]);
 
   if (loading) {
-    return <SplashScreen />;
+    return (
+      <AdminLayout>
+        <div style={{ marginTop: 200 }}>
+          <SideLoading />
+        </div>
+      </AdminLayout>
+    );
   }
 
   return (

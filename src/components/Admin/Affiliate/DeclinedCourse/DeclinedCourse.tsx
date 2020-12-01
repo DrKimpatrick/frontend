@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
   AdminLayout as Layout,
-  SplashScreen,
+  SideLoading,
   OnPageChangeCallback,
   AffiliateItem
 } from 'components/Reusable';
@@ -59,7 +59,13 @@ const DeclinedCourse: FC = () => {
   }, [loadItems, offset]);
 
   if (loading) {
-    return <SplashScreen />;
+    return (
+      <Layout>
+        <div style={{ marginTop: 200 }}>
+          <SideLoading />
+        </div>
+      </Layout>
+    );
   }
 
   return (

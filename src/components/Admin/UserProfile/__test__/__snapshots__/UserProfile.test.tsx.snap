@@ -650,14 +650,19 @@ exports[`UserProfile should create snapshot 1`] = `
                             value="status"
                           >
                             <option
-                              value="Verified"
+                              value="verified"
                             >
-                              Verified
+                              verified
                             </option>
                             <option
-                              value="Not Verified"
+                              value="unverified"
                             >
-                              Not Verified
+                              unverified
+                            </option>
+                            <option
+                              value="inProgress"
+                            >
+                              inProgress
                             </option>
                           </select>
                           <span
@@ -719,14 +724,19 @@ exports[`UserProfile should create snapshot 1`] = `
                             value="status"
                           >
                             <option
-                              value="Verified"
+                              value="verified"
                             >
-                              Verified
+                              verified
                             </option>
                             <option
-                              value="Not Verified"
+                              value="unverified"
                             >
-                              Not Verified
+                              unverified
+                            </option>
+                            <option
+                              value="inProgress"
+                            >
+                              inProgress
                             </option>
                           </select>
                           <span

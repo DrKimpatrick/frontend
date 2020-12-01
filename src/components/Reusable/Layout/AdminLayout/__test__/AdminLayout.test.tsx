@@ -86,32 +86,6 @@ describe('AdminLayout', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  describe('return splashScreen', () => {
-    beforeEach(() => {
-      store = mockStore({
-        ...initialState,
-        users: {
-          ...initialState.users,
-          loading: true
-        }
-      });
-    });
-
-    it('should return splashScreen', () => {
-      const { container } = render(
-        <Provider store={store}>
-          <Router>
-            <AdminLayout />
-          </Router>
-        </Provider>
-      );
-
-      const h5 = container.querySelector('.splashScreen .loading h5');
-
-      expect(h5).toHaveTextContent('Loading');
-    });
-  });
-
   describe('redirect back', () => {
     beforeEach(() => {
       store = mockStore({

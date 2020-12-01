@@ -91,18 +91,18 @@ describe('Declined Course', () => {
       });
     });
 
-    it('it should return splashScreen when loading is true', () => {
-      const { container } = render(
-        <Provider store={store}>
-          <Router>
-            <DeclinedCourse />
-          </Router>
-        </Provider>
-      );
+    it('it should return loading component when loading is true', () => {
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Router>
+              <DeclinedCourse />
+            </Router>
+          </Provider>
+        )
+        .toJSON();
 
-      const h5: Element | any = container.querySelector('.loading h5');
-
-      expect(h5).toHaveTextContent('Loading');
+      expect(tree).toBeTruthy();
     });
   });
 });

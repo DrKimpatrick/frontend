@@ -3,7 +3,7 @@ import { withRouter, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { Computer, School, Work } from '@material-ui/icons';
-import { AdminLayout as Layout, SplashScreen } from 'components/Reusable';
+import { AdminLayout as Layout, SideLoading } from 'components/Reusable';
 import {
   listSpecificUser,
   listUserSkill,
@@ -14,7 +14,10 @@ import Avatar from 'assets/images/avatar.jpg';
 import { SkillLevel } from 'redux/action-types/skill';
 import { RouteUrl } from 'utils/routes';
 import { UserRole } from 'redux/action-types/user';
-import { ListItem, ListItemProps, ProfileNotFound } from '.';
+import { changeEducationStatus } from 'redux/actions/education';
+import { changeEmploymentStatus } from 'redux/actions/employment';
+import { changeSkillStatus } from 'redux/actions/skill';
+import { ListItem, ProfileNotFound } from '.';
 import './UserProfile.scss';
 
 const UserProfile: FC = () => {
@@ -29,12 +32,36 @@ const UserProfile: FC = () => {
   const params = useParams<{ username: string }>();
 
   const reducer = useSelector((state: RootState) => {
-    const { specificUser, loading, userSkill, errors } = state.users;
+    const {
+      specificUser,
+      loading,
+      userSkill,
+      errors,
+      userEducationLoading,
+      userEmploymentLoading,
+      userSkillLoading
+    } = state.users;
 
-    return { specificUser, loading, userSkill, errors };
+    return {
+      specificUser,
+      loading,
+      userSkill,
+      errors,
+      userEducationLoading,
+      userEmploymentLoading,
+      userSkillLoading
+    };
   });
 
-  const { specificUser, loading, userSkill, errors } = reducer;
+  const {
+    specificUser,
+    userSkill,
+    errors,
+    loading,
+    userEducationLoading,
+    userEmploymentLoading,
+    userSkillLoading
+  } = reducer;
 
   useEffect(() => {
     listSpecificUser(params.username)(dispatch);
@@ -103,14 +130,37 @@ const UserProfile: FC = () => {
 
   const educationHistory = useMemo(() => {
     if (specificUser && specificUser.educationHistory) {
-      const data: ListItemProps[] = specificUser.educationHistory.map(item => ({
-        id: item._id,
-        name: item.schoolName,
-        status: item.verificationStatus
-      }));
+      const data = specificUser.educationHistory;
 
       if (data && data.length > 0) {
-        return <ListItem listItem={data} />;
+        return (
+          <div className="listItems">
+            {userEducationLoading && (
+              <div className="flex justify-center" style={{ width: 150 }}>
+                <SideLoading />
+              </div>
+            )}
+            {!userEducationLoading && (
+              <ul className="p-0 m-2 bg-card-preview">
+                {data.map((item, index) => (
+                  <ListItem
+                    listItem={{
+                      id: item._id,
+                      name: item.schoolName,
+                      status: item.verificationStatus
+                    }}
+                    changeStatus={value => {
+                      changeEducationStatus({ status: value, id: item._id })(
+                        dispatch
+                      );
+                    }}
+                    key={index}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       }
       return (
         <div className="notFound">
@@ -119,20 +169,41 @@ const UserProfile: FC = () => {
       );
     }
     return <></>;
-  }, [specificUser]);
+  }, [dispatch, specificUser, userEducationLoading]);
 
   const employmentHistory = useMemo(() => {
     if (specificUser && specificUser.employmentHistory) {
-      const data: ListItemProps[] = specificUser.employmentHistory.map(
-        item => ({
-          id: item._id,
-          name: item.companyName,
-          status: item.verificationStatus
-        })
-      );
+      const data = specificUser.employmentHistory;
 
       if (data && data.length > 0) {
-        return <ListItem listItem={data} />;
+        return (
+          <div className="listItems">
+            {userEmploymentLoading && (
+              <div className="flex justify-center" style={{ width: 150 }}>
+                <SideLoading />
+              </div>
+            )}
+            {!userEmploymentLoading && (
+              <ul className="p-0 m-2 bg-card-preview">
+                {data.map((item, index) => (
+                  <ListItem
+                    listItem={{
+                      id: item._id,
+                      name: item.companyName,
+                      status: item.verificationStatus
+                    }}
+                    key={index}
+                    changeStatus={value => {
+                      changeEmploymentStatus({ status: value, id: item._id })(
+                        dispatch
+                      );
+                    }}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       }
       return (
         <div className="notFound">
@@ -141,20 +212,36 @@ const UserProfile: FC = () => {
       );
     }
     return <></>;
-  }, [specificUser]);
+  }, [dispatch, specificUser, userEmploymentLoading]);
 
   const beginnerSkills = useMemo(() => {
     if (userSkill) {
-      const data: ListItemProps[] = userSkill
-        .filter(item => item.level === SkillLevel.Beginner)
-        .map(item => ({
-          id: item._id,
-          name: item.skill.skill,
-          status: item.verificationStatus
-        }));
+      const data = userSkill.filter(item => item.level === SkillLevel.Beginner);
 
       if (data && data.length > 0) {
-        return <ListItem listItem={data} />;
+        return (
+          <div className="listItems">
+            {!userSkillLoading && (
+              <ul className="p-0 m-2 bg-card-preview">
+                {data.map((item, index) => (
+                  <ListItem
+                    listItem={{
+                      id: item._id,
+                      name: item.skill.skill,
+                      status: item.verificationStatus
+                    }}
+                    key={index}
+                    changeStatus={value => {
+                      changeSkillStatus({ status: value, id: item._id })(
+                        dispatch
+                      );
+                    }}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       }
       return (
         <div className="notFound">
@@ -163,20 +250,38 @@ const UserProfile: FC = () => {
       );
     }
     return null;
-  }, [userSkill]);
+  }, [dispatch, userSkill, userSkillLoading]);
 
   const intermediateSkills = useMemo(() => {
     if (userSkill) {
-      const data: ListItemProps[] = userSkill
-        .filter(item => item.level === SkillLevel.Intermediate)
-        .map(item => ({
-          id: item._id,
-          name: item.skill.skill,
-          status: item.verificationStatus
-        }));
+      const data = userSkill.filter(
+        item => item.level === SkillLevel.Intermediate
+      );
 
       if (data && data.length > 0) {
-        return <ListItem listItem={data} />;
+        return (
+          <div className="listItems">
+            {!userSkillLoading && (
+              <ul className="p-0 m-2 bg-card-preview">
+                {data.map((item, index) => (
+                  <ListItem
+                    listItem={{
+                      id: item._id,
+                      name: item.skill.skill,
+                      status: item.verificationStatus
+                    }}
+                    key={index}
+                    changeStatus={value => {
+                      changeSkillStatus({ status: value, id: item._id })(
+                        dispatch
+                      );
+                    }}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       }
       return (
         <div className="notFound">
@@ -185,20 +290,36 @@ const UserProfile: FC = () => {
       );
     }
     return null;
-  }, [userSkill]);
+  }, [dispatch, userSkill, userSkillLoading]);
 
   const advancedSkills = useMemo(() => {
     if (userSkill) {
-      const data: ListItemProps[] = userSkill
-        .filter(item => item.level === SkillLevel.Advanced)
-        .map(item => ({
-          id: item._id,
-          name: item.skill.skill,
-          status: item.verificationStatus
-        }));
+      const data = userSkill.filter(item => item.level === SkillLevel.Advanced);
 
       if (data && data.length > 0) {
-        return <ListItem listItem={data} />;
+        return (
+          <div className="listItems">
+            {!userSkillLoading && (
+              <ul className="p-0 m-2 bg-card-preview">
+                {data.map((item, index) => (
+                  <ListItem
+                    listItem={{
+                      id: item._id,
+                      name: item.skill.skill,
+                      status: item.verificationStatus
+                    }}
+                    key={index}
+                    changeStatus={value => {
+                      changeSkillStatus({ status: value, id: item._id })(
+                        dispatch
+                      );
+                    }}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        );
       }
       return (
         <div className="notFound">
@@ -207,10 +328,16 @@ const UserProfile: FC = () => {
       );
     }
     return null;
-  }, [userSkill]);
+  }, [dispatch, userSkill, userSkillLoading]);
 
   if (loading) {
-    return <SplashScreen />;
+    return (
+      <Layout>
+        <div style={{ marginTop: 200 }}>
+          <SideLoading />
+        </div>
+      </Layout>
+    );
   }
 
   if (errors || !specificUser) {
@@ -245,7 +372,7 @@ const UserProfile: FC = () => {
                     <Work />
                     <h1>Skillset</h1>
                   </div>
-                  {userSkill && userSkill.length > 0 && (
+                  {!userSkillLoading && userSkill && userSkill.length > 0 && (
                     <>
                       <div className="skillDivider">
                         <div className="title">
@@ -268,9 +395,15 @@ const UserProfile: FC = () => {
                     </>
                   )}
 
-                  {userSkill && userSkill.length <= 0 && (
+                  {!userSkillLoading && userSkill && userSkill.length <= 0 && (
                     <div className="notFound">
                       <h5>There are no skills</h5>
+                    </div>
+                  )}
+
+                  {userSkillLoading && (
+                    <div className="flex justify-center" style={{ width: 150 }}>
+                      <SideLoading />
                     </div>
                   )}
                 </div>

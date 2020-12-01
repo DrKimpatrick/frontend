@@ -5,13 +5,11 @@ import { cleanup } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 
 const props = {
-  listItem: [
-    {
-      id: 'id',
-      name: 'name',
-      status: 'status'
-    }
-  ]
+  listItem: {
+    id: 'id',
+    name: 'name',
+    status: 'status'
+  }
 };
 
 describe('List Item', () => {

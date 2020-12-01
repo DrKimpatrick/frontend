@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux';
 import { InitialEducationValue as InitialValue } from 'components/Talent/Dashboard/Education';
 import { EducationTypes } from 'redux/action-types/education';
+import { UserTypes } from 'redux/action-types/user';
 import ApiAction from '../../../helpers/apiAction';
 import { setMessage } from '../message';
 
@@ -144,6 +145,40 @@ export const deleteEducation = (educationId: string) => (
           payload: { id: educationId }
         });
         setMessage('education deleted successfully')(dispatch);
+      }
+    })
+  );
+};
+
+export const changeEducationStatus = (values: {
+  status: string;
+  id: string;
+}) => (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/education/status/${values.id}`,
+      method: 'Put',
+      data: { verificationStatus: values.status },
+      onStart: () => dispatch => {
+        dispatch({
+          type: UserTypes.UserEducationLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: EducationTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: EducationTypes.ChangeEducationStatus,
+          payload: { data: res.data }
+        });
+        setMessage(res.message)(dispatch);
       }
     })
   );

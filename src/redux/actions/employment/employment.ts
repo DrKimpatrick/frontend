@@ -1,8 +1,12 @@
 import { Dispatch } from 'redux';
-import { EmploymentTypes } from 'redux/action-types/employment';
+import {
+  EmploymentTypes,
+  EmploymentParam
+} from 'redux/action-types/employment';
+
+import { UserTypes } from 'redux/action-types/user';
+import { setMessage } from 'redux/actions/message/message';
 import ApiAction from '../../../helpers/apiAction';
-import { EmploymentParam } from '../../action-types/employment';
-import { setMessage } from '../message';
 
 export const addEmployment = (data: EmploymentParam) => async (
   dispatchAction: Dispatch
@@ -153,6 +157,40 @@ export const updateEmployment = (data: EmploymentParam, id: string) => async (
           }
         });
 
+        setMessage(res.message)(dispatch);
+      }
+    })
+  );
+};
+
+export const changeEmploymentStatus = (values: {
+  status: string;
+  id: string;
+}) => (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/employment/status/${values.id}`,
+      method: 'Put',
+      data: { verificationStatus: values.status },
+      onStart: () => dispatch => {
+        dispatch({
+          type: UserTypes.UserEmploymentLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: EmploymentTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: EmploymentTypes.ChangeEmploymentStatus,
+          payload: { data: res.data }
+        });
         setMessage(res.message)(dispatch);
       }
     })

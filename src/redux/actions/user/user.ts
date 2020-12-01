@@ -55,9 +55,6 @@ export const listUserSkill = (userId: string) => (dispatchAction: Dispatch) => {
     ApiAction({
       url: `/users/${userId}/skills`,
       method: 'GET',
-      onStart: () => (dispatch: Dispatch) => {
-        dispatch({ type: UserTypes.Loading, payload: { loading: true } });
-      },
       onSuccess: res => (dispatch: Dispatch) => {
         dispatch({
           type: UserTypes.ListUserSkill,

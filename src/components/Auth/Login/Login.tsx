@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, useHistory } from 'react-router-dom';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -11,10 +11,10 @@ import { validateForm } from 'utils/index';
 import Loader from 'components/Reusable/Loader/Loader';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import { RouteUrl } from 'utils/routes';
+import { RootState } from 'redux/store';
+import { UserRole } from '../../../redux/action-types/user';
 
-type Props = {};
-
-const Login: FC<Props> = (props: any) => {
+const Login: FC = () => {
   const [hidden, setHidden] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState({
@@ -28,17 +28,30 @@ const Login: FC<Props> = (props: any) => {
   });
 
   const dispatch = useDispatch();
-  const user: any = useSelector((state: any) => state.users);
+
+  const user: any = useSelector((state: RootState) => state.users);
+
+  const history = useHistory();
+
   useEffect(() => {
-    if (submitted && !user.errorLogin && user.currentUser.token) {
+    if (user.currentUser.token && user.currentUser.profile) {
       localStorage.setItem('token', user.currentUser.token);
-      if (user.currentUser.profile.roles.length !== 0) {
-        props.history.push(RouteUrl.CurrentRole);
+      if (
+        user.currentUser.profile.roles &&
+        user.currentUser.profile.roles.length !== 0
+      ) {
+        const { roles } = user.currentUser.profile;
+
+        if (roles.includes(UserRole.SuperAdmin)) {
+          window.location.href = RouteUrl.SuperAdminDashboard;
+        } else {
+          history.push(RouteUrl.CurrentRole);
+        }
       } else {
-        props.history.push(RouteUrl.Account);
+        history.push(RouteUrl.Account);
       }
     }
-  });
+  }, [history, submitted, user]);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -154,7 +167,7 @@ const Login: FC<Props> = (props: any) => {
             <button
               className="auth-btn text-white hover:bg-gray-100 font-semibold h-12 py-1 px-1 rounded-sm shadow"
               onClick={login}
-              type="button"
+              type="submit"
             >
               <Loader loading={user?.loading} command="Sign In" />
             </button>

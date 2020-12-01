@@ -5,7 +5,8 @@ export enum EducationTypes {
   ListEducation = 'Education/ListEducation',
   ListSpecificEducation = 'Education/ListSpecificEducation',
   Errors = 'Education/Errors',
-  Loading = 'Education/Loading'
+  Loading = 'Education/Loading',
+  ChangeEducationStatus = 'Education/ChangeEducationStatus'
 }
 
 export enum VerificationStatus {
@@ -77,6 +78,13 @@ interface Loading {
   };
 }
 
+interface ChangeEducationStatus {
+  type: typeof EducationTypes.ChangeEducationStatus;
+  payload: {
+    data: Education;
+  };
+}
+
 export type EducationActionTypes =
   | AddEducation
   | DeleteEducation
@@ -84,4 +92,5 @@ export type EducationActionTypes =
   | ListEducation
   | ListSpecificEducation
   | Errors
-  | Loading;
+  | Loading
+  | ChangeEducationStatus;

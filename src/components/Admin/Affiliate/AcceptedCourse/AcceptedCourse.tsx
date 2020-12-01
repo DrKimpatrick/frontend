@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
   AdminLayout as Layout,
   AffiliateItem,
-  SplashScreen,
+  SideLoading,
   OnPageChangeCallback
 } from 'components/Reusable';
 import { useSelector, useDispatch } from 'react-redux';
@@ -59,7 +59,13 @@ const AcceptedCourse: FC = () => {
   }, [dispatch, location.pathname]);
 
   if (loading) {
-    return <SplashScreen />;
+    return (
+      <Layout>
+        <div style={{ marginTop: 200 }}>
+          <SideLoading />
+        </div>
+      </Layout>
+    );
   }
 
   return (

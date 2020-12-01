@@ -91,18 +91,18 @@ describe('Pending Course', () => {
       });
     });
 
-    it('should return splashScreen when loading is true', () => {
-      const { container } = render(
-        <Provider store={store}>
-          <Router>
-            <PendingCourse />
-          </Router>
-        </Provider>
-      );
+    it('should return loadingComponent when loading is true', () => {
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Router>
+              <PendingCourse />
+            </Router>
+          </Provider>
+        )
+        .toJSON();
 
-      const h5: Element | any = container.querySelector('.loading h5');
-
-      expect(h5).toHaveTextContent('Loading');
+      expect(tree).toBeTruthy();
     });
   });
 });

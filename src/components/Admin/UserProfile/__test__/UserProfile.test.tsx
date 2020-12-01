@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { MemoryRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import UserProfile from '../UserProfile';
 import { UserRole } from 'redux/action-types/user';
@@ -71,7 +71,10 @@ const initialState = {
       ]
     },
     loading: false,
-    userSkill: []
+    userSkill: [],
+    userEducationLoading: false,
+    userEmploymentLoading: false,
+    userSkillLoading: false
   }
 };
 
@@ -249,6 +252,58 @@ describe('UserProfile', () => {
       );
 
       expect(div).toHaveTextContent('Profile is not available');
+    });
+  });
+
+  describe('return loading', () => {
+    beforeEach(() => {
+      store = mockStore({
+        ...initialState,
+        users: {
+          ...initialState.users,
+          userEducationLoading: true,
+          userEmploymentLoading: true,
+          userSkillLoading: true
+        }
+      });
+    });
+
+    it('should return loadingComponent', () => {
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Router>
+              <UserProfile />
+            </Router>
+          </Provider>
+        )
+        .toJSON();
+
+      expect(tree).toBeTruthy();
+    });
+  });
+
+  describe('change list item status', () => {
+    it('should change status', () => {
+      const { container } = render(
+        <Provider store={store}>
+          <Router>
+            <UserProfile />
+          </Router>
+        </Provider>
+      );
+
+      const div: Element | any = container.querySelector(
+        '.listItems .selectItems select'
+      );
+
+      fireEvent.change(div, () => ({
+        target: {
+          value: 'unverified'
+        }
+      }));
+
+      expect(div).toBeDefined();
     });
   });
 });

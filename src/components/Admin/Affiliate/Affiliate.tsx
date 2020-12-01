@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import './Affiliate.scss';
 import { withRouter, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { AdminLayout, SplashScreen } from 'components/Reusable';
+import { AdminLayout, SideLoading } from 'components/Reusable';
 import { listCourseByStatus } from 'redux/actions/course';
 import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { RootState } from 'redux/store';
@@ -51,7 +51,13 @@ const Affiliate: FC = () => {
   }, [dispatch, location.pathname]);
 
   if (reducer.loading) {
-    return <SplashScreen />;
+    return (
+      <AdminLayout>
+        <div style={{ marginTop: 200 }}>
+          <SideLoading />
+        </div>
+      </AdminLayout>
+    );
   }
 
   return (
