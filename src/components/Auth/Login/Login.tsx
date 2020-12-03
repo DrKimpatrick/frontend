@@ -45,7 +45,7 @@ const Login: FC = () => {
         if (roles.includes(UserRole.SuperAdmin)) {
           window.location.href = RouteUrl.SuperAdminDashboard;
         } else {
-          history.push(RouteUrl.CurrentRole);
+          history.push(RouteUrl.CompleteProfile);
         }
       } else {
         history.push(RouteUrl.Account);
@@ -83,7 +83,7 @@ const Login: FC = () => {
   return (
     <>
       <NavBar />
-      <section className="flex authentication-custom justify-between ">
+      <section className="flex authentication-custom justify-between">
         <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
           {' '}
           {user.resetSuccess && (

@@ -2,12 +2,14 @@ import { Dispatch } from 'redux';
 import { InitialEducationValue as InitialValue } from 'components/Talent/Dashboard/Education';
 import { EducationTypes } from 'redux/action-types/education';
 import { UserTypes } from 'redux/action-types/user';
+import { setProfileProcess } from 'redux/actions/user';
 import ApiAction from '../../../helpers/apiAction';
 import { setMessage } from '../message';
 
-export const addEducation = (data: InitialValue) => (
-  dispatchAction: Dispatch
-) => {
+export const addEducation = (
+  data: InitialValue,
+  userInfo?: { userId: string; profileProcess: string }
+) => (dispatchAction: Dispatch) => {
   return dispatchAction(
     ApiAction({
       url: '/education',
@@ -24,6 +26,12 @@ export const addEducation = (data: InitialValue) => (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        if (userInfo && userInfo.profileProcess && userInfo.userId) {
+          setProfileProcess({
+            userId: userInfo.userId,
+            profileProcess: userInfo.profileProcess
+          })(dispatch);
+        }
         dispatch({
           type: EducationTypes.AddEducation,
           payload: { data: res.data }

@@ -8,6 +8,7 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Dashboard } from '..';
 import { initialState } from '../__mock__';
+import { TalentProcess } from 'redux/action-types/user';
 
 let store: any;
 
@@ -44,7 +45,36 @@ describe('User Dashboard', () => {
         </Provider>
       )
       .toJSON();
-    
+
     expect(tree).toMatchSnapshot();
+  });
+
+  describe('Profile Process', () => {
+    beforeEach(() => {
+      store = mockStore({
+        ...initialState,
+        users: {
+          ...initialState.users,
+          user: {
+            ...initialState.users.user,
+            profileProcess: TalentProcess.AddEducation
+          }
+        }
+      });
+    });
+
+    it('should redirect user back', () => {
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Router>
+              <Dashboard />
+            </Router>
+          </Provider>
+        )
+        .toJSON();
+
+      expect(tree).toBeDefined();
+    });
   });
 });

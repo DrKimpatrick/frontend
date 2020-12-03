@@ -104,7 +104,7 @@ const GetStarted: FC<props> = (props: any) => {
   return (
     <>
       <NavBar />
-      <section className="flex authentication-custom justify-between ">
+      <section className="flex authentication-custom justify-between">
         <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
           <div className="w-1/2 front-mob mb-8">
             <h3 className="text-gray-200 font-bold text-3xl font-extrabold pt-8">

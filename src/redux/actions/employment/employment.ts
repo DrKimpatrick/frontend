@@ -6,6 +6,7 @@ import {
 
 import { UserTypes } from 'redux/action-types/user';
 import { setMessage } from 'redux/actions/message/message';
+import { setProfileProcess } from 'redux/actions/user';
 import ApiAction from '../../../helpers/apiAction';
 
 export const addEmployment = (data: EmploymentParam) => async (
@@ -28,6 +29,12 @@ export const addEmployment = (data: EmploymentParam) => async (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        if (data.user && data.profileProcess) {
+          setProfileProcess({
+            profileProcess: data.profileProcess,
+            userId: data.user._id
+          })(dispatch);
+        }
         dispatch({
           type: EmploymentTypes.AddEmployment,
           payload: {

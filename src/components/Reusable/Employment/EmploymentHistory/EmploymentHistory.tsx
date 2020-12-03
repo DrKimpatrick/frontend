@@ -1,36 +1,57 @@
-import React, { FC, useEffect } from 'react';
-import { withRouter, useParams, useHistory } from 'react-router-dom';
+import React, { FC, useEffect, useState } from 'react';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
-import { listSpecificEmployment } from 'redux/actions/employment';
+import { listEmployments } from 'redux/actions/employment';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
-import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './EmploymentHistory.scss';
-import { RouteUrl } from 'utils/routes';
+import { TalentProcess } from 'redux/action-types/user';
+import { Employment } from 'redux/action-types/employment';
+import { setProfileProcess } from 'redux/actions/user';
+import { SideLoading } from 'components/Reusable';
 
-const EmploymentHistory: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const EmploymentHistory: FC<Props> = props => {
+  const [employment, setEmployment] = useState<Employment>();
+
   const dispatch = useDispatch();
 
-  const params = useParams<{ id: string }>();
-
-  const history = useHistory();
-
-  useEffect(() => {
-    if (params.id) {
-      listSpecificEmployment(params.id)(dispatch);
-    }
-  }, [dispatch, params.id]);
+  const { setPreviousStep } = props;
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors, employment } = state.employments;
+    const { loading, errors, employments, employment } = state.employments;
     const { message } = state.messages;
-    return { message, loading, errors, employment };
+    const { user } = state.users;
+    return { message, loading, errors, employments, user, employment };
   });
 
-  const { employment } = reducer;
+  const { employments, user, loading } = reducer;
+
+  useEffect(() => {
+    if (reducer.employment) {
+      setEmployment(reducer.employment);
+    } else {
+      listEmployments()(dispatch);
+    }
+  }, [dispatch, reducer.employment]);
+
+  useEffect(() => {
+    if (employments && employments.length > 0) {
+      setEmployment(employments[0]);
+    }
+  }, [employments]);
+
+  if (loading) {
+    return (
+      <div style={{ marginTop: '200px' }}>
+        <SideLoading />
+      </div>
+    );
+  }
 
   if (!employment) {
     return null;
@@ -38,12 +59,11 @@ const EmploymentHistory: FC = () => {
 
   return (
     <>
-      <NavBar />
       <section className="employment-history-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
-            onClick={() => history.push(RouteUrl.AddEmployment)}
+            onClick={() => setPreviousStep(TalentProcess.RecentEmployer)}
           >
             <ArrowBackTwoToneIcon />
           </div>
@@ -128,7 +148,7 @@ const EmploymentHistory: FC = () => {
           <button
             data-testid="next-button"
             className="add-employer-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
-            onClick={() => history.push(RouteUrl.AddEmployment)}
+            onClick={() => setPreviousStep(TalentProcess.RecentEmployer)}
             type="button"
           >
             <span className="">Add another employer</span>
@@ -139,16 +159,22 @@ const EmploymentHistory: FC = () => {
           <button
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-            onClick={() => history.push('/employment-history-list')}
+            onClick={() => {
+              if (user) {
+                setProfileProcess({
+                  userId: user._id,
+                  profileProcess: TalentProcess.ListEmployment
+                })(dispatch);
+              }
+            }}
             type="button"
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(EmploymentHistory);
+export default EmploymentHistory;

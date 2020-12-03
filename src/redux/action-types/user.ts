@@ -20,7 +20,8 @@ export enum UserTypes {
   UpdateUser = 'User/UpdateUser',
   UserEducationLoading = 'User/UserEducationLoading',
   UserEmploymentLoading = 'User/UserEmploymentLoading',
-  UserSkillLoading = 'User/UserSkillLoading'
+  UserSkillLoading = 'User/UserSkillLoading',
+  SetProfileProcess = 'User/SetProfileProcess'
 }
 
 export enum VerificationStatus {
@@ -40,6 +41,18 @@ export enum UserRole {
   TrainingAffiliate = 'training_affiliate'
 }
 
+export enum TalentProcess {
+  CurrentRole = 'currentRole',
+  SkillRanking = 'skillRanking',
+  RecentEmployer = 'recentEmployer',
+  AddEducation = 'addEducation',
+  Completed = 'completed',
+  SingleEducation = 'singleEducation',
+  ListEducation = 'listEducation',
+  SingleEmployment = 'singleEmployment',
+  ListEmployment = 'listEmployment'
+}
+
 export interface User {
   _id: string;
   username: string;
@@ -52,6 +65,7 @@ export interface User {
   verified: boolean;
   employmentHistory?: Employment[];
   educationHistory?: Education[];
+  profileProcess?: string;
 }
 
 export interface UserSkill {
@@ -210,6 +224,12 @@ interface UserSkillLoading {
   };
 }
 
+interface SetProfileProcess {
+  type: typeof UserTypes.SetProfileProcess;
+  payload: {
+    data: string;
+  };
+}
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -227,4 +247,5 @@ export type UserTypeActions =
   | ListHrAdminUser
   | UserEducationLoading
   | UserEmploymentLoading
-  | UserSkillLoading;
+  | UserSkillLoading
+  | SetProfileProcess;

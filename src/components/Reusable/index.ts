@@ -17,3 +17,4 @@ export * from './Accordion';
 export * from './User';
 export * from './Loading';
 export * from './NotFound';
+export * from './AccountProcess';

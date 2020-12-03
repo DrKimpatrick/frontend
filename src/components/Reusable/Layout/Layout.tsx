@@ -19,15 +19,14 @@ function Layout({ children }: Props): ReactElement {
   useEffect(() => {
     if (!userState.currentUser.isLoggedIn) {
       history.push('/login');
+    } else {
+      listCurrentUser()(dispatch);
+      listAllSkill()(dispatch);
     }
-    const fetchInit = async () => {
-      await listCurrentUser()(dispatch);
-      await listAllSkill()(dispatch);
-    };
-
-    fetchInit();
   }, [userState.currentUser.isLoggedIn, history, dispatch]);
+
   const size = useWindowSize();
+
   return (
     <div className="dashboard_layout">
       <div className="grid-container">

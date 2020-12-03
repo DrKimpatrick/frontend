@@ -59,5 +59,7 @@ export enum RouteUrl {
 
   EducationHistoryList = '/education-history-list',
 
-  AddEmployment = '/add-employment'
+  AddEmployment = '/add-employment',
+
+  CompleteProfile = '/complete-profile'
 }

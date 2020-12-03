@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { withRouter, Redirect, useHistory } from 'react-router-dom';
 import { DesktopWindowsOutlined, School } from '@material-ui/icons';
 import { CoverImage, MainBackground } from 'components/Reusable';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
+import { RootState } from 'redux/store';
+import { TalentProcess, UserRole } from 'redux/action-types/user';
+import { RouteUrl } from 'utils/routes';
 import Headline from './Headline';
 import Verification from './Verification';
 import { Employment } from './Employment';
@@ -13,6 +17,33 @@ import './style.scss';
 
 const Dashboard: FC = () => {
   const size = useWindowSize();
+
+  const history = useHistory();
+
+  const reducer = useSelector((state: RootState) => {
+    const { user } = state.users;
+
+    return { user };
+  });
+
+  const { user } = reducer;
+
+  if (user && user.roles && user.roles.find(item => item !== UserRole.Talent)) {
+    history.goBack();
+    return <></>;
+  }
+
+  if (
+    user &&
+    user.profileProcess &&
+    user.profileProcess !== TalentProcess.Completed
+  ) {
+    return <Redirect to={RouteUrl.CompleteProfile} />;
+  }
+
+  if (user && !user.profileProcess) {
+    return <Redirect to={RouteUrl.CompleteProfile} />;
+  }
 
   return (
     <>

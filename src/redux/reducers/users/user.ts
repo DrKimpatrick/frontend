@@ -435,6 +435,14 @@ export const userReducer = (
       }
       return state;
 
+    case UserTypes.SetProfileProcess:
+      return {
+        ...state,
+        user: state.user
+          ? { ...state.user, profileProcess: action.payload.data }
+          : state.user
+      };
+
     default:
       return state;
   }

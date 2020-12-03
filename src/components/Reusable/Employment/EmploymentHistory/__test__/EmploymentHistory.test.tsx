@@ -9,26 +9,12 @@ import { initialState } from '../__mock__';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 
-const mockHistoryPush = jest.fn();
-
-const mockUseParams = {
-  id: 'id'
-};
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  }),
-  useParams: () => ({
-    params: mockUseParams
-  }),
-  useDispatch: jest.fn()
-}));
+const mockSetPreviousStep = jest.fn();
 
 let store: any;
 
 const middleware = [thunk];
+
 const mockStore = configureMockStore(middleware);
 
 describe('`EmploymentHistory` component', () => {
@@ -43,7 +29,7 @@ describe('`EmploymentHistory` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <EmploymentHistory />
+          <EmploymentHistory setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -55,7 +41,7 @@ describe('`EmploymentHistory` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <EmploymentHistory />
+            <EmploymentHistory setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )

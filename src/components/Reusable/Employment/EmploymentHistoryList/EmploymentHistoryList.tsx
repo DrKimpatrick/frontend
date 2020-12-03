@@ -1,20 +1,23 @@
 import React, { FC, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import { RootState } from 'redux/store';
 import { listEmployments } from 'redux/actions/employment';
-import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './EmploymentHistoryList.scss';
-import { RouteUrl } from 'utils/routes';
+import { TalentProcess } from 'redux/action-types/user';
+import { setProfileProcess } from 'redux/actions/user';
+import { SideLoading } from 'components/Reusable';
 
-const EmploymentHistoryList: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const EmploymentHistoryList: FC<Props> = props => {
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const { setPreviousStep } = props;
 
   useEffect(() => {
     listEmployments()(dispatch);
@@ -22,23 +25,34 @@ const EmploymentHistoryList: FC = () => {
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, employments } = state.employments;
+
     const { message } = state.messages;
-    return { message, loading, errors, employments };
+
+    const { user } = state.users;
+
+    return { message, loading, errors, employments, user };
   });
 
-  const { employments } = reducer;
+  const { employments, user, loading } = reducer;
+
+  if (loading) {
+    return (
+      <div style={{ marginTop: '200px' }}>
+        <SideLoading />
+      </div>
+    );
+  }
 
   if (!employments) {
     return null;
   }
   return (
     <>
-      <NavBar />
       <section className="employment-history-list-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
-            onClick={() => history.push('/employment-history')}
+            onClick={() => setPreviousStep(TalentProcess.SingleEmployment)}
           >
             <ArrowBackTwoToneIcon />
           </div>
@@ -65,7 +79,7 @@ const EmploymentHistoryList: FC = () => {
           <button
             data-testid="next-button"
             className="add-employer-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
-            onClick={() => history.push(RouteUrl.AddEmployment)}
+            onClick={() => setPreviousStep(TalentProcess.RecentEmployer)}
             type="button"
           >
             <span className="">Add another employer</span>
@@ -76,16 +90,22 @@ const EmploymentHistoryList: FC = () => {
           <button
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
-            onClick={() => history.push('/add-education')}
+            onClick={() => {
+              if (user) {
+                setProfileProcess({
+                  userId: user._id,
+                  profileProcess: TalentProcess.AddEducation
+                })(dispatch);
+              }
+            }}
             type="button"
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(EmploymentHistoryList);
+export default EmploymentHistoryList;

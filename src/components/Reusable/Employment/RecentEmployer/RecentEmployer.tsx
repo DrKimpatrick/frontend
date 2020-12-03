@@ -1,34 +1,27 @@
-import React, { FC, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import { addEmployment } from 'redux/actions/employment';
 import { EmploymentInput, InitialEmploymentValue } from 'components/Reusable';
 import { RootState } from 'redux/store';
-import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './RecentEmployer.scss';
+import { TalentProcess } from 'redux/action-types/user';
 
-const RecentEmployer: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const RecentEmployer: FC<Props> = () => {
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, employment } = state.employments;
     const { message } = state.messages;
-    return { message, loading, errors, employment };
+    const { user } = state.users;
+    return { message, loading, errors, employment, user };
   });
-
-  useEffect(() => {
-    if (reducer.message && reducer.employment) {
-      history.push(`/employment-history/${reducer.employment._id}`);
-    }
-  }, [reducer.message, reducer.employment, history]);
 
   return (
     <>
-      <NavBar />
       <div className="containers">
         <div className="recent-employer-section w-1/3 m-auto text-textGray">
           <div
@@ -36,13 +29,10 @@ const RecentEmployer: FC = () => {
             style={{ flexDirection: 'column' }}
           >
             <div style={{ display: 'flex' }}>
-              <div
-                className="back-arrow cursor-pointer"
-                onClick={() => history.push('/skill-ranking')}
+              <h1
+                className="font-bold text-base title"
+                style={{ marginLeft: 0 }}
               >
-                <ArrowBackTwoToneIcon />
-              </div>
-              <h1 className="font-bold text-base title">
                 Who was your most recent employer?
               </h1>
             </div>
@@ -62,9 +52,15 @@ const RecentEmployer: FC = () => {
                 startDate: '',
                 endDate: ''
               }}
-              submit={(values: InitialEmploymentValue) =>
-                addEmployment(values)(dispatch)
-              }
+              submit={(values: InitialEmploymentValue) => {
+                if (reducer.user) {
+                  addEmployment({
+                    ...values,
+                    user: reducer.user,
+                    profileProcess: TalentProcess.SingleEmployment
+                  })(dispatch);
+                }
+              }}
               backendErrors={
                 reducer.errors && reducer.errors.errors && reducer.errors.errors
               }
@@ -74,9 +70,8 @@ const RecentEmployer: FC = () => {
           </div>
         </div>
       </div>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(RecentEmployer);
+export default RecentEmployer;

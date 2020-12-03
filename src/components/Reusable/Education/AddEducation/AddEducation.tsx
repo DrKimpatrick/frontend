@@ -1,44 +1,41 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter, useHistory } from 'react-router-dom';
 import { ArrowBackTwoTone } from '@material-ui/icons';
 import { EducationInput, InitialEducationValue } from 'components/Reusable';
 import { addEducation } from 'redux/actions/education';
 import { format } from 'date-fns';
 import { RootState } from 'redux/store';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
-import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import './AddEducation.scss';
+import { TalentProcess } from 'redux/action-types/user';
 
-const AddEducation: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+const AddEducation: FC<Props> = props => {
+  const { setPreviousStep } = props;
+
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, education } = state.educations;
 
     const { message } = state.messages;
 
-    return { message, loading, errors, education };
-  });
+    const { user } = state.users;
 
-  useEffect(() => {
-    if (reducer.message && reducer.education) {
-      history.push({
-        pathname: '/education-history',
-        state: { educationId: reducer.education._id }
-      });
-    }
-  }, [reducer.message, reducer.education, history]);
+    return { message, loading, errors, education, user };
+  });
 
   return (
     <>
-      <NavBar />
       <div className="containers">
         <div className="recent-employer-section w-1/3 m-auto text-textGray">
           <div className="flex relative h-auto my-8">
-            <button className="back-arrow cursor-pointer" type="button">
+            <button
+              className="back-arrow cursor-pointer"
+              type="button"
+              onClick={() => setPreviousStep(TalentProcess.ListEmployment)}
+            >
               <ArrowBackTwoTone />
             </button>
             <h1 className="font-bold text-base title">
@@ -59,12 +56,20 @@ const AddEducation: FC = () => {
               endDate: ''
             }}
             submit={(values: InitialEducationValue) => {
-              const { startDate, endDate } = values;
-              addEducation({
-                ...values,
-                startDate: format(new Date(startDate), 'yyyy-MM-dd'),
-                endDate: format(new Date(String(endDate)), 'yyyy-MM-dd')
-              })(dispatch);
+              if (reducer.user) {
+                const { startDate, endDate } = values;
+                addEducation(
+                  {
+                    ...values,
+                    startDate: format(new Date(startDate), 'yyyy-MM-dd'),
+                    endDate: format(new Date(String(endDate)), 'yyyy-MM-dd')
+                  },
+                  {
+                    profileProcess: TalentProcess.SingleEducation,
+                    userId: reducer.user._id
+                  }
+                )(dispatch);
+              }
             }}
             backendErrors={
               reducer.errors && reducer.errors.errors && reducer.errors.errors
@@ -74,9 +79,8 @@ const AddEducation: FC = () => {
           />
         </div>
       </div>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(AddEducation);
+export default AddEducation;

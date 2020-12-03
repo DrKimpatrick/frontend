@@ -7,6 +7,7 @@ import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import LayersIcon from '@material-ui/icons/Layers';
 import { useHistory } from 'react-router-dom';
 import './BottomMenu.scss';
+import { RouteUrl } from 'utils/routes';
 
 const useStyles = makeStyles({
   root: {
@@ -25,15 +26,15 @@ export default function BottomMenu() {
   useEffect(() => {
     switch (value) {
       case 0:
-        history.push('/home');
+        history.push(RouteUrl.Home);
         break;
 
       case 1:
-        history.push('/account');
+        history.push(RouteUrl.Account);
         break;
 
       case 2:
-        history.push('/notification');
+        history.push(RouteUrl.Notification);
         break;
 
       default:

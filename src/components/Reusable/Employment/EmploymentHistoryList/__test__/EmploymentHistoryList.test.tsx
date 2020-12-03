@@ -10,20 +10,14 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 afterEach(cleanup);
-const mockHistoryPush = jest.fn();
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  }),
-  useDispatch: jest.fn()
-}));
 
 let store: any;
 
 const middleware = [thunk];
+
 const mockStore = configureMockStore(middleware);
+
+const mockSetPreviousStep = jest.fn();
 
 describe('`EmploymentHistoryList` component', () => {
   beforeEach(() => {
@@ -37,7 +31,7 @@ describe('`EmploymentHistoryList` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <EmploymentHistoryList />
+          <EmploymentHistoryList setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -49,7 +43,7 @@ describe('`EmploymentHistoryList` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <EmploymentHistoryList />
+            <EmploymentHistoryList setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )

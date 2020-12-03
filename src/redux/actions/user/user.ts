@@ -127,10 +127,10 @@ export const listUserByRole = (data: {
   );
 };
 
-export const addedSkillsUser = (dataValues: AddSkill[]) => (
-  dispatchAction: Dispatch
-) => {
-  console.log('data values', dataValues);
+export const addedSkillsUser = (
+  dataValues: AddSkill[],
+  { profileProcess, userId }: { profileProcess?: string; userId?: string }
+) => (dispatchAction: Dispatch) => {
   return dispatchAction(
     ApiAction({
       url: '/skills/me',
@@ -143,6 +143,9 @@ export const addedSkillsUser = (dataValues: AddSkill[]) => (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        if (profileProcess && userId) {
+          setProfileProcess({ userId, profileProcess })(dispatch);
+        }
         dispatch({
           type: SkillTypes.SkillSuccess,
           payload: { data: res }
@@ -181,6 +184,34 @@ export const updateUser = (data: any, userId: string) => (
             payload: { data: res.profile }
           });
         }, [1000]);
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};
+
+export const setProfileProcess = ({
+  userId,
+  profileProcess
+}: {
+  userId: string;
+  profileProcess: string;
+}) => (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/users/${userId}`,
+      method: 'PATCH',
+      data: { profileProcess },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.SetProfileProcess,
+          payload: { data: res.profile.profileProcess }
+        });
       },
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({

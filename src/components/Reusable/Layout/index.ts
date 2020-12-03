@@ -7,3 +7,4 @@ export { Layout, Footer, BottomMenu, NavBar };
 
 export * from './MainBackground';
 export * from './AdminLayout';
+export * from './AuthLayout';

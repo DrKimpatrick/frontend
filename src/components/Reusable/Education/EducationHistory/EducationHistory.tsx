@@ -1,22 +1,27 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns';
-import { withRouter, useLocation, useHistory } from 'react-router-dom';
 import { RootState } from 'redux/store';
-import { listSpecificEducation } from 'redux/actions/education';
+import { listEducation } from 'redux/actions/education';
+import { Education } from 'redux/action-types/education';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import NavBar from '../../Layout/NavBar/NavBar';
-import { MainBackground } from '../../Layout/MainBackground';
 import './EducationHistory.scss';
+import { TalentProcess } from 'redux/action-types/user';
+import { setProfileProcess } from 'redux/actions/user';
+import { SideLoading } from 'components/Reusable';
 
-const EducationHistory: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const EducationHistory: FC<Props> = props => {
+  const [education, setEducation] = useState<Education>();
+
+  const { setPreviousStep } = props;
+
   const dispatch = useDispatch();
-
-  const history = useHistory();
-
-  const location = useLocation<{ educationId: string }>();
 
   const getMonthAndYear = (value: string) => {
     const date = format(new Date(value), 'MMMM yyyy');
@@ -25,34 +30,49 @@ const EducationHistory: FC = () => {
   };
 
   const reducer = useSelector((state: RootState) => {
-    const { education, loading } = state.educations;
+    const { loading, educations, education } = state.educations;
 
     const { user }: any = state.users;
 
-    return { user, loading, education };
+    return { user, loading, educations, education };
   });
 
-  const { education, loading } = reducer;
+  const { user, loading } = reducer;
 
   useEffect(() => {
-    if (reducer.user && location.state && location.state.educationId) {
-      listSpecificEducation(
-        reducer.user._id,
-        location.state.educationId
-      )(dispatch);
+    if (reducer.education) {
+      setEducation(reducer.education);
+    } else {
+      listEducation()(dispatch);
     }
-  }, [reducer.user, location.state.educationId, dispatch, location.state]);
+  }, [reducer.education, dispatch]);
 
-  if (!education || !location.state.educationId || loading) {
+  useEffect(() => {
+    if (reducer.educations && reducer.educations.length > 0) {
+      setEducation(reducer.educations[0]);
+    }
+  }, [reducer.educations]);
+
+  if (loading) {
+    return (
+      <div style={{ marginTop: 200 }}>
+        <SideLoading />
+      </div>
+    );
+  }
+
+  if (!education) {
     return null;
   }
 
   return (
     <>
-      <NavBar />
       <section className="education-history-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
-          <div className="back-arrow cursor-pointer">
+          <div
+            className="back-arrow cursor-pointer"
+            onClick={() => setPreviousStep(TalentProcess.AddEducation)}
+          >
             <ArrowBackTwoToneIcon />
           </div>
           <h1 className="font-bold text-xl title">Education History</h1>
@@ -123,7 +143,7 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="add-education-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
             type="button"
-            onClick={() => history.push('/add-education')}
+            onClick={() => setPreviousStep(TalentProcess.AddEducation)}
           >
             <span className="">Add another school</span>
             <AddCircleOutlineOutlinedIcon />
@@ -134,15 +154,21 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             type="button"
-            onClick={() => history.push('/education-history-list')}
+            onClick={() => {
+              if (user) {
+                setProfileProcess({
+                  userId: user._id,
+                  profileProcess: TalentProcess.ListEducation
+                })(dispatch);
+              }
+            }}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(EducationHistory);
+export default EducationHistory;

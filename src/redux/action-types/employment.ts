@@ -1,3 +1,5 @@
+import { User } from 'redux/action-types/user';
+
 export enum EmploymentTypes {
   AddEmployment = 'Employment/AddEmployment',
   DeleteEmployment = 'Employment/DeleteEmployment',
@@ -99,6 +101,8 @@ export interface EmploymentParam {
   favoriteProject?: string;
   responsibilities?: string[];
   isCurrentPosition: boolean;
+  user?: User;
+  profileProcess?: string;
 }
 
 interface ChangeEmploymentStatus {

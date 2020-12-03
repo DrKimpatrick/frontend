@@ -1,17 +1,23 @@
 import React, { FC, useEffect } from 'react';
-import { useHistory, withRouter } from 'react-router-dom';
 import { format } from 'date-fns';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { listEducation } from 'redux/actions/education';
 import { RootState } from 'redux/store';
-import { MainBackground } from '../../Layout/MainBackground';
 import './EducationHistoryList.scss';
+import { TalentProcess } from 'redux/action-types/user';
+import { setProfileProcess } from 'redux/actions/user';
+import { SideLoading } from 'components/Reusable';
 
-const EducationHistory: FC = () => {
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const EducationHistory: FC<Props> = props => {
+  const { setPreviousStep } = props;
+
   const dispatch = useDispatch();
 
   const getMonthAndYear = (value: string) => {
@@ -20,29 +26,37 @@ const EducationHistory: FC = () => {
     return date;
   };
 
-  const history = useHistory();
-
   useEffect(() => {
     listEducation()(dispatch);
   }, [dispatch]);
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, educations } = state.educations;
+
     const { message } = state.messages;
-    return { message, loading, errors, educations };
+
+    const { user } = state.users;
+
+    return { message, loading, errors, educations, user };
   });
 
-  const { loading, educations } = reducer;
+  const { loading, educations, user } = reducer;
 
   if (loading && loading === true) {
-    return null;
+    return (
+      <div style={{ marginTop: 200 }}>
+        <SideLoading />
+      </div>
+    );
   }
   return (
     <>
-      <NavBar />
       <section className="education-history-list-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
-          <div className="back-arrow cursor-pointer">
+          <div
+            className="back-arrow cursor-pointer"
+            onClick={() => setPreviousStep(TalentProcess.SingleEducation)}
+          >
             <ArrowBackTwoToneIcon />
           </div>
           <h1 className="font-bold text-xl title">Education History</h1>
@@ -69,6 +83,7 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="add-education-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-64 rounded-sm shadow flex justify-around"
             type="button"
+            onClick={() => setPreviousStep(TalentProcess.AddEducation)}
           >
             <span className="">Add another school</span>
             <AddCircleOutlineOutlinedIcon />
@@ -79,15 +94,21 @@ const EducationHistory: FC = () => {
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             type="button"
-            onClick={() => history.push('/user/dashboard')}
+            onClick={() => {
+              if (user) {
+                setProfileProcess({
+                  userId: user._id,
+                  profileProcess: TalentProcess.Completed
+                })(dispatch);
+              }
+            }}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(EducationHistory);
+export default EducationHistory;

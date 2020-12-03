@@ -1,28 +1,31 @@
 import React, { FC, useEffect } from 'react';
-import { withRouter, useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import Select from 'react-select';
 import { map } from 'lodash';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
 import { RootState } from 'redux/store';
+import { TalentProcess } from 'redux/action-types/user';
 import { addEmployment, listEmployments } from 'redux/actions/employment';
-import { RouteUrl } from 'utils/routes';
-import MainBackground from '../../Layout/MainBackground/MainBackground';
 import { currentRoleSchema } from './Schema';
 import './CurrentRole.scss';
 
-const CurrentRole: FC = () => {
-  const history = useHistory();
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
+
+const CurrentRole: FC<Props> = props => {
+  const { setPreviousStep } = props;
 
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, employment } = state.employments;
     const { message } = state.messages;
-    return { message, loading, errors, employment };
+    const { user } = state.users;
+    return { message, loading, errors, employment, user };
   });
 
   const getErrors = (field: string) => {
@@ -49,18 +52,11 @@ const CurrentRole: FC = () => {
   };
 
   useEffect(() => {
-    if (reducer.message && reducer.employment) {
-      history.push('/skill-ranking');
-    }
-  }, [reducer.message, reducer.employment, history]);
-
-  useEffect(() => {
     listEmployments()(dispatch);
   }, [dispatch]);
 
   return (
     <>
-      <NavBar />
       <section className="current-role-section w-1/3 m-auto text-textGray">
         <div className="containers">
           <div className="recent-employer-section">
@@ -82,7 +78,15 @@ const CurrentRole: FC = () => {
                 startDate: '',
                 isCurrentPosition: true
               }}
-              onSubmit={values => addEmployment(values)(dispatch)}
+              onSubmit={values => {
+                if (reducer.user) {
+                  addEmployment({
+                    ...values,
+                    user: reducer.user,
+                    profileProcess: TalentProcess.SkillRanking
+                  })(dispatch);
+                }
+              }}
             >
               {formik => {
                 const { errors, values } = formik;
@@ -202,8 +206,11 @@ const CurrentRole: FC = () => {
                         <ArrowRightAltTwoTone />
                       </button>
                       <Link
-                        to={RouteUrl.SkillRanking}
+                        to="#"
                         className="my-5 font-bold"
+                        onClick={() =>
+                          setPreviousStep(TalentProcess.SkillRanking)
+                        }
                       >
                         Skip
                       </Link>
@@ -215,9 +222,8 @@ const CurrentRole: FC = () => {
           </div>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(CurrentRole);
+export default CurrentRole;

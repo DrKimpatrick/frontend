@@ -9,20 +9,13 @@ import AddEducation from '../AddEducation';
 import renderer from 'react-test-renderer';
 import { initialState } from '../__mock__';
 
-const mockHistoryPush = jest.fn();
-
 let store: any;
 
 const middleware = [thunk];
 
 const mockStore = configureMockStore(middleware);
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  })
-}));
+const mockSetPreviousStep = jest.fn();
 
 describe('`AddEducation` component', () => {
   beforeEach(() => {
@@ -35,7 +28,7 @@ describe('`AddEducation` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <AddEducation />
+          <AddEducation setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -47,7 +40,7 @@ describe('`AddEducation` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <AddEducation />
+            <AddEducation setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )
@@ -59,7 +52,7 @@ describe('`AddEducation` component', () => {
     const { container } = render(
       <Provider store={store}>
         <Router>
-          <AddEducation />
+          <AddEducation setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>
     );
@@ -138,11 +131,6 @@ describe('`AddEducation` component', () => {
 
     await waitFor(() => {
       fireEvent.submit(form);
-    });
-
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: '/education-history',
-      state: { educationId: 'id' }
     });
   });
 });

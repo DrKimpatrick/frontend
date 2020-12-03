@@ -41,7 +41,7 @@ const AccountTypes: FC = () => {
 
   useEffect(() => {
     if (reducer.user?.roles && reducer.user?.roles.length > 0) {
-      history.push(RouteUrl.CurrentRole);
+      history.push(RouteUrl.CompleteProfile);
     }
   });
 
@@ -55,7 +55,7 @@ const AccountTypes: FC = () => {
 
   const onSubmitAccountTypeHandler = () => {
     if (reducer.user) {
-      updateUser({ roles: selectedAccount }, reducer.user._id)(dispatch);
+      updateUser({ roles: [selectedAccount] }, reducer.user._id)(dispatch);
     }
   };
 

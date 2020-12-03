@@ -1,21 +1,20 @@
 import React, { FC, useState, useEffect } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
-import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import { SKILL_RANKING } from 'constants/draggable-types';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import './SkillRanking.scss';
 import { addedSkillsUser } from 'redux/actions/user';
 import { AddSkill } from 'redux/action-types/skill';
 import { VerificationStatus } from 'redux/action-types/education';
 import { useDispatch, useSelector } from 'react-redux';
-import MainBackground from '../Layout/MainBackground/MainBackground';
+import { TalentProcess } from 'redux/action-types/user';
 import DraggableArea from './DraggableArea';
 import SkillComponent from './SkillComponent';
 
-const SkillRanking: FC = () => {
-  const history = useHistory();
+interface Props {
+  setPreviousStep: (value: string) => void;
+}
 
+const SkillRanking: FC<Props> = () => {
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: any) => state.users);
@@ -77,10 +76,11 @@ const SkillRanking: FC = () => {
       })
     );
 
-    await addedSkillsUser(allSkills)(dispatch);
-
-    if (!reducer.errors) {
-      history.push('/add-employment');
+    if (reducer.user) {
+      addedSkillsUser(allSkills, {
+        profileProcess: TalentProcess.RecentEmployer,
+        userId: reducer.user._id
+      })(dispatch);
     }
   };
 
@@ -213,16 +213,11 @@ const SkillRanking: FC = () => {
 
   return (
     <>
-      <NavBar />
       <section className="skill-ranking-section w-1/3 m-auto text-textGray">
         <div className="flex relative h-auto my-8">
-          <div
-            className="back-arrow cursor-pointer"
-            onClick={() => history.push('/current-role')}
-          >
-            <ArrowBackTwoToneIcon />
-          </div>
-          <h1 className="font-bold text-xl title">Rank your skillset!</h1>
+          <h1 className="font-bold text-xl title" style={{ marginLeft: 0 }}>
+            Rank your skillset!
+          </h1>
         </div>
 
         <div className="mt-6">
@@ -310,9 +305,8 @@ const SkillRanking: FC = () => {
           </button>
         </div>
       </section>
-      <MainBackground />
     </>
   );
 };
 
-export default withRouter(SkillRanking);
+export default SkillRanking;

@@ -15,6 +15,8 @@ const middleware = [thunk];
 
 const mockStore = configureMockStore(middleware);
 
+const mockSetPreviousStep = jest.fn();
+
 describe('`EducationHistoryList` component', () => {
   beforeEach(() => {
     store = mockStore(initialState);
@@ -26,7 +28,7 @@ describe('`EducationHistoryList` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <EducationHistoryList />
+          <EducationHistoryList setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -38,7 +40,7 @@ describe('`EducationHistoryList` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <EducationHistoryList />
+            <EducationHistoryList setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )

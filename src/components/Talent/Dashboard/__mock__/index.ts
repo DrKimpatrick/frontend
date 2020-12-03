@@ -1,4 +1,5 @@
 import { VerificationStatus, SkillLevel } from 'redux/action-types/skill';
+import { TalentProcess } from 'redux/action-types/user';
 
 export const initialState = {
   users: {
@@ -24,7 +25,8 @@ export const initialState = {
       dateRegistered: '2020-10-10',
       paymentStatus: 'verified',
       featureChoice: 'local',
-      verified: true
+      verified: true,
+      profileProcess: TalentProcess.Completed
     }
   },
   employments: {

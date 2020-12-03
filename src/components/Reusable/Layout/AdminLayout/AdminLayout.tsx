@@ -35,14 +35,14 @@ export const AdminLayout: FC<Props & WithStyles> = props => {
     listCurrentUser()(dispatch);
   }, [dispatch]);
 
-  useEffect(() => {
-    if (user) {
-      const roles = user.roles.find(item => item === UserRole.SuperAdmin);
-      if (!roles) {
-        history.goBack();
-      }
-    }
-  }, [history, user]);
+  if (
+    user &&
+    user.roles &&
+    user.roles.find(item => item !== UserRole.SuperAdmin)
+  ) {
+    history.goBack();
+    return <></>;
+  }
 
   return (
     <div className="adminLayout">

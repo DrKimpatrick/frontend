@@ -106,6 +106,7 @@ interface ChangeSkillStatus {
     data: UserSkill;
   };
 }
+
 export type SkillActionTypes =
   | AddSkillLoading
   | AddSkillSuccess

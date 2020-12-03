@@ -10,20 +10,14 @@ import {
 } from 'components/Auth';
 import { Dashboard } from 'components/Talent';
 import {
-  EducationHistory,
-  EducationHistoryList,
   StandardBilling,
-  SkillRanking,
   PremiumBilling,
-  EmploymentHistory,
-  EmploymentHistoryList,
-  CurrentRole,
-  RecentEmployer,
-  AddEducation,
   MessagePage,
   GetHired,
   Layout,
-  NotFound
+  NotFound,
+  AccountProcess,
+  AuthLayout
 } from 'components/Reusable';
 import {
   AdminDashboard,
@@ -40,37 +34,10 @@ import {
 import { RouteUrl } from 'utils/routes';
 
 const AppRouter: React.FC = () => {
-  const authRoutes = [
-    { path: RouteUrl.Login, exact: true, component: <Login /> },
-    { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
+  const authorizedRoutes = [
     { path: RouteUrl.Account, exact: true, component: <AccountTypes /> },
     { path: RouteUrl.Notification, exact: true, component: <Dashboard /> },
-    { path: RouteUrl.CurrentRole, exact: true, component: <CurrentRole /> },
-    { path: RouteUrl.SkillRanking, exact: true, component: <SkillRanking /> },
-    {
-      path: RouteUrl.AddEmployment,
-      exact: true,
-      component: <RecentEmployer />
-    },
-    {
-      path: RouteUrl.EmploymentHistoryById,
-      exact: true,
-      component: <EmploymentHistory />
-    },
-    {
-      path: RouteUrl.EmploymentHistoryList,
-      exact: true,
-      component: <EmploymentHistoryList />
-    },
-    { path: RouteUrl.AddEducation, exact: true, component: <AddEducation /> },
     { path: RouteUrl.UserDashboard, exact: true, component: <Dashboard /> },
-    { path: RouteUrl.VerifyAccount, exact: true, component: <MessagePage /> },
-    {
-      path: RouteUrl.ForgotPassword,
-      exact: true,
-      component: <ForgotPassword />
-    },
-    { path: RouteUrl.ResetPassword, exact: true, component: <ResetPassword /> },
     {
       path: RouteUrl.PremiumBilling,
       exact: true,
@@ -82,16 +49,6 @@ const AppRouter: React.FC = () => {
       component: <StandardBilling />
     },
     { path: RouteUrl.GetHired, exact: true, component: <GetHired /> },
-    {
-      path: RouteUrl.EducationHistory,
-      exact: true,
-      component: <EducationHistory />
-    },
-    {
-      path: RouteUrl.EducationHistoryList,
-      exact: true,
-      component: <EducationHistoryList />
-    },
     {
       path: RouteUrl.SuperAdminDashboard,
       exact: true,
@@ -121,14 +78,36 @@ const AppRouter: React.FC = () => {
       component: <TrainingAffiliate />
     },
     { path: RouteUrl.Company, exact: true, component: <Company /> },
-    { path: RouteUrl.Recruiter, exact: true, component: <Recruiter /> }
+    { path: RouteUrl.Recruiter, exact: true, component: <Recruiter /> },
+    {
+      path: RouteUrl.CompleteProfile,
+      exact: true,
+      component: <AccountProcess />
+    }
+  ];
+
+  const unauthorizedRoutes = [
+    { path: RouteUrl.Login, exact: true, component: <Login /> },
+    { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
+    {
+      path: RouteUrl.ForgotPassword,
+      exact: true,
+      component: <ForgotPassword />
+    },
+    { path: RouteUrl.ResetPassword, exact: true, component: <ResetPassword /> },
+    { path: RouteUrl.VerifyAccount, exact: true, component: <MessagePage /> }
   ];
 
   return (
     <Router>
       <Switch>
         <Route component={Landing} path={RouteUrl.Home} exact />
-        {authRoutes.map((route, index) => (
+        {unauthorizedRoutes.map((route, index) => (
+          <Route path={route.path} exact={route.exact} key={index}>
+            <AuthLayout>{route.component}</AuthLayout>
+          </Route>
+        ))}
+        {authorizedRoutes.map((route, index) => (
           <Route path={route.path} exact={route.exact} key={index}>
             <Layout>{route.component}</Layout>
           </Route>

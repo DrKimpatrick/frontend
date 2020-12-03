@@ -9,18 +9,12 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { initialState } from '../__mock__';
 
-const mockHistoryPush = jest.fn();
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  })
-}));
+const mockSetPreviousStep = jest.fn();
 
 let store: any;
 
 const middleware = [thunk];
+
 const mockStore = configureMockStore(middleware);
 
 describe('`CurrentRole` component', () => {
@@ -35,7 +29,7 @@ describe('`CurrentRole` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <CurrentRole />
+          <CurrentRole setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -47,7 +41,7 @@ describe('`CurrentRole` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <CurrentRole />
+            <CurrentRole setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )
@@ -60,7 +54,7 @@ describe('`CurrentRole` component', () => {
     const { container } = render(
       <Provider store={store}>
         <Router>
-          <CurrentRole />
+          <CurrentRole setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>
     );
@@ -83,7 +77,6 @@ describe('`CurrentRole` component', () => {
         }
       });
     });
-
 
     await waitFor(() => {
       fireEvent.change(startDate, {
@@ -110,8 +103,5 @@ describe('`CurrentRole` component', () => {
     expect(title.value).toEqual('title');
 
     expect(startDate.value).toEqual('2020-05-05');
-
-    expect(mockHistoryPush).toHaveBeenCalledWith('/skill-ranking');
-
   });
 });

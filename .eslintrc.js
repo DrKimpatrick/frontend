@@ -31,6 +31,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
-    'func-names': 0
+    'func-names': 0,
+    'no-plusplus': 0
   }
 };

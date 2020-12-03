@@ -9,19 +9,13 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
-const mockHistoryPush = jest.fn();
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  })
-}));
-
 let store: any;
 
 const middleware = [thunk];
+
 const mockStore = configureMockStore(middleware);
+
+const mockSetPreviousStep = jest.fn();
 
 describe('`RecentEmployer` component', () => {
   beforeEach(() => {
@@ -35,7 +29,7 @@ describe('`RecentEmployer` component', () => {
     ReactDom.render(
       <Provider store={store}>
         <Router>
-          <RecentEmployer />
+          <RecentEmployer setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>,
       div
@@ -47,7 +41,7 @@ describe('`RecentEmployer` component', () => {
       .create(
         <Provider store={store}>
           <Router>
-            <RecentEmployer />
+            <RecentEmployer setPreviousStep={mockSetPreviousStep} />
           </Router>
         </Provider>
       )
@@ -60,7 +54,7 @@ describe('`RecentEmployer` component', () => {
     const { container } = render(
       <Provider store={store}>
         <Router>
-          <RecentEmployer />
+          <RecentEmployer setPreviousStep={mockSetPreviousStep} />
         </Router>
       </Provider>
     );
@@ -109,9 +103,5 @@ describe('`RecentEmployer` component', () => {
     expect(title.value).toEqual('title');
 
     expect(startDate.value).toEqual('2020-05-05');
-
-    expect(mockHistoryPush).toHaveBeenCalledWith(
-      `/employment-history/${initialState.employments.employment._id}`
-    );
   });
 });
