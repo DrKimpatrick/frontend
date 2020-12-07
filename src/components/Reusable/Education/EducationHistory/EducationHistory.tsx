@@ -30,11 +30,15 @@ const EducationHistory: FC<Props> = props => {
   };
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, educations, education } = state.educations;
+    const {
+      loading,
+      educations,
+      education: singleEducation
+    } = state.educations;
 
     const { user }: any = state.users;
 
-    return { user, loading, educations, education };
+    return { user, loading, educations, education: singleEducation };
   });
 
   const { user, loading } = reducer;

@@ -1,0 +1,14 @@
+.adminSkills {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  li {
+    button {
+      border: none;
+      outline: none;
+    }
+  }
+}

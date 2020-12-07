@@ -23,10 +23,22 @@ const EmploymentHistory: FC<Props> = props => {
   const { setPreviousStep } = props;
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors, employments, employment } = state.employments;
+    const {
+      loading,
+      errors,
+      employments,
+      employment: singleEmployment
+    } = state.employments;
     const { message } = state.messages;
     const { user } = state.users;
-    return { message, loading, errors, employments, user, employment };
+    return {
+      message,
+      loading,
+      errors,
+      employments,
+      user,
+      employment: singleEmployment
+    };
   });
 
   const { employments, user, loading } = reducer;

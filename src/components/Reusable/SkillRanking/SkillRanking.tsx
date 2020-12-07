@@ -300,6 +300,7 @@ const SkillRanking: FC<Props> = () => {
           <button
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             onClick={submitSkills}
+            type="button"
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>

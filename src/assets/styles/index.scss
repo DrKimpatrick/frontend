@@ -19,3 +19,7 @@ button:disabled,
 button[disabled] {
   cursor: not-allowed;
 }
+
+.inputError {
+  color: rgb(255, 0, 0);
+}

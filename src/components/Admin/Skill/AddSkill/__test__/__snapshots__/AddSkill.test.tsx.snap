@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skill Component should create snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 0px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+      class="addSkillModal"
+      role="presentation"
+      style="position: fixed; z-index: 100; right: 0px; bottom: 0px; top: 0px; left: 0px; outline: none;"
+      tabindex="0"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="containers addSkill"
+        tabindex="-1"
+      >
+        <div
+          class="flex relative h-auto flex-col"
+        >
+          <div
+            class="flex"
+          >
+            <button
+              class="back-arrow cursor-pointer"
+              style="outline: none;"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+                />
+              </svg>
+            </button>
+            <h1
+              class="font-bold text-base title mx-5 text-2xl"
+            >
+              title
+            </h1>
+          </div>
+          <div
+            class="inputError text-sm"
+          >
+            token
+          </div>
+          <div
+            class="inputError text-sm"
+          >
+            token
+          </div>
+        </div>
+        <form
+          autocomplete="off"
+        >
+          <div
+            class="text-textGray mt-8"
+          >
+            <input
+              class="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+              name="skill"
+              placeholder="Skill"
+              type="text"
+              value=""
+            />
+            <div
+              class="inputError text-sm"
+            >
+              required
+            </div>
+          </div>
+          <div
+            class="flex justify-center mt-8"
+          >
+            <button
+              class="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+              data-testid="next-button"
+              type="submit"
+            >
+              <span
+                class=""
+              >
+                save
+              </span>
+               
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+    />
+    <div
+      class="addSkillModal"
+      role="presentation"
+      style="position: fixed; z-index: 100; right: 0px; bottom: 0px; top: 0px; left: 0px; outline: none;"
+      tabindex="0"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="containers addSkill"
+        tabindex="-1"
+      >
+        <div
+          class="flex relative h-auto flex-col"
+        >
+          <div
+            class="flex"
+          >
+            <button
+              class="back-arrow cursor-pointer"
+              style="outline: none;"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+                />
+              </svg>
+            </button>
+            <h1
+              class="font-bold text-base title mx-5 text-2xl"
+            >
+              title
+            </h1>
+          </div>
+          <div
+            class="inputError text-sm"
+          >
+            token
+          </div>
+          <div
+            class="inputError text-sm"
+          >
+            token
+          </div>
+        </div>
+        <form
+          autocomplete="off"
+        >
+          <div
+            class="text-textGray mt-8"
+          >
+            <input
+              class="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+              name="skill"
+              placeholder="Skill"
+              type="text"
+              value=""
+            />
+            <div
+              class="inputError text-sm"
+            >
+              required
+            </div>
+          </div>
+          <div
+            class="flex justify-center mt-8"
+          >
+            <button
+              class="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
+              data-testid="next-button"
+              type="submit"
+            >
+              <span
+                class=""
+              >
+                save
+              </span>
+               
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

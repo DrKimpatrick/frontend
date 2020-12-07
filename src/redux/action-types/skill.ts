@@ -1,5 +1,5 @@
 export enum SkillTypes {
-  SkillLoading = 'Skill/Loading',
+  SkillLoading = 'SkillLoading/Loading',
   SkillSuccess = 'Skill/SkillSuccess',
   SkillFail = 'Skill/SkillFail',
   GetSkillsLoading = 'Skill/Loading',
@@ -8,7 +8,13 @@ export enum SkillTypes {
   ListUserSkill = 'Skill/ListUserSkill',
   Errors = 'Skill/Errors',
   Loading = 'Skill/LoadingSkill',
-  ChangeSkillStatus = 'Skill/ChangeSkillStatus'
+  ChangeSkillStatus = 'Skill/ChangeSkillStatus',
+  AddSkill = 'Skill/AddSkill',
+  ListSingleSkill = 'Skill/ListSingleSkill',
+  ListSkill = 'Skill/ListSkill',
+  UpdateSkill = 'Skill/UpdateSkill',
+  DeleteSkill = 'Skill/DeleteSkill',
+  SetActionModal = 'Skill/SetActionModal'
 }
 
 export enum VerificationStatus {
@@ -107,6 +113,48 @@ interface ChangeSkillStatus {
   };
 }
 
+interface AddSkillAsAdmin {
+  type: typeof SkillTypes.AddSkill;
+  payload: {
+    data: Skill[];
+  };
+}
+
+interface DeleteSkill {
+  type: typeof SkillTypes.DeleteSkill;
+  payload: {
+    data: string;
+  };
+}
+
+interface UpdateSkill {
+  type: typeof SkillTypes.UpdateSkill;
+  payload: {
+    data: Skill;
+  };
+}
+
+interface ListSkill {
+  type: typeof SkillTypes.ListSkill;
+  payload: {
+    data: Skill[];
+  };
+}
+
+interface ListSingleSkill {
+  type: typeof SkillTypes.ListSingleSkill;
+  payload: {
+    data: Skill;
+  };
+}
+
+interface SetActionModal {
+  type: typeof SkillTypes.SetActionModal;
+  payload: {
+    data: boolean;
+  };
+}
+
 export type SkillActionTypes =
   | AddSkillLoading
   | AddSkillSuccess
@@ -117,4 +165,10 @@ export type SkillActionTypes =
   | ListUserSkill
   | Errors
   | Loading
-  | ChangeSkillStatus;
+  | ChangeSkillStatus
+  | AddSkillAsAdmin
+  | ListSingleSkill
+  | UpdateSkill
+  | DeleteSkill
+  | ListSkill
+  | SetActionModal;

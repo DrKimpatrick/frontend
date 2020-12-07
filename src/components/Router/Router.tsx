@@ -29,7 +29,8 @@ import {
   DeclinedCourse,
   TrainingAffiliate,
   Company,
-  Recruiter
+  Recruiter,
+  Skill
 } from 'components/Admin';
 import { RouteUrl } from 'utils/routes';
 
@@ -83,6 +84,11 @@ const AppRouter: React.FC = () => {
       path: RouteUrl.CompleteProfile,
       exact: true,
       component: <AccountProcess />
+    },
+    {
+      path: RouteUrl.Skill,
+      exact: true,
+      component: <Skill />
     }
   ];
 

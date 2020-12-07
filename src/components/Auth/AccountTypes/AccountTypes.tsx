@@ -96,6 +96,7 @@ const AccountTypes: FC = () => {
               className="next-btn text-white hover:bg-gray-800 font-semibold disabled:opacity-50 py-1 px-3 w-32 mt-3 rounded-sm shadow flex justify-around"
               disabled={selectedAccount === ''}
               onClick={() => onSubmitAccountTypeHandler()}
+              type="button"
             >
               <Loader
                 loading={reducer.loading}

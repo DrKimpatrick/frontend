@@ -501,7 +501,7 @@ exports[`UserProfile should create snapshot 1`] = `
                 className=""
               >
                 <a
-                  href="/"
+                  href="/skill"
                   onClick={[Function]}
                 >
                   Skills

@@ -53,6 +53,7 @@ const Talent: FC<talentProps> = ({
                   ? ' flex bg-green-600 text-white text-sm font-normal py-2 px-2 rounded ml-2'
                   : 'flex bg-black text-white text-sm font-normal py-2 px-2 rounded ml-2'
               }
+              type="button"
             >
               I WANT TO BE SEEN <DoneAllIcon className="ml-4" />
             </button>

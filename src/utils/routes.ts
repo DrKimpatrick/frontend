@@ -61,5 +61,7 @@ export enum RouteUrl {
 
   AddEmployment = '/add-employment',
 
-  CompleteProfile = '/complete-profile'
+  CompleteProfile = '/complete-profile',
+
+  Skill = '/skill'
 }

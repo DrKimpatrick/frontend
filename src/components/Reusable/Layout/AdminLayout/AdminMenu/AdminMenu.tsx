@@ -73,7 +73,7 @@ const menuList = [
     child: [
       {
         name: 'Skills',
-        url: '#',
+        url: RouteUrl.Skill,
         active: ActiveMenu.Skills
       },
       {
@@ -127,6 +127,10 @@ const AdminMenu: FC = () => {
 
       case RouteUrl.Recruiter:
         setActive(ActiveMenu.Recruiter);
+        break;
+
+      case RouteUrl.Skill:
+        setActive(ActiveMenu.Skills);
         break;
 
       default:
