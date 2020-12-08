@@ -18,3 +18,6 @@ export * from './User';
 export * from './Loading';
 export * from './NotFound';
 export * from './AccountProcess';
+export * from './Forms';
+export * from './Company';
+export * from './School';

@@ -29,6 +29,10 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'func-names': 0,
     'no-plusplus': 0,
-    'jsx-a11y/mouse-events-have-key-events': 0
+    'jsx-a11y/mouse-events-have-key-events': 0,
+    'no-irregular-whitespace': [
+      'error',
+      { skipTemplates: true, skipRegExps: true, skipComments: true }
+    ]
   }
 };

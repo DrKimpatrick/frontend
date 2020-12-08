@@ -5,6 +5,8 @@ import { messageReducer } from './message';
 import { educationReducer } from './education';
 import { courseReducer } from './course';
 import { skillReducer } from './skill';
+import { companyReducer } from './company';
+import { schoolReducer } from './school';
 
 const rootReducer = combineReducers({
   users: userReducer,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   messages: messageReducer,
   educations: educationReducer,
   courses: courseReducer,
-  skills: skillReducer
+  skills: skillReducer,
+  schools: schoolReducer,
+  companies: companyReducer
 });
 
 export default rootReducer;

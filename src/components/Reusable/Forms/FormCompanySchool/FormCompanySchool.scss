@@ -1,0 +1,13 @@
+.input-height {
+  height: 3rem !important;
+  border-radius: 4px;
+  color: #747474;
+  &::placeholder {
+    color: #c9c9c9;
+  }
+}
+
+.inputError {
+  color: rgb(255, 0, 0);
+  font-size: 12px;
+}

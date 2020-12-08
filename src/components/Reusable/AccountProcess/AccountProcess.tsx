@@ -6,7 +6,7 @@ import { RootState } from 'redux/store';
 import { UserRole } from 'redux/action-types/user';
 import { SplashScreen } from 'components/Reusable';
 import { RouteUrl } from 'utils/routes';
-import { TalentProcess } from '.';
+import { TalentProcess, AdminsProcess } from '.';
 
 export const AccountProcess = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,11 @@ export const AccountProcess = () => {
         switch (user.roles[i]) {
           case UserRole.Talent:
             return <TalentProcess />;
-
+          case UserRole.RecruitmentAdmin:
+          case UserRole.CompanyAdmin:
+          case UserRole.HrAdmin:
+          case UserRole.TrainingAdmin:
+            return <AdminsProcess />;
           default:
             return null;
         }

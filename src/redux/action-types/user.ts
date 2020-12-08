@@ -53,6 +53,14 @@ export enum TalentProcess {
   ListEmployment = 'listEmployment'
 }
 
+export enum AdminsProcess {
+  AddCompany = 'AddCompany',
+  AddSchool = 'AddSchool',
+  AddPlan = 'AddPlan',
+  Payment = 'Payment',
+  Completed = 'Completed'
+}
+
 export interface User {
   _id: string;
   username: string;
