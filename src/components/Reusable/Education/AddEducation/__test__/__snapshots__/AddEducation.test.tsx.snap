@@ -51,14 +51,37 @@ exports[`\`AddEducation\` component matches the snapshot 1`] = `
       <div
         className="text-textGray mt-4"
       >
-        <input
-          className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+        <select
+          className="border outline-none bg-white rounded w-full px-3 text-textGray input-height"
           name="level"
           onChange={[Function]}
-          placeholder="Level"
-          type="text"
+          required={true}
           value=""
-        />
+        >
+          <option
+            disabled={true}
+            hidden={true}
+            selected={true}
+            value=""
+          >
+            Select level...
+          </option>
+          <option
+            value="high school"
+          >
+            High school
+          </option>
+          <option
+            value="university"
+          >
+            University
+          </option>
+          <option
+            value="trade school"
+          >
+            Trade School
+          </option>
+        </select>
       </div>
       <div
         className="text-textGray mt-4"

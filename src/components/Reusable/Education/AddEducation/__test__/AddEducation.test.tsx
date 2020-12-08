@@ -61,7 +61,7 @@ describe('`AddEducation` component', () => {
       'input[name="schoolName"]'
     );
 
-    const level: Element | any = container.querySelector('input[name="level"]');
+    const level: Element | any = container.querySelector('select[name="level"]');
 
     const degree: Element | any = container.querySelector(
       'input[name="degreeOrCertification"]'

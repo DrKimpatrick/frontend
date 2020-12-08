@@ -71,14 +71,20 @@ const EducationInput: FC<Props> = props => {
             </div>
 
             <div className="text-textGray mt-4">
-              <input
-                type="text"
-                className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
-                placeholder="Level"
+              <select
+                name="level"
                 value={values.level}
                 onChange={formik.handleChange}
-                name="level"
-              />
+                className="border outline-none bg-white rounded w-full px-3 text-textGray input-height"
+                required
+              >
+                <option value="" disabled selected hidden>
+                  Select level...
+                </option>
+                <option value="high school">High school</option>
+                <option value="university">University</option>
+                <option value="trade school">Trade School</option>
+              </select>
               {errors && errors.level && (
                 <div className="inputError">{errors.level}</div>
               )}
