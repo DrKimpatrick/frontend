@@ -21,12 +21,19 @@ export enum VerificationStatus {
 export interface Employment {
   userId?: string;
   companyName: string;
-  supervisor: string;
+  supervisor: {
+    name: string;
+    detail: {
+      name: string;
+      email: string;
+      phoneNumber: string;
+    };
+  };
   title: string;
   startDate: string;
   endDate?: string;
   accomplishments?: string[];
-  skillsUsed?: string[];
+  skillsUsed: any[];
   favoriteProject?: string;
   responsibilities?: string[];
   isCurrentPosition: boolean;
@@ -92,7 +99,14 @@ interface Errors {
 
 export interface EmploymentParam {
   companyName: string;
-  supervisor: string;
+  supervisor?: {
+    name: string;
+    detail: {
+      name: string;
+      email: string;
+      phoneNumber: string;
+    };
+  };
   title: string;
   startDate: string;
   endDate?: string;

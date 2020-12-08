@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useMemo } from 'react';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
@@ -10,6 +10,8 @@ import { TalentProcess } from 'redux/action-types/user';
 import { Employment } from 'redux/action-types/employment';
 import { setProfileProcess } from 'redux/actions/user';
 import { SideLoading } from 'components/Reusable';
+import { listUserSkill } from 'redux/actions/skill';
+import { map } from 'lodash';
 
 interface Props {
   setPreviousStep: (value: string) => void;
@@ -31,17 +33,19 @@ const EmploymentHistory: FC<Props> = props => {
     } = state.employments;
     const { message } = state.messages;
     const { user } = state.users;
+    const { userSkill } = state.skills;
     return {
       message,
       loading,
       errors,
       employments,
       user,
-      employment: singleEmployment
+      employment: singleEmployment,
+      userSkill
     };
   });
 
-  const { employments, user, loading } = reducer;
+  const { employments, user, loading, userSkill } = reducer;
 
   useEffect(() => {
     if (reducer.employment) {
@@ -56,6 +60,48 @@ const EmploymentHistory: FC<Props> = props => {
       setEmployment(employments[0]);
     }
   }, [employments]);
+
+  useEffect(() => {
+    listUserSkill()(dispatch);
+  }, [dispatch]);
+
+  const skills = useMemo(() => {
+    if (
+      userSkill &&
+      userSkill.length > 0 &&
+      employment &&
+      employment.skillsUsed &&
+      employment.skillsUsed.length > 0
+    ) {
+      const data: any = [];
+
+      map(userSkill, item => {
+        map(employment.skillsUsed, skill => {
+          if (item._id === skill._id) {
+            data.push(item.skill.skill);
+          }
+        });
+      });
+      if (data.length > 0) {
+        return (
+          <>
+            <div className="text-textGray mt-4 border border-borderGray card">
+              <div className=" text-white font-bold py-3 px-4 card-title">
+                Skills Used
+              </div>
+              <div className="py-3 px-4 card-content h-32">
+                {data.map((skill: any, index: number) => (
+                  <p key={index}>- {skill}</p>
+                ))}
+              </div>
+            </div>
+          </>
+        );
+      }
+      return <></>;
+    }
+    return <></>;
+  }, [userSkill, employment]);
 
   if (loading) {
     return (
@@ -93,7 +139,9 @@ const EmploymentHistory: FC<Props> = props => {
           <div className=" text-white font-bold py-3 px-4 card-title">
             Supervisor
           </div>
-          <div className="py-3 px-4 card-content">{employment.supervisor}</div>
+          <div className="py-3 px-4 card-content">
+            {employment.supervisor.name}
+          </div>
         </div>
 
         <div className="text-textGray mt-4 border border-borderGray card">
@@ -142,20 +190,7 @@ const EmploymentHistory: FC<Props> = props => {
             </div>
           </div>
         )}
-
-        {employment.skillsUsed && employment.skillsUsed.length > 0 && (
-          <div className="text-textGray mt-4 border border-borderGray card">
-            <div className=" text-white font-bold py-3 px-4 card-title">
-              Skills Used
-            </div>
-            <div className="py-3 px-4 card-content h-32">
-              {employment.skillsUsed.map((skill, index) => (
-                <p key={index}>- {skill}</p>
-              ))}
-            </div>
-          </div>
-        )}
-
+        {skills}
         <div className="flex justify-center mt-12">
           <button
             data-testid="next-button"

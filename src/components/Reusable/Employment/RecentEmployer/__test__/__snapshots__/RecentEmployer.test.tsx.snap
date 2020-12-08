@@ -155,7 +155,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
               </div>
             </div>
             <input
-              name="supervisor"
+              name="supervisor.name"
               type="hidden"
               value=""
             />

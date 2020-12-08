@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import Select from 'react-select';
-import { map } from 'lodash';
+import { map, get } from 'lodash';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
 import { RootState } from 'redux/store';
@@ -23,8 +23,11 @@ const CurrentRole: FC<Props> = props => {
 
   const reducer = useSelector((state: RootState) => {
     const { loading, errors, employment } = state.employments;
+
     const { message } = state.messages;
+
     const { user } = state.users;
+
     return { message, loading, errors, employment, user };
   });
 
@@ -73,10 +76,19 @@ const CurrentRole: FC<Props> = props => {
               validationSchema={currentRoleSchema}
               initialValues={{
                 companyName: '',
-                supervisor: '',
+                supervisor: {
+                  name: '',
+                  detail: {
+                    name: '',
+                    email: '',
+                    phoneNumber: ''
+                  }
+                },
                 title: '',
                 startDate: '',
-                isCurrentPosition: true
+                isCurrentPosition: true,
+                showDetail: false,
+                currentSupervisor: ''
               }}
               onSubmit={values => {
                 if (reducer.user) {
@@ -128,7 +140,6 @@ const CurrentRole: FC<Props> = props => {
                       {!errors || (!errors.title && getErrors('title'))}
                     </div>
                     <div className="text-textGray mt-4">
-                      <label>Your supervisor </label>
                       <Select
                         options={[
                           { value: 'Staffing', label: 'Staffing' },
@@ -136,16 +147,21 @@ const CurrentRole: FC<Props> = props => {
                           { value: 'HR', label: 'HR' }
                         ]}
                         placeholder="Select your supervisor"
-                        name="supervisor"
-                        onChange={v =>
+                        name="supervisor.name"
+                        onChange={v => {
                           formik.setFieldValue(
-                            'supervisor',
+                            'supervisor.name',
                             (v as any).value,
                             true
-                          )
-                        }
+                          );
+                          formik.setFieldValue('showDetail', true);
+                          formik.setFieldValue(
+                            'currentSupervisor',
+                            (v as any).label
+                          );
+                        }}
                         values={
-                          values.supervisor !== ''
+                          values.supervisor.name !== ''
                             ? {
                                 value: values.supervisor,
                                 label: values.supervisor
@@ -160,22 +176,100 @@ const CurrentRole: FC<Props> = props => {
                             boxShadow: 'none'
                           })
                         }}
-                        className="select mt-2"
+                        className="select"
                         defaultValue={
-                          values.supervisor !== ''
+                          values.supervisor.name !== ''
                             ? {
-                                value: values.supervisor,
-                                label: values.supervisor
+                                value: values.supervisor.name,
+                                label: values.supervisor.name
                               }
                             : null
                         }
                       />
-                      {errors && errors.supervisor && (
-                        <div className="inputError">{errors.supervisor}</div>
-                      )}
+                      {errors &&
+                        errors.supervisor &&
+                        errors.supervisor.name && (
+                          <div className="inputError">
+                            {errors.supervisor.name}
+                          </div>
+                        )}
                       {!errors ||
                         (!errors.supervisor && getErrors('supervisor'))}
+                      {!errors ||
+                        (!errors.supervisor && getErrors('supervisor.name'))}
                     </div>
+                    {values.showDetail && (
+                      <>
+                        <div className="text-textGray mt-4">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            placeholder={`${values.currentSupervisor} name`}
+                            value={get(values.supervisor.detail, 'name', '')}
+                            onChange={formik.handleChange}
+                            name="supervisor.detail.name"
+                          />
+                          {errors &&
+                            errors.supervisor &&
+                            errors.supervisor.detail &&
+                            errors.supervisor.detail.name && (
+                              <div className="inputError">
+                                {errors.supervisor.detail.name}
+                              </div>
+                            )}
+                          {!errors ||
+                            (!errors.supervisor &&
+                              getErrors('supervisor.detail.name'))}
+                        </div>
+                        <div className="text-textGray mt-4">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            placeholder={`${values.currentSupervisor} email`}
+                            value={get(values.supervisor.detail, 'email', '')}
+                            onChange={formik.handleChange}
+                            name="supervisor.detail.email"
+                          />
+                          {errors &&
+                            errors.supervisor &&
+                            errors.supervisor.detail &&
+                            errors.supervisor.detail.email && (
+                              <div className="inputError">
+                                {errors.supervisor.detail.email}
+                              </div>
+                            )}
+
+                          {!errors ||
+                            (!errors.supervisor &&
+                              getErrors('supervisor.detail.email'))}
+                        </div>
+                        <div className="text-textGray mt-4">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            placeholder={`${values.currentSupervisor} phone number`}
+                            value={get(
+                              values.supervisor.detail,
+                              'phoneNumber',
+                              ''
+                            )}
+                            onChange={formik.handleChange}
+                            name="supervisor.detail.phoneNumber"
+                          />
+                          {errors &&
+                            errors.supervisor &&
+                            errors.supervisor.detail &&
+                            errors.supervisor.detail.phoneNumber && (
+                              <div className="inputError">
+                                {errors.supervisor.detail.phoneNumber}
+                              </div>
+                            )}
+                          {!errors ||
+                            (!errors.supervisor &&
+                              getErrors('supervisor.detail.phoneNumber'))}
+                        </div>
+                      </>
+                    )}
                     <div
                       className="flex justify-between text-textGray mt-4 dateContainer"
                       style={{ flexDirection: 'column', alignItems: 'start' }}

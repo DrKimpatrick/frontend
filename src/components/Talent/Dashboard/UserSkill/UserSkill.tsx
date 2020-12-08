@@ -1,14 +1,16 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { SkillLevel } from 'redux/action-types/skill';
 import { FolderShared, Add } from '@material-ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { listUserSkill } from 'redux/actions/skill';
 import { RootState } from 'redux/store';
-import { SplashScreen } from 'components/Reusable';
+import { SideLoading } from 'components/Reusable';
 import { SkillItem } from '.';
 import Headline from '../Headline';
 
 const Skill = () => {
+  const [loader, setLoader] = useState<boolean>();
+
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
@@ -17,11 +19,18 @@ const Skill = () => {
     return { userSkill, loading };
   });
 
-  const { userSkill, loading } = reducer;
+  const { userSkill } = reducer;
 
   useEffect(() => {
+    setLoader(true);
     listUserSkill()(dispatch);
   }, [dispatch]);
+
+  useEffect(() => {
+    if (userSkill) {
+      setLoader(false);
+    }
+  }, [userSkill]);
 
   const beginnerSkill = useMemo(() => {
     if (userSkill && userSkill.length > 0) {
@@ -64,10 +73,6 @@ const Skill = () => {
     return <></>;
   }, [userSkill]);
 
-  if (loading) {
-    return <SplashScreen />;
-  }
-
   return (
     <div className="flex flex-col w-1/4 mt-12">
       <div>
@@ -88,6 +93,11 @@ const Skill = () => {
         {userSkill && userSkill.length <= 0 && (
           <div className="notFound my-4">
             <h5>There are no skills</h5>
+          </div>
+        )}
+        {loader && (
+          <div className="my-10">
+            <SideLoading size={30} />
           </div>
         )}
       </div>

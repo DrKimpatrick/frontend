@@ -41,7 +41,14 @@ const RecentEmployer: FC<Props> = () => {
               initialValue={{
                 companyName: '',
                 title: '',
-                supervisor: '',
+                supervisor: {
+                  name: '',
+                  detail: {
+                    email: '',
+                    phoneNumber: '',
+                    name: ''
+                  }
+                },
                 isCurrentPosition: false,
                 responsibilities: [],
                 skillsUsed: [],
@@ -50,7 +57,8 @@ const RecentEmployer: FC<Props> = () => {
                 responsibility: '',
                 accomplishment: '',
                 startDate: '',
-                endDate: ''
+                endDate: '',
+                currentSupervisor: ''
               }}
               submit={(values: InitialEmploymentValue) => {
                 if (reducer.user) {

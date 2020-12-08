@@ -8,6 +8,7 @@ import { EmploymentInput, InitialEmploymentValue } from 'components/Reusable';
 import { updateEmployment } from 'redux/actions/employment';
 import { RootState } from 'redux/store';
 import { Employment } from 'redux/action-types/employment';
+import { get } from 'lodash';
 
 interface Props {
   close: () => void;
@@ -21,7 +22,6 @@ const EditEmployment: FC<Props> = props => {
   const {
     responsibilities,
     accomplishments,
-    skillsUsed,
     favoriteProject,
     startDate,
     endDate
@@ -46,6 +46,7 @@ const EditEmployment: FC<Props> = props => {
   if (!employment) {
     return null;
   }
+
   return (
     <Modal
       open={open}
@@ -82,13 +83,26 @@ const EditEmployment: FC<Props> = props => {
                 responsibilities && responsibilities.length > 0
                   ? responsibilities
                   : [],
-              skillsUsed: skillsUsed && skillsUsed.length > 0 ? skillsUsed : [],
+              skillsUsed: employment.skillsUsed ? employment.skillsUsed : [],
               favoriteProject: favoriteProject || '',
               startDate: startDate
                 ? format(new Date(startDate), 'yyyy-MM-dd')
                 : '',
               endDate: endDate ? format(new Date(endDate), 'yyyy-MM-dd') : '',
-              supervisor: employment.supervisor
+              supervisor: {
+                name: get(employment.supervisor, 'name', ''),
+                detail: {
+                  name: get(employment.supervisor.detail, 'name', ''),
+                  email: get(employment.supervisor.detail, 'email', ''),
+                  phoneNumber: get(
+                    employment.supervisor.detail,
+                    'phoneNumber',
+                    ''
+                  )
+                }
+              },
+              currentSupervisor: get(employment.supervisor, 'name', ''),
+              showDetail: true
             }}
             submit={(values: InitialEmploymentValue) =>
               updateEmployment(values, employment._id)(dispatch)

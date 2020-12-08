@@ -60,7 +60,10 @@ const AddNewEmployment: FC<Props> = props => {
             initialValue={{
               companyName: '',
               title: '',
-              supervisor: '',
+              supervisor: {
+                name: '',
+                detail: { name: '', phoneNumber: '', email: '' }
+              },
               isCurrentPosition: false,
               responsibilities: [],
               skillsUsed: [],
@@ -69,7 +72,8 @@ const AddNewEmployment: FC<Props> = props => {
               responsibility: '',
               accomplishment: '',
               startDate: '',
-              endDate: ''
+              endDate: '',
+              currentSupervisor: ''
             }}
             submit={(values: InitialEmploymentValue) =>
               addEmployment(values)(dispatch)

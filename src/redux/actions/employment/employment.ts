@@ -9,44 +9,6 @@ import { setMessage } from 'redux/actions/message/message';
 import { setProfileProcess } from 'redux/actions/user';
 import ApiAction from '../../../helpers/apiAction';
 
-export const addEmployment = (data: EmploymentParam) => async (
-  dispatchAction: Dispatch
-) => {
-  return dispatchAction(
-    ApiAction({
-      url: '/employment',
-      method: 'POST',
-      data,
-      onStart: () => (dispatch: Dispatch) => {
-        dispatch({ type: EmploymentTypes.Loading, payload: { loading: true } });
-      },
-      onFailure: error => (dispatch: Dispatch) => {
-        dispatch({
-          type: EmploymentTypes.Errors,
-          payload: {
-            errors: error.response.data
-          }
-        });
-      },
-      onSuccess: res => (dispatch: Dispatch) => {
-        if (data.user && data.profileProcess) {
-          setProfileProcess({
-            profileProcess: data.profileProcess,
-            userId: data.user._id
-          })(dispatch);
-        }
-        dispatch({
-          type: EmploymentTypes.AddEmployment,
-          payload: {
-            data: res.data
-          }
-        });
-        setMessage(res.message)(dispatch);
-      }
-    })
-  );
-};
-
 export const listEmployments = () => (dispatchAction: Dispatch) => {
   return dispatchAction(
     ApiAction({
@@ -72,6 +34,45 @@ export const listEmployments = () => (dispatchAction: Dispatch) => {
             }
           });
         }
+      }
+    })
+  );
+};
+
+export const addEmployment = (data: EmploymentParam) => async (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: '/employment',
+      method: 'POST',
+      data,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({ type: EmploymentTypes.Loading, payload: { loading: true } });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        listEmployments()(dispatch);
+        dispatch({
+          type: EmploymentTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        if (data.user && data.profileProcess) {
+          setProfileProcess({
+            profileProcess: data.profileProcess,
+            userId: data.user._id
+          })(dispatch);
+        }
+        dispatch({
+          type: EmploymentTypes.AddEmployment,
+          payload: {
+            data: res.data
+          }
+        });
+        setMessage(res.message)(dispatch);
       }
     })
   );
@@ -157,6 +158,7 @@ export const updateEmployment = (data: EmploymentParam, id: string) => async (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        listEmployments()(dispatch);
         dispatch({
           type: EmploymentTypes.UpdateEmployment,
           payload: {

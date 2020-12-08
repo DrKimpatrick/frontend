@@ -50,10 +50,12 @@ export const listSpecificUser = (userId: string) => (
   );
 };
 
-export const listUserSkill = (userId: string) => (dispatchAction: Dispatch) => {
+export const listUserSkill = (userId: string, url?: string) => (
+  dispatchAction: Dispatch
+) => {
   return dispatchAction(
     ApiAction({
-      url: `/users/${userId}/skills`,
+      url: url || `/users/${userId}/skills`,
       method: 'GET',
       onSuccess: res => (dispatch: Dispatch) => {
         dispatch({

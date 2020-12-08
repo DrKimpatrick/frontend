@@ -33,7 +33,8 @@ export const initialState = {
       startDate: '2020-10-5',
       responsibilities: ['res'],
       accomplishments: ['res'],
-      favoriteProject: 'res'
+      favoriteProject: 'res',
+      skillsUsed: []
     },
     errors: null,
     loading: false
@@ -45,5 +46,33 @@ export const initialState = {
     education: {
       schoolName: 'schoolName'
     }
+  },
+  skills: {
+    userSkill: [
+      {
+        supervisor: {
+          detail: {
+            name: 'user',
+            email: 'email@gmail.com',
+            phoneNumber: '0786601003'
+          },
+          name: 'HR'
+        },
+        skillsUsed: [],
+        responsibilities: [],
+        accomplishments: [],
+        verificationStatus: 'unverified',
+        isCurrentPosition: true,
+        _id: '5fcf65a2c4c797a20acc1c99',
+        title: 'Product Manager',
+        startDate: '2020-10-15T00:00:00.000Z',
+        endDate: null,
+        companyName: 'heza',
+        favoriteProject: 'tembea',
+        userId: '5fcdf47ea1d1dd1564a21613',
+        createdAt: '2020-12-08T11:38:10.729Z',
+        updatedAt: '2020-12-08T11:38:10.729Z'
+      }
+    ]
   }
 };

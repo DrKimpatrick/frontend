@@ -14,7 +14,7 @@ export interface InitialEmploymentValue {
   supervisor: string;
   isCurrentPosition: boolean;
   responsibilities: string[];
-  skillsUsed: string[];
+  skillsUsed: any[];
   favoriteProject: string;
   accomplishments: string[];
   responsibility: string;

@@ -1,9 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik, FieldArray } from 'formik';
 import { Button, Checkbox } from '@material-ui/core';
 import { ArrowRightAltTwoTone, Close, AddOutlined } from '@material-ui/icons';
 import Select from 'react-select';
-import { map } from 'lodash';
+import { map, get } from 'lodash';
+import { listUserSkill } from 'redux/actions/skill';
+import { RootState } from 'redux/store';
 import {
   employmentSchema,
   InitialEmploymentValue as InitialValue
@@ -32,6 +35,23 @@ export const options = [
 const EmploymentInput: FC<Props> = props => {
   const { submit, initialValue, backendErrors, loading, buttonName } = props;
 
+  const dispatch = useDispatch();
+
+  const reducer = useSelector((state: RootState) => {
+    const { user } = state.users;
+
+    const { userSkill } = state.skills;
+
+    return { userSkill, user };
+  });
+  const { user, userSkill } = reducer;
+
+  useEffect(() => {
+    if (user) {
+      listUserSkill()(dispatch);
+    }
+  }, [dispatch, user]);
+
   const getErrors = (field: string) => {
     if (
       backendErrors &&
@@ -52,12 +72,19 @@ const EmploymentInput: FC<Props> = props => {
     return null;
   };
 
-  const setDefaultSkills = (skills: string[]) => {
-    const data = map(skills, item => ({
-      label: item,
-      value: item
-    }));
+  const setDefaultSkills = (skills: any) => {
+    const data: any = [];
 
+    if (userSkill && userSkill.length > 0 && skills.length > 0) {
+      map(userSkill, item => {
+        map(skills, skill => {
+          if (item._id === skill._id) {
+            data.push({ value: item._id, label: item.skill.skill });
+          }
+        });
+        return undefined;
+      });
+    }
     return data;
   };
 
@@ -109,12 +136,18 @@ const EmploymentInput: FC<Props> = props => {
                   { value: 'HR', label: 'HR' }
                 ]}
                 placeholder="Select your supervisor"
-                name="supervisor"
-                onChange={v =>
-                  formik.setFieldValue('supervisor', (v as any).value, true)
-                }
+                name="supervisor.name"
+                onChange={v => {
+                  formik.setFieldValue(
+                    'supervisor.name',
+                    (v as any).value,
+                    true
+                  );
+                  formik.setFieldValue('showDetail', true);
+                  formik.setFieldValue('currentSupervisor', (v as any).label);
+                }}
                 values={
-                  values.supervisor !== ''
+                  values.supervisor.name !== ''
                     ? { value: values.supervisor, label: values.supervisor }
                     : null
                 }
@@ -124,16 +157,88 @@ const EmploymentInput: FC<Props> = props => {
                 }}
                 className="select"
                 defaultValue={
-                  values.supervisor !== ''
-                    ? { value: values.supervisor, label: values.supervisor }
+                  values.supervisor.name !== ''
+                    ? {
+                        value: values.supervisor.name,
+                        label: values.supervisor.name
+                      }
                     : null
                 }
               />
-              {errors && errors.supervisor && (
-                <div className="inputError">{errors.supervisor}</div>
+              {errors && errors.supervisor && errors.supervisor.name && (
+                <div className="inputError">{errors.supervisor.name}</div>
               )}
               {!errors || (!errors.supervisor && getErrors('supervisor'))}
+              {!errors || (!errors.supervisor && getErrors('supervisor.name'))}
             </div>
+            {values.showDetail && (
+              <>
+                <div className="text-textGray mt-4">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    placeholder={`${values.currentSupervisor} name`}
+                    value={get(values.supervisor.detail, 'name', '')}
+                    onChange={formik.handleChange}
+                    name="supervisor.detail.name"
+                  />
+                  {errors &&
+                    errors.supervisor &&
+                    errors.supervisor.detail &&
+                    errors.supervisor.detail.name && (
+                      <div className="inputError">
+                        {errors.supervisor.detail.name}
+                      </div>
+                    )}
+                  {!errors ||
+                    (!errors.supervisor && getErrors('supervisor.detail.name'))}
+                </div>
+                <div className="text-textGray mt-4">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    placeholder={`${values.currentSupervisor} email`}
+                    value={get(values.supervisor.detail, 'email', '')}
+                    onChange={formik.handleChange}
+                    name="supervisor.detail.email"
+                  />
+                  {errors &&
+                    errors.supervisor &&
+                    errors.supervisor.detail &&
+                    errors.supervisor.detail.email && (
+                      <div className="inputError">
+                        {errors.supervisor.detail.email}
+                      </div>
+                    )}
+
+                  {!errors ||
+                    (!errors.supervisor &&
+                      getErrors('supervisor.detail.email'))}
+                </div>
+                <div className="text-textGray mt-4">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    placeholder={`${values.currentSupervisor} phone number`}
+                    value={get(values.supervisor.detail, 'phoneNumber', '')}
+                    onChange={formik.handleChange}
+                    name="supervisor.detail.phoneNumber"
+                  />
+                  {errors &&
+                    errors.supervisor &&
+                    errors.supervisor.detail &&
+                    errors.supervisor.detail.phoneNumber && (
+                      <div className="inputError">
+                        {errors.supervisor.detail.phoneNumber}
+                      </div>
+                    )}
+                  {!errors ||
+                    (!errors.supervisor &&
+                      getErrors('supervisor.detail.phoneNumber'))}
+                </div>
+              </>
+            )}
+
             <div className="text-textGray mt-4">
               <input
                 type="text"
@@ -204,25 +309,30 @@ const EmploymentInput: FC<Props> = props => {
               />
               <label htmlFor="">I am currently working here</label>
             </div>
+            {userSkill && userSkill.length > 0 && (
+              <div className="text-textGray mt-4">
+                <Select
+                  isMulti
+                  options={userSkill.map(item => ({
+                    value: item._id,
+                    label: item.skill.skill
+                  }))}
+                  placeholder="Select skills used"
+                  name="skillsUsed"
+                  onChange={e => {
+                    formik.setFieldValue('skillsUsed', e, false);
+                  }}
+                  value={values.skillsUsed}
+                  styles={{
+                    control: base => ({ ...base, border: 0, boxShadow: 'none' })
+                  }}
+                  className="select"
+                />
 
-            <div className="text-textGray mt-4">
-              <Select
-                isMulti
-                options={options}
-                placeholder="Select skills used"
-                name="skillsUsed"
-                onChange={e => {
-                  formik.setFieldValue('skillsUsed', e, false);
-                }}
-                value={values.skillsUsed}
-                styles={{
-                  control: base => ({ ...base, border: 0, boxShadow: 'none' })
-                }}
-                className="select"
-              />
+                {!errors || (!errors.skillsUsed && getErrors('skillsUsed'))}
+              </div>
+            )}
 
-              {!errors || (!errors.skillsUsed && getErrors('skillsUsed'))}
-            </div>
             <FieldArray
               name="responsibilities"
               render={arrayHelper => {

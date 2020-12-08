@@ -52,9 +52,7 @@ exports[`\`EmploymentHistory\` component should create snapshot 1`] = `
     </div>
     <div
       className="py-3 px-4 card-content"
-    >
-      supervisor
-    </div>
+    />
   </div>
   <div
     className="text-textGray mt-4 border border-borderGray card"

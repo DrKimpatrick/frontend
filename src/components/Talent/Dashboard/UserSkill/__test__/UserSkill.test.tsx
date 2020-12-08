@@ -103,11 +103,11 @@ describe('User Skill', () => {
         </Provider>
       );
 
-      const h5: Element | any = container.querySelector(
-        '.splashScreen .loading h5'
+      const div: Element | any = container.querySelector(
+        '.sideLoading'
       );
 
-      expect(h5).toHaveTextContent('Loading');
+      expect(div).toBeDefined();
     });
   });
 

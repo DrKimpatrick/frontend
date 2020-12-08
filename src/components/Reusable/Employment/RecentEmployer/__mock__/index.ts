@@ -46,5 +46,22 @@ export const initialState = {
     education: {
       schoolName: 'schoolName'
     }
+  },
+  skills: {
+    userSkill: [
+      {
+        skill: {
+          _id: '5fcf1c5b11c16c41f7c6c723',
+          skill: 'Python',
+          createdAt: '2020-12-08T06:25:31.128Z',
+          updatedAt: '2020-12-08T06:25:31.128Z'
+        },
+        level: 'intermediate',
+        verificationStatus: 'verified',
+        _id: '5fcf52105cd56b9843252696',
+        createdAt: '2020-12-08T10:14:40.231Z',
+        updatedAt: '2020-12-08T13:05:46.873Z'
+      }
+    ]
   }
 };
