@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiValidationError should create component 1`] = `
+<div
+  className="inputError"
+>
+  username is required
+</div>
+`;

@@ -65,7 +65,7 @@ export const employmentReducer = (
     case EmploymentTypes.Loading:
       return {
         ...state,
-        loading: action.payload.loading ? action.payload.loading : true
+        loading: action.payload.loading
       };
 
     case EmploymentTypes.Errors:

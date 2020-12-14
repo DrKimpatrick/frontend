@@ -9,7 +9,7 @@ import {
 } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Warning } from 'components/Reusable/Warning';
+import { Warning, SideLoading } from 'components/Reusable';
 import { deleteEducation, listEducation } from 'redux/actions/education';
 import { RootState } from 'redux/store';
 import {
@@ -55,7 +55,13 @@ const Education: FC = () => {
   }, [dispatch]);
 
   if (reducer.loading && reducer.loading === true) {
-    return null;
+    return (
+      <div className="w-full">
+        <div className="my-4">
+          <SideLoading size={30} />
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -84,11 +90,11 @@ const Education: FC = () => {
       <div className="w-full">
         <p className="text-right text-xs py-4 pb-6" />
         {reducer.educations && (
-          <ul className="p-0 m-2 bg-card-preview">
+          <ul className="p-0 bg-card-preview">
             {reducer.educations.length > 0 &&
               reducer.educations.map((item, index) => (
                 <li
-                  className="py-2 py-2 rounded-sm"
+                  className="py-2 py-2 rounded-sm action"
                   key={index}
                   onMouseOver={() => {
                     setAction(true);
@@ -107,7 +113,7 @@ const Education: FC = () => {
                           <button
                             type="button"
                             onClick={() => setEditEducation(item)}
-                            className="edit"
+                            className="edit editEducation"
                           >
                             <Edit className={styles.actionIcon} />
                           </button>
@@ -144,11 +150,11 @@ const Education: FC = () => {
 
         {reducer.educations && reducer.educations.length <= 0 && (
           <div className="notFound my-4">
-            <h5>There are no education</h5>
+            <h5>You do not have education history</h5>
           </div>
         )}
         <button
-          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow"
+          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
           type="button"
           onClick={() => setAddEducation(true)}
         >

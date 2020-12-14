@@ -57,8 +57,10 @@ export const listEducation = () => (dispatchAction: Dispatch) => {
             errors: error.response.data
           }
         });
+        dispatch({ type: EducationTypes.Loading, payload: { loading: false } });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({ type: EducationTypes.Loading, payload: { loading: false } });
         if (res.data) {
           dispatch({
             type: EducationTypes.ListEducation,

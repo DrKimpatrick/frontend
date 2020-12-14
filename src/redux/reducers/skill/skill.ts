@@ -12,6 +12,8 @@ interface InitialState {
   skills?: Skill[];
   singleSkill?: Skill;
   action?: boolean;
+  userSkillAction?: boolean;
+  loadingBtn?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -22,7 +24,12 @@ export const skillReducer = (
 ) => {
   switch (action.type) {
     case SkillTypes.ListUserSkill:
-      return { ...state, userSkill: action.payload.data, loading: false };
+      return {
+        ...state,
+        userSkill: action.payload.data,
+        loading: false,
+        userSkillAction: false
+      };
 
     case SkillTypes.Loading:
       return { ...state, loading: action.payload.loading };
@@ -66,10 +73,20 @@ export const skillReducer = (
       return { ...state, singleSkill: action.payload.data, loading: false };
 
     case SkillTypes.ListSkill:
-      return { ...state, skills: action.payload.data, loading: false };
+      return {
+        ...state,
+        skills: action.payload.data,
+        loading: false
+      };
 
     case SkillTypes.SetActionModal:
       return { ...state, action: action.payload.data };
+
+    case SkillTypes.AddUserSkill:
+      return { ...state, userSkillAction: action.payload.data };
+
+    case SkillTypes.LoadingBtn:
+      return { ...state, loadingBtn: action.payload.loading };
 
     default:
       return state;

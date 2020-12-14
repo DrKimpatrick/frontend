@@ -14,7 +14,9 @@ export enum SkillTypes {
   ListSkill = 'Skill/ListSkill',
   UpdateSkill = 'Skill/UpdateSkill',
   DeleteSkill = 'Skill/DeleteSkill',
-  SetActionModal = 'Skill/SetActionModal'
+  SetActionModal = 'Skill/SetActionModal',
+  AddUserSkill = 'Skill/AddUserSkill',
+  LoadingBtn = 'Skill/LoadingBtn'
 }
 
 export enum VerificationStatus {
@@ -155,6 +157,20 @@ interface SetActionModal {
   };
 }
 
+interface AddUserSkill {
+  type: typeof SkillTypes.AddUserSkill;
+  payload: {
+    data: boolean;
+  };
+}
+
+interface LoadingBtn {
+  type: typeof SkillTypes.LoadingBtn;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type SkillActionTypes =
   | AddSkillLoading
   | AddSkillSuccess
@@ -171,4 +187,6 @@ export type SkillActionTypes =
   | UpdateSkill
   | DeleteSkill
   | ListSkill
-  | SetActionModal;
+  | SetActionModal
+  | AddUserSkill
+  | LoadingBtn;

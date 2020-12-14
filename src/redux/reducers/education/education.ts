@@ -66,7 +66,7 @@ export const educationReducer = (
     case EducationTypes.Loading:
       return {
         ...state,
-        loading: action.payload.loading ? action.payload.loading : true
+        loading: action.payload.loading
       };
 
     case MessageTypes.Error:

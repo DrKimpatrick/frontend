@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { SkillTypes } from 'redux/action-types/skill';
 import { UserTypes } from 'redux/action-types/user';
-import { setMessage } from 'redux/actions/message';
+import { setMessage, setError } from 'redux/actions/message';
 import ApiAction from '../../../helpers/apiAction';
 
 export const listUserSkill = () => (dispatchAction: Dispatch) => {
@@ -17,12 +17,14 @@ export const listUserSkill = () => (dispatchAction: Dispatch) => {
           type: SkillTypes.ListUserSkill,
           payload: { data: res.data }
         });
+        dispatch({ type: SkillTypes.Loading, payload: { loading: false } });
       },
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
           type: SkillTypes.Errors,
           payload: { errors: error.response.data }
         });
+        dispatch({ type: SkillTypes.Loading, payload: { loading: false } });
       }
     })
   );
@@ -230,6 +232,120 @@ export const addSkill = (data: { skill: string }[]) => async (
         });
 
         setSkillAction(false)(dispatch);
+      }
+    })
+  );
+};
+
+export const addUserSkill = (
+  data: { skill: string; level: string }[]
+) => async (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      url: '/skills/me',
+      method: 'POST',
+      data,
+      onStart: () => dispatch => {
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: false }
+        });
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.AddUserSkill,
+          payload: { data: true }
+        });
+
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: false }
+        });
+        listUserSkill()(dispatch);
+
+        setMessage('skill saved successfully')(dispatch);
+      }
+    })
+  );
+};
+
+export const updateUserSkill = (
+  data: { userSkill: string; level: string }[]
+) => async (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      url: '/skills/me',
+      method: 'PATCH',
+      data,
+      onStart: () => dispatch => {
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: false }
+        });
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.AddUserSkill,
+          payload: { data: true }
+        });
+
+        dispatch({
+          type: SkillTypes.LoadingBtn,
+          payload: { loading: false }
+        });
+        listUserSkill()(dispatch);
+
+        setMessage('skill updated successfully')(dispatch);
+      }
+    })
+  );
+};
+
+export const deleteUserSkill = (value: string[]) => async (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: '/skills/me',
+      method: 'DELETE',
+      data: value,
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: SkillTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+        setError('Failed to delete skill')(dispatch);
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        listUserSkill()(dispatch);
+
+        setMessage('deleted successfully')(dispatch);
       }
     })
   );

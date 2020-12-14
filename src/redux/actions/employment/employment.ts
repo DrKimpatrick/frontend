@@ -24,6 +24,10 @@ export const listEmployments = () => (dispatchAction: Dispatch) => {
             errors: error.response.data
           }
         });
+        dispatch({
+          type: EmploymentTypes.Loading,
+          payload: { loading: false }
+        });
       },
       onSuccess: res => (dispatch: Dispatch) => {
         if (res.data) {

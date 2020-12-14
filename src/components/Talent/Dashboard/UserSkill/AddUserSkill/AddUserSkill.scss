@@ -1,0 +1,138 @@
+.addUserSkill {
+  position: relative;
+  width: 600px;
+  background: white;
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 120px;
+  padding: 20px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  .title {
+    .heading {
+      font-weight: bold;
+      color: #747474;
+      font-size: 20px;
+      margin-left: 1rem;
+    }
+    .backIcon {
+      position: relative;
+      div {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+  form {
+    position: relative;
+    padding: 40px 50px 40px 50px;
+    .formGroup {
+      margin-bottom: 1rem;
+    }
+    input,
+    select {
+      height: 47px;
+      border: 1px solid #dadada;
+      font-size: 14px;
+      color: #696868;
+      text-decoration: none solid rgb(105, 104, 104);
+      background-color: #ffffff;
+      padding: 0px 8px;
+      border-radius: 2px;
+      background-size: cover;
+      outline: none;
+      box-shadow: none;
+    }
+    .skillInputContainer {
+      position: relative;
+      width: 100%;
+      .skillInput {
+        input {
+          flex-grow: 1;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+        button {
+          height: 47px;
+          width: 50px;
+          background: #dadada;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+          outline: none;
+          box-shadow: none;
+        }
+      }
+      .skills {
+        height: 100px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 1px solid #dadada;
+        margin-top: 5px;
+        border-radius: 2px;
+        ul {
+          li {
+            padding: 5px 10px 5px 10px;
+            cursor: pointer;
+            color: #696868;
+            font-size: 14px;
+            &:hover {
+              background: #dadada;
+            }
+          }
+        }
+      }
+    }
+    .customSelect {
+      position: relative;
+      border: 1px solid #dadada;
+      display: flex;
+      height: 47px;
+      border-radius: 2px;
+      color: #747474;
+      select {
+        border: none;
+        flex-grow: 1;
+        appearance: none;
+        height: 100%;
+        text-transform: capitalize;
+      }
+      .spanArrow {
+        width: 40px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: white;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+    .submitBtn {
+      height: 41px;
+      padding: 0px 30px;
+      border-radius: 2px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #5f5f5f;
+    }
+    .inputError {
+      border-right: 1px solid red;
+      padding-right: 5px;
+      padding-left: 5px;
+      &:last-child {
+        border-right: none;
+      }
+      &:first-child{
+          padding-left: 0px;
+      }
+    }
+  }
+}

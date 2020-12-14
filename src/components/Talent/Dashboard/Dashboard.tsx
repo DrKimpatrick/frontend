@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { withRouter, Redirect, useHistory } from 'react-router-dom';
-import { DesktopWindowsOutlined, School } from '@material-ui/icons';
+import {
+  DesktopWindowsOutlined,
+  School,
+  FolderShared
+} from '@material-ui/icons';
 import { CoverImage, MainBackground } from 'components/Reusable';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
@@ -13,7 +17,7 @@ import Verification from './Verification';
 import { Employment } from './Employment';
 import { Education } from './Education';
 import { UserSkill } from './UserSkill';
-import './style.scss';
+import './Dashboard.scss';
 
 const Dashboard: FC = () => {
   const size = useWindowSize();
@@ -81,7 +85,12 @@ const Dashboard: FC = () => {
                     <Education />
                   </div>
                 </div>
-                <UserSkill />
+                <div className="flex flex-col w-1/4 mt-12">
+                  <div>
+                    <Headline headline="SkillSet" icon={<FolderShared />} />
+                    <UserSkill />
+                  </div>
+                </div>
               </div>
             ) : (
               ''

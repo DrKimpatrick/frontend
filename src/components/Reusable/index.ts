@@ -21,3 +21,4 @@ export * from './AccountProcess';
 export * from './Forms';
 export * from './Company';
 export * from './School';
+export * from './Errors';

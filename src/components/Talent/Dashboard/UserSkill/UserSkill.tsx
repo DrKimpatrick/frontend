@@ -1,25 +1,40 @@
 import React, { useMemo, useEffect, useState } from 'react';
-import { SkillLevel } from 'redux/action-types/skill';
-import { FolderShared, Add } from '@material-ui/icons';
+import { SkillLevel, UserSkill } from 'redux/action-types/skill';
+import { Add } from '@material-ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { listUserSkill } from 'redux/actions/skill';
+import {
+  listUserSkill,
+  addUserSkill,
+  updateUserSkill,
+  deleteUserSkill
+} from 'redux/actions/skill';
 import { RootState } from 'redux/store';
-import { SideLoading } from 'components/Reusable';
+import { SideLoading, Warning } from 'components/Reusable';
 import { SkillItem } from '.';
-import Headline from '../Headline';
+import { AddUserSkill } from './AddUserSkill';
 
 const Skill = () => {
   const [loader, setLoader] = useState<boolean>();
 
+  const [add = false, setAdd] = useState<boolean>();
+
+  const [edit = false, setEdit] = useState<boolean>();
+
+  const [warning, setWarning] = useState<boolean>();
+
+  const [currentSkill, setCurrentSkill] = useState<UserSkill>();
+
+  const [skillId, setSkillId] = useState<string>();
+
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { userSkill, loading } = state.skills;
+    const { userSkill, loading, errors } = state.skills;
 
-    return { userSkill, loading };
+    return { userSkill, loading, errors };
   });
 
-  const { userSkill } = reducer;
+  const { userSkill, errors } = reducer;
 
   useEffect(() => {
     setLoader(true);
@@ -27,10 +42,10 @@ const Skill = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (userSkill) {
+    if (userSkill || errors) {
       setLoader(false);
     }
-  }, [userSkill]);
+  }, [errors, userSkill]);
 
   const beginnerSkill = useMemo(() => {
     if (userSkill && userSkill.length > 0) {
@@ -39,7 +54,20 @@ const Skill = () => {
       );
 
       if (listBeginnerSkill && listBeginnerSkill.length > 0) {
-        return <SkillItem level="Beginner" userSkill={listBeginnerSkill} />;
+        return (
+          <SkillItem
+            level="Beginner"
+            userSkill={listBeginnerSkill}
+            editItem={values => {
+              setEdit(true);
+              setCurrentSkill(values);
+            }}
+            deleteItem={value => {
+              setWarning(true);
+              setSkillId(value);
+            }}
+          />
+        );
       }
     }
     return <></>;
@@ -53,7 +81,18 @@ const Skill = () => {
 
       if (listIntermediateSkill && listIntermediateSkill.length > 0) {
         return (
-          <SkillItem level="Intermediate" userSkill={listIntermediateSkill} />
+          <SkillItem
+            level="Intermediate"
+            userSkill={listIntermediateSkill}
+            editItem={values => {
+              setEdit(true);
+              setCurrentSkill(values);
+            }}
+            deleteItem={value => {
+              setWarning(true);
+              setSkillId(value);
+            }}
+          />
         );
       }
     }
@@ -67,41 +106,100 @@ const Skill = () => {
       );
 
       if (listAdvancedSkill && listAdvancedSkill.length > 0) {
-        return <SkillItem level="Advanced" userSkill={listAdvancedSkill} />;
+        return (
+          <SkillItem
+            level="Advanced"
+            userSkill={listAdvancedSkill}
+            editItem={values => {
+              setEdit(true);
+              setCurrentSkill(values);
+            }}
+            deleteItem={value => {
+              setWarning(true);
+              setSkillId(value);
+            }}
+          />
+        );
       }
     }
     return <></>;
   }, [userSkill]);
 
-  return (
-    <div className="flex flex-col w-1/4 mt-12">
-      <div>
-        <Headline headline="SkillSet" icon={<FolderShared />} />
-        {userSkill && userSkill.length > 0 && (
-          <>
-            {beginnerSkill}
-            {intermediateSkill}
-            {advancedSkill}
-            <button
-              className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow"
-              type="button"
-            >
-              <Add /> <span>Add new </span> <span>skills</span>
-            </button>
-          </>
-        )}
-        {userSkill && userSkill.length <= 0 && (
-          <div className="notFound my-4">
-            <h5>There are no skills</h5>
-          </div>
-        )}
-        {loader && (
-          <div className="my-10">
-            <SideLoading size={30} />
-          </div>
-        )}
+  if (loader) {
+    return (
+      <div className="w-full">
+        <div className="my-4">
+          <SideLoading size={30} />
+        </div>
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <>
+      {add && (
+        <AddUserSkill
+          close={() => setAdd(false)}
+          initialValue={{ skill: '', skillName: '', level: '' }}
+          buttonName="Save"
+          heading="Add Skill"
+          submit={values => addUserSkill([values])(dispatch)}
+          showSkill
+        />
+      )}
+      {edit && currentSkill && (
+        <AddUserSkill
+          close={() => {
+            setEdit(false);
+            setCurrentSkill(undefined);
+          }}
+          initialValue={{
+            skill: currentSkill._id,
+            skillName: currentSkill.skill.skill,
+            level: currentSkill.level
+          }}
+          buttonName="Update"
+          heading="Edit Skill"
+          submit={values => {
+            updateUserSkill([{ ...values, userSkill: currentSkill._id }])(
+              dispatch
+            );
+          }}
+        />
+      )}
+      {warning && skillId && (
+        <Warning
+          message="are you sure you want to delete this skill"
+          cancel={() => {
+            setSkillId(undefined);
+            setWarning(false);
+          }}
+          accept={() => {
+            deleteUserSkill([skillId])(dispatch);
+            setWarning(false);
+          }}
+        />
+      )}
+      {userSkill && userSkill.length > 0 && (
+        <>
+          {beginnerSkill}
+          {intermediateSkill}
+          {advancedSkill}
+        </>
+      )}
+      {userSkill && userSkill.length <= 0 && (
+        <div className="notFound my-4">
+          <h5>You do not have skills</h5>
+        </div>
+      )}
+      <button
+        className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
+        type="button"
+        onClick={() => setAdd(true)}
+      >
+        <Add /> <span>Add new </span> <span>skills</span>
+      </button>
+    </>
   );
 };
 

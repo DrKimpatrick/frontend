@@ -33,6 +33,7 @@ module.exports = {
     'no-irregular-whitespace': [
       'error',
       { skipTemplates: true, skipRegExps: true, skipComments: true }
-    ]
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [0]
   }
 };

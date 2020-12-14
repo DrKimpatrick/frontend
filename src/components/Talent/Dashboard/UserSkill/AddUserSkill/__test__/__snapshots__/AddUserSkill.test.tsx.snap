@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddUserSkill should create snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 0px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+      role="presentation"
+      style="position: fixed; z-index: 100; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+      tabindex="0"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="addUserSkill"
+        tabindex="-1"
+      >
+        <div
+          class="title flex content-center"
+        >
+          <div
+            class="backIcon"
+            data-testid="goBack"
+            style="cursor: pointer;"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root makeStyles-backIcon-1"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+          </div>
+          <div
+            class="heading"
+          >
+            Add Skill
+          </div>
+        </div>
+        <form
+          autocomplete="off"
+        >
+          <small
+            class="inputError"
+          >
+            token
+          </small>
+          <small
+            class="inputError"
+          >
+            message
+          </small>
+          <div
+            class="formGroup"
+          >
+            <div
+              class="customSelect"
+            >
+              <select
+                name="level"
+              >
+                <option
+                  value=""
+                >
+                  select level
+                </option>
+                <option
+                  value="beginner"
+                >
+                  beginner
+                </option>
+                <option
+                  value="advanced"
+                >
+                  advanced
+                </option>
+                <option
+                  value="intermediate"
+                >
+                  intermediate
+                </option>
+              </select>
+              <span
+                class="spanArrow"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            class="formGroup"
+          >
+            <div
+              class="w-full flex content-center justify-center"
+            >
+              <button
+                class="submitBtn"
+                type="submit"
+              >
+                save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+    />
+    <div
+      role="presentation"
+      style="position: fixed; z-index: 100; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+      tabindex="0"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="addUserSkill"
+        tabindex="-1"
+      >
+        <div
+          class="title flex content-center"
+        >
+          <div
+            class="backIcon"
+            data-testid="goBack"
+            style="cursor: pointer;"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root makeStyles-backIcon-1"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+          </div>
+          <div
+            class="heading"
+          >
+            Add Skill
+          </div>
+        </div>
+        <form
+          autocomplete="off"
+        >
+          <small
+            class="inputError"
+          >
+            token
+          </small>
+          <small
+            class="inputError"
+          >
+            message
+          </small>
+          <div
+            class="formGroup"
+          >
+            <div
+              class="customSelect"
+            >
+              <select
+                name="level"
+              >
+                <option
+                  value=""
+                >
+                  select level
+                </option>
+                <option
+                  value="beginner"
+                >
+                  beginner
+                </option>
+                <option
+                  value="advanced"
+                >
+                  advanced
+                </option>
+                <option
+                  value="intermediate"
+                >
+                  intermediate
+                </option>
+              </select>
+              <span
+                class="spanArrow"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            class="formGroup"
+          >
+            <div
+              class="w-full flex content-center justify-center"
+            >
+              <button
+                class="submitBtn"
+                type="submit"
+              >
+                save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

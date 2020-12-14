@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { FC, useState, useEffect } from 'react';
 import {
   Add,
@@ -10,7 +9,7 @@ import {
 } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Warning } from 'components/Reusable/Warning';
+import { Warning, SideLoading } from 'components/Reusable';
 import {
   Employment as EmploymentType,
   VerificationStatus
@@ -55,8 +54,14 @@ const Employment: FC = () => {
     listEmployments()(dispatch);
   }, [dispatch]);
 
-  if (reducer.loading && reducer.loading === true) {
-    return null;
+  if (reducer.loading) {
+    return (
+      <div className="w-full">
+        <div className="my-4">
+          <SideLoading size={30} />
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -87,11 +92,11 @@ const Employment: FC = () => {
       <div className="w-full">
         <p className="text-right text-xs py-4 pb-6" />
         {reducer.employments && (
-          <ul className="p-0 m-2 bg-card-preview">
+          <ul className="p-0 bg-card-preview">
             {reducer.employments.length > 0 &&
               reducer.employments.map((item, index) => (
                 <li
-                  className="py-2 py-2 rounded-sm"
+                  className="py-2 py-2 rounded-sm action"
                   key={index}
                   onMouseOver={() => {
                     setAction(true);
@@ -110,7 +115,7 @@ const Employment: FC = () => {
                           <button
                             type="button"
                             onClick={() => setEditEmployment(item)}
-                            className="edit"
+                            className="edit editEmployment"
                           >
                             <Edit className={styles.actionIcon} />
                           </button>
@@ -147,11 +152,11 @@ const Employment: FC = () => {
 
         {reducer.employments && reducer.employments.length <= 0 && (
           <div className="notFound my-4">
-            <h5>There are no employment</h5>
+            <h5>You currently do not have employment history</h5>
           </div>
         )}
         <button
-          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow"
+          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
           type="button"
           onClick={() => setAddEmployment(true)}
         >

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Education should create snapshot 1`] = `
+<div
+  className="w-full"
+>
+  <p
+    className="text-right text-xs py-4 pb-6"
+  />
+  <ul
+    className="p-0 bg-card-preview"
+  >
+    <li
+      className="py-2 py-2 rounded-sm action"
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+    >
+      <div
+        className="flex flex-row text-sm justify-between"
+      >
+        <h4
+          className="medium-fonts px-4"
+        />
+        <div
+          className="flex flex-row"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root not-verified-color mr-4"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"
+            />
+          </svg>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button
+    className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+      />
+    </svg>
+     
+    <span>
+      Add new Education
+    </span>
+  </button>
+</div>
+`;
