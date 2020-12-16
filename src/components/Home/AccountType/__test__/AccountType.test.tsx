@@ -26,5 +26,4 @@ describe('Account Type Component', () => {
   it('renders without crashing', () => {
     ReactDom.render(<AccountType {...accountsProps} />, container);
   });
-
 });

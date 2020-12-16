@@ -113,10 +113,10 @@ const EmploymentInput: FC<Props> = props => {
 
         return (
           <form autoComplete="off" onSubmit={formik.handleSubmit}>
-            <div className="text-textGray mt-8">
+            <div className="text-gray-texts mt-8">
               <input
                 type="text"
-                className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+                className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
                 placeholder="Company Name"
                 name="companyName"
                 value={values.companyName}
@@ -128,7 +128,7 @@ const EmploymentInput: FC<Props> = props => {
               {!errors || (!errors.companyName && getErrors('companyName'))}
             </div>
 
-            <div className="text-textGray mt-4">
+            <div className="text-gray-texts mt-4">
               <Select
                 options={[
                   { value: 'Staffing', label: 'Staffing' },
@@ -173,10 +173,10 @@ const EmploymentInput: FC<Props> = props => {
             </div>
             {values.showDetail && (
               <>
-                <div className="text-textGray mt-4">
+                <div className="text-gray-texts mt-4">
                   <input
                     type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                     placeholder={`${values.currentSupervisor} name`}
                     value={get(values.supervisor.detail, 'name', '')}
                     onChange={formik.handleChange}
@@ -193,10 +193,10 @@ const EmploymentInput: FC<Props> = props => {
                   {!errors ||
                     (!errors.supervisor && getErrors('supervisor.detail.name'))}
                 </div>
-                <div className="text-textGray mt-4">
+                <div className="text-gray-texts mt-4">
                   <input
                     type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                     placeholder={`${values.currentSupervisor} email`}
                     value={get(values.supervisor.detail, 'email', '')}
                     onChange={formik.handleChange}
@@ -215,10 +215,10 @@ const EmploymentInput: FC<Props> = props => {
                     (!errors.supervisor &&
                       getErrors('supervisor.detail.email'))}
                 </div>
-                <div className="text-textGray mt-4">
+                <div className="text-gray-texts mt-4">
                   <input
                     type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                     placeholder={`${values.currentSupervisor} phone number`}
                     value={get(values.supervisor.detail, 'phoneNumber', '')}
                     onChange={formik.handleChange}
@@ -239,10 +239,10 @@ const EmploymentInput: FC<Props> = props => {
               </>
             )}
 
-            <div className="text-textGray mt-4">
+            <div className="text-gray-texts mt-4">
               <input
                 type="text"
-                className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                 placeholder="Your Title"
                 value={values.title}
                 onChange={formik.handleChange}
@@ -254,7 +254,7 @@ const EmploymentInput: FC<Props> = props => {
               {!errors || (!errors.title && getErrors('title'))}
             </div>
 
-            <div className="flex justify-between text-textGray mt-4 dateContainer">
+            <div className="flex justify-between text-gray-texts mt-4 dateContainer">
               <div className="item w-full h-full pt-2 mt-2">
                 <label htmlFor="start date">Start date</label>
                 <input
@@ -280,7 +280,7 @@ const EmploymentInput: FC<Props> = props => {
               )}
             </div>
             <div
-              className="text-textGray flex"
+              className="text-gray-texts flex"
               style={{ alignItems: 'center' }}
             >
               <div style={{ flexGrow: 1, width: '50%' }}>
@@ -298,7 +298,7 @@ const EmploymentInput: FC<Props> = props => {
               </div>
             </div>
             <div
-              className="text-textGray flex"
+              className="text-gray-texts flex"
               style={{ alignItems: 'center' }}
             >
               <Checkbox
@@ -310,7 +310,7 @@ const EmploymentInput: FC<Props> = props => {
               <label htmlFor="">I am currently working here</label>
             </div>
             {userSkill && userSkill.length > 0 && (
-              <div className="text-textGray mt-4">
+              <div className="text-gray-texts mt-4">
                 <Select
                   isMulti
                   options={userSkill.map(item => ({
@@ -340,7 +340,7 @@ const EmploymentInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-textGray mt-4 divider"
+                    className="text-gray-texts mt-4 divider"
                     style={
                       responsibilities && responsibilities.length > 0
                         ? {
@@ -367,7 +367,7 @@ const EmploymentInput: FC<Props> = props => {
                       <input
                         type="text"
                         placeholder="Responsibilities"
-                        className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        className="outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                         name="responsibility"
                         value={values.responsibility}
                         onChange={formik.handleChange}
@@ -401,7 +401,7 @@ const EmploymentInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-textGray mt-4 divider"
+                    className="text-gray-texts mt-4 divider"
                     style={
                       accomplishments && accomplishments.length > 0
                         ? {
@@ -428,7 +428,7 @@ const EmploymentInput: FC<Props> = props => {
                       <input
                         type="text"
                         placeholder="Accomplishments"
-                        className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        className="outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                         name="accomplishment"
                         value={values.accomplishment}
                         onChange={formik.handleChange}
@@ -455,10 +455,10 @@ const EmploymentInput: FC<Props> = props => {
               }}
             />
 
-            <div className="text-textGray mt-4">
+            <div className="text-gray-texts mt-4">
               <input
                 type="text"
-                className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                 placeholder="Favorite project you built or contributed to?"
                 name="favoriteProject"
                 value={values.favoriteProject}

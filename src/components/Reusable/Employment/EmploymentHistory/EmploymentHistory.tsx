@@ -85,7 +85,7 @@ const EmploymentHistory: FC<Props> = props => {
       if (data.length > 0) {
         return (
           <>
-            <div className="text-textGray mt-4 border border-borderGray card">
+            <div className="text-gray-texts mt-4 border border-gray-borders card">
               <div className=" text-white font-bold py-3 px-4 card-title">
                 Skills Used
               </div>
@@ -117,7 +117,7 @@ const EmploymentHistory: FC<Props> = props => {
 
   return (
     <>
-      <section className="employment-history-section w-1/3 m-auto text-textGray">
+      <section className="employment-history-section w-1/3 m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
@@ -128,14 +128,14 @@ const EmploymentHistory: FC<Props> = props => {
           <h1 className="font-bold text-xl title">Employment History Review</h1>
         </div>
 
-        <div className="text-textGray mt-8 border border-borderGray card">
+        <div className="text-gray-texts mt-8 border border-gray-borders card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Company
           </div>
           <div className="py-3 px-4 card-content">{employment.companyName}</div>
         </div>
 
-        <div className="text-textGray mt-4 border border-borderGray card">
+        <div className="text-gray-texts mt-4 border border-gray-borders card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Supervisor
           </div>
@@ -144,7 +144,7 @@ const EmploymentHistory: FC<Props> = props => {
           </div>
         </div>
 
-        <div className="text-textGray mt-4 border border-borderGray card">
+        <div className="text-gray-texts mt-4 border border-gray-borders card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Duration
           </div>
@@ -154,7 +154,7 @@ const EmploymentHistory: FC<Props> = props => {
           </div>
         </div>
 
-        <div className="text-textGray mt-4 border border-borderGray card">
+        <div className="text-gray-texts mt-4 border border-gray-borders card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Responsibilities
           </div>
@@ -168,7 +168,7 @@ const EmploymentHistory: FC<Props> = props => {
         </div>
 
         {employment.accomplishments && employment.accomplishments.length > 0 && (
-          <div className="text-textGray mt-4 border border-borderGray card">
+          <div className="text-gray-texts mt-4 border border-gray-borders card">
             <div className=" text-white font-bold py-3 px-4 card-title">
               Accomplishments
             </div>
@@ -181,7 +181,7 @@ const EmploymentHistory: FC<Props> = props => {
         )}
 
         {employment.favoriteProject && (
-          <div className="text-textGray mt-4 border border-borderGray card">
+          <div className="text-gray-texts mt-4 border border-gray-borders card">
             <div className=" text-white font-bold py-3 px-4 card-title">
               Favorite Project
             </div>

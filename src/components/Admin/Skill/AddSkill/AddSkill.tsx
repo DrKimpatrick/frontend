@@ -57,7 +57,7 @@ export const AddSkill = (props: Props) => {
             >
               <ArrowBackTwoTone />
             </button>
-            <h1 className="font-bold text-base title mx-5 text-2xl">{title}</h1>
+            <h1 className="font-bold title mx-5 text-2xl">{title}</h1>
           </div>
           {apiError && apiError.message && (
             <div className="inputError text-sm">{apiError.message}</div>
@@ -75,10 +75,10 @@ export const AddSkill = (props: Props) => {
             const { errors, values } = formik;
             return (
               <form onSubmit={formik.handleSubmit} autoComplete="off">
-                <div className="text-textGray mt-8">
+                <div className="text-gray-texts mt-8">
                   <input
                     type="text"
-                    className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+                    className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
                     placeholder="Skill"
                     name="skill"
                     value={values.skill}

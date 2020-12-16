@@ -60,7 +60,7 @@ const CurrentRole: FC<Props> = props => {
 
   return (
     <>
-      <section className="current-role-section w-1/3 m-auto text-textGray">
+      <section className="current-role-section w-1/3 m-auto text-gray-texts">
         <div className="containers">
           <div className="recent-employer-section">
             <div className="flex relative h-auto my-8">
@@ -108,11 +108,11 @@ const CurrentRole: FC<Props> = props => {
                     autoComplete="off"
                     data-testid="submit-form"
                   >
-                    <div className="text-textGray mt-8">
+                    <div className="text-gray-texts mt-8">
                       <label>What is your company name ? </label>
                       <input
                         type="text"
-                        className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+                        className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
                         placeholder="Company Name"
                         name="companyName"
                         value={values.companyName}
@@ -124,11 +124,11 @@ const CurrentRole: FC<Props> = props => {
                       {!errors ||
                         (!errors.companyName && getErrors('companyName'))}
                     </div>
-                    <div className="text-textGray mt-4">
+                    <div className="text-gray-texts mt-4">
                       <label>What is your current role?</label>
                       <input
                         type="text"
-                        className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height mt-2"
+                        className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height mt-2"
                         placeholder="Your Title"
                         value={values.title}
                         onChange={formik.handleChange}
@@ -139,7 +139,7 @@ const CurrentRole: FC<Props> = props => {
                       )}
                       {!errors || (!errors.title && getErrors('title'))}
                     </div>
-                    <div className="text-textGray mt-4">
+                    <div className="text-gray-texts mt-4">
                       <Select
                         options={[
                           { value: 'Staffing', label: 'Staffing' },
@@ -200,10 +200,10 @@ const CurrentRole: FC<Props> = props => {
                     </div>
                     {values.showDetail && (
                       <>
-                        <div className="text-textGray mt-4">
+                        <div className="text-gray-texts mt-4">
                           <input
                             type="text"
-                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                             placeholder={`${values.currentSupervisor} name`}
                             value={get(values.supervisor.detail, 'name', '')}
                             onChange={formik.handleChange}
@@ -221,10 +221,10 @@ const CurrentRole: FC<Props> = props => {
                             (!errors.supervisor &&
                               getErrors('supervisor.detail.name'))}
                         </div>
-                        <div className="text-textGray mt-4">
+                        <div className="text-gray-texts mt-4">
                           <input
                             type="text"
-                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                             placeholder={`${values.currentSupervisor} email`}
                             value={get(values.supervisor.detail, 'email', '')}
                             onChange={formik.handleChange}
@@ -243,10 +243,10 @@ const CurrentRole: FC<Props> = props => {
                             (!errors.supervisor &&
                               getErrors('supervisor.detail.email'))}
                         </div>
-                        <div className="text-textGray mt-4">
+                        <div className="text-gray-texts mt-4">
                           <input
                             type="text"
-                            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                             placeholder={`${values.currentSupervisor} phone number`}
                             value={get(
                               values.supervisor.detail,
@@ -271,7 +271,7 @@ const CurrentRole: FC<Props> = props => {
                       </>
                     )}
                     <div
-                      className="flex justify-between text-textGray mt-4 dateContainer"
+                      className="flex justify-between text-gray-texts mt-4 dateContainer"
                       style={{ flexDirection: 'column', alignItems: 'start' }}
                     >
                       <div className="item w-full h-full pt-2 mt-2">

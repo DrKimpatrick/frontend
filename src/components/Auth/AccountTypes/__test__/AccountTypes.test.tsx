@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import thunk from 'redux-thunk';
-import AccountTypes from '../AccountTypes'
+import AccountTypes from '../AccountTypes';
 import configureMockStore from 'redux-mock-store';
 import { cleanup, render, fireEvent } from '@testing-library/react';
 
@@ -31,28 +31,28 @@ const initialState = {
       }
     },
     user: {
-    signupMode: "LOCAL",
-    roles: [],
-    verified: true,
-    featureChoice: "basic",
-    paymentStatus: "unpaid",
-    employmentHistory: null,
-    educationHistory: null,
-    courses: [],
-    _id: "5fae9535afabaabde7cd66c6",
-    username: "username",
-    email: "email@gmail.com",
-    dateRegistered: "2020-11-13T14:16:21.528Z",
-    updatedAt: "2020-11-25T08:45:47.981Z",
-  },
-  errors: null,
-  loading: false
+      signupMode: 'LOCAL',
+      roles: [],
+      verified: true,
+      featureChoice: 'basic',
+      paymentStatus: 'unpaid',
+      employmentHistory: null,
+      educationHistory: null,
+      courses: [],
+      _id: '5fae9535afabaabde7cd66c6',
+      username: 'username',
+      email: 'email@gmail.com',
+      dateRegistered: '2020-11-13T14:16:21.528Z',
+      updatedAt: '2020-11-25T08:45:47.981Z'
+    },
+    errors: null,
+    loading: false
   }
 };
 
 describe('Account Types', () => {
   beforeEach(() => {
-    store = mockStore(initialState)
+    store = mockStore(initialState);
   });
 
   afterEach(cleanup);
@@ -62,11 +62,11 @@ describe('Account Types', () => {
     ReactDOM.render(
       <Provider store={store}>
         <Router>
-          <AccountTypes/>
+          <AccountTypes />
         </Router>
       </Provider>,
       div
-    )
+    );
   });
 
   it('it should create snapshot', () => {
@@ -77,9 +77,10 @@ describe('Account Types', () => {
             <AccountTypes />
           </Router>
         </Provider>
-    ).toJSON();
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 
   it('it should not show next button if an account not selected', () => {
     const { container } = render(
@@ -90,10 +91,10 @@ describe('Account Types', () => {
       </Provider>
     );
 
-    const nextBtn: Element | null = container.querySelector('.next-btn')
+    const nextBtn: Element | null = container.querySelector('.next-btn');
 
     expect(nextBtn).toBeNull();
-  })
+  });
 
   it('it should show next button if an account is selected', () => {
     const { container } = render(
@@ -104,11 +105,13 @@ describe('Account Types', () => {
       </Provider>
     );
 
-    const accountType: Element | null = container.querySelectorAll('.account-types-item')[0];
+    const accountType: Element | null = container.querySelectorAll(
+      '.account-types-item'
+    )[0];
 
     fireEvent.click(accountType);
 
-    const nextBtn: Element | null = container.querySelector('.next-btn')
+    const nextBtn: Element | null = container.querySelector('.next-btn');
 
     expect(nextBtn).toBeTruthy();
   });

@@ -55,10 +55,10 @@ const EducationInput: FC<Props> = props => {
 
         return (
           <form autoComplete="off" onSubmit={formik.handleSubmit}>
-            <div className="text-textGray mt-8">
+            <div className="text-gray-texts mt-8">
               <input
                 type="text"
-                className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+                className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
                 placeholder="School Name"
                 name="schoolName"
                 value={values.schoolName}
@@ -70,12 +70,12 @@ const EducationInput: FC<Props> = props => {
               {!errors || (!errors.schoolName && getErrors('schoolName'))}
             </div>
 
-            <div className="text-textGray mt-4">
+            <div className="text-gray-texts mt-4">
               <select
                 name="level"
                 value={values.level}
                 onChange={formik.handleChange}
-                className="border outline-none bg-white rounded w-full px-3 text-textGray input-height"
+                className="border outline-none bg-white rounded w-full px-3 text-gray-texts input-height"
                 required
               >
                 <option value="" disabled selected hidden>
@@ -91,10 +91,10 @@ const EducationInput: FC<Props> = props => {
               {!errors || (!errors.level && getErrors('level'))}
             </div>
 
-            <div className="text-textGray mt-4">
+            <div className="text-gray-texts mt-4">
               <input
                 type="text"
-                className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                 placeholder="Degree or Certification Received"
                 value={values.degreeOrCertification}
                 onChange={formik.handleChange}
@@ -108,7 +108,7 @@ const EducationInput: FC<Props> = props => {
                   getErrors('degreeOrCertification'))}
             </div>
 
-            <div className="flex justify-between text-textGray mt-4 dateContainer">
+            <div className="flex justify-between text-gray-texts mt-4 dateContainer">
               <div className="item w-full h-full pt-2 mt-2">
                 <label htmlFor="start date">Start date</label>
                 <input
@@ -134,7 +134,7 @@ const EducationInput: FC<Props> = props => {
               )}
             </div>
             <div
-              className="text-textGray flex"
+              className="text-gray-texts flex"
               style={{ alignItems: 'center' }}
             >
               <div style={{ flexGrow: 1, width: '50%' }}>
@@ -152,7 +152,7 @@ const EducationInput: FC<Props> = props => {
               </div>
             </div>
             <div
-              className="text-textGray flex"
+              className="text-gray-texts flex"
               style={{ alignItems: 'center' }}
             >
               <Checkbox
@@ -170,7 +170,7 @@ const EducationInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-textGray mt-4 divider"
+                    className="text-gray-texts mt-4 divider"
                     style={
                       specializations && specializations.length > 0
                         ? {
@@ -197,7 +197,7 @@ const EducationInput: FC<Props> = props => {
                       <input
                         type="text"
                         placeholder="Specializations"
-                        className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        className="outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                         name="specialization"
                         value={values.specialization}
                         onChange={formik.handleChange}
@@ -234,7 +234,7 @@ const EducationInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-textGray mt-4 divider"
+                    className="text-gray-texts mt-4 divider"
                     style={
                       accomplishments && accomplishments.length > 0
                         ? {
@@ -261,7 +261,7 @@ const EducationInput: FC<Props> = props => {
                       <input
                         type="text"
                         placeholder="Accomplishments"
-                        className="outline-none bg-transparent rounded w-full px-3 text-textGray input-height"
+                        className="outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                         name="accomplishment"
                         value={values.accomplishment}
                         onChange={formik.handleChange}

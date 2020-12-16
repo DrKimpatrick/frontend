@@ -22,6 +22,27 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useHistory: () => ({
     push: mockHistoryPush
+  }),
+  useLocation: () => ({
+    state: {
+      plans: [
+        {
+          amount: 9.99,
+          interval: 'month'
+        },
+        {
+          amount: 9.99,
+          interval: 'year'
+        }
+      ],
+      features: [
+        {
+          available: true,
+          name: 'Some feature name',
+          detail: 'Some details are being written here'
+        }
+      ]
+    }
   })
 }));
 

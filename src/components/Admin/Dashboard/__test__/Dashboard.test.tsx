@@ -117,7 +117,6 @@ describe('Admin Dashboard', () => {
       const h1: Element | any = container.querySelector('.details h1');
 
       expect(h1).toBeTruthy();
-
     });
   });
 

@@ -71,7 +71,7 @@ const EducationHistory: FC<Props> = props => {
 
   return (
     <>
-      <section className="education-history-section w-1/3 m-auto text-textGray">
+      <section className="education-history-section w-1/3 m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
@@ -82,46 +82,46 @@ const EducationHistory: FC<Props> = props => {
           <h1 className="font-bold text-xl title">Education History</h1>
         </div>
 
-        <div className="text-textGray mt-8 card">
+        <div className="text-gray-texts mt-8 card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             School
           </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
+          <div className="py-3 px-4 card-content border border-gray-borders">
             {education.schoolName}
           </div>
         </div>
 
-        <div className="text-textGray mt-4 card">
+        <div className="text-gray-texts mt-4 card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Level
           </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
+          <div className="py-3 px-4 card-content border border-gray-borders">
             {education.level}
           </div>
         </div>
-        <div className="text-textGray mt-4 card">
+        <div className="text-gray-texts mt-4 card">
           <div className=" text-white font-bold py-3 px-4 card-title">
             Certification
           </div>
-          <div className="py-3 px-4 card-content border border-borderGray">
+          <div className="py-3 px-4 card-content border border-gray-borders">
             {education.degreeOrCertification}
           </div>
         </div>
 
-        <div className="text-textGray mt-4 card">
+        <div className="text-gray-texts mt-4 card">
           <div className=" text-white font-bold py-3 px-4 card-title">Date</div>
-          <div className="py-3 px-4 card-content border border-borderGray">
+          <div className="py-3 px-4 card-content border border-gray-borders">
             {getMonthAndYear(education.startDate)}
             {education.endDate && ` - ${getMonthAndYear(education.endDate)}`}
           </div>
         </div>
 
         {education.specializations && education.specializations.length > 0 && (
-          <div className="text-textGray mt-4 card">
+          <div className="text-gray-texts mt-4 card">
             <div className=" text-white font-bold py-3 px-4 card-title">
               Specialities
             </div>
-            <div className="py-3 px-4 card-content border border-borderGray">
+            <div className="py-3 px-4 card-content border border-gray-borders">
               {education.specializations.map((item, index) => (
                 <p key={index}> - {item}</p>
               ))}
@@ -130,11 +130,11 @@ const EducationHistory: FC<Props> = props => {
         )}
 
         {education.accomplishments && education.accomplishments.length > 0 && (
-          <div className="text-textGray mt-4 card">
+          <div className="text-gray-texts mt-4 card">
             <div className=" text-white font-bold py-3 px-4 card-title">
               Accomplishments
             </div>
-            <div className="py-3 px-4 card-content border border-borderGray">
+            <div className="py-3 px-4 card-content border border-gray-borders">
               {education.accomplishments.map((item, index) => (
                 <p key={index}>- {item}</p>
               ))}

@@ -5,7 +5,7 @@ import { listCurrentUser } from 'redux/actions/user';
 import { RootState } from 'redux/store';
 import { UserRole } from 'redux/action-types/user';
 import { SplashScreen } from 'components/Reusable';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { TalentProcess, AdminsProcess } from '.';
 
 export const AccountProcess = () => {
@@ -47,7 +47,7 @@ export const AccountProcess = () => {
   }
 
   if (user && user.roles.length <= 0) {
-    return <Redirect to={RouteUrl.Account} />;
+    return <Redirect to={Routes.Account} />;
   }
 
   return <>{accountType}</>;

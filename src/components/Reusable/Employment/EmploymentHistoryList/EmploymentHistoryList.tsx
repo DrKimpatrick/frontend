@@ -48,7 +48,7 @@ const EmploymentHistoryList: FC<Props> = props => {
   }
   return (
     <>
-      <section className="employment-history-list-section w-1/3 m-auto text-textGray">
+      <section className="employment-history-list-section w-1/3 m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"
@@ -62,7 +62,7 @@ const EmploymentHistoryList: FC<Props> = props => {
         {employments &&
           employments.map((item, i) => (
             <div
-              className="text-textGray mt-4 border border-borderGray card"
+              className="text-gray-texts mt-4 border border-gray-borders card"
               key={i}
             >
               <div className=" text-white font-bold py-3 px-4 card-title">

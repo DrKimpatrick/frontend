@@ -38,8 +38,8 @@ const MessagePage: FC<any> = (props: any) => {
         <div
           className={
             state.errorVerify
-              ? 'mt-8 pt-48 pb-48 pl-24 pr-24 verify-back-error text-white rounded mobile-verify'
-              : 'mt-8 pt-48 pb-48 pl-24 pr-24 verify-background text-white rounded mobile-verify'
+              ? 'mt-8 py-48 px-24 verify-back-error text-white rounded mobile-verify'
+              : 'mt-8 py-48 px-24 verify-background text-white rounded mobile-verify'
           }
         >
           <div>

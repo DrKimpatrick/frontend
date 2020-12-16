@@ -20,7 +20,7 @@ const SelectOption: FC<props> = ({
       options={options}
       styles={isMulti ? multiSelectStyles : selectStyles}
       isMulti={isMulti}
-      className="outline-none placeholder-textGray placeholder-opacity-50"
+      className="outline-none placeholder-gray-texts placeholder-opacity-50"
       onChange={onChangeValue}
     />
   );

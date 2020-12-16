@@ -3,7 +3,7 @@ import './ProfileNotFound.scss';
 import { useHistory } from 'react-router-dom';
 import Image from 'assets/images/profileNotFound.png';
 import { ArrowBack } from '@material-ui/icons';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 
 export const ProfileNotFound = () => {
   const history = useHistory();
@@ -22,7 +22,7 @@ export const ProfileNotFound = () => {
         <div className="my-5 w-full">
           <button
             type="button"
-            onClick={() => history.push(RouteUrl.SuperAdminDashboard)}
+            onClick={() => history.push(Routes.SuperAdminDashboard)}
             className="flex items-center justify-center text-center w-full"
             style={{ color: '#b3adad', outline: 'none', border: 'none' }}
             id="goBack"

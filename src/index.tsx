@@ -3,16 +3,33 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import './assets/styles/index.scss';
+import { SWRConfig } from 'swr';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+import { fetcher } from 'utils/axiosInstance';
 import store from './redux/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import './assets/styles/main.css';
+import './assets/styles/cust-material.scss';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK || '');
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <DndProvider backend={HTML5Backend}>
-        <App />
+        <Elements stripe={stripePromise}>
+          <SWRConfig
+            value={{
+              fetcher
+            }}
+          >
+            <App />
+          </SWRConfig>
+        </Elements>
       </DndProvider>
     </React.StrictMode>
   </Provider>,

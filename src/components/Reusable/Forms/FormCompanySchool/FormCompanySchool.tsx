@@ -76,11 +76,11 @@ const FormCompanySchool: FC<Props> = ({
 
   return (
     <form className="form-company-school" onSubmit={formik.handleSubmit}>
-      <div className="text-textGray mt-8">
+      <div className="text-gray-texts mt-8">
         <label>Company Name</label>
         <input
           type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="name"
           value={formik.values.name}
           onChange={formik.handleChange}
@@ -89,11 +89,11 @@ const FormCompanySchool: FC<Props> = ({
           <div className="inputError">{formik.errors.name}</div>
         )}
       </div>
-      <div className="text-textGray mt-4">
+      <div className="text-gray-texts mt-4">
         <label>Company Address</label>
         <input
           type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="address"
           value={formik.values.address}
           onChange={formik.handleChange}
@@ -102,11 +102,11 @@ const FormCompanySchool: FC<Props> = ({
           <div className="inputError">{formik.errors.address}</div>
         )}
       </div>
-      <div className="text-textGray mt-4">
+      <div className="text-gray-texts mt-4">
         <label>Website</label>
         <input
           type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="website"
           value={formik.values.website}
           onChange={formik.handleChange}
@@ -115,11 +115,11 @@ const FormCompanySchool: FC<Props> = ({
           <div className="inputError">{formik.errors.website}</div>
         )}
       </div>
-      <div className="text-textGray mt-4">
+      <div className="text-gray-texts mt-4">
         <label>Account Manager Name/Title</label>
         <input
           type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="accountManagerName"
           value={formik.values.accountManagerName}
           onChange={formik.handleChange}
@@ -128,11 +128,11 @@ const FormCompanySchool: FC<Props> = ({
           <div className="inputError">{formik.errors.accountManagerName}</div>
         )}
       </div>
-      <div className="text-textGray mt-4">
+      <div className="text-gray-texts mt-4">
         <label>Email</label>
         <input
           type="email"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -141,11 +141,11 @@ const FormCompanySchool: FC<Props> = ({
           <div className="inputError">{formik.errors.email}</div>
         )}
       </div>
-      <div className="text-textGray mt-4">
+      <div className="text-gray-texts mt-4">
         <label>Phone</label>
         <input
           type="text"
-          className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+          className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
           name="phone"
           value={formik.values.phone}
           onChange={formik.handleChange}

@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 import { Warning } from '..';
 
 describe('Warning', () => {
-
   afterEach(cleanup);
 
   it('renders without crashing', () => {

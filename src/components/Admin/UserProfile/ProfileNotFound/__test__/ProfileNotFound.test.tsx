@@ -10,8 +10,8 @@ const mockHistory = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useHistory: () => ({
-    push: mockHistory,
-  }),
+    push: mockHistory
+  })
 }));
 
 describe('ProfileNotFound', () => {

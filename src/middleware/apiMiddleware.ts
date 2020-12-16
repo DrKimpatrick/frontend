@@ -1,6 +1,6 @@
 import { Method } from 'axios';
-import axiosHelper from 'helpers/axios';
 import { API_REQUEST } from 'constants/apiActions';
+import axiosInstance from 'utils/axiosInstance';
 
 interface HttpOptions {
   token: string;
@@ -33,7 +33,7 @@ function apiMiddleware({ dispatch, getState }: any) {
       if (typeof payload.onStart === 'function') {
         await payload.onStart()(dispatch);
       }
-      const { data } = await axiosHelper(payload.httpOptions).request({
+      const { data } = await axiosInstance.request({
         method: payload.method,
         url: payload.url,
         data: payload.data,

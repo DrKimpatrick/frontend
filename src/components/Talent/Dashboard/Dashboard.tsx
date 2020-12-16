@@ -11,7 +11,7 @@ import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import useWindowSize from 'utils/useWindowSize';
 import { RootState } from 'redux/store';
 import { TalentProcess, UserRole } from 'redux/action-types/user';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import Headline from './Headline';
 import Verification from './Verification';
 import { Employment } from './Employment';
@@ -42,11 +42,11 @@ const Dashboard: FC = () => {
     user.profileProcess &&
     user.profileProcess !== TalentProcess.Completed
   ) {
-    return <Redirect to={RouteUrl.CompleteProfile} />;
+    return <Redirect to={Routes.CompleteProfile} />;
   }
 
   if (user && !user.profileProcess) {
-    return <Redirect to={RouteUrl.CompleteProfile} />;
+    return <Redirect to={Routes.CompleteProfile} />;
   }
 
   return (

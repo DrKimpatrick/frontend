@@ -13,7 +13,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Link, withRouter } from 'react-router-dom';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import InitialStateInterface from 'types/initialState';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -44,7 +44,7 @@ const IsLoggedIn = (props: any) => {
   };
 
   const signup = () => {
-    props.history.push(RouteUrl.Register);
+    props.history.push(Routes.Register);
   };
 
   const logout = () => {
@@ -224,14 +224,14 @@ const IsLoggedIn = (props: any) => {
   return (
     <>
       <Link
-        to={RouteUrl.Login}
+        to={Routes.Login}
         className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
       >
         <span>Login</span>
       </Link>
 
       <button
-        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-getstartColor hover:bg-blue-800 text-white"
+        className="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-blue-700 hover:bg-blue-800 text-white"
         onClick={signup}
         type="button"
       >

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import BottomMenu from '../index';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 
 afterEach(cleanup);
 const mockHistoryPush = jest.fn();
@@ -47,7 +47,7 @@ describe('`BottomMenu` component', () => {
     );
 
     fireEvent.click(getByTestId('home-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(RouteUrl.Home);
+    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Home);
   });
 
   it('should redirect to account', () => {
@@ -58,7 +58,7 @@ describe('`BottomMenu` component', () => {
     );
 
     fireEvent.click(getByTestId('account-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(RouteUrl.Account);
+    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Account);
   });
 
   it('should redirect to notification', () => {
@@ -69,6 +69,6 @@ describe('`BottomMenu` component', () => {
     );
 
     fireEvent.click(getByTestId('notification-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(RouteUrl.Notification);
+    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Notification);
   });
 });

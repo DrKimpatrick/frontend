@@ -21,27 +21,30 @@ describe('Landing Page Component', () => {
     container = document.createElement('div');
     document.body.appendChild(container);
     store = mockStore(initialState);
-
   });
 
   afterEach(cleanup);
 
   it('renders without crashing', () => {
-    ReactDom.render(<Provider store={store}>
-      <Router>
-        <Landing />
-      </Router>
-    </Provider>, container);
+    ReactDom.render(
+      <Provider store={store}>
+        <Router>
+          <Landing />
+        </Router>
+      </Provider>,
+      container
+    );
 
     afterEach(cleanup);
   });
 
   it('should render Texts included on component correctly', () => {
-    const { getByTestId } = render(<Provider store={store}>
-      <Router>
-        <Landing />
-      </Router>
-    </Provider>);
-
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <Router>
+          <Landing />
+        </Router>
+      </Provider>
+    );
   });
 });

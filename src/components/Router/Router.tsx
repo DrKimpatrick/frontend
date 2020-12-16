@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Landing } from 'components/Home';
 import {
@@ -32,82 +32,94 @@ import {
   Recruiter,
   Skill
 } from 'components/Admin';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
+import { ProcessPayments } from 'components/ProcessPayments';
+import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
 
-const AppRouter: React.FC = () => {
+const AppRouter: FC = () => {
   const authorizedRoutes = [
-    { path: RouteUrl.Account, exact: true, component: <AccountTypes /> },
-    { path: RouteUrl.Notification, exact: true, component: <Dashboard /> },
-    { path: RouteUrl.UserDashboard, exact: true, component: <Dashboard /> },
+    { path: Routes.Account, exact: true, component: <AccountTypes /> },
+    { path: Routes.Notification, exact: true, component: <Dashboard /> },
+    { path: Routes.UserDashboard, exact: true, component: <Dashboard /> },
     {
-      path: RouteUrl.PremiumBilling,
+      path: Routes.PremiumBilling,
       exact: true,
       component: <PremiumBilling />
     },
     {
-      path: RouteUrl.StandardBilling,
+      path: Routes.StandardBilling,
       exact: true,
       component: <StandardBilling />
     },
-    { path: RouteUrl.GetHired, exact: true, component: <GetHired /> },
+    { path: Routes.GetHired, exact: true, component: <GetHired /> },
     {
-      path: RouteUrl.SuperAdminDashboard,
+      path: Routes.SuperAdminDashboard,
       exact: true,
       component: <AdminDashboard />
     },
-    { path: RouteUrl.HrAdmin, exact: true, component: <HrAdmin /> },
+    { path: Routes.HrAdmin, exact: true, component: <HrAdmin /> },
     {
-      path: RouteUrl.AdminViewUserProfile,
+      path: Routes.AdminViewUserProfile,
       exact: true,
       component: <UserProfile />
     },
-    { path: RouteUrl.Affiliate, exact: true, component: <Affiliate /> },
+    { path: Routes.Affiliate, exact: true, component: <Affiliate /> },
     {
-      path: RouteUrl.AcceptedCourse,
+      path: Routes.AcceptedCourse,
       exact: true,
       component: <AcceptedCourse />
     },
-    { path: RouteUrl.PendingCourse, exact: true, component: <PendingCourse /> },
+    { path: Routes.PendingCourse, exact: true, component: <PendingCourse /> },
     {
-      path: RouteUrl.DeclinedCourse,
+      path: Routes.DeclinedCourse,
       exact: true,
       component: <DeclinedCourse />
     },
     {
-      path: RouteUrl.TrainingAffiliate,
+      path: Routes.TrainingAffiliate,
       exact: true,
       component: <TrainingAffiliate />
     },
-    { path: RouteUrl.Company, exact: true, component: <Company /> },
-    { path: RouteUrl.Recruiter, exact: true, component: <Recruiter /> },
+    { path: Routes.Company, exact: true, component: <Company /> },
+    { path: Routes.Recruiter, exact: true, component: <Recruiter /> },
     {
-      path: RouteUrl.CompleteProfile,
+      path: Routes.CompleteProfile,
       exact: true,
       component: <AccountProcess />
     },
     {
-      path: RouteUrl.Skill,
+      path: Routes.Skill,
       exact: true,
       component: <Skill />
+    },
+    {
+      path: Routes.payment,
+      exact: true,
+      component: <ProcessPayments />
+    },
+    {
+      path: Routes.FeatureChoice,
+      exact: true,
+      component: <FeatureChoice />
     }
   ];
 
   const unauthorizedRoutes = [
-    { path: RouteUrl.Login, exact: true, component: <Login /> },
-    { path: RouteUrl.Register, exact: true, component: <CreateAccount /> },
+    { path: Routes.Login, exact: true, component: <Login /> },
+    { path: Routes.Register, exact: true, component: <CreateAccount /> },
     {
-      path: RouteUrl.ForgotPassword,
+      path: Routes.ForgotPassword,
       exact: true,
       component: <ForgotPassword />
     },
-    { path: RouteUrl.ResetPassword, exact: true, component: <ResetPassword /> },
-    { path: RouteUrl.VerifyAccount, exact: true, component: <MessagePage /> }
+    { path: Routes.ResetPassword, exact: true, component: <ResetPassword /> },
+    { path: Routes.VerifyAccount, exact: true, component: <MessagePage /> }
   ];
 
   return (
     <Router>
       <Switch>
-        <Route component={Landing} path={RouteUrl.Home} exact />
+        <Route component={Landing} path={Routes.Home} exact />
         {unauthorizedRoutes.map((route, index) => (
           <Route path={route.path} exact={route.exact} key={index}>
             <AuthLayout>{route.component}</AuthLayout>

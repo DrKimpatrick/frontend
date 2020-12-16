@@ -15,7 +15,7 @@ import {
   NavBar,
   MainBackground
 } from 'components/Reusable';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 
 export const TalentProcessFlow = () => {
   const [step, setStep] = useState<string>();
@@ -81,7 +81,7 @@ export const TalentProcessFlow = () => {
     user.profileProcess &&
     user.profileProcess === TalentProcess.Completed
   ) {
-    return <Redirect to={RouteUrl.UserDashboard} />;
+    return <Redirect to={Routes.UserDashboard} />;
   }
 
   return (

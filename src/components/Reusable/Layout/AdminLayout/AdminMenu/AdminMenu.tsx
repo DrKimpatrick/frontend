@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './AdminMenu.scss';
 import { SupervisorAccount, AddComment } from '@material-ui/icons';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { RootState } from 'redux/store';
 import { useSelector } from 'react-redux';
 
@@ -27,17 +27,17 @@ const menuList = [
     child: [
       {
         name: 'Talent',
-        url: RouteUrl.SuperAdminDashboard,
+        url: Routes.SuperAdminDashboard,
         active: ActiveMenu.Admin
       },
       {
         name: 'Hr Admin',
-        url: RouteUrl.HrAdmin,
+        url: Routes.HrAdmin,
         active: ActiveMenu.HrAdmin
       },
       {
         name: 'Affiliates',
-        url: RouteUrl.Affiliate,
+        url: Routes.Affiliate,
         active: ActiveMenu.Affiliate
       }
     ]
@@ -50,17 +50,17 @@ const menuList = [
     child: [
       {
         name: 'Recruiter',
-        url: RouteUrl.Recruiter,
+        url: Routes.Recruiter,
         active: ActiveMenu.Recruiter
       },
       {
         name: 'Company',
-        url: RouteUrl.Company,
+        url: Routes.Company,
         active: ActiveMenu.Company
       },
       {
         name: 'Training',
-        url: RouteUrl.TrainingAffiliate,
+        url: Routes.TrainingAffiliate,
         active: ActiveMenu.TrainingAffiliate
       }
     ]
@@ -73,7 +73,7 @@ const menuList = [
     child: [
       {
         name: 'Skills',
-        url: RouteUrl.Skill,
+        url: Routes.Skill,
         active: ActiveMenu.Skills
       },
       {
@@ -103,33 +103,33 @@ const AdminMenu: FC = () => {
 
   useEffect(() => {
     switch (activePath) {
-      case RouteUrl.SuperAdminDashboard:
+      case Routes.SuperAdminDashboard:
         setActive(ActiveMenu.Admin);
         break;
 
-      case RouteUrl.HrAdmin:
+      case Routes.HrAdmin:
         setActive(ActiveMenu.HrAdmin);
         break;
 
-      case RouteUrl.Affiliate:
-      case RouteUrl.PendingCourse:
-      case RouteUrl.AcceptedCourse:
-      case RouteUrl.DeclinedCourse:
+      case Routes.Affiliate:
+      case Routes.PendingCourse:
+      case Routes.AcceptedCourse:
+      case Routes.DeclinedCourse:
         setActive(ActiveMenu.Affiliate);
         break;
-      case RouteUrl.TrainingAffiliate:
+      case Routes.TrainingAffiliate:
         setActive(ActiveMenu.TrainingAffiliate);
         break;
 
-      case RouteUrl.Company:
+      case Routes.Company:
         setActive(ActiveMenu.Company);
         break;
 
-      case RouteUrl.Recruiter:
+      case Routes.Recruiter:
         setActive(ActiveMenu.Recruiter);
         break;
 
-      case RouteUrl.Skill:
+      case Routes.Skill:
         setActive(ActiveMenu.Skills);
         break;
 

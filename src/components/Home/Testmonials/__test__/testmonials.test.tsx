@@ -21,7 +21,7 @@ describe('Account Type Component', () => {
           description: 'the test description',
           userInfo: {
             userImage:
-            'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
+              'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
             name: 'Joe Doe',
             position: 'CTO at Snow Media'
           }
@@ -44,7 +44,7 @@ describe('Account Type Component', () => {
           description: 'the test description 2',
           userInfo: {
             userImage:
-            'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
+              'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png',
             name: 'Joe Doe',
             position: 'CTO at Snow Media'
           }

@@ -10,7 +10,7 @@ import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { listCourseByStatus } from 'redux/actions/course';
 import { RootState } from 'redux/store';
 import { withRouter, useLocation } from 'react-router-dom';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { setActivePath } from 'redux/actions/user';
 
 const DeclinedCourse: FC = () => {
@@ -71,8 +71,8 @@ const DeclinedCourse: FC = () => {
   return (
     <Layout
       topMenu={[
-        { name: 'Affiliates', url: RouteUrl.Affiliate },
-        { name: 'Declined courses', url: RouteUrl.DeclinedCourse }
+        { name: 'Affiliates', url: Routes.Affiliate },
+        { name: 'Declined courses', url: Routes.DeclinedCourse }
       ]}
     >
       <div className="acceptedCourse">

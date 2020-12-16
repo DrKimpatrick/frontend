@@ -1,17 +1,32 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import ReactDom from 'react-dom';
 import Talent from '../Talent';
-import { isTSAnyKeyword } from '@babel/types';
-import renderer from 'react-test-renderer';
 
 afterEach(cleanup);
 
 const talentProps = {
-  title: 'miss',
-  details: []
+  productDetails: {
+    name: 'Talent Premium',
+    features: [
+      {
+        name: 'Some name',
+        detail: 'Some meaningful detail',
+        available: true
+      }
+    ]
+  },
+  plans: [
+    {
+      id: 'unique-id',
+      amount_decimal: 100,
+      amount: '9.99',
+      interval: 'month'
+    }
+  ],
+  action: '/somewhere'
 };
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDom.render(<Talent {...talentProps} />, div);
+
+it('matches the snapshot', () => {
+  const container = render(<Talent {...talentProps} />);
+  expect(container).toMatchSnapshot();
 });

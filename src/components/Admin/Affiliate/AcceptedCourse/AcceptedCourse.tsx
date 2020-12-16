@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { CourseTypes, CourseStatus } from 'redux/action-types/course';
 import { listCourseByStatus } from 'redux/actions/course';
 import { RootState } from 'redux/store';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { setActivePath } from 'redux/actions/user';
 
 const AcceptedCourse: FC = () => {
@@ -71,8 +71,8 @@ const AcceptedCourse: FC = () => {
   return (
     <Layout
       topMenu={[
-        { name: 'Affiliates', url: RouteUrl.Affiliate },
-        { name: 'Accepted courses', url: RouteUrl.AcceptedCourse }
+        { name: 'Affiliates', url: Routes.Affiliate },
+        { name: 'Accepted courses', url: Routes.AcceptedCourse }
       ]}
     >
       <div className="acceptedCourse">

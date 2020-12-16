@@ -10,7 +10,7 @@ import { LoginAction } from 'redux/actions/login';
 import { validateForm } from 'utils/index';
 import Loader from 'components/Reusable/Loader/Loader';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { RootState } from 'redux/store';
 import { UserRole } from '../../../redux/action-types/user';
 
@@ -36,6 +36,7 @@ const Login: FC = () => {
   useEffect(() => {
     if (user.currentUser.token && user.currentUser.profile) {
       localStorage.setItem('token', user.currentUser.token);
+      localStorage.setItem('ttlnt.refresh', user.currentUser.refresh);
       if (
         user.currentUser.profile.roles &&
         user.currentUser.profile.roles.length !== 0
@@ -43,12 +44,12 @@ const Login: FC = () => {
         const { roles } = user.currentUser.profile;
 
         if (roles.includes(UserRole.SuperAdmin)) {
-          window.location.href = RouteUrl.SuperAdminDashboard;
+          window.location.href = Routes.SuperAdminDashboard;
         } else {
-          history.push(RouteUrl.CompleteProfile);
+          history.push(Routes.CompleteProfile);
         }
       } else {
-        history.push(RouteUrl.Account);
+        history.push(Routes.Account);
       }
     }
   }, [history, submitted, user]);
@@ -84,7 +85,7 @@ const Login: FC = () => {
     <>
       <NavBar />
       <section className="flex authentication-custom justify-between">
-        <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
+        <section className="flex flex-col w-2/5 px-6 auth-bg items-center rounded-sm">
           {' '}
           {user.resetSuccess && (
             <small className="text-center text-sm text-indigo-800 bg-white px-2 py-4 rounded-t-none rounded">
@@ -93,7 +94,7 @@ const Login: FC = () => {
             </small>
           )}
           <div className="w-1/2 front-mob">
-            <h3 className="text-gray-200 font-bold text-3xl font-extrabold pt-8">
+            <h3 className="text-gray-200 text-3xl font-extrabold pt-8">
               Sign In
             </h3>
             <div className="flex flex-no-wrap justify-between mt-10">

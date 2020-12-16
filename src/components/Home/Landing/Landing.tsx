@@ -1,29 +1,32 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import useSWR from 'swr';
+
+import { accounts, testmonials } from 'utils/staticData';
 import useWindowSize from 'utils/useWindowSize';
-import { accounts, subscriptions, testmonials } from 'utils/staticData';
-import { withRouter, useHistory } from 'react-router-dom';
 import {
   Footer,
   NavBar,
   BottomMenu,
   MainBackground
 } from 'components/Reusable';
-import { Testmonials, FrontView, Talent, AccountType, HowItWork } from '..';
+import { Testmonials, FrontView, Talent, HowItWork, AccountType } from '..';
 import './Landing.scss';
 
 const Landing: FC = () => {
   const [stepName, setStepName] = useState<string>();
-
   const size = useWindowSize();
-
+  const { data: productResponse } = useSWR('/stripe/products');
   const history = useHistory();
 
   useEffect(() => {
-    const data: any = new URLSearchParams(history.location.search).get('data');
+    const data = new URLSearchParams(history.location.search).get('data');
+
     if (data) {
       localStorage.setItem('token', data);
       return history.push('/');
     }
+
     return history.push('/');
   }, [history]);
 
@@ -100,17 +103,18 @@ const Landing: FC = () => {
           </div>
         </div>
 
-        <div className="flex justify-around mt-8 display-grid">
-          {subscriptions.map(sub => (
-            <Talent
-              key={Math.random()}
-              title={sub.title}
-              priceMonthly={sub.priceMonthly}
-              priceAnnually={sub.priceAnnually}
-              details={sub.values}
-            />
-          ))}
-        </div>
+        {productResponse && (
+          <div className="mt-8 px-20 flex flex-col items-center md:justify-between lg:items-start lg:flex-row">
+            {productResponse.products.map((product: any) => (
+              <Talent
+                key={product.id}
+                productDetails={product.productDetails}
+                plans={product.plans}
+                action="/register"
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className="w-full flex justify-center mb-16">
         <Testmonials key={Math.random()} testData={testmonials} />
@@ -121,4 +125,4 @@ const Landing: FC = () => {
   );
 };
 
-export default withRouter(Landing);
+export default Landing;

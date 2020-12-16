@@ -7,7 +7,7 @@ import { MainBackground } from 'components/Reusable/Layout/MainBackground';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
 import Loader from 'components/Reusable/Loader/Loader';
 import { accounts, pageTexts } from 'utils/staticData';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import './AccountTypes.scss';
 import { updateUser } from 'redux/actions/user';
 import { RootState } from 'redux/store';
@@ -41,7 +41,7 @@ const AccountTypes: FC = () => {
 
   useEffect(() => {
     if (reducer.user?.roles && reducer.user?.roles.length > 0) {
-      history.push(RouteUrl.CompleteProfile);
+      history.push(Routes.CompleteProfile);
     }
   });
 

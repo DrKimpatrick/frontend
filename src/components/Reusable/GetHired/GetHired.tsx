@@ -4,22 +4,20 @@ import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import ArrowRightAltTwoToneIcon from '@material-ui/icons/ArrowRightAltTwoTone';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
-import MainBackground from '../Layout/MainBackground/MainBackground';
+import { Routes } from 'utils/routes';
+import { MainBackground, NavBar } from 'components/Reusable';
 import './GetHired.scss';
 
-type props = {};
-
-const GetHired: FC<props> = () => {
+const GetHired: FC = () => {
   const history = useHistory();
 
   return (
     <>
       <NavBar />
-      <section className="get-hired-section w-1/3 m-auto text-textGray">
+      <section className="get-hired-section w-1/3 m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div className="back-arrow cursor-pointer">
-            <ArrowBackTwoToneIcon />
+            <ArrowBackTwoToneIcon onClick={() => history.goBack()} />
           </div>
           <div className="font-bold text-xl text-white title">
             <h2>Get Hired</h2>
@@ -59,7 +57,7 @@ const GetHired: FC<props> = () => {
             data-testid="next-button"
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             type="button"
-            onClick={() => history.push('/')}
+            onClick={() => history.push(Routes.FeatureChoice)}
           >
             <span className="">Next</span> <ArrowRightAltTwoToneIcon />
           </button>

@@ -2,7 +2,7 @@
 
 exports[`\`CurrentRole\` component matches the snapshot 1`] = `
 <section
-  className="current-role-section w-1/3 m-auto text-textGray"
+  className="current-role-section w-1/3 m-auto text-gray-texts"
 >
   <div
     className="containers"
@@ -39,13 +39,13 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="text-textGray mt-8"
+          className="text-gray-texts mt-8"
         >
           <label>
             What is your company name ? 
           </label>
           <input
-            className="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height mt-2"
+            className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
             name="companyName"
             onChange={[Function]}
             placeholder="Company Name"
@@ -54,13 +54,13 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           />
         </div>
         <div
-          className="text-textGray mt-4"
+          className="text-gray-texts mt-4"
         >
           <label>
             What is your current role?
           </label>
           <input
-            className="border outline-none bg-transparent rounded w-full px-3 text-textGray input-height mt-2"
+            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height mt-2"
             name="title"
             onChange={[Function]}
             placeholder="Your Title"
@@ -69,7 +69,7 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           />
         </div>
         <div
-          className="text-textGray mt-4"
+          className="text-gray-texts mt-4"
         >
           <div
             className="select css-2b097c-container"
@@ -181,7 +181,7 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          className="flex justify-between text-textGray mt-4 dateContainer"
+          className="flex justify-between text-gray-texts mt-4 dateContainer"
           style={
             Object {
               "alignItems": "start",

@@ -77,7 +77,7 @@ describe('Account Type Component', () => {
 
     const expected = {
       currentUser: user,
-      loading: false,
+      loading: false
     };
 
     expect(

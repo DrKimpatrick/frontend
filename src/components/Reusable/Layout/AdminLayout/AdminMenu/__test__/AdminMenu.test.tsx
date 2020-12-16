@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 
 let store: Store;
 
@@ -25,7 +25,7 @@ jest.mock('react-router-dom', () => ({
 
 const initialState = {
   users: {
-    activePath: RouteUrl.SuperAdminDashboard
+    activePath: Routes.SuperAdminDashboard
   }
 };
 describe('AdminMenu', () => {
@@ -65,7 +65,7 @@ describe('AdminMenu', () => {
     beforeEach(() => {
       store = mockStore({
         ...initialState,
-        users: { ...initialState.users, activePath: RouteUrl.HrAdmin }
+        users: { ...initialState.users, activePath: Routes.HrAdmin }
       });
     });
     it('should return HrAdmin path', () => {
@@ -87,7 +87,7 @@ describe('AdminMenu', () => {
     beforeEach(() => {
       store = mockStore({
         ...initialState,
-        users: { ...initialState.users, activePath: RouteUrl.Affiliate }
+        users: { ...initialState.users, activePath: Routes.Affiliate }
       });
     });
     it('should return Affiliate path', () => {
@@ -109,7 +109,7 @@ describe('AdminMenu', () => {
     beforeEach(() => {
       store = mockStore({
         ...initialState,
-        users: { ...initialState.users, activePath: RouteUrl.TrainingAffiliate }
+        users: { ...initialState.users, activePath: Routes.TrainingAffiliate }
       });
     });
     it('should return Training Affiliate path', () => {
@@ -131,7 +131,7 @@ describe('AdminMenu', () => {
     beforeEach(() => {
       store = mockStore({
         ...initialState,
-        users: { ...initialState.users, activePath: RouteUrl.Company }
+        users: { ...initialState.users, activePath: Routes.Company }
       });
     });
     it('should return Company path', () => {
@@ -153,7 +153,7 @@ describe('AdminMenu', () => {
     beforeEach(() => {
       store = mockStore({
         ...initialState,
-        users: { ...initialState.users, activePath: RouteUrl.Recruiter }
+        users: { ...initialState.users, activePath: Routes.Recruiter }
       });
     });
     it('should return Recruiter path', () => {

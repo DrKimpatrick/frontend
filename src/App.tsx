@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Router } from './components/Router';
 import { RootState } from './redux/store';
 import { setMessage } from './redux/actions/message/message';
 import { listCurrentUser, listAllSkill } from './redux/actions/user';
-
-axios.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
-  'token'
-)}`;
 
 const App = () => {
   const dispatch = useDispatch();

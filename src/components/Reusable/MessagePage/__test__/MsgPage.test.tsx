@@ -13,7 +13,6 @@ import initialState from 'redux/initialState';
 import { GetStartedAction } from 'redux/actions/getStarted';
 import reducer from 'redux/reducers/users';
 
-
 let container: any;
 let stepsProps: any;
 let store: any;
@@ -45,5 +44,4 @@ describe('Account Type Component', () => {
       container
     );
   });
-
 });

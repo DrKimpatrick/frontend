@@ -35,7 +35,7 @@ const DraggableAreaComponent: FC<props> = ({
       {title && <span className={titleClass}>{title}</span>}
       <div
         ref={dropRef}
-        className="mt-2 text-textGray w-full p-2 rounded-sm border border-solid border-gray-400 draggle-area"
+        className="mt-2 text-gray-texts w-full p-2 rounded-sm border border-solid border-gray-400 draggle-area"
         style={{
           background: isOver ? '#E6E8EC' : '#fff',
           minHeight: '139px',

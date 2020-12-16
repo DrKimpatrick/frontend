@@ -48,7 +48,7 @@ Object {
               </svg>
             </button>
             <h1
-              class="font-bold text-base title mx-5 text-2xl"
+              class="font-bold title mx-5 text-2xl"
             >
               title
             </h1>
@@ -68,10 +68,10 @@ Object {
           autocomplete="off"
         >
           <div
-            class="text-textGray mt-8"
+            class="text-gray-texts mt-8"
           >
             <input
-              class="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+              class="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
               name="skill"
               placeholder="Skill"
               type="text"
@@ -160,7 +160,7 @@ Object {
               </svg>
             </button>
             <h1
-              class="font-bold text-base title mx-5 text-2xl"
+              class="font-bold title mx-5 text-2xl"
             >
               title
             </h1>
@@ -180,10 +180,10 @@ Object {
           autocomplete="off"
         >
           <div
-            class="text-textGray mt-8"
+            class="text-gray-texts mt-8"
           >
             <input
-              class="border outline-none bg-transparent rounded-sm w-full px-3 text-textGray input-height"
+              class="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
               name="skill"
               placeholder="Skill"
               type="text"

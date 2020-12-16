@@ -1,4 +1,4 @@
-export enum RouteUrl {
+export enum Routes {
   Affiliate = '/affiliates',
 
   PendingCourse = '/pending-course',
@@ -63,5 +63,9 @@ export enum RouteUrl {
 
   CompleteProfile = '/complete-profile',
 
-  Skill = '/skill'
+  Skill = '/skill',
+
+  payment = '/payment',
+
+  FeatureChoice = '/feature-choice'
 }

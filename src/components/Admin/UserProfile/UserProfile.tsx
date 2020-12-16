@@ -12,7 +12,7 @@ import {
 import { RootState } from 'redux/store';
 import Avatar from 'assets/images/avatar.jpg';
 import { SkillLevel } from 'redux/action-types/skill';
-import { RouteUrl } from 'utils/routes';
+import { Routes } from 'utils/routes';
 import { UserRole } from 'redux/action-types/user';
 import { changeEducationStatus } from 'redux/actions/education';
 import { changeEmploymentStatus } from 'redux/actions/employment';
@@ -81,41 +81,38 @@ const UserProfile: FC = () => {
       roles.map(item => {
         switch (item) {
           case UserRole.CompanyAdmin:
-            setActivePath(RouteUrl.Company)(dispatch);
-            setTopMenu([
-              { url: RouteUrl.Company, name: 'Company' },
-              profilePath
-            ]);
+            setActivePath(Routes.Company)(dispatch);
+            setTopMenu([{ url: Routes.Company, name: 'Company' }, profilePath]);
             break;
 
           case UserRole.HrAdmin:
-            setActivePath(RouteUrl.Company)(dispatch);
+            setActivePath(Routes.Company)(dispatch);
             setTopMenu([
-              { url: RouteUrl.HrAdmin, name: 'Hr Admin' },
+              { url: Routes.HrAdmin, name: 'Hr Admin' },
               profilePath
             ]);
             break;
 
           case UserRole.TrainingAffiliate:
-            setActivePath(RouteUrl.TrainingAffiliate)(dispatch);
+            setActivePath(Routes.TrainingAffiliate)(dispatch);
             setTopMenu([
-              { url: RouteUrl.TrainingAffiliate, name: 'Training Affiliate' },
+              { url: Routes.TrainingAffiliate, name: 'Training Affiliate' },
               profilePath
             ]);
             break;
 
           case UserRole.Talent:
-            setActivePath(RouteUrl.SuperAdminDashboard)(dispatch);
+            setActivePath(Routes.SuperAdminDashboard)(dispatch);
             setTopMenu([
-              { url: RouteUrl.SuperAdminDashboard, name: 'Talent' },
+              { url: Routes.SuperAdminDashboard, name: 'Talent' },
               profilePath
             ]);
             break;
 
           case UserRole.RecruitmentAdmin:
-            setActivePath(RouteUrl.Recruiter)(dispatch);
+            setActivePath(Routes.Recruiter)(dispatch);
             setTopMenu([
-              { url: RouteUrl.Recruiter, name: 'Recruiter' },
+              { url: Routes.Recruiter, name: 'Recruiter' },
               profilePath
             ]);
             break;

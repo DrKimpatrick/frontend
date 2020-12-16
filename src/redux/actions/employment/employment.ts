@@ -59,7 +59,7 @@ export const addEmployment = (data: EmploymentParam) => async (
         dispatch({
           type: EmploymentTypes.Errors,
           payload: {
-            errors: error.response.data
+            errors: error?.response?.data
           }
         });
       },

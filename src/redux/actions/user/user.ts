@@ -17,7 +17,7 @@ export const listCurrentUser = () => (dispatchAction: Dispatch) => {
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
           type: UserTypes.Errors,
-          payload: { errors: error.response.data }
+          payload: { errors: error?.response?.data }
         });
       }
     })
@@ -93,7 +93,7 @@ export const listAllSkill = () => (dispatchAction: Dispatch) => {
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
           type: SkillTypes.GetSkillsFail,
-          payload: { errors: error.response.data }
+          payload: { errors: error?.response?.data }
         });
       }
     })

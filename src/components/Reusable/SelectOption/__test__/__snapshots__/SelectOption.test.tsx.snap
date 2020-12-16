@@ -2,7 +2,7 @@
 
 exports[`\`SelectOption\` component matches the snapshot for multiple select 1`] = `
 <div
-  className="outline-none placeholder-textGray placeholder-opacity-50 css-2b097c-container"
+  className="outline-none placeholder-gray-texts placeholder-opacity-50 css-2b097c-container"
   onKeyDown={[Function]}
 >
   <div
@@ -108,7 +108,7 @@ exports[`\`SelectOption\` component matches the snapshot for multiple select 1`]
 
 exports[`\`SelectOption\` component matches the snapshot for simple select 1`] = `
 <div
-  className="outline-none placeholder-textGray placeholder-opacity-50 css-2b097c-container"
+  className="outline-none placeholder-gray-texts placeholder-opacity-50 css-2b097c-container"
   onKeyDown={[Function]}
 >
   <div

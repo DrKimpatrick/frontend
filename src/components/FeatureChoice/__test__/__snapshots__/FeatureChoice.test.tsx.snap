@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeatureChoice matched the snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <nav
+        class="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+      >
+        <a
+          class="text-gray-800"
+          href="/"
+        >
+          <img
+            alt="logo"
+            class="logo w-24"
+            src="logo-image.png"
+          />
+        </a>
+        <div
+          class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+          id="navigation"
+        >
+          <div
+            class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
+          >
+            <div>
+              <a
+                class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+                href="/"
+              >
+                <span>
+                  How it works
+                </span>
+              </a>
+              <a
+                class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+                href="/"
+              >
+                <span>
+                  About us
+                </span>
+              </a>
+            </div>
+            <a
+              class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+              href="/login"
+            >
+              <span>
+                Login
+              </span>
+            </a>
+            <button
+              class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-blue-700 hover:bg-blue-800 text-white"
+              type="button"
+            >
+              <span>
+                Get started
+              </span>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <section
+        class="container mx-auto px-12 flex flex-col items-center justify-center"
+      >
+        <div
+          class="text-2xl flex items-center text-gray-texts"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root cursor-pointer"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            />
+          </svg>
+          <h1
+            class="ml-4 font-bold"
+          >
+            What features would you like to have?
+          </h1>
+        </div>
+        <div
+          class="mt-8 w-full"
+        />
+      </section>
+      <div
+        class="mainBackground"
+      >
+        <img
+          alt=""
+          src="motif-image.png"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      class="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+    >
+      <a
+        class="text-gray-800"
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="logo w-24"
+          src="logo-image.png"
+        />
+      </a>
+      <div
+        class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+        id="navigation"
+      >
+        <div
+          class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
+        >
+          <div>
+            <a
+              class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+              href="/"
+            >
+              <span>
+                How it works
+              </span>
+            </a>
+            <a
+              class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+              href="/"
+            >
+              <span>
+                About us
+              </span>
+            </a>
+          </div>
+          <a
+            class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded text-gray-600 items-center justify-center hover:text-gray-700"
+            href="/login"
+          >
+            <span>
+              Login
+            </span>
+          </a>
+          <button
+            class="lg:inline-flex lg:w-auto w-full px-8 py-2 rounded items-center justify-center bg-blue-700 hover:bg-blue-800 text-white"
+            type="button"
+          >
+            <span>
+              Get started
+            </span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="container mx-auto px-12 flex flex-col items-center justify-center"
+    >
+      <div
+        class="text-2xl flex items-center text-gray-texts"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root cursor-pointer"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+        <h1
+          class="ml-4 font-bold"
+        >
+          What features would you like to have?
+        </h1>
+      </div>
+      <div
+        class="mt-8 w-full"
+      />
+    </section>
+    <div
+      class="mainBackground"
+    >
+      <img
+        alt=""
+        src="motif-image.png"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

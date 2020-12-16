@@ -44,5 +44,4 @@ describe('Account Type Component', () => {
       container
     );
   });
-
 });

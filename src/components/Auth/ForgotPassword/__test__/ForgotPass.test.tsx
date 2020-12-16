@@ -12,7 +12,6 @@ import renderer from 'react-test-renderer';
 import initialState from 'redux/initialState';
 import { GetStartedAction } from 'redux/actions/getStarted';
 
-
 let container: any;
 let stepsProps: any;
 let store: any;
@@ -44,5 +43,4 @@ describe('Account Type Component', () => {
       container
     );
   });
-
 });

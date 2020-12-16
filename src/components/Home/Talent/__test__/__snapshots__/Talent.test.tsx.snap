@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="w-full mb-8 md:mb-0 p-4 feature-min-w md:feature-max-w"
+      >
+        <div
+          class="py-1 flex items-center justify-center rounded bg-green-600 text-white"
+        >
+          <h2
+            class="font-medium text-xl"
+          >
+            PREMIUM
+          </h2>
+        </div>
+        <div
+          class="mt-4"
+        >
+          <div
+            class="flex flex-col mt-4"
+          >
+            <div
+              class="flex"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root text-green-700 customFont"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                />
+              </svg>
+              <p
+                class="text-gray-800 ml-4"
+              >
+                Some name
+              </p>
+            </div>
+            <div
+              class="ml-8 mt-2 flex font-thin text-gray-texts"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                />
+              </svg>
+              <span
+                class="ml-2 text-xs"
+              >
+                Some meaningful detail
+              </span>
+            </div>
+          </div>
+          <div
+            class="feature"
+          >
+            <div
+              class="mb-1 flex flex-col"
+            >
+              <button
+                class="text-white text-lg font-normal p-2 rounded bg-green-600 order-2"
+                type="button"
+              >
+                <span
+                  class="flex flex-no-wrap"
+                >
+                  I WANT TO BE HIRED 
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root ml-4"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <p
+                class="ml-2 text-gray-600 font-thin text-base order-1"
+              >
+                <span
+                  class="flex"
+                >
+                  Monthly 9.99
+                   
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="w-full mb-8 md:mb-0 p-4 feature-min-w md:feature-max-w"
+    >
+      <div
+        class="py-1 flex items-center justify-center rounded bg-green-600 text-white"
+      >
+        <h2
+          class="font-medium text-xl"
+        >
+          PREMIUM
+        </h2>
+      </div>
+      <div
+        class="mt-4"
+      >
+        <div
+          class="flex flex-col mt-4"
+        >
+          <div
+            class="flex"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root text-green-700 customFont"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+            <p
+              class="text-gray-800 ml-4"
+            >
+              Some name
+            </p>
+          </div>
+          <div
+            class="ml-8 mt-2 flex font-thin text-gray-texts"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+              />
+            </svg>
+            <span
+              class="ml-2 text-xs"
+            >
+              Some meaningful detail
+            </span>
+          </div>
+        </div>
+        <div
+          class="feature"
+        >
+          <div
+            class="mb-1 flex flex-col"
+          >
+            <button
+              class="text-white text-lg font-normal p-2 rounded bg-green-600 order-2"
+              type="button"
+            >
+              <span
+                class="flex flex-no-wrap"
+              >
+                I WANT TO BE HIRED 
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root ml-4"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <p
+              class="ml-2 text-gray-600 font-thin text-base order-1"
+            >
+              <span
+                class="flex"
+              >
+                Monthly 9.99
+                 
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
