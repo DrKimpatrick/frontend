@@ -3,7 +3,18 @@ export const frontData = {
   description1:
     'Certified education and employment Verified technical ability Continuous skills monitoring and updates',
   description2: `Tech Talent ensures members are current on the latest technology changes. 
-  Companies are equipped with quality developers HR save time and money on recruiting potential candidates`
+  Companies are equipped with quality developers HR save time and money on recruiting potential candidates`,
+  list1: [
+    'Certified education and employment',
+    'Verified technical ability',
+    'Continuous skills monitoring and updates'
+  ],
+  list2: [
+    'Members are current on the latest technology changes',
+    'Companies are equipped with quality developers',
+    'HR save time and money on recruiting potential candidates'
+  ],
+  title2: 'Tech Talent QA ensures'
 };
 
 export const steps = [

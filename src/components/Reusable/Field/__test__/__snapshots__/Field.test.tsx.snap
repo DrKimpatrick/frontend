@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="flex flex-col w-full"
+        class="flex flex-col w-full undefined"
       >
         <input
           class="input"
@@ -17,7 +17,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="flex flex-col w-full"
+      class="flex flex-col w-full undefined"
     >
       <input
         class="input"

@@ -16,7 +16,10 @@ type TalentProps = {
 
 const Talent: FC<TalentProps> = ({ plans, productDetails, action }) => {
   const history = useHistory();
-  const planTitle = productDetails.name.split(' ')[1];
+  const planTitle =
+    productDetails && productDetails.name
+      ? productDetails.name.split(' ')[1]
+      : '';
   const planBgColor = cx({
     'bg-blue-600': planTitle === 'Standard',
     'bg-green-600': planTitle === 'Premium',
@@ -57,6 +60,10 @@ const Talent: FC<TalentProps> = ({ plans, productDetails, action }) => {
       return planDataItem;
     });
   };
+
+  if (!productDetails) {
+    return null;
+  }
 
   return (
     <div className="w-full mb-8 md:mb-0 p-4 feature-min-w md:feature-max-w">

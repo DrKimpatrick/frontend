@@ -71,8 +71,7 @@ const HowItWork = (props: Props) => {
               className="w-full md:w-1/5 flex items-center justify-center"
               key={i}
             >
-              <button
-                type="button"
+              <div
                 className={`flex items-center buttons ${
                   activeStep === item.name ? 'active' : ''
                 }`}
@@ -80,7 +79,7 @@ const HowItWork = (props: Props) => {
               >
                 {item.icon}
                 <h5 className="mx-1">{item.name}</h5>
-              </button>
+              </div>
             </li>
           ))}
         </ul>

@@ -1,21 +1,26 @@
 .howItWorkSection {
   position: relative;
-  color: #737373;
   background: white;
   .buttons {
     padding: 8px 10px 8px 10px;
     outline: none;
     box-shadow: none;
     font-size: 15px;
+    color: rgba(115, 115, 115, 0.2);
+    cursor: pointer;
+    &:hover{
+      color: #737373;
+    }
   }
   .active {
     background: #4d9b62;
-    color: white;
+    color: white !important;
     border-radius: 2px;
   }
 
   .stepDetail {
     font-size: 14px;
+    color: #737373;
     .stepNumber {
       position: relative;
     }
@@ -38,7 +43,7 @@
         height: auto;
         min-height: auto;
         padding: 0px 10px 0px 10px;
-        margin-top: .1rem;
+        margin-top: 0.1rem;
       }
     }
   }

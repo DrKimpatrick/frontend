@@ -29,6 +29,31 @@ const frontStyles = {
     @media (min-width: 768px) and (max-width: 1200px) {
       width: 65% !important;
     }
+  `,
+  TopHeading: styled.h1`
+    @media screen and (max-width: 768px) {
+      margin-left: 0px;
+    }
+  `,
+  FrontViewList: styled.ul`
+    list-style: decimal;
+    margin-left: 20px;
+
+    @media screen and (max-width: 768px) {
+      margin-left: 20px;
+    }
+  `,
+  H5Title: styled.h5`
+    @media screen and (max-width: 768px) {
+      margin-left: 0px;
+    }
+  `,
+  ButtonDiv: styled.div`
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: start;
+      width: 100%;
+    }
   `
 };
 

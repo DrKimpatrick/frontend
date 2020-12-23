@@ -19,10 +19,9 @@ exports[`HowItWork should create snapShot 1`] = `
       <li
         className="w-full md:w-1/5 flex items-center justify-center"
       >
-        <button
+        <div
           className="flex items-center buttons active"
           onClick={[Function]}
-          type="button"
         >
           <svg
             aria-hidden={true}
@@ -39,15 +38,14 @@ exports[`HowItWork should create snapShot 1`] = `
           >
             Talent
           </h5>
-        </button>
+        </div>
       </li>
       <li
         className="w-full md:w-1/5 flex items-center justify-center"
       >
-        <button
+        <div
           className="flex items-center buttons "
           onClick={[Function]}
-          type="button"
         >
           <svg
             aria-hidden={true}
@@ -64,15 +62,14 @@ exports[`HowItWork should create snapShot 1`] = `
           >
             School
           </h5>
-        </button>
+        </div>
       </li>
       <li
         className="w-full md:w-1/5 flex items-center justify-center"
       >
-        <button
+        <div
           className="flex items-center buttons "
           onClick={[Function]}
-          type="button"
         >
           <svg
             aria-hidden={true}
@@ -89,15 +86,14 @@ exports[`HowItWork should create snapShot 1`] = `
           >
             Training
           </h5>
-        </button>
+        </div>
       </li>
       <li
         className="w-full md:w-1/5 flex items-center justify-center"
       >
-        <button
+        <div
           className="flex items-center buttons "
           onClick={[Function]}
-          type="button"
         >
           <svg
             aria-hidden={true}
@@ -117,15 +113,14 @@ exports[`HowItWork should create snapShot 1`] = `
           >
             Human Resource
           </h5>
-        </button>
+        </div>
       </li>
       <li
         className="w-full md:w-1/5 flex items-center justify-center"
       >
-        <button
+        <div
           className="flex items-center buttons "
           onClick={[Function]}
-          type="button"
         >
           <svg
             aria-hidden={true}
@@ -142,7 +137,7 @@ exports[`HowItWork should create snapShot 1`] = `
           >
             Companies
           </h5>
-        </button>
+        </div>
       </li>
     </ul>
     <ul
