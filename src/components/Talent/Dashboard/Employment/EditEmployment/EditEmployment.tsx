@@ -30,7 +30,7 @@ const EditEmployment: FC<Props> = props => {
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors } = state.employments;
+    const { submitLoading: loading, errors } = state.employments;
 
     const { message } = state.messages;
 
@@ -59,7 +59,7 @@ const EditEmployment: FC<Props> = props => {
       style={{ zIndex: 100 }}
     >
       <div className="containers">
-        <div className="recent-employer-section w-1/3 m-auto text-gray-texts">
+        <div className="recent-employer-section m-auto text-gray-texts">
           <div className="flex relative h-auto my-8">
             <button
               className="back-arrow cursor-pointer"
@@ -92,17 +92,39 @@ const EditEmployment: FC<Props> = props => {
               supervisor: {
                 name: get(employment.supervisor, 'name', ''),
                 detail: {
-                  name: get(employment.supervisor.detail, 'name', ''),
-                  email: get(employment.supervisor.detail, 'email', ''),
-                  phoneNumber: get(
-                    employment.supervisor.detail,
-                    'phoneNumber',
-                    ''
-                  )
+                  name: employment.supervisor
+                    ? get(employment.supervisor.detail, 'name', '')
+                    : '',
+                  email: employment.supervisor
+                    ? get(employment.supervisor.detail, 'email', '')
+                    : '',
+                  phoneNumber: employment.supervisor
+                    ? get(employment.supervisor.detail, 'phoneNumber', '')
+                    : ''
                 }
               },
+              employmentType: get(employment, 'employmentType', ''),
               currentSupervisor: get(employment.supervisor, 'name', ''),
-              showDetail: true
+              showDetail: !!employment.supervisor,
+              showReference: !!employment.reference,
+              showReferenceDetail: !!employment.reference,
+              reference: {
+                name: employment.reference
+                  ? get(employment.reference, 'name', '')
+                  : '',
+                detail: {
+                  name: employment.reference
+                    ? get(employment.reference.detail, 'name', '')
+                    : '',
+                  phoneNumber: employment.reference
+                    ? get(employment.reference.detail, 'phoneNumber', '')
+                    : '',
+                  email: employment.reference
+                    ? get(employment.reference.detail, 'email', '')
+                    : ''
+                }
+              },
+              currentReference: get(employment.reference, 'name', '')
             }}
             submit={(values: InitialEmploymentValue) =>
               updateEmployment(values, employment._id)(dispatch)

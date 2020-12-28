@@ -52,10 +52,17 @@ export const addEmployment = (data: EmploymentParam) => async (
       method: 'POST',
       data,
       onStart: () => (dispatch: Dispatch) => {
-        dispatch({ type: EmploymentTypes.Loading, payload: { loading: true } });
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: true }
+        });
       },
       onFailure: error => (dispatch: Dispatch) => {
-        listEmployments()(dispatch);
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
         dispatch({
           type: EmploymentTypes.Errors,
           payload: {
@@ -64,6 +71,8 @@ export const addEmployment = (data: EmploymentParam) => async (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
+        listEmployments()(dispatch);
+
         if (data.user && data.profileProcess) {
           setProfileProcess({
             profileProcess: data.profileProcess,
@@ -77,6 +86,11 @@ export const addEmployment = (data: EmploymentParam) => async (
           }
         });
         setMessage(res.message)(dispatch);
+
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: false }
+        });
       }
     })
   );
@@ -151,9 +165,17 @@ export const updateEmployment = (data: EmploymentParam, id: string) => async (
       method: 'PUT',
       data,
       onStart: () => (dispatch: Dispatch) => {
-        dispatch({ type: EmploymentTypes.Loading, payload: { loading: true } });
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: true }
+        });
       },
       onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
         dispatch({
           type: EmploymentTypes.Errors,
           payload: {
@@ -163,6 +185,12 @@ export const updateEmployment = (data: EmploymentParam, id: string) => async (
       },
       onSuccess: res => (dispatch: Dispatch) => {
         listEmployments()(dispatch);
+
+        dispatch({
+          type: EmploymentTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
         dispatch({
           type: EmploymentTypes.UpdateEmployment,
           payload: {

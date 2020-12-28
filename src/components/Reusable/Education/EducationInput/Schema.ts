@@ -21,4 +21,6 @@ export interface InitialEducationValue {
   accomplishment: string;
   startDate: string;
   endDate?: string;
+  certificateType: string;
+  schoolWebsite: string;
 }

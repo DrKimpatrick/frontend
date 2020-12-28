@@ -4,9 +4,15 @@ import { Formik, FieldArray } from 'formik';
 import { Button, Checkbox } from '@material-ui/core';
 import { ArrowRightAltTwoTone, Close, AddOutlined } from '@material-ui/icons';
 import Select from 'react-select';
-import { map, get } from 'lodash';
+import { map, get, omit } from 'lodash';
 import { listUserSkill } from 'redux/actions/skill';
 import { RootState } from 'redux/store';
+import { CustomSelect, Loader, isEmpty } from 'components/Reusable';
+import {
+  Supervisor,
+  EmploymentType,
+  EmploymentReference
+} from 'redux/action-types/employment';
 import {
   employmentSchema,
   InitialEmploymentValue as InitialValue
@@ -95,15 +101,50 @@ const EmploymentInput: FC<Props> = props => {
         skillsUsed:
           initialValue.skillsUsed.length > 0
             ? setDefaultSkills(initialValue.skillsUsed)
-            : []
+            : [],
+        reference: initialValue.reference
+          ? initialValue.reference
+          : {
+              name: '',
+              detail: {
+                name: '',
+                email: '',
+                phoneNumber: ''
+              }
+            },
+        showReference: initialValue.showReference
+          ? initialValue.showReference
+          : false,
+        showReferenceDetail: initialValue.showReferenceDetail
+          ? initialValue.showReferenceDetail
+          : false,
+        currentReference: get(initialValue, 'currentReference', '')
       }}
       validationSchema={employmentSchema}
       validateOnChange={false}
       onSubmit={values => {
         const skillsUsed = map(values.skillsUsed, 'value') as string[];
 
-        return submit({
-          ...values,
+        let changeValue: any = values;
+
+        if (
+          (values.supervisor && values.supervisor.name === Supervisor.NA) ||
+          (values.supervisor && values.supervisor.name === '')
+        ) {
+          const newValue = omit(values, ['supervisor']);
+          changeValue = newValue;
+        }
+
+        if (
+          isEmpty(values.reference.name) ||
+          isEmpty(values.reference.detail.name) ||
+          isEmpty(values.reference.detail.email) ||
+          isEmpty(values.reference.detail.phoneNumber)
+        ) {
+          changeValue = omit(values, ['reference']);
+        }
+        submit({
+          ...changeValue,
           skillsUsed
         });
       }}
@@ -113,7 +154,7 @@ const EmploymentInput: FC<Props> = props => {
 
         return (
           <form autoComplete="off" onSubmit={formik.handleSubmit}>
-            <div className="text-gray-texts mt-8">
+            <div className="text-gray-texts mt-2">
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
@@ -127,53 +168,61 @@ const EmploymentInput: FC<Props> = props => {
               )}
               {!errors || (!errors.companyName && getErrors('companyName'))}
             </div>
-
-            <div className="text-gray-texts mt-4">
-              <Select
-                options={[
-                  { value: 'Staffing', label: 'Staffing' },
-                  { value: 'Employee', label: 'Employee' },
-                  { value: 'HR', label: 'HR' }
-                ]}
-                placeholder="Select your supervisor"
-                name="supervisor.name"
-                onChange={v => {
-                  formik.setFieldValue(
-                    'supervisor.name',
-                    (v as any).value,
-                    true
-                  );
-                  formik.setFieldValue('showDetail', true);
-                  formik.setFieldValue('currentSupervisor', (v as any).label);
-                }}
-                values={
-                  values.supervisor.name !== ''
-                    ? { value: values.supervisor, label: values.supervisor }
-                    : null
-                }
-                isMulti={false}
-                styles={{
-                  control: base => ({ ...base, border: 0, boxShadow: 'none' })
-                }}
-                className="select"
-                defaultValue={
-                  values.supervisor.name !== ''
-                    ? {
-                        value: values.supervisor.name,
-                        label: values.supervisor.name
-                      }
-                    : null
+            <div className="text-gray-texts mt-2">
+              <CustomSelect
+                name="employmentType"
+                option={Object.values(EmploymentType).map(item => ({
+                  name: item,
+                  value: item
+                }))}
+                placeholder="Employment type"
+                value={values.employmentType}
+                onChange={value =>
+                  formik.setFieldValue('employmentType', value, true)
                 }
               />
-              {errors && errors.supervisor && errors.supervisor.name && (
-                <div className="inputError">{errors.supervisor.name}</div>
+              {errors && errors.employmentType && (
+                <div className="inputError">{errors.employmentType}</div>
               )}
-              {!errors || (!errors.supervisor && getErrors('supervisor'))}
-              {!errors || (!errors.supervisor && getErrors('supervisor.name'))}
+              {!errors ||
+                (!errors.employmentType && getErrors('employmentType'))}
             </div>
-            {values.showDetail && (
+
+            <div className="text-gray-texts mt-2">
+              <CustomSelect
+                option={Object.values(Supervisor).map(item => ({
+                  name: item,
+                  value: item
+                }))}
+                placeholder="Supervisor"
+                onChange={value => {
+                  formik.setFieldValue('supervisor.name', value, true);
+                  if (value === Supervisor.NA) {
+                    formik.setFieldValue('showReference', true);
+                    formik.setFieldValue('showDetail', false);
+                  } else {
+                    formik.setFieldValue('showDetail', true);
+                    formik.setFieldValue('currentSupervisor', value);
+                    formik.setFieldValue('showReference', false);
+                    formik.setFieldValue('showReferenceDetail', false);
+                    formik.setFieldValue('reference', {
+                      name: '',
+                      detail: {
+                        name: '',
+                        email: '',
+                        phoneNumber: ''
+                      }
+                    });
+                  }
+                }}
+                name="supervisor.name"
+                value={get(values.supervisor, 'name', '')}
+              />
+              {getErrors('supervisor')}
+            </div>
+            {values.showDetail && values.supervisor && (
               <>
-                <div className="text-gray-texts mt-4">
+                <div className="text-gray-texts mt-2">
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -182,18 +231,8 @@ const EmploymentInput: FC<Props> = props => {
                     onChange={formik.handleChange}
                     name="supervisor.detail.name"
                   />
-                  {errors &&
-                    errors.supervisor &&
-                    errors.supervisor.detail &&
-                    errors.supervisor.detail.name && (
-                      <div className="inputError">
-                        {errors.supervisor.detail.name}
-                      </div>
-                    )}
-                  {!errors ||
-                    (!errors.supervisor && getErrors('supervisor.detail.name'))}
                 </div>
-                <div className="text-gray-texts mt-4">
+                <div className="text-gray-texts mt-2">
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -202,20 +241,8 @@ const EmploymentInput: FC<Props> = props => {
                     onChange={formik.handleChange}
                     name="supervisor.detail.email"
                   />
-                  {errors &&
-                    errors.supervisor &&
-                    errors.supervisor.detail &&
-                    errors.supervisor.detail.email && (
-                      <div className="inputError">
-                        {errors.supervisor.detail.email}
-                      </div>
-                    )}
-
-                  {!errors ||
-                    (!errors.supervisor &&
-                      getErrors('supervisor.detail.email'))}
                 </div>
-                <div className="text-gray-texts mt-4">
+                <div className="text-gray-texts mt-2">
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -224,22 +251,65 @@ const EmploymentInput: FC<Props> = props => {
                     onChange={formik.handleChange}
                     name="supervisor.detail.phoneNumber"
                   />
-                  {errors &&
-                    errors.supervisor &&
-                    errors.supervisor.detail &&
-                    errors.supervisor.detail.phoneNumber && (
-                      <div className="inputError">
-                        {errors.supervisor.detail.phoneNumber}
-                      </div>
-                    )}
-                  {!errors ||
-                    (!errors.supervisor &&
-                      getErrors('supervisor.detail.phoneNumber'))}
+                </div>
+              </>
+            )}
+            {values.showReference && (
+              <div className="text-gray-texts mt-2">
+                <CustomSelect
+                  option={Object.values(EmploymentReference).map(item => ({
+                    name: item,
+                    value: item
+                  }))}
+                  placeholder="Reference"
+                  onChange={value => {
+                    formik.setFieldValue('reference.name', value, true);
+                    formik.setFieldValue('showReferenceDetail', true);
+                    formik.setFieldValue('currentReference', value);
+                  }}
+                  name="reference.name"
+                  value={values.reference.name}
+                />
+                {getErrors('reference')}
+              </div>
+            )}
+
+            {values.showReferenceDetail && values.reference && (
+              <>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} name`}
+                    value={get(values.reference.detail, 'name', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.name"
+                  />
+                </div>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} email`}
+                    value={get(values.reference.detail, 'email', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.email"
+                  />
+                </div>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} phone number`}
+                    value={get(values.reference.detail, 'phoneNumber', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.phoneNumber"
+                  />
                 </div>
               </>
             )}
 
-            <div className="text-gray-texts mt-4">
+            <div className="text-gray-texts mt-2">
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -254,8 +324,8 @@ const EmploymentInput: FC<Props> = props => {
               {!errors || (!errors.title && getErrors('title'))}
             </div>
 
-            <div className="flex justify-between text-gray-texts mt-4 dateContainer">
-              <div className="item w-full h-full pt-2 mt-2">
+            <div className="flex justify-between text-gray-texts dateContainer">
+              <div className="item w-full h-full pt-1 pb-1">
                 <label htmlFor="start date">Start date</label>
                 <input
                   id="date"
@@ -267,7 +337,7 @@ const EmploymentInput: FC<Props> = props => {
               </div>
 
               {values.isCurrentPosition === false && (
-                <div className="item w-full h-full pt-2 mt-2">
+                <div className="item w-full h-full pt-1 pb-1">
                   <label htmlFor="end date">End date</label>
                   <input
                     id="date"
@@ -310,7 +380,7 @@ const EmploymentInput: FC<Props> = props => {
               <label htmlFor="">I am currently working here</label>
             </div>
             {userSkill && userSkill.length > 0 && (
-              <div className="text-gray-texts mt-4">
+              <div className="text-gray-texts mt-2">
                 <Select
                   isMulti
                   options={userSkill.map(item => ({
@@ -340,7 +410,7 @@ const EmploymentInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-gray-texts mt-4 divider"
+                    className="text-gray-texts mt-2 divider"
                     style={
                       responsibilities && responsibilities.length > 0
                         ? {
@@ -401,7 +471,7 @@ const EmploymentInput: FC<Props> = props => {
 
                 return (
                   <div
-                    className="text-gray-texts mt-4 divider"
+                    className="text-gray-texts mt-2 divider"
                     style={
                       accomplishments && accomplishments.length > 0
                         ? {
@@ -455,7 +525,7 @@ const EmploymentInput: FC<Props> = props => {
               }}
             />
 
-            <div className="text-gray-texts mt-4">
+            <div className="text-gray-texts mt-2">
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -473,7 +543,14 @@ const EmploymentInput: FC<Props> = props => {
                 type="submit"
                 disabled={loading}
               >
-                <span className="">{buttonName}</span> <ArrowRightAltTwoTone />
+                <Loader
+                  loading={loading}
+                  command={
+                    <>
+                      <span>{buttonName}</span> <ArrowRightAltTwoTone />
+                    </>
+                  }
+                />
               </button>
             </div>
           </form>

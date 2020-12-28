@@ -2,13 +2,18 @@ import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-import Select from 'react-select';
-import { map, get } from 'lodash';
+import { map, get, omit } from 'lodash';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import { ArrowRightAltTwoTone } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import { TalentProcess } from 'redux/action-types/user';
 import { addEmployment, listEmployments } from 'redux/actions/employment';
+import {
+  EmploymentReference,
+  EmploymentType,
+  Supervisor
+} from 'redux/action-types/employment';
+import { CustomSelect, Loader } from 'components/Reusable';
 import { currentRoleSchema } from './Schema';
 import './CurrentRole.scss';
 
@@ -16,13 +21,19 @@ interface Props {
   setPreviousStep: (value: string) => void;
 }
 
+export const isEmpty = (value: string) => {
+  const validate = !!(value.trim().length === 0 || value === '');
+
+  return validate;
+};
+
 const CurrentRole: FC<Props> = props => {
   const { setPreviousStep } = props;
 
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors, employment } = state.employments;
+    const { submitLoading: loading, errors, employment } = state.employments;
 
     const { message } = state.messages;
 
@@ -88,12 +99,43 @@ const CurrentRole: FC<Props> = props => {
                 startDate: '',
                 isCurrentPosition: true,
                 showDetail: false,
-                currentSupervisor: ''
+                currentSupervisor: '',
+                employmentType: '',
+                reference: {
+                  name: '',
+                  detail: {
+                    name: '',
+                    email: '',
+                    phoneNumber: ''
+                  }
+                },
+                showReference: false,
+                showReferenceDetail: false,
+                currentReference: ''
               }}
               onSubmit={values => {
                 if (reducer.user) {
+                  let changeValue: any = values;
+                  if (
+                    (values.supervisor &&
+                      values.supervisor.name === Supervisor.NA) ||
+                    (values.supervisor && values.supervisor.name === '')
+                  ) {
+                    const newValue = omit(values, ['supervisor']);
+                    changeValue = newValue;
+                  }
+
+                  if (
+                    isEmpty(values.reference.name) ||
+                    isEmpty(values.reference.detail.name) ||
+                    isEmpty(values.reference.detail.email) ||
+                    isEmpty(values.reference.detail.phoneNumber)
+                  ) {
+                    changeValue = omit(values, ['reference']);
+                  }
+
                   addEmployment({
-                    ...values,
+                    ...changeValue,
                     user: reducer.user,
                     profileProcess: TalentProcess.SkillRanking
                   })(dispatch);
@@ -109,7 +151,6 @@ const CurrentRole: FC<Props> = props => {
                     data-testid="submit-form"
                   >
                     <div className="text-gray-texts mt-8">
-                      <label>What is your company name ? </label>
                       <input
                         type="text"
                         className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -125,7 +166,27 @@ const CurrentRole: FC<Props> = props => {
                         (!errors.companyName && getErrors('companyName'))}
                     </div>
                     <div className="text-gray-texts mt-4">
-                      <label>What is your current role?</label>
+                      <CustomSelect
+                        name="employmentType"
+                        option={Object.values(EmploymentType).map(item => ({
+                          name: item,
+                          value: item
+                        }))}
+                        placeholder="Employment type"
+                        value={values.employmentType}
+                        onChange={value =>
+                          formik.setFieldValue('employmentType', value, true)
+                        }
+                      />
+                      {errors && errors.employmentType && (
+                        <div className="inputError">
+                          {errors.employmentType}
+                        </div>
+                      )}
+                      {!errors ||
+                        (!errors.employmentType && getErrors('employmentType'))}
+                    </div>
+                    <div className="text-gray-texts mt-4">
                       <input
                         type="text"
                         className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height mt-2"
@@ -140,65 +201,38 @@ const CurrentRole: FC<Props> = props => {
                       {!errors || (!errors.title && getErrors('title'))}
                     </div>
                     <div className="text-gray-texts mt-4">
-                      <Select
-                        options={[
-                          { value: 'Staffing', label: 'Staffing' },
-                          { value: 'Employee', label: 'Employee' },
-                          { value: 'HR', label: 'HR' }
-                        ]}
-                        placeholder="Select your supervisor"
+                      <CustomSelect
+                        option={Object.values(Supervisor).map(item => ({
+                          name: item,
+                          value: item
+                        }))}
+                        placeholder="Supervisor"
+                        onChange={value => {
+                          formik.setFieldValue('supervisor.name', value, true);
+                          if (value === Supervisor.NA) {
+                            formik.setFieldValue('showReference', true);
+                            formik.setFieldValue('showDetail', false);
+                          } else {
+                            formik.setFieldValue('showDetail', true);
+                            formik.setFieldValue('currentSupervisor', value);
+                            formik.setFieldValue('showReference', false);
+                            formik.setFieldValue('showReferenceDetail', false);
+                            formik.setFieldValue('reference', {
+                              name: '',
+                              detail: {
+                                name: '',
+                                email: '',
+                                phoneNumber: ''
+                              }
+                            });
+                          }
+                        }}
                         name="supervisor.name"
-                        onChange={v => {
-                          formik.setFieldValue(
-                            'supervisor.name',
-                            (v as any).value,
-                            true
-                          );
-                          formik.setFieldValue('showDetail', true);
-                          formik.setFieldValue(
-                            'currentSupervisor',
-                            (v as any).label
-                          );
-                        }}
-                        values={
-                          values.supervisor.name !== ''
-                            ? {
-                                value: values.supervisor,
-                                label: values.supervisor
-                              }
-                            : null
-                        }
-                        isMulti={false}
-                        styles={{
-                          control: base => ({
-                            ...base,
-                            border: 0,
-                            boxShadow: 'none'
-                          })
-                        }}
-                        className="select"
-                        defaultValue={
-                          values.supervisor.name !== ''
-                            ? {
-                                value: values.supervisor.name,
-                                label: values.supervisor.name
-                              }
-                            : null
-                        }
+                        value={get(values.supervisor, 'name', '')}
                       />
-                      {errors &&
-                        errors.supervisor &&
-                        errors.supervisor.name && (
-                          <div className="inputError">
-                            {errors.supervisor.name}
-                          </div>
-                        )}
-                      {!errors ||
-                        (!errors.supervisor && getErrors('supervisor'))}
-                      {!errors ||
-                        (!errors.supervisor && getErrors('supervisor.name'))}
+                      {getErrors('supervisor')}
                     </div>
-                    {values.showDetail && (
+                    {values.showDetail && values.supervisor && (
                       <>
                         <div className="text-gray-texts mt-4">
                           <input
@@ -209,17 +243,6 @@ const CurrentRole: FC<Props> = props => {
                             onChange={formik.handleChange}
                             name="supervisor.detail.name"
                           />
-                          {errors &&
-                            errors.supervisor &&
-                            errors.supervisor.detail &&
-                            errors.supervisor.detail.name && (
-                              <div className="inputError">
-                                {errors.supervisor.detail.name}
-                              </div>
-                            )}
-                          {!errors ||
-                            (!errors.supervisor &&
-                              getErrors('supervisor.detail.name'))}
                         </div>
                         <div className="text-gray-texts mt-4">
                           <input
@@ -230,18 +253,6 @@ const CurrentRole: FC<Props> = props => {
                             onChange={formik.handleChange}
                             name="supervisor.detail.email"
                           />
-                          {errors &&
-                            errors.supervisor &&
-                            errors.supervisor.detail &&
-                            errors.supervisor.detail.email && (
-                              <div className="inputError">
-                                {errors.supervisor.detail.email}
-                              </div>
-                            )}
-
-                          {!errors ||
-                            (!errors.supervisor &&
-                              getErrors('supervisor.detail.email'))}
                         </div>
                         <div className="text-gray-texts mt-4">
                           <input
@@ -256,17 +267,66 @@ const CurrentRole: FC<Props> = props => {
                             onChange={formik.handleChange}
                             name="supervisor.detail.phoneNumber"
                           />
-                          {errors &&
-                            errors.supervisor &&
-                            errors.supervisor.detail &&
-                            errors.supervisor.detail.phoneNumber && (
-                              <div className="inputError">
-                                {errors.supervisor.detail.phoneNumber}
-                              </div>
+                        </div>
+                      </>
+                    )}
+                    {values.showReference && (
+                      <div className="text-gray-texts mt-4">
+                        <CustomSelect
+                          option={Object.values(EmploymentReference).map(
+                            item => ({
+                              name: item,
+                              value: item
+                            })
+                          )}
+                          placeholder="Reference"
+                          onChange={value => {
+                            formik.setFieldValue('reference.name', value, true);
+                            formik.setFieldValue('showReferenceDetail', true);
+                            formik.setFieldValue('currentReference', value);
+                          }}
+                          name="reference.name"
+                          value={values.reference.name}
+                        />
+                        {getErrors('reference')}
+                      </div>
+                    )}
+
+                    {values.showReferenceDetail && values.reference && (
+                      <>
+                        <div className="text-gray-texts mt-4">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                            placeholder={`${values.currentReference} name`}
+                            value={get(values.reference.detail, 'name', '')}
+                            onChange={formik.handleChange}
+                            name="reference.detail.name"
+                          />
+                        </div>
+                        <div className="text-gray-texts mt-2">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                            placeholder={`${values.currentReference} email`}
+                            value={get(values.reference.detail, 'email', '')}
+                            onChange={formik.handleChange}
+                            name="reference.detail.email"
+                          />
+                        </div>
+                        <div className="text-gray-texts mt-2">
+                          <input
+                            type="text"
+                            className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                            placeholder={`${values.currentReference} phone number`}
+                            value={get(
+                              values.reference.detail,
+                              'phoneNumber',
+                              ''
                             )}
-                          {!errors ||
-                            (!errors.supervisor &&
-                              getErrors('supervisor.detail.phoneNumber'))}
+                            onChange={formik.handleChange}
+                            name="reference.detail.phoneNumber"
+                          />
                         </div>
                       </>
                     )}
@@ -274,7 +334,7 @@ const CurrentRole: FC<Props> = props => {
                       className="flex justify-between text-gray-texts mt-4 dateContainer"
                       style={{ flexDirection: 'column', alignItems: 'start' }}
                     >
-                      <div className="item w-full h-full pt-2 mt-2">
+                      <div className="item w-full h-full pt-1 pb-1 mt-2">
                         <label>Start Date</label>
                         <input
                           id="date"
@@ -295,9 +355,17 @@ const CurrentRole: FC<Props> = props => {
                         data-testid="next-button"
                         className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
                         type="submit"
+                        disabled={reducer.loading}
                       >
-                        <label className="">Next</label>{' '}
-                        <ArrowRightAltTwoTone />
+                        <Loader
+                          loading={reducer.loading}
+                          command={
+                            <>
+                              <label className="">Next</label>{' '}
+                              <ArrowRightAltTwoTone />
+                            </>
+                          }
+                        />
                       </button>
                       <Link
                         to="#"

@@ -24,3 +24,4 @@ export * from './School';
 export * from './Errors';
 export * from './Field';
 export * from './Alert';
+export * from './CustomSelect';

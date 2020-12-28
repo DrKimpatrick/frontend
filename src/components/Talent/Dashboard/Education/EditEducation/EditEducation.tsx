@@ -67,7 +67,16 @@ const EditEducation: FC<Props> = props => {
               specialization: '',
               accomplishment: '',
               startDate: format(new Date(education.startDate), 'yyyy-MM-dd'),
-              endDate: format(new Date(String(education.endDate)), 'yyyy-MM-dd')
+              endDate: format(
+                new Date(String(education.endDate)),
+                'yyyy-MM-dd'
+              ),
+              schoolWebsite: education.schoolWebsite
+                ? education.schoolWebsite
+                : '',
+              certificateType: education.certificateType
+                ? education.certificateType
+                : ''
             }}
             submit={(values: InitialEducationValue) => {
               const { startDate, endDate } = values;

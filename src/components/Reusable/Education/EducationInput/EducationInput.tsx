@@ -3,6 +3,7 @@ import { Formik, FieldArray } from 'formik';
 import { Button, Checkbox } from '@material-ui/core';
 import { ArrowRightAltTwoTone, Close, AddOutlined } from '@material-ui/icons';
 import { map } from 'lodash';
+import { Loader, CustomSelect } from 'components/Reusable';
 import {
   educationSchema,
   InitialEducationValue as InitialValue
@@ -15,7 +16,11 @@ interface Props {
   loading: boolean;
   buttonName: string;
 }
-
+export enum EducationLevel {
+  HighSchool = 'High school',
+  University = 'University',
+  TradeSchool = 'Trade School'
+}
 const EducationInput: FC<Props> = props => {
   const { submit, initialValue, backendErrors, loading, buttonName } = props;
 
@@ -55,7 +60,7 @@ const EducationInput: FC<Props> = props => {
 
         return (
           <form autoComplete="off" onSubmit={formik.handleSubmit}>
-            <div className="text-gray-texts mt-8">
+            <div className="text-gray-texts mt-2">
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
@@ -69,29 +74,34 @@ const EducationInput: FC<Props> = props => {
               )}
               {!errors || (!errors.schoolName && getErrors('schoolName'))}
             </div>
+            <div className="text-gray-texts mt-2">
+              <input
+                type="text"
+                className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
+                placeholder="School website"
+                name="schoolWebsite"
+                value={values.schoolWebsite}
+                onChange={formik.handleChange}
+              />
+            </div>
 
-            <div className="text-gray-texts mt-4">
-              <select
+            <div className="text-gray-texts mt-2">
+              <CustomSelect
                 name="level"
                 value={values.level}
-                onChange={formik.handleChange}
-                className="border outline-none bg-white rounded w-full px-3 text-gray-texts input-height"
-                required
-              >
-                <option value="" disabled selected hidden>
-                  Select level...
-                </option>
-                <option value="high school">High school</option>
-                <option value="university">University</option>
-                <option value="trade school">Trade School</option>
-              </select>
+                onChange={value => formik.setFieldValue('level', value, true)}
+                option={Object.values(EducationLevel).map(item => ({
+                  name: item,
+                  value: item
+                }))}
+              />
               {errors && errors.level && (
                 <div className="inputError">{errors.level}</div>
               )}
               {!errors || (!errors.level && getErrors('level'))}
             </div>
 
-            <div className="text-gray-texts mt-4">
+            <div className="text-gray-texts mt-2">
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
@@ -107,9 +117,19 @@ const EducationInput: FC<Props> = props => {
                 (!errors.degreeOrCertification &&
                   getErrors('degreeOrCertification'))}
             </div>
+            <div className="text-gray-texts mt-2">
+              <input
+                type="text"
+                className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
+                placeholder="Certificate type"
+                name="certificateType"
+                value={values.certificateType}
+                onChange={formik.handleChange}
+              />
+            </div>
 
-            <div className="flex justify-between text-gray-texts mt-4 dateContainer">
-              <div className="item w-full h-full pt-2 mt-2">
+            <div className="flex justify-between text-gray-texts dateContainer">
+              <div className="item w-full h-full pt-1 pb-1 mt-2">
                 <label htmlFor="start date">Start date</label>
                 <input
                   id="date"
@@ -121,7 +141,7 @@ const EducationInput: FC<Props> = props => {
               </div>
 
               {values.isCurrentEducation === false && (
-                <div className="item w-full h-full pt-2 mt-2">
+                <div className="item w-full h-full pt-1 pb-1 mt-2">
                   <label htmlFor="end date">End date</label>
                   <input
                     id="date"
@@ -295,7 +315,14 @@ const EducationInput: FC<Props> = props => {
                 type="submit"
                 disabled={loading}
               >
-                <span className="">{buttonName}</span> <ArrowRightAltTwoTone />
+                <Loader
+                  loading={loading}
+                  command={
+                    <>
+                      <span>{buttonName}</span> <ArrowRightAltTwoTone />
+                    </>
+                  }
+                />
               </button>
             </div>
           </form>

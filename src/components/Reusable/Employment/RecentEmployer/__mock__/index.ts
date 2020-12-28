@@ -37,7 +37,8 @@ export const initialState = {
       _id: 'id'
     },
     errors: null,
-    loading: false
+    loading: false,
+    submitLoading: false
   },
   messages: {
     message: 'sent'

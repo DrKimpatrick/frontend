@@ -27,6 +27,8 @@ export interface Education {
   verificationStatus?: VerificationStatus;
   createdAt?: string;
   updatedAt?: string;
+  schoolWebsite?: string;
+  certificateType?: string;
 }
 
 interface AddEducation {

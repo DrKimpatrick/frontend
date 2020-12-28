@@ -11,7 +11,7 @@ import { Employment } from 'redux/action-types/employment';
 import { setProfileProcess } from 'redux/actions/user';
 import { SideLoading } from 'components/Reusable';
 import { listUserSkill } from 'redux/actions/skill';
-import { map } from 'lodash';
+import { map, get } from 'lodash';
 
 interface Props {
   setPreviousStep: (value: string) => void;
@@ -140,7 +140,7 @@ const EmploymentHistory: FC<Props> = props => {
             Supervisor
           </div>
           <div className="py-3 px-4 card-content">
-            {employment.supervisor.name}
+            {get(employment.supervisor, 'name', '')}
           </div>
         </div>
 

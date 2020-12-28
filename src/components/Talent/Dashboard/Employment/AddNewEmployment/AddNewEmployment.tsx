@@ -18,7 +18,7 @@ const AddNewEmployment: FC<Props> = props => {
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors } = state.employments;
+    const { submitLoading: loading, errors } = state.employments;
 
     const { message } = state.messages;
 
@@ -73,7 +73,12 @@ const AddNewEmployment: FC<Props> = props => {
               accomplishment: '',
               startDate: '',
               endDate: '',
-              currentSupervisor: ''
+              currentSupervisor: '',
+              employmentType: '',
+              reference: {
+                name: '',
+                detail: { name: '', phoneNumber: '', email: '' }
+              }
             }}
             submit={(values: InitialEmploymentValue) =>
               addEmployment(values)(dispatch)

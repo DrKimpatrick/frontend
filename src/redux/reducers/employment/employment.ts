@@ -12,6 +12,7 @@ interface InitialState {
   readonly employments?: Employment[];
   readonly employment?: Employment;
   readonly loading?: boolean;
+  readonly submitLoading?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -76,6 +77,9 @@ export const employmentReducer = (
 
     case MessageTypes.Error:
       return { ...state, loading: false };
+
+    case EmploymentTypes.SubmitLoading:
+      return { ...state, submitLoading: action.payload.loading };
 
     default:
       return state;

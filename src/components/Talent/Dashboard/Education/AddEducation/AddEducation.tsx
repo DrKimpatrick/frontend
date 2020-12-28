@@ -59,8 +59,10 @@ const AddEducation: FC<Props> = props => {
           <EducationInput
             initialValue={{
               schoolName: '',
+              schoolWebsite: '',
               level: '',
               degreeOrCertification: '',
+              certificateType: '',
               isCurrentEducation: false,
               specializations: [],
               specialization: '',

@@ -41,9 +41,6 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
         <div
           className="text-gray-texts mt-8"
         >
-          <label>
-            What is your company name ? 
-          </label>
           <input
             className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
             name="companyName"
@@ -56,9 +53,58 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
         <div
           className="text-gray-texts mt-4"
         >
-          <label>
-            What is your current role?
-          </label>
+          <div
+            className="customSelect"
+          >
+            <select
+              name="employmentType"
+              onChange={[Function]}
+              value=""
+            >
+              <option
+                value=""
+              >
+                Employment type
+              </option>
+              <option
+                value="Contract"
+              >
+                Contract
+              </option>
+              <option
+                value="FullTime"
+              >
+                FullTime
+              </option>
+              <option
+                value="PartTime"
+              >
+                PartTime
+              </option>
+            </select>
+            <div
+              className="customSelectArrow"
+            >
+              <div
+                className="div"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="text-gray-texts mt-4"
+        >
           <input
             className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height mt-2"
             name="title"
@@ -72,112 +118,57 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           className="text-gray-texts mt-4"
         >
           <div
-            className="select css-2b097c-container"
-            onKeyDown={[Function]}
+            className="customSelect"
           >
+            <select
+              name="supervisor.name"
+              onChange={[Function]}
+              value=""
+            >
+              <option
+                value=""
+              >
+                Supervisor
+              </option>
+              <option
+                value="Staffing"
+              >
+                Staffing
+              </option>
+              <option
+                value="HR"
+              >
+                HR
+              </option>
+              <option
+                value="Employee"
+              >
+                Employee
+              </option>
+              <option
+                value="N/A"
+              >
+                N/A
+              </option>
+            </select>
             <div
-              className=" css-c8odyh-control"
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
+              className="customSelectArrow"
             >
               <div
-                className=" css-g1d714-ValueContainer"
+                className="div"
               >
-                <div
-                  className=" css-1wa3eu0-placeholder"
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  Select your supervisor
-                </div>
-                <div
-                  className="css-b8ldur-Input"
-                >
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "display": "inline-block",
-                      }
-                    }
-                  >
-                    <input
-                      aria-autocomplete="list"
-                      autoCapitalize="none"
-                      autoComplete="off"
-                      autoCorrect="off"
-                      disabled={false}
-                      id="react-select-3-input"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      spellCheck="false"
-                      style={
-                        Object {
-                          "background": 0,
-                          "border": 0,
-                          "boxSizing": "content-box",
-                          "color": "inherit",
-                          "fontSize": "inherit",
-                          "label": "input",
-                          "opacity": 1,
-                          "outline": 0,
-                          "padding": 0,
-                          "width": "1px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="text"
-                      value=""
-                    />
-                    <div
-                      style={
-                        Object {
-                          "height": 0,
-                          "left": 0,
-                          "overflow": "scroll",
-                          "position": "absolute",
-                          "top": 0,
-                          "visibility": "hidden",
-                          "whiteSpace": "pre",
-                        }
-                      }
-                    >
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className=" css-1hb7zxy-IndicatorsContainer"
-              >
-                <span
-                  className=" css-1okebmr-indicatorSeparator"
-                />
-                <div
-                  aria-hidden="true"
-                  className=" css-tlfecz-indicatorContainer"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="css-6q0nyr-Svg"
-                    focusable="false"
-                    height={20}
-                    viewBox="0 0 20 20"
-                    width={20}
-                  >
-                    <path
-                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
-                    />
-                  </svg>
-                </div>
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
               </div>
             </div>
-            <input
-              name="supervisor.name"
-              type="hidden"
-              value=""
-            />
           </div>
         </div>
         <div
@@ -190,7 +181,7 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           }
         >
           <div
-            className="item w-full h-full pt-2 mt-2"
+            className="item w-full h-full pt-1 pb-1 mt-2"
           >
             <label>
               Start Date
@@ -210,6 +201,7 @@ exports[`\`CurrentRole\` component matches the snapshot 1`] = `
           <button
             className="next-btn text-white hover:bg-gray-800 font-semibold py-1 px-3 w-32 rounded-sm shadow flex justify-around"
             data-testid="next-button"
+            disabled={false}
             type="submit"
           >
             <label

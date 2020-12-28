@@ -30,7 +30,8 @@ export const initialState = {
       companyName: 'snow'
     },
     errors: null,
-    loading: false
+    loading: false,
+    submitLoading: false
   },
   messages: {
     message: 'sent'

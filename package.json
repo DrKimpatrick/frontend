@@ -77,7 +77,8 @@
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "eslint src/**/*.ts{,x}",
-    "watch:css": "watch 'npm run build:css' ./src"
+    "watch:css": "watch 'npm run build:css' ./src",
+    "test:noCoverage":"react-scripts test --u"
   },
   "eslintConfig": {
     "extends": "airbnb-typescript"

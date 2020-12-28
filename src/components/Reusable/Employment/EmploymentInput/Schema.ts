@@ -1,37 +1,18 @@
 import { object, string, array } from 'yup';
+import { DetailType, SupervisorType } from 'redux/action-types/employment';
 
 export const employmentSchema = object().shape({
   companyName: string().required('company name is required'),
-  supervisor: object()
-    .shape({
-      name: string().required('supervisor is required'),
-      detail: object()
-        .shape({
-          name: string().required('name is required'),
-          phoneNumber: string().required('phone number is required'),
-          email: string()
-            .email('email must be valid')
-            .required('email is required')
-        })
-        .required('detail is required')
-    })
-    .required('supervisor is required'),
   title: string().required('title is required'),
   startDate: string().required('start date is required'),
-  skillsUsed: array().of(string()).optional()
+  skillsUsed: array().of(string()).optional(),
+  employmentType: string().required('employment type is required')
 });
 
 export interface InitialEmploymentValue {
   companyName: string;
   title: string;
-  supervisor: {
-    name: string;
-    detail: {
-      name: string;
-      phoneNumber: string;
-      email: string;
-    };
-  };
+  supervisor?: SupervisorType;
   isCurrentPosition: boolean;
   responsibilities: string[];
   skillsUsed: any[];
@@ -43,4 +24,12 @@ export interface InitialEmploymentValue {
   endDate?: string;
   showDetail?: boolean;
   currentSupervisor: string;
+  employmentType: string;
+  reference?: {
+    name: string;
+    detail: DetailType;
+  };
+  showReferenceDetail?: boolean;
+  showReference?: boolean;
+  currentReference?: string;
 }

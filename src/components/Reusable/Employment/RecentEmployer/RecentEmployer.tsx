@@ -14,16 +14,19 @@ const RecentEmployer: FC<Props> = () => {
   const dispatch = useDispatch();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, errors, employment } = state.employments;
+    const { submitLoading: loading, errors, employment } = state.employments;
+
     const { message } = state.messages;
+
     const { user } = state.users;
+
     return { message, loading, errors, employment, user };
   });
 
   return (
     <>
       <div className="containers">
-        <div className="recent-employer-section w-1/3 m-auto text-gray-texts">
+        <div className="recent-employer-section m-auto text-gray-texts">
           <div
             className="flex relative h-auto my-8"
             style={{ flexDirection: 'column' }}
@@ -58,7 +61,12 @@ const RecentEmployer: FC<Props> = () => {
                 accomplishment: '',
                 startDate: '',
                 endDate: '',
-                currentSupervisor: ''
+                currentSupervisor: '',
+                employmentType: '',
+                reference: {
+                  name: '',
+                  detail: { name: '', phoneNumber: '', email: '' }
+                }
               }}
               submit={(values: InitialEmploymentValue) => {
                 if (reducer.user) {

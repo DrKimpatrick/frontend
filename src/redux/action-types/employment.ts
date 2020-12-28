@@ -9,7 +9,8 @@ export enum EmploymentTypes {
   Errors = 'Employment/Errors',
   Loading = 'Employment/Loading',
   Success = 'Employment/Success',
-  ChangeEmploymentStatus = 'Employment/ChangeEducationStatus'
+  ChangeEmploymentStatus = 'Employment/ChangeEducationStatus',
+  SubmitLoading = 'Employment/SubmitLoading'
 }
 
 export enum VerificationStatus {
@@ -18,17 +19,45 @@ export enum VerificationStatus {
   VERIFIED = 'verified'
 }
 
+export enum EmploymentType {
+  Contract = 'Contract',
+  FullTime = 'FullTime',
+  PartTime = 'PartTime'
+}
+
+export enum EmploymentReference {
+  CoWorker = 'Coworker',
+  SuperVisor = 'Supervisor',
+  HR = 'HR'
+}
+
+export enum Supervisor {
+  Staffing = 'Staffing',
+  HR = 'HR',
+  Employee = 'Employee',
+  NA = 'N/A'
+}
+
+export interface DetailType {
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface ReferenceType {
+  name: string;
+  detail: DetailType;
+}
+
+export interface SupervisorType {
+  name: string;
+  detail: DetailType;
+}
+
 export interface Employment {
   userId?: string;
   companyName: string;
-  supervisor: {
-    name: string;
-    detail: {
-      name: string;
-      email: string;
-      phoneNumber: string;
-    };
-  };
+  supervisor?: SupervisorType;
   title: string;
   startDate: string;
   endDate?: string;
@@ -41,6 +70,8 @@ export interface Employment {
   updatedAt: string;
   _id: string;
   verificationStatus: VerificationStatus;
+  employmentType: string;
+  reference?: ReferenceType;
 }
 interface AddEmployment {
   type: typeof EmploymentTypes.AddEmployment;
@@ -99,14 +130,7 @@ interface Errors {
 
 export interface EmploymentParam {
   companyName: string;
-  supervisor?: {
-    name: string;
-    detail: {
-      name: string;
-      email: string;
-      phoneNumber: string;
-    };
-  };
+  supervisor?: SupervisorType;
   title: string;
   startDate: string;
   endDate?: string;
@@ -117,6 +141,8 @@ export interface EmploymentParam {
   isCurrentPosition: boolean;
   user?: User;
   profileProcess?: string;
+  employmentType: string;
+  reference?: ReferenceType;
 }
 
 interface ChangeEmploymentStatus {
@@ -125,6 +151,14 @@ interface ChangeEmploymentStatus {
     data: Employment;
   };
 }
+
+interface SubmitLoading {
+  type: typeof EmploymentTypes.SubmitLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type EmploymentActionTypes =
   | AddEmployment
   | UpdateEmployment
@@ -134,4 +168,5 @@ export type EmploymentActionTypes =
   | Success
   | Loading
   | Errors
-  | ChangeEmploymentStatus;
+  | ChangeEmploymentStatus
+  | SubmitLoading;
