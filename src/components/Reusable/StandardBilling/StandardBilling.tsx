@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
@@ -14,6 +14,8 @@ const StandardBilling = () => {
     state: { plans: productPlans, features }
   } = useLocation<{ plans: any[]; features: any[] }>();
   const history = useHistory();
+
+  const [coupon, setCoupon] = useState(undefined);
 
   return (
     <>
@@ -67,7 +69,8 @@ const StandardBilling = () => {
                     pathname: '/payment',
                     state: {
                       plan: productPlans[1],
-                      featureChoice: 'standard'
+                      featureChoice: 'standard',
+                      coupon
                     }
                   })
                 }
@@ -85,7 +88,8 @@ const StandardBilling = () => {
                     pathname: '/payment',
                     state: {
                       plan: productPlans[0],
-                      featureChoice: 'standard'
+                      featureChoice: 'standard',
+                      coupon
                     }
                   })
                 }
@@ -102,6 +106,9 @@ const StandardBilling = () => {
           <input
             type="text"
             placeholder="Promo Code"
+            onChange={e => {
+              setCoupon(e.target.value as any);
+            }}
             className="w-full py-2 mt-3 flex justify-center promo-code"
           />
         </div>

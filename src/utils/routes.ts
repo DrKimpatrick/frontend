@@ -67,5 +67,7 @@ export enum Routes {
 
   payment = '/payment',
 
-  FeatureChoice = '/feature-choice'
+  FeatureChoice = '/feature-choice',
+
+  SubsidySuccessPayment = '/subsidy/add/complete'
 }

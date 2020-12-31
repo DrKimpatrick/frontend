@@ -9,6 +9,7 @@ import {
   AddCompany,
   AddSchool
 } from 'components/Reusable';
+import { AddSubsidy } from 'components/Reusable/AddSubsidy';
 
 export const AdminsProcessFlow = () => {
   const [step, setStep] = useState<string>();
@@ -70,6 +71,7 @@ export const AdminsProcessFlow = () => {
       <NavBar />
       {step === AdminsProcess.AddCompany && <AddCompany />}
       {step === AdminsProcess.AddSchool && <AddSchool />}
+      {step === AdminsProcess.AddPlan && <AddSubsidy />}
       <MainBackground />
     </>
   );

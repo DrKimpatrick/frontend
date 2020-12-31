@@ -21,6 +21,8 @@ import { ErrorMessageDialog } from 'components/Reusable/ErrorMessageDialog';
 
 import './styles.scss';
 import { PaymentSchema } from './PaymentSchema';
+import { AdminsProcess, TalentProcess } from '../../redux/action-types/user';
+import {Routes} from "../../utils/routes";
 
 const ProcessPayments = () => {
   const elements = useElements();
@@ -35,7 +37,7 @@ const ProcessPayments = () => {
   }>({ message: '', show: false, level: AlertLevel.ERROR });
   const { data: userData } = useSWR('/users/me');
   const {
-    state: { plan: productPlan, featureChoice }
+    state: { plan: productPlan, featureChoice, coupon, subsidy, successPage }
   } = useLocation<any>();
   const history = useHistory();
 
@@ -58,7 +60,12 @@ const ProcessPayments = () => {
         planId: productPlan.id
       },
       paymentMethodId: paymentMethod.id,
-      featureChoice
+      featureChoice,
+      profileProcess: subsidy
+        ? AdminsProcess.Completed
+        : TalentProcess.Completed,
+      coupon,
+      subsidy
     };
 
     const { data } = await axiosInstance.post(
@@ -94,7 +101,12 @@ const ProcessPayments = () => {
                 show: true,
                 level: AlertLevel.SUCCESS
               });
-              history.replace('/user/dashboard');
+              if (successPage) {
+                return window.location.href = successPage;
+                // return history.replace(successPage);
+              }
+              window.location.href = Routes.UserDashboard;
+              // history.replace(Routes.UserDashboard);
             }
           })
           .catch((confirmationError: any) => {
@@ -115,7 +127,12 @@ const ProcessPayments = () => {
           show: true,
           level: AlertLevel.SUCCESS
         });
-        history.replace('/user/dashboard');
+        if (successPage) {
+          return window.location.href = successPage;
+          // return history.replace(successPage);
+        }
+        window.location.href = Routes.UserDashboard;
+        // history.replace(Routes.UserDashboard);
       }
     } else {
       setPageAlert({
@@ -123,7 +140,12 @@ const ProcessPayments = () => {
         show: true,
         level: AlertLevel.SUCCESS
       });
-      history.replace('/user/dashboard');
+      if (successPage) {
+        return window.location.href = successPage;
+        // return history.replace(successPage);
+      }
+      window.location.href = Routes.UserDashboard;
+      // history.replace(Routes.UserDashboard);
     }
   };
 

@@ -20,7 +20,7 @@ const AddSchool: FC = () => {
     if (reducer.user) {
       addSchool(values, {
         userId: reducer.user._id,
-        profileProcess: AdminsProcess.Completed
+        profileProcess: AdminsProcess.AddPlan
       })(dispatch);
     }
   };

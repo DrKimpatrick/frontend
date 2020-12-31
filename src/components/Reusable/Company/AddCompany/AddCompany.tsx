@@ -20,7 +20,7 @@ const AddCompany: FC = () => {
     if (reducer.user) {
       addCompany(values, {
         userId: reducer.user._id,
-        profileProcess: AdminsProcess.Completed
+        profileProcess: AdminsProcess.AddPlan
       })(dispatch);
     }
   };

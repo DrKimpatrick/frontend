@@ -35,6 +35,7 @@ import {
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
 import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
+import PaymentsSuccess from '../ProcessPayments/PaymentsSuccess';
 
 const AppRouter: FC = () => {
   const authorizedRoutes = [
@@ -96,6 +97,11 @@ const AppRouter: FC = () => {
       path: Routes.payment,
       exact: true,
       component: <ProcessPayments />
+    },
+    {
+      path: Routes.SubsidySuccessPayment,
+      exact: true,
+      component: <PaymentsSuccess />
     },
     {
       path: Routes.FeatureChoice,

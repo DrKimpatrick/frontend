@@ -184,6 +184,7 @@ Array [
       </div>
       <input
         className="w-full py-2 mt-3 flex justify-center promo-code"
+        onChange={[Function]}
         placeholder="Promo Code"
         type="text"
       />

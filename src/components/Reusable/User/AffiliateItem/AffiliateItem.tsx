@@ -130,8 +130,8 @@ const AffiliateItem: FC<Props> = props => {
                 <li className="paginationSection">
                   <ReactPaginate
                     pageRangeDisplayed={5}
-                    previousLabel={'<'}
-                    nextLabel={'>'}
+                    previousLabel="<"
+                    nextLabel=">"
                     pageCount={pageCount}
                     onPageChange={pageChange}
                     marginPagesDisplayed={2}
