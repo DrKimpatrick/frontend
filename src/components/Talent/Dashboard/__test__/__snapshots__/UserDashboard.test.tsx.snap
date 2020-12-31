@@ -12,11 +12,11 @@ Array [
         src="https://www.qualitylogic.com/wp-content/uploads/2018/09/learning.svg"
       />
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 coverImageLogo"
       >
         <img
           alt=""
-          className="bg-white w-16 h-16 rounded-full object-contain my-8 mx-12 shadow"
+          className="bg-white w-16 h-16 rounded-full object-contain my-8  mx-12 shadow"
           src="logo-image.png"
         />
         <div
@@ -393,19 +393,10 @@ Array [
       className="user-dashboard-container mx-auto"
     >
       <div
-        className="w-4/6 py-10 mx-auto "
-      >
-        <small
-          className="flex-1 font-medium text-center text-base pl-2 pr-3 my-4"
-        >
-          this is profile
-        </small>
-      </div>
-      <div
         className="flex flex-nowrap mx-auto w-5/6"
       >
         <div
-          className="w-full"
+          className="w-full my-3"
         >
           <ul
             className="flex justify-between mx-auto w-4/5"
@@ -483,7 +474,7 @@ Array [
         </div>
       </div>
       <div
-        className="pb-48"
+        className="pb-48 tDashboardItem"
       >
         <div
           className="flex flex-nowrap w-full justify-evenly"
@@ -495,7 +486,7 @@ Array [
               className="mb-16"
             >
               <div
-                className=" flex flex-no-wrap uppercase font-thin"
+                className="flex flex-no-wrap uppercase font-thin items-center"
               >
                 <div
                   className="light-fonts"
@@ -521,13 +512,14 @@ Array [
                 className="w-full"
               >
                 <p
-                  className="text-right text-xs py-4 pb-6"
+                  className="text-right text-xs py-1 pb-2"
                 />
                 <ul
                   className="p-0 bg-card-preview"
                 >
                   <li
                     className="py-2 py-2 rounded-sm action"
+                    onClick={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                   >
@@ -545,31 +537,35 @@ Array [
                     </div>
                   </li>
                 </ul>
-                <button
-                  className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
-                  onClick={[Function]}
-                  type="button"
+                <div
+                  className="addButton"
                 >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root"
-                    focusable="false"
-                    viewBox="0 0 24 24"
+                  <button
+                    className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
+                    onClick={[Function]}
+                    type="button"
                   >
-                    <path
-                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                    />
-                  </svg>
-                   
-                  <span>
-                    Add new Employment
-                  </span>
-                </button>
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                     
+                    <span>
+                      Add new Employment
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
             <div>
               <div
-                className=" flex flex-no-wrap uppercase font-thin"
+                className="flex flex-no-wrap uppercase font-thin items-center"
               >
                 <div
                   className="light-fonts"
@@ -595,13 +591,14 @@ Array [
                 className="w-full"
               >
                 <p
-                  className="text-right text-xs py-4 pb-6"
+                  className="text-right text-xs py-1 pb-2"
                 />
                 <ul
                   className="p-0 bg-card-preview"
                 >
                   <li
                     className="py-2 py-2 rounded-sm action"
+                    onClick={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                   >
@@ -619,26 +616,30 @@ Array [
                     </div>
                   </li>
                 </ul>
-                <button
-                  className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
-                  onClick={[Function]}
-                  type="button"
+                <div
+                  className="addButton"
                 >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root"
-                    focusable="false"
-                    viewBox="0 0 24 24"
+                  <button
+                    className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
+                    onClick={[Function]}
+                    type="button"
                   >
-                    <path
-                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                    />
-                  </svg>
-                   
-                  <span>
-                    Add new Education
-                  </span>
-                </button>
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                     
+                    <span>
+                      Add new Education
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -647,7 +648,7 @@ Array [
           >
             <div>
               <div
-                className=" flex flex-no-wrap uppercase font-thin"
+                className="flex flex-no-wrap uppercase font-thin items-center"
               >
                 <div
                   className="light-fonts"
@@ -673,7 +674,7 @@ Array [
                 className="w-full"
               >
                 <p
-                  className="text-right text-xs py-4 pb-6"
+                  className="text-right text-xs py-2 pb-2 pr-3"
                 >
                   Beginner
                 </p>
@@ -682,6 +683,7 @@ Array [
                 >
                   <li
                     className=" py-2 py-2 rounded-sm"
+                    onClick={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                   >
@@ -715,7 +717,7 @@ Array [
                 className="w-full"
               >
                 <p
-                  className="text-right text-xs py-4 pb-6"
+                  className="text-right text-xs py-2 pb-2 pr-3"
                 >
                   Intermediate
                 </p>
@@ -724,6 +726,7 @@ Array [
                 >
                   <li
                     className=" py-2 py-2 rounded-sm"
+                    onClick={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                   >
@@ -757,7 +760,7 @@ Array [
                 className="w-full"
               >
                 <p
-                  className="text-right text-xs py-4 pb-6"
+                  className="text-right text-xs py-2 pb-2 pr-3"
                 >
                   Advanced
                 </p>
@@ -766,6 +769,7 @@ Array [
                 >
                   <li
                     className=" py-2 py-2 rounded-sm"
+                    onClick={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                   >
@@ -795,30 +799,34 @@ Array [
                   </li>
                 </ul>
               </div>
-              <button
-                className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
-                onClick={[Function]}
-                type="button"
+              <div
+                className="addButton"
               >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <button
+                  className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
+                  onClick={[Function]}
+                  type="button"
                 >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
-                 
-                <span>
-                  Add new 
-                </span>
-                 
-                <span>
-                  skills
-                </span>
-              </button>
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Add new 
+                  </span>
+                   
+                  <span>
+                    skills
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

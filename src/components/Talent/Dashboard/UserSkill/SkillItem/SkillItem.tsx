@@ -33,7 +33,7 @@ export const SkillItem = (props: Props) => {
 
   return (
     <div className="w-full">
-      <p className="text-right text-xs py-4 pb-6">{level}</p>
+      <p className="text-right text-xs py-2 pb-2 pr-3">{level}</p>
       {userSkill && userSkill.length > 0 && (
         <ul className="p-0 m-0 bg-card-preview ">
           {userSkill.map((item, i) => (
@@ -47,6 +47,10 @@ export const SkillItem = (props: Props) => {
               onMouseLeave={() => {
                 setAction(false);
                 setCurrentItem(undefined);
+              }}
+              onClick={() => {
+                setAction(true);
+                setCurrentItem(item._id);
               }}
             >
               <div className="flex flex-row text-sm justify-between">

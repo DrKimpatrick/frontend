@@ -19,7 +19,7 @@
   height: auto;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color:white;
+  scrollbar-color: white;
   width: 550px;
   margin: auto;
   background: white;
@@ -143,6 +143,28 @@
 }
 
 .css-c8odyh-control {
-  margin-top: .2rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .addNewEmployment {
+    .containers {
+      width: 97%;
+    }
+    .recent-employer-section {
+      padding: 0px 20px 0px 20px;
+      .headingSection{
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .title {
+        font-size: 16px;
+      }
+      .back-arrow{
+        display: block !important;
+      }
+    }
+  }
 }

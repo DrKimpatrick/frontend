@@ -44,7 +44,7 @@ const AddNewEmployment: FC<Props> = props => {
     >
       <div className="containers">
         <div className="recent-employer-section">
-          <div className="flex relative h-auto my-8">
+          <div className="flex relative h-auto my-8 headingSection">
             <button
               className="back-arrow cursor-pointer"
               onClick={() => close()}

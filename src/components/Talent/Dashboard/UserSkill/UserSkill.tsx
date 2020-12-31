@@ -192,13 +192,15 @@ const Skill = () => {
           <h5>You do not have skills</h5>
         </div>
       )}
-      <button
-        className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
-        type="button"
-        onClick={() => setAdd(true)}
-      >
-        <Add /> <span>Add new </span> <span>skills</span>
-      </button>
+      <div className="addButton">
+        <button
+          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
+          type="button"
+          onClick={() => setAdd(true)}
+        >
+          <Add /> <span>Add new </span> <span>skills</span>
+        </button>
+      </div>
     </>
   );
 };

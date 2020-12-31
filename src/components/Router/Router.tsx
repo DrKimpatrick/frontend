@@ -113,13 +113,13 @@ const AppRouter: FC = () => {
       component: <ForgotPassword />
     },
     { path: Routes.ResetPassword, exact: true, component: <ResetPassword /> },
-    { path: Routes.VerifyAccount, exact: true, component: <MessagePage /> }
+    { path: Routes.VerifyAccount, exact: true, component: <MessagePage /> },
+    { path: Routes.Home, exact: true, component: <Landing /> }
   ];
 
   return (
     <Router>
       <Switch>
-        <Route component={Landing} path={Routes.Home} exact />
         {unauthorizedRoutes.map((route, index) => (
           <Route path={route.path} exact={route.exact} key={index}>
             <AuthLayout>{route.component}</AuthLayout>

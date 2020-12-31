@@ -25,3 +25,9 @@
     mix-blend-mode: luminosity;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .mainBackground {
+    margin-top: 0px;
+  }
+}

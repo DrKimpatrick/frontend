@@ -74,6 +74,9 @@ export interface User {
   employmentHistory?: Employment[];
   educationHistory?: Education[];
   profileProcess?: string;
+  profilePicture?: string;
+  bio?: string;
+  stripeSubscriptionId?: string;
 }
 
 export interface UserSkill {

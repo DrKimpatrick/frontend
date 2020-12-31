@@ -88,7 +88,7 @@ const Education: FC = () => {
         />
       )}
       <div className="w-full">
-        <p className="text-right text-xs py-4 pb-6" />
+        <p className="text-right text-xs py-1 pb-2" />
         {reducer.educations && (
           <ul className="p-0 bg-card-preview">
             {reducer.educations.length > 0 &&
@@ -103,6 +103,10 @@ const Education: FC = () => {
                   onMouseLeave={() => {
                     setAction(false);
                     setCurrentItem(undefined);
+                  }}
+                  onClick={() => {
+                    setAction(true);
+                    setCurrentItem(item._id);
                   }}
                 >
                   <div className="flex flex-row text-sm justify-between">
@@ -153,13 +157,15 @@ const Education: FC = () => {
             <h5>You do not have education history</h5>
           </div>
         )}
-        <button
-          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
-          type="button"
-          onClick={() => setAddEducation(true)}
-        >
-          <Add /> <span>Add new Education</span>
-        </button>
+        <div className="addButton">
+          <button
+            className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEducation"
+            type="button"
+            onClick={() => setAddEducation(true)}
+          >
+            <Add /> <span>Add new Education</span>
+          </button>
+        </div>
       </div>
     </>
   );

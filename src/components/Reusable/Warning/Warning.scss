@@ -26,19 +26,29 @@
   .buttons {
     margin-top: 1.5rem;
     float: right;
-    .no, .yes{
-        margin-left: 10px;
-        margin-right: 10px;
-        font-family: 'Quicksand', sans-serif;
-        text-transform: capitalize;
-        color: white;
-        font-weight: bold;
+    .no,
+    .yes {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-family: 'Quicksand', sans-serif;
+      text-transform: capitalize;
+      color: white;
+      font-weight: bold;
     }
     .no {
       background: #8f2517;
     }
-    .yes{
-        background: #2d3748;
+    .yes {
+      background: #2d3748;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .warningModal {
+    padding-top: 10px;
+    .warning {
+      width: 97%;
     }
   }
 }

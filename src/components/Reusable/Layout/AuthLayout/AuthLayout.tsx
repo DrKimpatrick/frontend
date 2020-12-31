@@ -3,6 +3,7 @@ import useWindowSize from 'utils/useWindowSize';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../Layout.scss';
+import { RootState } from 'redux/store';
 import { BottomMenu, Footer } from '..';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const AuthLayout = ({ children }: Props): ReactElement => {
-  const userState: any = useSelector((state: any) => state.users);
+  const userState = useSelector((state: RootState) => state.users);
 
   const history = useHistory();
 

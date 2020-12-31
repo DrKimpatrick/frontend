@@ -1,6 +1,5 @@
 .user-dashboard-container {
   background: #f3f3f3;
-  // #fafbfd
 }
 
 .motif-image-user-dashboard {
@@ -13,4 +12,27 @@
 
 .notFound {
   color: #5b5a5a;
+}
+
+@media screen and (max-width: 768px) {
+  .user-dashboard-container {
+    .biography {
+      width: 100%;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      color: #747474;
+      small {
+        font-size: 13px;
+      }
+    }
+    .addButton {
+      padding: 10px;
+      button {
+        font-size: 14px;
+      }
+    }
+    .tDashboardItem {
+      padding-bottom: 20px;
+    }
+  }
 }

@@ -9,7 +9,7 @@ Object {
         class="w-full"
       >
         <p
-          class="text-right text-xs py-4 pb-6"
+          class="text-right text-xs py-2 pb-2 pr-3"
         >
           Beginner
         </p>
@@ -49,7 +49,7 @@ Object {
         class="w-full"
       >
         <p
-          class="text-right text-xs py-4 pb-6"
+          class="text-right text-xs py-2 pb-2 pr-3"
         >
           Intermediate
         </p>
@@ -89,7 +89,7 @@ Object {
         class="w-full"
       >
         <p
-          class="text-right text-xs py-4 pb-6"
+          class="text-right text-xs py-2 pb-2 pr-3"
         >
           Advanced
         </p>
@@ -125,29 +125,33 @@ Object {
           </li>
         </ul>
       </div>
-      <button
-        class="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
-        type="button"
+      <div
+        class="addButton"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
+        <button
+          class="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
+          type="button"
         >
-          <path
-            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-          />
-        </svg>
-         
-        <span>
-          Add new 
-        </span>
-         
-        <span>
-          skills
-        </span>
-      </button>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+           
+          <span>
+            Add new 
+          </span>
+           
+          <span>
+            skills
+          </span>
+        </button>
+      </div>
     </div>
   </body>,
   "container": <div>
@@ -155,7 +159,7 @@ Object {
       class="w-full"
     >
       <p
-        class="text-right text-xs py-4 pb-6"
+        class="text-right text-xs py-2 pb-2 pr-3"
       >
         Beginner
       </p>
@@ -195,7 +199,7 @@ Object {
       class="w-full"
     >
       <p
-        class="text-right text-xs py-4 pb-6"
+        class="text-right text-xs py-2 pb-2 pr-3"
       >
         Intermediate
       </p>
@@ -235,7 +239,7 @@ Object {
       class="w-full"
     >
       <p
-        class="text-right text-xs py-4 pb-6"
+        class="text-right text-xs py-2 pb-2 pr-3"
       >
         Advanced
       </p>
@@ -271,29 +275,33 @@ Object {
         </li>
       </ul>
     </div>
-    <button
-      class="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
-      type="button"
+    <div
+      class="addButton"
     >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root"
-        focusable="false"
-        viewBox="0 0 24 24"
+      <button
+        class="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow add"
+        type="button"
       >
-        <path
-          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-        />
-      </svg>
-       
-      <span>
-        Add new 
-      </span>
-       
-      <span>
-        skills
-      </span>
-    </button>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+         
+        <span>
+          Add new 
+        </span>
+         
+        <span>
+          skills
+        </span>
+      </button>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

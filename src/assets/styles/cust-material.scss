@@ -208,7 +208,7 @@
   }
 
   .cover-image {
-    width: 18rem;
+    width: 100%;
   }
 
   .cust-width {
@@ -225,5 +225,11 @@
 
   .header-container .header-background {
     width: 0 !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .medium-fonts {
+    font-size: 14px;
   }
 }

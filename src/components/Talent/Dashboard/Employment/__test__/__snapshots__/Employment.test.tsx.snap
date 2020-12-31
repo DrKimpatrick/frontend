@@ -5,13 +5,14 @@ exports[`Education should create snapshot 1`] = `
   className="w-full"
 >
   <p
-    className="text-right text-xs py-4 pb-6"
+    className="text-right text-xs py-1 pb-2"
   />
   <ul
     className="p-0 bg-card-preview"
   >
     <li
       className="py-2 py-2 rounded-sm action"
+      onClick={[Function]}
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
     >
@@ -40,25 +41,29 @@ exports[`Education should create snapshot 1`] = `
       </div>
     </li>
   </ul>
-  <button
-    className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
-    onClick={[Function]}
-    type="button"
+  <div
+    className="addButton"
   >
-    <svg
-      aria-hidden={true}
-      className="MuiSvgIcon-root"
-      focusable="false"
-      viewBox="0 0 24 24"
+    <button
+      className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
+      onClick={[Function]}
+      type="button"
     >
-      <path
-        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-      />
-    </svg>
-     
-    <span>
-      Add new Employment
-    </span>
-  </button>
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+       
+      <span>
+        Add new Employment
+      </span>
+    </button>
+  </div>
 </div>
 `;

@@ -12,9 +12,9 @@ const CoverImage = () => {
           src="https://www.qualitylogic.com/wp-content/uploads/2018/09/learning.svg"
           alt=""
         />
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 coverImageLogo">
           <img
-            className="bg-white w-16 h-16 rounded-full object-contain my-8 mx-12 shadow"
+            className="bg-white w-16 h-16 rounded-full object-contain my-8  mx-12 shadow"
             src={logo}
             alt=""
           />

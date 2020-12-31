@@ -26,7 +26,8 @@ export const initialState = {
       paymentStatus: 'verified',
       featureChoice: 'local',
       verified: true,
-      profileProcess: TalentProcess.Completed
+      profileProcess: TalentProcess.Completed,
+      stripeSubscriptionId: 'stripe'
     }
   },
   employments: {

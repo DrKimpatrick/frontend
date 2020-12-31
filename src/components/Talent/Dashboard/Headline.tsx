@@ -7,7 +7,7 @@ type props = {
 const Headline: FC<props> = ({ headline, icon }) => {
   return (
     <>
-      <div className=" flex flex-no-wrap uppercase font-thin">
+      <div className="flex flex-no-wrap uppercase font-thin items-center">
         <div className="light-fonts">{icon}</div>
         <span className="px-2">{headline}</span>
       </div>

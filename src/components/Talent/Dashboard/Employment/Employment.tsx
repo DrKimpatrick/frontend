@@ -90,7 +90,7 @@ const Employment: FC = () => {
         />
       )}
       <div className="w-full">
-        <p className="text-right text-xs py-4 pb-6" />
+        <p className="text-right text-xs py-1 pb-2" />
         {reducer.employments && (
           <ul className="p-0 bg-card-preview">
             {reducer.employments.length > 0 &&
@@ -105,6 +105,10 @@ const Employment: FC = () => {
                   onMouseLeave={() => {
                     setAction(false);
                     setCurrentItem(undefined);
+                  }}
+                  onClick={() => {
+                    setAction(true);
+                    setCurrentItem(item._id);
                   }}
                 >
                   <div className="flex flex-row text-sm justify-between">
@@ -155,13 +159,15 @@ const Employment: FC = () => {
             <h5>You currently do not have employment history</h5>
           </div>
         )}
-        <button
-          className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
-          type="button"
-          onClick={() => setAddEmployment(true)}
-        >
-          <Add /> <span>Add new Employment</span>
-        </button>
+        <div className="addButton">
+          <button
+            className="mt-4 bg-gray-800 w-full text-white hover:bg-gray-900 outline-none font-semibold h-12 py-1 px-1 rounded-sm shadow addEmployment"
+            type="button"
+            onClick={() => setAddEmployment(true)}
+          >
+            <Add /> <span>Add new Employment</span>
+          </button>
+        </div>
       </div>
     </>
   );

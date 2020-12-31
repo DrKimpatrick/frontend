@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import useSWR from 'swr';
-
 import { accounts, testmonials } from 'utils/staticData';
 import useWindowSize from 'utils/useWindowSize';
 import {

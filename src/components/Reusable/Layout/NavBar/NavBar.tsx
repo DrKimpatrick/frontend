@@ -1,15 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState, FC } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from 'assets/images/logo-image.png';
 import useWindowSize from 'utils/useWindowSize';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
 import { RootState } from 'redux/store';
+import Avatar from 'assets/images/avatar.webp';
 import IsLoggedIn from './IsLoggedIn';
 import './NavBar.scss';
 
@@ -31,7 +29,11 @@ const dashboardItems = [
   }
 ];
 
-const NavBar = (props: any) => {
+interface Props {
+  userDashboard?: boolean;
+}
+
+const NavBar: FC<Props> = props => {
   const size = useWindowSize();
 
   const { userDashboard } = props;
@@ -110,11 +112,54 @@ const NavBar = (props: any) => {
   ) : (
     <div className="header-container">
       <div className="header-background" />
-      <nav className="flex items-center justify-center">
-        <img src={logo} alt="logo" className="logo w-32 py-3" />
-      </nav>
+      {userDashboard ? (
+        <>
+          <div className="talentUserDetail flex justify-end">
+            <div />
+            {reducer.user && (
+              <div className="user">
+                <div className="mr-2" style={{ marginTop: '5px' }}>
+                  {reducer.user.username}
+                </div>
+                <div className="userImage">
+                  {reducer.user.profilePicture ? (
+                    <img src={reducer.user.profilePicture} alt="" />
+                  ) : (
+                    <img src={Avatar} alt="" />
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mt-2 w-full">
+            <ul className="flex flex-nowrap justify-between dashboard-items-ul">
+              {dashboardItems.map((item: any, i) => (
+                <li
+                  className={active === item.id ? 'user-dashboard-active' : ''}
+                  onClick={(event: MouseEvent<EventTarget>) =>
+                    selectItem(event, item.id)
+                  }
+                  key={i}
+                >
+                  <div
+                    className="flex flex-nowrap text-gray-600"
+                    style={{ fontSize: '12px' }}
+                  >
+                    <span className="text-xs">{item.icon}</span>{' '}
+                    <span className="px-2">{item.item}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : (
+        <nav className="flex items-center justify-center">
+          <img src={logo} alt="logo" className="logo w-32 py-3" />
+        </nav>
+      )}
     </div>
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;
