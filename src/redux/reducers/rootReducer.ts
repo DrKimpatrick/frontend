@@ -7,6 +7,7 @@ import { courseReducer } from './course';
 import { skillReducer } from './skill';
 import { companyReducer } from './company';
 import { schoolReducer } from './school';
+import { hrAdminReducer } from './hrAdmin';
 
 const rootReducer = combineReducers({
   users: userReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   courses: courseReducer,
   skills: skillReducer,
   schools: schoolReducer,
-  companies: companyReducer
+  companies: companyReducer,
+  hrAdmin: hrAdminReducer
 });
 
 export default rootReducer;

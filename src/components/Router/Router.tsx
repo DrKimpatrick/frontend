@@ -35,6 +35,11 @@ import {
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
 import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
+import {
+  HrAdminDashboard,
+  PotentialCandidate,
+  HrAdminCode
+} from 'components/HrAdmin';
 import PaymentsSuccess from '../ProcessPayments/PaymentsSuccess';
 
 const AppRouter: FC = () => {
@@ -107,6 +112,23 @@ const AppRouter: FC = () => {
       path: Routes.FeatureChoice,
       exact: true,
       component: <FeatureChoice />
+    },
+
+    // Hr Admin
+    {
+      path: Routes.HrAdminDashboard,
+      component: <HrAdminDashboard />,
+      exact: true
+    },
+    {
+      path: Routes.PotentialCandidate,
+      component: <PotentialCandidate />,
+      exact: true
+    },
+    {
+      path: Routes.Code,
+      component: <HrAdminCode />,
+      exact: true
     }
   ];
 

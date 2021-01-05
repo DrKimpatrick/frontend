@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useState } from 'react';
 import useSWR from 'swr';
@@ -22,7 +23,7 @@ import { ErrorMessageDialog } from 'components/Reusable/ErrorMessageDialog';
 import './styles.scss';
 import { PaymentSchema } from './PaymentSchema';
 import { AdminsProcess, TalentProcess } from '../../redux/action-types/user';
-import {Routes} from "../../utils/routes";
+import { Routes } from '../../utils/routes';
 
 const ProcessPayments = () => {
   const elements = useElements();
@@ -102,7 +103,7 @@ const ProcessPayments = () => {
                 level: AlertLevel.SUCCESS
               });
               if (successPage) {
-                return window.location.href = successPage;
+                return (window.location.href = successPage);
                 // return history.replace(successPage);
               }
               window.location.href = Routes.UserDashboard;
@@ -128,7 +129,7 @@ const ProcessPayments = () => {
           level: AlertLevel.SUCCESS
         });
         if (successPage) {
-          return window.location.href = successPage;
+          return (window.location.href = successPage);
           // return history.replace(successPage);
         }
         window.location.href = Routes.UserDashboard;
@@ -141,7 +142,7 @@ const ProcessPayments = () => {
         level: AlertLevel.SUCCESS
       });
       if (successPage) {
-        return window.location.href = successPage;
+        return (window.location.href = successPage);
         // return history.replace(successPage);
       }
       window.location.href = Routes.UserDashboard;

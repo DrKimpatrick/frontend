@@ -3,12 +3,7 @@ import { useHistory } from 'react-router-dom';
 import useSWR from 'swr';
 import { accounts, testmonials } from 'utils/staticData';
 import useWindowSize from 'utils/useWindowSize';
-import {
-  Footer,
-  NavBar,
-  BottomMenu,
-  MainBackground
-} from 'components/Reusable';
+import { NavBar, MainBackground } from 'components/Reusable';
 import { Testmonials, FrontView, Talent, HowItWork, AccountType } from '..';
 import './Landing.scss';
 
@@ -119,7 +114,6 @@ const Landing: FC = () => {
         <Testmonials key={Math.random()} testData={testmonials} />
       </div>
       {size?.width && size?.width > 768 && <MainBackground />}
-      {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
     </div>
   );
 };

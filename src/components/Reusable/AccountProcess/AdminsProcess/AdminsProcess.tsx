@@ -10,6 +10,7 @@ import {
   AddSchool
 } from 'components/Reusable';
 import { AddSubsidy } from 'components/Reusable/AddSubsidy';
+import { Routes } from 'utils/routes';
 
 export const AdminsProcessFlow = () => {
   const [step, setStep] = useState<string>();
@@ -54,11 +55,11 @@ export const AdminsProcessFlow = () => {
     }
     if (user.roles.includes(UserRole.HrAdmin)) {
       // This is supposed to go to the HR admin dashboard
-      return <Redirect to="/hr-dashboard" />;
+      return <Redirect to={Routes.HrAdminDashboard} />;
     }
     if (user.roles.includes(UserRole.RecruitmentAdmin)) {
       // This is supposed to go to the recruitment admin dashboard
-      return <Redirect to="/recruitment-dashboard" />;
+      return <Redirect to={Routes.HrAdminDashboard} />;
     }
     if (user.roles.includes(UserRole.CompanyAdmin)) {
       // This is supposed to go to the company admin dashboard

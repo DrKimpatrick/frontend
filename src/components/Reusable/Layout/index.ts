@@ -8,3 +8,5 @@ export { Layout, Footer, BottomMenu, NavBar };
 export * from './MainBackground';
 export * from './AdminLayout';
 export * from './AuthLayout';
+export * from './HrAdminLayout';
+export * from './AdminTab';

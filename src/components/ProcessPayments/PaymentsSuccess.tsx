@@ -6,7 +6,7 @@ import successCheck from 'assets/images/2-check.png';
 import { Image, TrendingFlat } from '@material-ui/icons';
 
 import './styles.scss';
-import {Routes} from "../../utils/routes";
+import { Routes } from '../../utils/routes';
 
 const PaymentsSuccess = () => {
   const history = useHistory();

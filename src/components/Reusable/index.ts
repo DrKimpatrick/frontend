@@ -25,3 +25,5 @@ export * from './Errors';
 export * from './Field';
 export * from './Alert';
 export * from './CustomSelect';
+export * from './Pagination';
+export * from './Image';

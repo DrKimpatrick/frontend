@@ -69,5 +69,11 @@ export enum Routes {
 
   FeatureChoice = '/feature-choice',
 
-  SubsidySuccessPayment = '/subsidy/add/complete'
+  SubsidySuccessPayment = '/subsidy/add/complete',
+
+  HrAdminDashboard = '/hr-dashboard',
+
+  PotentialCandidate = '/hr/potential-candidate',
+
+  Code = '/hr/code'
 }

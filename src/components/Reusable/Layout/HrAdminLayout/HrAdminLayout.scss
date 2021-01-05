@@ -1,0 +1,37 @@
+.hrAdminLayout {
+  position: relative;
+  background: white;
+  margin-top: 20px;
+  color: #747474;
+  .layout {
+    position: relative;
+  }
+  .itemCenter {
+    width: 588px;
+    margin: auto;
+    position: relative;
+    .profileDetail {
+      position: relative;
+    }
+    .hrAdminChildren {
+      position: relative;
+      margin-top: 17px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hrAdminLayout {
+    margin-top: 0;
+    .itemCenter {
+      width: 100%;
+      .profileDetail {
+        .adminProfile {
+          .coverImage {
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.adminTab {
+  position: relative;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+  li {
+    flex-grow: 1;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 0.7rem;
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    h5 {
+      margin-bottom: 0;
+      margin-left: 10px;
+    }
+  }
+  .activeTab {
+    border-bottom: 1.8px solid #1437b1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .adminTab {
+    position: relative;
+    li {
+      padding: 0.2rem;
+    }
+  }
+}

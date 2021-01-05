@@ -1,0 +1,28 @@
+.leftSide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 262px;
+  .item {
+    position: relative;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 1rem;
+    &:first-child {
+      margin-top: 0;
+    }
+    .h5 {
+      margin-bottom: 0;
+    }
+    ul {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .leftSide {
+    position: relative;
+    width: 100%;
+  }
+}
