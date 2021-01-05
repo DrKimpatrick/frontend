@@ -26,14 +26,16 @@ const AddSchool: FC = () => {
   };
 
   return (
-    <section className="add-company-section w-1/3 m-auto text-gray-texts mb-8">
-      <FormTitle title="Tell us about your School!" showBackArrow />
-      <FormCompanySchool
-        validationErrors={reducer.errors?.errors || null}
-        onSubmitHandler={onSubmitHandler}
-        loading={reducer.loading}
-        label="School"
-      />
+    <section className="add-school-section m-auto text-gray-texts mb-8">
+      <div className="containers">
+        <FormTitle title="Tell us about your School!" showBackArrow />
+        <FormCompanySchool
+          validationErrors={reducer.errors?.errors || null}
+          onSubmitHandler={onSubmitHandler}
+          loading={reducer.loading}
+          label="School"
+        />
+      </div>
     </section>
   );
 };

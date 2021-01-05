@@ -1,14 +1,15 @@
-.form-title {
-  &-back-arrow {
-    color: #747474;
-    left: -43px;
-    top: 0px;
-    font-size: 22px;
-  }
+.add-subsidy-section {
+  width: 33.3%;
+}
 
-  &-text {
-    font-size: 22px;
-    color: #747474;
-    text-decoration: none solid rgb(116, 116, 116);
+@media (max-width: 786px) {
+  .add-subsidy-section {
+    width: 60%;
+  }
+}
+
+@media (max-width: 500px) {
+  .add-subsidy-section {
+    width: 90%;
   }
 }

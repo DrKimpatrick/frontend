@@ -25,8 +25,8 @@ const RecentEmployer: FC<Props> = () => {
 
   return (
     <>
-      <div className="containers">
-        <div className="recent-employer-section m-auto text-gray-texts">
+      <div className="recent-employer-section m-auto text-gray-texts">
+        <div className="containers">
           <div
             className="flex relative h-auto my-8"
             style={{ flexDirection: 'column' }}

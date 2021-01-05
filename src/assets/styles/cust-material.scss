@@ -59,7 +59,9 @@
     border: none;
   }
   .auth-icon {
-    font-size: 35px;
+    width: 46px;
+    height: 46px;
+    fill: #ffffff;
   }
 }
 
@@ -77,21 +79,100 @@
   border: none !important;
 }
 
-@media (max-width: 786px) {
+.half-background {
+  background-image: url(../../assets/images/header-bg-image.jpg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100% !important;
+  mix-blend-mode: luminosity;
+  opacity: 0.3;
+  height: 50%;
+  position: absolute;
+  &-top {
+    top: 0;
+    transform: rotate(-180deg);
+  }
+  &-bottom {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
   .authentication-custom {
     justify-content: center;
     flex-wrap: wrap;
   }
   .auth-bg {
-    width: 100%;
+    width: 300px;
+    background: #ffffff !important;
   }
-  .auth-image {
+  .auth-icon {
+    fill: #1727d4 !important;
+  }
+  .auth-image,
+  .md-display-none {
     display: none;
   }
   .accordion-menu-custom {
     width: 100%;
   }
+  .auth-input {
+    margin-top: 22px;
+    margin-bottom: 0;
+    padding: 28px 8px;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #747474;
+  }
+  .auth-input-wrap {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .auth-visibility-icon {
+    display: none !important;
+  }
+  .auth-social-wrap {
+    margin-bottom: 0;
+  }
+  .auth-btn {
+    background-color: #5f5f5f !important;
+    border-radius: 2px;
+    font-size: 18px;
+  }
+  .account-label {
+    color: #8a8a8a;
+  }
+  .front-mob {
+    width: 100% !important;
+    & h3 {
+      padding-top: 0;
+      padding-bottom: 20px;
+      margin-top: -84px;
+      text-align: center;
+      color: #737373;
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+  }
+  .md-half-screen {
+    width: 100% !important;
+    height: 50%;
+    position: absolute;
+
+    &-bottom {
+      bottom: 0;
+    }
+  }
+  .md-screen-40 {
+    height: 40%;
+  }
+  .md-screen-60 {
+    height: 60%;
+  }
 }
+
 .overide {
   width: 40% !important;
   height: 100% !important;
@@ -197,7 +278,7 @@
   }
 
   .header-container .header-background {
-    width: 0 !important;
+    display: none;
   }
 
   .mobile-verify {
@@ -213,6 +294,42 @@
 
   .cust-width {
     width: 86%;
+  }
+
+  .account-type {
+    &-header {
+      padding: 10px 0;
+    }
+    &-title {
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    & svg {
+      width: 12px;
+      height: 12px;
+    }
+    &-main-content {
+      padding: 0;
+      & p {
+        font-size: 8px;
+      }
+    }
+    .account-status {
+      height: 90px;
+      padding: 5px;
+    }
+    .account-hovered {
+      & p {
+        font-size: 12px;
+        margin-left: 10px;
+      }
+    }
+  }
+  .mainBackground {
+    display: none;
+  }
+  .logo {
+    width: 180px;
   }
 }
 

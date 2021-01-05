@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+  .feature-choice-section {
+    margin-bottom: 50px;
+    .title {
+      margin-left: 0;
+      padding: 0 10px;
+      width: 100%;
+      text-align: center;
+    }
+    .back-arrow {
+      display: none;
+    }
+  }
+}

@@ -17,7 +17,7 @@ const PremiumBilling = () => {
   return (
     <>
       <NavBar />
-      <section className="premium-billing-section w-1/3 m-auto text-gray-texts">
+      <section className="premium-billing-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div className="back-arrow cursor-pointer">
             <ArrowBackTwoToneIcon onClick={() => history.goBack()} />

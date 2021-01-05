@@ -51,7 +51,7 @@ const EducationHistory: FC<Props> = props => {
   }
   return (
     <>
-      <section className="education-history-list-section w-1/3 m-auto text-gray-texts">
+      <section className="education-history-list-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"

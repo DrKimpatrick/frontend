@@ -5,7 +5,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import LayersIcon from '@material-ui/icons/Layers';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './BottomMenu.scss';
 import { Routes } from 'utils/routes';
 
@@ -22,18 +22,12 @@ const useStyles = makeStyles({
 export default function BottomMenu() {
   const history = useHistory();
 
-  const location = useLocation();
-
   const classes = useStyles();
 
   const [value, setValue] = React.useState<number>(0);
 
   useEffect(() => {
     switch (value) {
-      case 0:
-        history.push(location.pathname);
-        break;
-
       case 1:
         history.push(Routes.Account);
         break;
@@ -45,7 +39,7 @@ export default function BottomMenu() {
       default:
         break;
     }
-  }, [value, history, location.pathname]);
+  }, [value, history]);
 
   return (
     <BottomNavigation

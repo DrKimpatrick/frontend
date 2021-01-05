@@ -5,3 +5,28 @@
   height: 47px;
   margin-top: 6px;
 }
+
+.process-payments-section {
+  width: 33.3%;
+}
+
+@media (max-width: 786px) {
+  .process-payments-section {
+    width: 60%;
+
+    .back-arrow {
+      display: none;
+    }
+
+    .title {
+      text-align: center;
+      margin: auto;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .process-payments-section {
+    width: 90%;
+  }
+}

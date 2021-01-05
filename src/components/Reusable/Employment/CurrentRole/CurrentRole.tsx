@@ -71,7 +71,7 @@ const CurrentRole: FC<Props> = props => {
 
   return (
     <>
-      <section className="current-role-section w-1/3 m-auto text-gray-texts">
+      <section className="current-role-section m-auto text-gray-texts">
         <div className="containers">
           <div className="recent-employer-section">
             <div className="flex relative h-auto my-8">

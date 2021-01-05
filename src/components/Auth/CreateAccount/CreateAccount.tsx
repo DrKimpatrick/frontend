@@ -1,18 +1,22 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { validEmailRegex, validateForm, passwordRegex } from 'utils/index';
+import useWindowSize from 'utils/useWindowSize';
+import logo from 'assets/images/logo-image.png';
 import { GetStartedAction } from 'redux/actions/getStarted';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import Loader from 'components/Reusable/Loader/Loader';
 import { MainBackground } from 'components/Reusable/Layout/MainBackground';
+import { ReactComponent as GoogleIcon } from '../../../assets/images/google-plus-square.svg';
+import { ReactComponent as GitHubIcon } from '../../../assets/images/github-square.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/images/linkedIn.svg';
 
 type props = {};
 const GetStarted: FC<props> = (props: any) => {
+  const size = useWindowSize();
   const [hidden, setHidden] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState({
@@ -103,47 +107,41 @@ const GetStarted: FC<props> = (props: any) => {
   };
   return (
     <>
-      <NavBar />
-      <section className="flex authentication-custom justify-between">
+      {size?.width && size?.width < 768 ? (
+        <>
+          <div className="half-background md-screen-40 half-background-top" />
+          <div className="md-half-screen md-screen-40 flex items-center justify-center">
+            <img src={logo} alt="logo" className="logo" />
+          </div>
+        </>
+      ) : (
+        <NavBar />
+      )}
+      <section className="flex authentication-custom justify-between md-half-screen md-screen-60 md-half-screen-bottom">
         <section className="flex flex-col w-2/5 px-6 auth-bg px-6 items-center rounded-sm">
-          <div className="w-1/2 front-mob mb-8">
+          <div className="w-1/2 front-mob mb-8 auth-social-wrap">
             <h3 className="text-gray-200 font-bold text-3xl font-extrabold pt-8">
               Sign up
             </h3>
             <div className="flex flex-no-wrap justify-between mt-8">
-              <button
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-1 rounded shadow"
-                onClick={linkedInSocialAuth}
-                type="button"
-              >
+              <button onClick={linkedInSocialAuth} type="button">
                 <LinkedInIcon className="auth-icon" />
               </button>
-              <button
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 rounded shadow"
-                onClick={githubSocialAuth}
-                type="button"
-              >
-                <GitHubIcon />
+              <button onClick={githubSocialAuth} type="button">
+                <GitHubIcon className="auth-icon" />
               </button>
-              <button
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 w-12 rounded shadow"
-                onClick={googleSocialAuth}
-                type="button"
-              >
-                <img
-                  src="https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/2659939281579738432-512.png"
-                  alt=""
-                />
+              <button onClick={googleSocialAuth} type="button">
+                <GoogleIcon className="auth-icon" />
               </button>
             </div>
           </div>
 
           <div className="w-2/4 my-3 front-mob">
-            <div>
+            <div className="mb-8 auth-input-wrap">
               <input
                 type="email"
                 name="email"
-                className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50"
+                className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
                 placeholder="Email address"
                 onChange={onChangeInput}
               />
@@ -154,11 +152,11 @@ const GetStarted: FC<props> = (props: any) => {
               </p>
             </div>
 
-            <div className="my-8">
+            <div className="mb-8 auth-input-wrap">
               <input
                 type="text"
                 name="username"
-                className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none  h-10 px-3 placeholder-gray-100 placeholder-opacity-50"
+                className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
                 placeholder="Username"
                 onChange={onChangeInput}
               />
@@ -168,32 +166,32 @@ const GetStarted: FC<props> = (props: any) => {
                   : dataError?.username}
               </p>
             </div>
-            <div className="my-8">
+            <div className="mb-8 auth-input-wrap">
               <div className="flex">
                 <input
                   type={hidden ? 'password' : 'text'}
                   name="password"
-                  className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none  h-10 px-3 placeholder-gray-100 placeholder-opacity-50"
+                  className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none  h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
                   placeholder="Password"
                   onChange={onChangeInput}
                 />
                 {hidden ? (
                   <VisibilityIcon
-                    className="mt-2 -ml-6 text-gray-800"
+                    className="mt-2 -ml-6 text-gray-800 auth-visibility-icon"
                     onClick={toggleShow}
                   />
                 ) : (
                   <VisibilityOffIcon
-                    className="mt-2 -ml-6 text-gray-800"
+                    className="mt-2 -ml-6 text-gray-800 auth-visibility-icon"
                     onClick={toggleShow}
                   />
                 )}
               </div>
               {dataError.password.length > 1 ? (
-                <div className="text-xs text-white mt-2">
+                <div className="text-xs mt-2 text-blue-500">
                   <p>* Password must contain one uppercase</p>
                   <p>* Password must contain one lowercase</p>
-                  <p>* Password must contain one special carracter</p>
+                  <p>* Password must contain one special character</p>
                   <p>* Password must contain one number</p>
                   <p>* Password must be over 8 digits</p>
                 </div>
@@ -210,13 +208,13 @@ const GetStarted: FC<props> = (props: any) => {
             >
               <Loader loading={user?.loading} command="Sign up" />
             </button>
-            <small className="mt-4 text-white text-sm font-bold">
+            <small className="mt-4 text-white text-sm font-bold account-label">
               <span>Got an account?</span>{' '}
               <Link className="text-blue-700 font-bold" to="/Login">
                 Sign In
               </Link>
             </small>
-            <small className="mt-4 text-white text-xs font-medium pb-12">
+            <small className="mt-4 text-white text-xs font-medium pb-12 md-display-none">
               By signing up you agree to all{' '}
               <span className="text-blue-700">terms </span> and
               <span className="text-blue-700 ml-2 mr-2">condition</span>
@@ -224,7 +222,7 @@ const GetStarted: FC<props> = (props: any) => {
             </small>
           </div>
         </section>
-        <section className="font-semibold mx-20 flex flex-col justify-center">
+        <section className="font-semibold mx-20 flex flex-col justify-center md-display-none">
           <img
             className="auth-image"
             src="https://www.pinclipart.com/picdir/big/449-4493955_use-your-7-day-free-trial-to-build.png"

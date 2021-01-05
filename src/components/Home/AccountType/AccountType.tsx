@@ -30,7 +30,7 @@ const AccountType: FC<accountsProps> = ({
       }}
     >
       <div className="rounded overflow-hidden shadow-lg mainColor">
-        <div className="bg-blue-200 account-type-header text-white flex justify-center pt-4 pb-4">
+        <div className="bg-blue-200 py-4 account-type-header text-white flex justify-center items-center">
           {title === 'Talent' ? (
             <ComputerIcon />
           ) : title === 'Education' ? (
@@ -40,10 +40,10 @@ const AccountType: FC<accountsProps> = ({
           ) : (
             <WorkIcon />
           )}
-          <p className="pl-4">{title.toUpperCase()}</p>
+          <p className="ml-4 account-type-title">{title.toUpperCase()}</p>
         </div>
         <section className="account-status flex items-center">
-          <div className="px-6 py-4">
+          <div className="px-6 py-4 account-type-main-content">
             {description.split('\n').map((str, index) => (
               <p key={index} className="text-gray-700 text-sm">
                 {str}
@@ -53,15 +53,15 @@ const AccountType: FC<accountsProps> = ({
           <div
             className={`account-hovered ${
               clicked ? 'clicked' : ''
-            } px-6 py-4 border-t-2 flex items-center justify-center`}
+            } px-6 py-4 border-t-2 flex justify-center items-center`}
           >
-            <div className="text-white flex justify-center">
+            <div className="text-white flex justify-center items-center">
               {title === 'Talent' ? <CheckCircleIcon /> : <TrendingUpIcon />}
 
               {title === 'Talent' ? (
-                <p className="pl-4">Recommended</p>
+                <p className="ml-4">Recommended</p>
               ) : (
-                <p className="pl-4">Trending</p>
+                <p className="ml-4">Trending</p>
               )}
             </div>
           </div>

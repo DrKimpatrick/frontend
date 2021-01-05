@@ -2,7 +2,7 @@
 
 exports[`\`EducationHistory\` component matches the snapshot 1`] = `
 <section
-  className="education-history-section w-1/3 m-auto text-gray-texts"
+  className="education-history-section m-auto text-gray-texts"
 >
   <div
     className="flex relative h-auto my-8"

@@ -190,7 +190,7 @@ const ProcessPayments = () => {
   return (
     <>
       <NavBar />
-      <section className="w-1/3 mx-auto text-gray-texts">
+      <section className="process-payments-section mx-auto text-gray-texts">
         <Alert
           message={pageAlert.message}
           show={pageAlert.show}
@@ -200,10 +200,12 @@ const ProcessPayments = () => {
         <div className="flex flex-col">
           <div className="text-2xl flex items-center">
             <ArrowBackTwoToneIcon
-              className="-ml-12 mr-6 cursor-pointer"
+              className="-ml-12 mr-6 cursor-pointer back-arrow"
               onClick={() => history.goBack()}
             />
-            <h1 className="font-bold">Please provide your payment details</h1>
+            <h1 className="font-bold title">
+              Please provide your payment details
+            </h1>
           </div>
           {paymentFailed ? (
             <ErrorMessageDialog

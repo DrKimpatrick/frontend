@@ -28,3 +28,12 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .splashScreen {
+    .logo {
+      width: 140px;
+      height: auto;
+    }
+  }
+}

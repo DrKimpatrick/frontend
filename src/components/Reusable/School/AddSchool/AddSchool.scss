@@ -1,9 +1,17 @@
-.add-company-section {
-  position: relative;
+@media (max-width: 768px) {
+  .add-school-section {
+    margin-bottom: 100px !important;
+    padding: 0 10px;
+    .containers {
+      width: 60%;
+    }
+  }
 }
-@media screen and (max-width: 768px) {
-  .add-company-section {
-    width: 90% !important;
-    position: relative;
+
+@media (max-width: 480px) {
+  .add-school-section {
+    .containers {
+      width: 100%;
+    }
   }
 }

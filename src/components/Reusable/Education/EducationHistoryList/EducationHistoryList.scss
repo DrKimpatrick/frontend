@@ -1,4 +1,5 @@
 .education-history-list-section {
+  width: 33%;
   .title {
     font-size: 22px;
     color: #747474;
@@ -45,18 +46,22 @@
 }
 
 @media (max-width: 786px) {
-  .education-history-section {
+  .education-history-list-section {
     width: 60%;
+
+    .back-arrow {
+      display: none;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
 
 @media (max-width: 500px) {
-  .education-history-section {
+  .education-history-list-section {
     width: 90%;
-
-    .title {
-      text-align: center;
-    }
-
   }
 }

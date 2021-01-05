@@ -33,24 +33,28 @@
 
 @media (max-width: 786px) {
   .recent-employer-section {
-    width: 60%;
+    padding: 10px !important;
+
+    .containers {
+      width: 60%;
+    }
 
     .back-arrow {
       display: none;
+    }
+
+    .title {
+      width: 100% !important;
+      text-align: center;
     }
   }
 }
 
 @media (max-width: 500px) {
   .recent-employer-section {
-    width: 90%;
-
-    .title {
-      text-align: center;
-    }
-
-    .back-arrow {
-      display: none;
+    margin-bottom: 40px !important;
+    .containers {
+      width: 100%;
     }
   }
 }

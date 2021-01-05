@@ -39,16 +39,16 @@ describe('`BottomMenu` component', () => {
     expect(snapshot).toMatchSnapshot();
   });
 
-  it('should redirect to home', () => {
-    const { getByTestId } = render(
-      <MemoryRouter>
-        <BottomMenu />
-      </MemoryRouter>
-    );
+  // it('should redirect to home', () => {
+  //   const { getByTestId } = render(
+  //     <MemoryRouter>
+  //       <BottomMenu />
+  //     </MemoryRouter>
+  //   );
 
-    fireEvent.click(getByTestId('home-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Home);
-  });
+  //   fireEvent.click(getByTestId('home-navigation'));
+  //   expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Home);
+  // });
 
   it('should redirect to account', () => {
     const { getByTestId } = render(

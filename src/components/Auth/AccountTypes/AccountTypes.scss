@@ -23,13 +23,31 @@
   }
 }
 
-@media (max-width: 786px) {
+@media (max-width: 480px) {
+  .account-types-section {
+    padding-top: 10px;
+    .title-container {
+      max-width: 272px;
+      z-index: 10;
+      .title {
+        font-size: 16px;
+      }
+      .subtitle {
+        font-size: 12px;
+      }
+    }
+  }
   .account-types {
     width: 100%;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    &-item {
+      width: 142px;
+      margin-bottom: 36px;
+    }
     &-item:nth-child(odd) {
-      margin-right: 0;
+      margin-right: 12px;
     }
   }
 }

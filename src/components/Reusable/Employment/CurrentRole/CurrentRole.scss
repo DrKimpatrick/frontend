@@ -16,26 +16,28 @@
   }
 }
 
-@media (max-width: 786px) {
+@media screen and (max-width: 786px) {
   .current-role-section {
-    width: 50%;
-
+    width: 100%;
     .back-arrow {
       display: none;
+    }
+
+    .containers {
+      width: 60%;
+    }
+
+    .title {
+      text-align: center;
+      margin-left: 0 !important;
     }
   }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .current-role-section {
-    width: 90%;
-
-    .title {
-      text-align: center;
-    }
-
-    .back-arrow {
-      display: none;
+    .containers {
+      width: 100%;
     }
   }
 }

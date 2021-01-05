@@ -1,4 +1,5 @@
 .premium-billing-section {
+  width: 33.3%;
   color: #747474;
   .title {
     font-size: 22px;
@@ -94,23 +95,25 @@
     .bottom-card {
       width: 100%;
     }
+
+    .title {
+      text-align: center;
+      margin: auto;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .premium-billing-section {
     width: 90%;
-
-    .title {
-      text-align: center;
-      margin: auto;
-    }
+    margin-bottom: 80px !important;
 
     .back-arrow {
       display: none;
     }
 
     .card {
+      margin-top: 10px;
       .check-icon {
         padding-left: 34px;
         padding-right: 34px;

@@ -117,7 +117,7 @@ const EmploymentHistory: FC<Props> = props => {
 
   return (
     <>
-      <section className="employment-history-section w-1/3 m-auto text-gray-texts">
+      <section className="employment-history-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div
             className="back-arrow cursor-pointer"

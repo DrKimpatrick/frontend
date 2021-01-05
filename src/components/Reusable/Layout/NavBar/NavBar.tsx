@@ -54,6 +54,7 @@ const NavBar: FC<Props> = props => {
       setActive(id);
     }
   };
+
   return size?.width && size?.width > 768 ? (
     <nav
       className={`flex items-center bg-white-800 px-20 ${
@@ -155,7 +156,7 @@ const NavBar: FC<Props> = props => {
         </>
       ) : (
         <nav className="flex items-center justify-center">
-          <img src={logo} alt="logo" className="logo w-32 py-3" />
+          <img src={logo} alt="logo" className="logo w-32" />
         </nav>
       )}
     </div>

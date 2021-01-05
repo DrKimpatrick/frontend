@@ -26,16 +26,24 @@
 
 @media (max-width: 786px) {
   .add-education-section {
-    width: 50%;
+    width: 100%;
+
+    .container {
+      width: 60%;
+    }
+    .back-arrow {
+      display: none;
+    }
+    .title {
+      text-align: center;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .add-education-section {
-    width: 90%;
-
-    .title {
-      text-align: center;
+    .container {
+      width: 100%;
     }
   }
 }

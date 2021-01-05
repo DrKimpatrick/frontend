@@ -79,5 +79,7 @@ export enum Routes {
 
   SchoolDashboard = '/school-dashboard',
 
-  SubsidyStudent = '/school/subsidy-student'
+  SubsidyStudent = '/school/subsidy-student',
+
+  Auth = '/auth'
 }

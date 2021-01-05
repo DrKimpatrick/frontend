@@ -4,6 +4,7 @@ import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import { useHistory } from 'react-router-dom';
 import { MainBackground, NavBar, SplashScreen } from 'components/Reusable';
 import { Talent } from 'components/Home';
+import './FeatureChoice.scss';
 
 const FeatureChoice = () => {
   const { data: productResponse } = useSWR('/stripe/products');
@@ -16,13 +17,13 @@ const FeatureChoice = () => {
   return (
     <>
       <NavBar />
-      <section className="container mx-auto px-12 flex flex-col items-center justify-center">
+      <section className="container mx-auto flex flex-col items-center justify-center feature-choice-section">
         <div className="text-2xl flex items-center text-gray-texts">
           <ArrowBackTwoToneIcon
-            className="cursor-pointer"
+            className="back-arrow cursor-pointer"
             onClick={() => history.goBack()}
           />
-          <h1 className="ml-4 font-bold">
+          <h1 className="ml-4 font-bold title">
             What features would you like to have?
           </h1>
         </div>

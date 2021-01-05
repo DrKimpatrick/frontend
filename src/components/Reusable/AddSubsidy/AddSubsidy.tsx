@@ -68,7 +68,7 @@ const AddSubsidy: React.FC = () => {
   };
 
   return (
-    <section className="add-company-section w-1/3 m-auto text-gray-texts mb-8">
+    <section className="add-subsidy-section m-auto text-gray-texts mb-8">
       <FormTitle
         title="How many students do you want to enroll?"
         showBackArrow

@@ -2,7 +2,7 @@
 
 exports[`SplashScreen should create snapshot 1`] = `
 <div
-  className="splashScreen"
+  className="splashScreen "
 >
   <div
     className="logo"

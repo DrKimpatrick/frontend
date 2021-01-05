@@ -28,8 +28,8 @@ const AddEducation: FC<Props> = props => {
 
   return (
     <>
-      <div className="containers">
-        <div className="recent-employer-section m-auto text-gray-texts">
+      <div className="recent-employer-section m-auto text-gray-texts">
+        <div className="containers">
           <div className="flex relative h-auto my-8">
             <button
               className="back-arrow cursor-pointer"

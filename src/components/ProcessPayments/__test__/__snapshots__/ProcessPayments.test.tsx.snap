@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="splashScreen"
+        class="splashScreen "
       >
         <div
           class="logo"
@@ -41,7 +41,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="splashScreen"
+      class="splashScreen "
     >
       <div
         class="logo"

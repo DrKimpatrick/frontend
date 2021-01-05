@@ -1,4 +1,5 @@
 .employment-history-list-section {
+  width: 33%;
   .title {
     font-size: 22px;
     color: #747474;
@@ -41,18 +42,24 @@
   }
 }
 
-@media (max-width: 786px) {
+@media screen and (max-width: 786px) {
   .employment-history-list-section {
     width: 50%;
+    margin-bottom: 100px !important;
+
+    .back-arrow {
+      display: none;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .employment-history-list-section {
     width: 90%;
-
-    .title {
-      text-align: center;
-    }
   }
 }

@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .add-company-section {
+    margin-bottom: 100px !important;
+    padding: 0 10px;
+    .containers {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .add-company-section {
+    .containers {
+      width: 100%;
+    }
+  }
+}

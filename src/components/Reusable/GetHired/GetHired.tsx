@@ -14,7 +14,7 @@ const GetHired: FC = () => {
   return (
     <>
       <NavBar />
-      <section className="get-hired-section w-1/3 m-auto text-gray-texts">
+      <section className="get-hired-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div className="back-arrow cursor-pointer">
             <ArrowBackTwoToneIcon onClick={() => history.goBack()} />

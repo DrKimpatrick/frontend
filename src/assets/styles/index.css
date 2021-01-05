@@ -28,12 +28,12 @@ h6 {
 
 .feature-min-w {
   min-width: 300px;
-}  
+}
 
 @responsive {
   .feature-max-w {
     max-width: 400px;
-  }  
+  }
 }
 
 button:disabled,
@@ -70,4 +70,8 @@ select:required:invalid {
 
 option {
   color: #747474;
+}
+
+.background-transparent {
+  background-color: transparent !important;
 }

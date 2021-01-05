@@ -8,6 +8,7 @@ import {
   ResetPassword,
   AccountTypes
 } from 'components/Auth';
+// import { Auth } from 'components/Mobile';
 import { Dashboard } from 'components/Talent';
 import {
   StandardBilling,
@@ -146,6 +147,7 @@ const AppRouter: FC = () => {
   ];
 
   const unauthorizedRoutes = [
+    // { path: Routes.Auth, exact: true, component: <Auth /> },
     { path: Routes.Login, exact: true, component: <Login /> },
     { path: Routes.Register, exact: true, component: <CreateAccount /> },
     {

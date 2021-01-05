@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './SplashScreen.scss';
 import { BeatLoader } from 'react-spinners';
 import { css } from '@emotion/core';
@@ -9,9 +9,13 @@ const override = css`
   margin-left: 10px;
 `;
 
-export const SplashScreen = () => {
+type splashScreenProps = {
+  classes?: string;
+};
+
+export const SplashScreen: FC<splashScreenProps> = ({ classes = '' }) => {
   return (
-    <div className="splashScreen">
+    <div className={`splashScreen ${classes}`}>
       <div className="logo">
         <img src={Logo} alt="logo" />
       </div>

@@ -39,14 +39,14 @@ const PaymentsSuccess = () => {
   return (
     <>
       <NavBar />
-      <section className="w-1/3 mx-auto text-gray-texts">
+      <section className="process-payments-section mx-auto text-gray-texts">
         <div className="flex flex-col">
           <div className="text-2xl flex items-center">
             <ArrowBackTwoToneIcon
-              className="-ml-12 mr-6 cursor-pointer"
+              className="back-arrow -ml-12 mr-6 cursor-pointer"
               onClick={() => history.goBack()}
             />
-            <h1 className="font-bold">Payment Successful</h1>
+            <h1 className="font-bold title">Payment Successful</h1>
           </div>
 
           <div className="flex items-center justify-center flex-col mt-4 mb-4">

@@ -2,10 +2,10 @@
 
 exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
 <div
-  className="containers"
+  className="recent-employer-section m-auto text-gray-texts"
 >
   <div
-    className="recent-employer-section m-auto text-gray-texts"
+    className="containers"
   >
     <div
       className="flex relative h-auto my-8"

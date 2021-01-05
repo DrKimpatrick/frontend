@@ -20,7 +20,7 @@ const StandardBilling = () => {
   return (
     <>
       <NavBar />
-      <section className="standard-billing-section w-1/3 m-auto text-gray-texts">
+      <section className="standard-billing-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <div className="back-arrow cursor-pointer">
             <ArrowBackTwoToneIcon onClick={() => history.goBack()} />
@@ -29,7 +29,7 @@ const StandardBilling = () => {
         </div>
 
         {features.map((feature: any, i: any) => (
-          <div key={i} className="text-gray-texts mt-8 card py-1">
+          <div key={i} className="text-gray-texts mt-8 py-1 card">
             <div className="font-bold py-3 px-16 check-icon">
               {feature.available ? (
                 <CheckIcon className="text-green-700" />
