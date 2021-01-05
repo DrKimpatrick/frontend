@@ -9,7 +9,7 @@ Object {
         class="adminProfile"
       >
         <div
-          class="coverImage"
+          class="coverImage min-w-0 bg-clip-border relative cover-image w-full"
         >
           <div
             class="sideLoading"
@@ -41,7 +41,7 @@ Object {
       class="adminProfile"
     >
       <div
-        class="coverImage"
+        class="coverImage min-w-0 bg-clip-border relative cover-image w-full"
       >
         <div
           class="sideLoading"

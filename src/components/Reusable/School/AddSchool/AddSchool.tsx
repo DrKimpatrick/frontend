@@ -32,6 +32,7 @@ const AddSchool: FC = () => {
         validationErrors={reducer.errors?.errors || null}
         onSubmitHandler={onSubmitHandler}
         loading={reducer.loading}
+        label="School"
       />
     </section>
   );

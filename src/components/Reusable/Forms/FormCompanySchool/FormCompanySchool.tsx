@@ -26,6 +26,7 @@ type Props = {
   initialValues?: iValues;
   loading?: boolean;
   onSubmitHandler: (values: iValues) => void;
+  label?: string;
 };
 
 const FormCompanySchool: FC<Props> = ({
@@ -34,7 +35,8 @@ const FormCompanySchool: FC<Props> = ({
   labelButton = 'Next',
   initialValues,
   validationErrors,
-  onSubmitHandler
+  onSubmitHandler,
+  label
 }) => {
   let formattedErrors = null;
 
@@ -77,7 +79,7 @@ const FormCompanySchool: FC<Props> = ({
   return (
     <form className="form-company-school" onSubmit={formik.handleSubmit}>
       <div className="text-gray-texts mt-8">
-        <label>Company Name</label>
+        <label>{label || 'Company'} Name</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -90,7 +92,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>Company Address</label>
+        <label>{label || 'Company'} Address</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"

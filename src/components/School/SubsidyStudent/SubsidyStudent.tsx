@@ -5,7 +5,7 @@ import {
   HorizontalPagination as Pagination
 } from 'components/Reusable';
 import { UserRole } from 'redux/action-types/user';
-import '../HrAdmin.scss';
+import '../../HrAdmin/HrAdmin.scss';
 
 const dummyList = [
   {
@@ -21,13 +21,13 @@ const dummyList = [
     link: 'http://o.com'
   }
 ];
-const PotentialCandidate = () => {
+const SubsidyStudent = () => {
   const [page = 0, setPage] = useState<number>();
 
   const itemPerPage = 4;
 
   return (
-    <Layout role={UserRole.RecruitmentAdmin}>
+    <Layout role={UserRole.EducationUser}>
       <div className="hrAdminDashboard">
         <ul className="ulList w-full flex flex-column bg-card-preview">
           {dummyList.map((item, index) => (
@@ -46,4 +46,4 @@ const PotentialCandidate = () => {
   );
 };
 
-export default PotentialCandidate;
+export default SubsidyStudent;

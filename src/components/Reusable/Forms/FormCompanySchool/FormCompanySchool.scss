@@ -11,3 +11,12 @@
   color: rgb(255, 0, 0);
   font-size: 12px;
 }
+
+@media screen and (max-width: 768px) {
+  .form-company-school {
+    position: relative;
+    input {
+      width: 100%;
+    }
+  }
+}

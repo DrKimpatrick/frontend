@@ -50,7 +50,11 @@ const IsLoggedIn = (props: any) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('ttlnt.refresh');
+
     window.location.href = '/';
+
+    return undefined;
   };
 
   const handleClose = (event: MouseEvent<EventTarget>) => {

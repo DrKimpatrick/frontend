@@ -1,24 +1,39 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import { useHistory } from 'react-router-dom';
 import { MainBackground, NavBar } from 'components/Reusable';
 import successCheck from 'assets/images/2-check.png';
 import { Image, TrendingFlat } from '@material-ui/icons';
+import { RootState } from 'redux/store';
 
 import './styles.scss';
-import { Routes } from '../../utils/routes';
+import { redirect } from 'utils/Redirect';
 
 const PaymentsSuccess = () => {
   const history = useHistory();
 
+  const reducer = useSelector((state: RootState) => {
+    const { user } = state.users;
+
+    return { user };
+  });
+
+  const { user } = reducer;
+
   const saveAndReviewProfile = () => {
-    // TODO: not sure what is supposed to be saved(the mockups have different ideas)
-    history.replace(Routes.UserDashboard);
+    if (user) {
+      window.location.href = String(redirect(user.roles));
+    }
+
+    return undefined;
   };
 
   const reviewAndPublishProfile = () => {
-    // TODO: not sure what is supposed to be saved(the mockups have different ideas)
-    history.replace(Routes.UserDashboard);
+    if (user) {
+      window.location.href = String(redirect(user.roles));
+    }
+    return undefined;
   };
 
   return (

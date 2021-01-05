@@ -40,6 +40,7 @@ import {
   PotentialCandidate,
   HrAdminCode
 } from 'components/HrAdmin';
+import { SchoolDashboard, SubsidyStudent } from 'components/School';
 import PaymentsSuccess from '../ProcessPayments/PaymentsSuccess';
 
 const AppRouter: FC = () => {
@@ -128,6 +129,18 @@ const AppRouter: FC = () => {
     {
       path: Routes.Code,
       component: <HrAdminCode />,
+      exact: true
+    },
+
+    // School or Education
+    {
+      path: Routes.SchoolDashboard,
+      component: <SchoolDashboard />,
+      exact: true
+    },
+    {
+      path: Routes.SubsidyStudent,
+      component: <SubsidyStudent />,
       exact: true
     }
   ];

@@ -75,5 +75,9 @@ export enum Routes {
 
   PotentialCandidate = '/hr/potential-candidate',
 
-  Code = '/hr/code'
+  Code = '/hr/code',
+
+  SchoolDashboard = '/school-dashboard',
+
+  SubsidyStudent = '/school/subsidy-student'
 }

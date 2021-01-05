@@ -15,20 +15,25 @@ import {
 } from '@material-ui/icons';
 import { useLocation, useHistory } from 'react-router-dom';
 import { RootState } from 'redux/store';
-import { UserRole } from 'redux/action-types/user';
 import { Routes } from 'utils/routes';
 import { listUsedCode } from 'redux/actions/hrAdmin';
 import useWindowSize from 'utils/useWindowSize';
+import { UserRole } from 'redux/action-types/user';
 import { HrLeftSideItem } from './HrLeftSideItem';
 import './HrAdminLayout.scss';
 
-export enum HrAdminTab {
+export enum Tab {
   PotentialCandidate = 'Potential Candidates',
   UsedCode = 'Used code',
-  Code = 'codes'
+  Code = 'codes',
+  SubsidyStudent = 'Subsidy students',
+  EnrolledStudent = 'Enrolled students'
 }
 
-export const HrLayout: FC = props => {
+interface Props {
+  role: string;
+}
+export const HrLayout: FC<Props> = props => {
   const [currentTab = Routes.HrAdminDashboard, setCurrentTab] = useState<
     string
   >();
@@ -41,7 +46,7 @@ export const HrLayout: FC = props => {
 
   const dispatch = useDispatch();
 
-  const { children } = props;
+  const { children, role } = props;
 
   const reducer = useSelector((state: RootState) => {
     const { user } = state.users;
@@ -93,8 +98,7 @@ export const HrLayout: FC = props => {
 
   return (
     <>
-      {user.roles.length > 0 &&
-      user.roles.includes(UserRole.RecruitmentAdmin) ? (
+      {user.roles.length > 0 && user.roles.includes(role) ? (
         <>
           <NavBar />
           <div className="hrAdminLayout">
@@ -106,29 +110,50 @@ export const HrLayout: FC = props => {
                   </div>
                   {size?.width && size?.width < 768 && leftSideItem()}
                   <div className="hrAdminChildren">
-                    <AdminTab
-                      menu={[
-                        {
-                          name: HrAdminTab.UsedCode,
-                          icon: <ImportantDevices />,
-                          onClick: value => setCurrentTab(value),
-                          url: Routes.HrAdminDashboard
-                        },
-                        {
-                          name: HrAdminTab.PotentialCandidate,
-                          icon: <AccountCircle />,
-                          onClick: value => setCurrentTab(value),
-                          url: Routes.PotentialCandidate
-                        },
-                        {
-                          name: HrAdminTab.Code,
-                          icon: <CodeIcon />,
-                          onClick: value => setCurrentTab(value),
-                          url: Routes.Code
-                        }
-                      ]}
-                      currentTab={currentTab}
-                    />
+                    {role === UserRole.RecruitmentAdmin && (
+                      <AdminTab
+                        menu={[
+                          {
+                            name: Tab.UsedCode,
+                            icon: <ImportantDevices />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.HrAdminDashboard
+                          },
+                          {
+                            name: Tab.PotentialCandidate,
+                            icon: <AccountCircle />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.PotentialCandidate
+                          },
+                          {
+                            name: Tab.Code,
+                            icon: <CodeIcon />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.Code
+                          }
+                        ]}
+                        currentTab={currentTab}
+                      />
+                    )}
+                    {role === UserRole.EducationUser && (
+                      <AdminTab
+                        menu={[
+                          {
+                            name: Tab.SubsidyStudent,
+                            icon: <ImportantDevices />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.HrAdminDashboard
+                          },
+                          {
+                            name: Tab.EnrolledStudent,
+                            icon: <AccountCircle />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.PotentialCandidate
+                          }
+                        ]}
+                        currentTab={currentTab}
+                      />
+                    )}
                     {children}
                   </div>
                 </div>

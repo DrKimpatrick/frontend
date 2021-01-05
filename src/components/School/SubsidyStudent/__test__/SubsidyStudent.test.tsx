@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import Component from '../HrAdminLayout';
+import Component from '../SubsidyStudent';
 import configureMockStore from 'redux-mock-store';
 import { cleanup, render } from '@testing-library/react';
 import thunk from 'redux-thunk';
@@ -32,7 +32,7 @@ const initialState = {
     },
     user: {
       username: 'username',
-      roles: [UserRole.RecruitmentAdmin],
+      roles: [UserRole.EducationUser],
       email: 'email@gmail.com',
       _id: 'id',
       employmentHistory: [],
@@ -49,7 +49,7 @@ const initialState = {
         _id: '5ff32e2295d3d59450b37097',
         issuer: {
           signupMode: 'LOCAL',
-          roles: [UserRole.RecruitmentAdmin],
+          roles: [UserRole.EducationUser],
           verified: true,
           featureChoice: 'premium',
           paymentStatus: 'confirmed',
@@ -76,7 +76,7 @@ const initialState = {
   }
 };
 
-describe('HR Layout', () => {
+describe('PotentialCandidate', () => {
   beforeEach(() => {
     store = mockStore(initialState);
   });
@@ -89,7 +89,7 @@ describe('HR Layout', () => {
     ReactDOM.render(
       <Provider store={store}>
         <Router>
-          <Component role={UserRole.RecruitmentAdmin} />
+          <Component />
         </Router>
       </Provider>,
       div
@@ -100,7 +100,7 @@ describe('HR Layout', () => {
     const tree = render(
       <Provider store={store}>
         <Router>
-          <Component role={UserRole.RecruitmentAdmin} />
+          <Component />
         </Router>
       </Provider>
     );

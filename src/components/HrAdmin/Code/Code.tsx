@@ -8,6 +8,7 @@ import {
 } from 'components/Reusable';
 import { listUsedCode } from 'redux/actions/hrAdmin';
 import { RootState } from 'redux/store';
+import { UserRole } from 'redux/action-types/user';
 
 const HrAdminCode = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const HrAdminCode = () => {
 
   if (loading) {
     return (
-      <Layout>
+      <Layout role={UserRole.RecruitmentAdmin}>
         <div style={{ marginTop: '30px' }}>
           <SideLoading />
         </div>
@@ -39,7 +40,7 @@ const HrAdminCode = () => {
   }
 
   return (
-    <Layout>
+    <Layout role={UserRole.RecruitmentAdmin}>
       <div className="hrAdminDashboard">
         {usedCode && usedCode.length > 0 && (
           <ul className="ulList w-full flex flex-column bg-card-preview">

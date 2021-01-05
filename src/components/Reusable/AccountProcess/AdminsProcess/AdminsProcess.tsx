@@ -29,7 +29,10 @@ export const AdminsProcessFlow = () => {
     }
 
     if (user && !user.profileProcess) {
-      if (user.roles.includes(UserRole.TrainingAdmin)) {
+      if (
+        user.roles.includes(UserRole.TrainingAdmin) ||
+        user.roles.includes(UserRole.EducationUser)
+      ) {
         setStep(AdminsProcess.AddSchool);
       }
       if (
@@ -64,6 +67,10 @@ export const AdminsProcessFlow = () => {
     if (user.roles.includes(UserRole.CompanyAdmin)) {
       // This is supposed to go to the company admin dashboard
       return <Redirect to="/company-dashboard" />;
+    }
+
+    if (user.roles.includes(UserRole.EducationUser)) {
+      return <Redirect to={Routes.SchoolDashboard} />;
     }
   }
 

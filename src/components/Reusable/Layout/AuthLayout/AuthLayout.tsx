@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react';
 import useWindowSize from 'utils/useWindowSize';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../Layout.scss';
 import { RootState } from 'redux/store';
+import { redirect } from 'utils/Redirect';
 import { BottomMenu, Footer } from '..';
 
 interface Props {
@@ -17,20 +18,34 @@ const AuthLayout = ({ children }: Props): ReactElement => {
 
   const size = useWindowSize();
 
-  if (userState.user) {
+  const redirectBack = () => {
+    if (userState.user && redirect(userState.user.roles)) {
+      const redirectRoute = redirect(userState.user.roles);
+
+      if (redirectRoute) {
+        return <Redirect to={redirectRoute} />;
+      }
+    }
     history.goBack();
-    return <></>;
-  }
+
+    return undefined;
+  };
 
   return (
-    <div className="dashboard_layout">
-      <div className="grid-container">
-        <div className="main">
-          <main>{children}</main>
+    <>
+      {!userState.user ? (
+        <div className="dashboard_layout">
+          <div className="grid-container">
+            <div className="main">
+              <main>{children}</main>
+            </div>
+            {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
+          </div>
         </div>
-        {size?.width && size?.width > 768 ? <Footer /> : <BottomMenu />}
-      </div>
-    </div>
+      ) : (
+        <>{redirectBack()}</>
+      )}
+    </>
   );
 };
 
