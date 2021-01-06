@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { TalentProcess } from 'redux/action-types/user';
 import { RootState } from 'redux/store';
 import {
-  CurrentRole,
   AddEducation,
   RecentEmployer,
   EmploymentHistory,
@@ -31,10 +30,6 @@ export const TalentProcessFlow = () => {
   useEffect(() => {
     if (user && user.profileProcess) {
       switch (user.profileProcess) {
-        case TalentProcess.CurrentRole:
-          setStep(TalentProcess.CurrentRole);
-          break;
-
         case TalentProcess.SkillRanking:
           setStep(TalentProcess.SkillRanking);
           break;
@@ -63,12 +58,12 @@ export const TalentProcessFlow = () => {
           setStep(TalentProcess.ListEmployment);
           break;
         default:
-          setStep(TalentProcess.CurrentRole);
+          setStep(TalentProcess.SkillRanking);
       }
     }
 
     if (user && !user.profileProcess) {
-      setStep(TalentProcess.CurrentRole);
+      setStep(TalentProcess.SkillRanking);
     }
   }, [user]);
 
@@ -87,9 +82,6 @@ export const TalentProcessFlow = () => {
   return (
     <>
       <NavBar />
-      {step === TalentProcess.CurrentRole && (
-        <CurrentRole setPreviousStep={setStep} />
-      )}
       {step === TalentProcess.SkillRanking && (
         <SkillRanking setPreviousStep={setStep} />
       )}

@@ -112,61 +112,6 @@ describe('Talent Process', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  describe('No Profile Process', () => {
-    beforeEach(() => {
-      store = mockStore({
-        ...initialState,
-        users: {
-          ...initialState.users,
-          user: { ...initialState.users.user, profileProcess: undefined }
-        }
-      });
-    });
-
-    it('no profile process', () => {
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Router>
-              <Component />
-            </Router>
-          </Provider>
-        )
-        .toJSON();
-
-      expect(tree).toBeDefined();
-    });
-  });
-
-  describe('When Profile Process is Current Role', () => {
-    beforeEach(() => {
-      store = mockStore({
-        ...initialState,
-        users: {
-          ...initialState.users,
-          user: {
-            ...initialState.users.user,
-            profileProcess: TalentProcess.CurrentRole
-          }
-        }
-      });
-    });
-
-    it('current role', () => {
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Router>
-              <Component />
-            </Router>
-          </Provider>
-        )
-        .toJSON();
-
-      expect(tree).toBeDefined();
-    });
-  });
-
   describe('When Profile Process is AddEducation', () => {
     beforeEach(() => {
       store = mockStore({

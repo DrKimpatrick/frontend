@@ -216,7 +216,7 @@ const SkillRanking: FC<Props> = () => {
       <section className="skill-ranking-section m-auto text-gray-texts">
         <div className="flex relative h-auto my-8">
           <h1 className="font-bold text-xl title" style={{ marginLeft: 0 }}>
-            Rank your skillset!
+            Tell us how awesome you are
           </h1>
         </div>
 

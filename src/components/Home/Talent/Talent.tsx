@@ -73,24 +73,25 @@ const Talent: FC<TalentProps> = ({ plans, productDetails, action }) => {
         <h2 className="font-medium text-xl">{planTitle.toUpperCase()}</h2>
       </div>
       <div className="mt-4">
-        {productDetails && productDetails.features.map((feature: any) => (
-          <div key={feature.name} className="flex flex-col mt-4">
-            <div className="flex">
-              {feature.available ? (
-                <CheckIcon className="text-green-700 customFont" />
-              ) : (
-                <CloseIcon className="text-red-600 customFont" />
-              )}
-              <p className="text-gray-800 ml-4">{feature.name}</p>
-            </div>
-            {feature.detail && (
-              <div className="ml-8 mt-2 flex font-thin text-gray-texts">
-                <InfoOutlinedIcon fontSize="small" />
-                <span className="ml-2 text-xs">{feature.detail}</span>
+        {productDetails &&
+          productDetails.features.map((feature: any) => (
+            <div key={feature.name} className="flex flex-col mt-4">
+              <div className="flex">
+                {feature.available ? (
+                  <CheckIcon className="text-green-700 customFont" />
+                ) : (
+                  <CloseIcon className="text-red-600 customFont" />
+                )}
+                <p className="text-gray-800 ml-4">{feature.name}</p>
               </div>
-            )}
-          </div>
-        ))}
+              {feature.detail && (
+                <div className="ml-8 mt-2 flex font-thin text-gray-texts">
+                  <InfoOutlinedIcon fontSize="small" />
+                  <span className="ml-2 text-xs">{feature.detail}</span>
+                </div>
+              )}
+            </div>
+          ))}
 
         <div className="feature">
           <div className="mb-1 flex flex-col">

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import AuthToken, { getAccessToken } from './AuthToken';
-import { Routes } from './routes';
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_API,
@@ -44,7 +43,7 @@ const refreshAuthLogic = async (failedRequest: any) => {
       // User is logged out when refresh token expires
       localStorage.removeItem('token');
       localStorage.removeItem('ttlnt.refresh');
-      window.location.href = Routes.Login;
+      // window.location.href = Routes.Login;
     });
 };
 

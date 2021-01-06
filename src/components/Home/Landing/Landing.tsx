@@ -4,12 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useSWR from 'swr';
 import { accounts, testmonials } from 'utils/staticData';
 import useWindowSize from 'utils/useWindowSize';
-import {
-  Footer,
-  NavBar,
-  BottomMenu,
-  MainBackground
-} from 'components/Reusable';
+import { NavBar, BottomMenu, MainBackground } from 'components/Reusable';
 import { RootState } from 'redux/store';
 import IsLoggedIn from '../../Reusable/Layout/NavBar/IsLoggedIn';
 import { Testmonials, FrontView, Talent, HowItWork, AccountType } from '..';
@@ -136,11 +131,7 @@ const Landing: FC = () => {
           <Testmonials key={Math.random()} testData={testmonials} />
         </div>
         {size?.width && size?.width > 768 && <MainBackground />}
-        {size?.width && size?.width < 768 && reducer.user ? (
-          <BottomMenu />
-        ) : (
-          <Footer />
-        )}
+        {size?.width && size?.width < 768 && reducer.user && <BottomMenu />}
       </div>
     </>
   );
