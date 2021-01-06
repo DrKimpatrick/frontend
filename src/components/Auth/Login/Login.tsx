@@ -16,6 +16,7 @@ import { UserRole } from '../../../redux/action-types/user';
 import { ReactComponent as GoogleIcon } from '../../../assets/images/google-plus-square.svg';
 import { ReactComponent as GitHubIcon } from '../../../assets/images/github-square.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/images/linkedIn.svg';
+import './login.scss';
 
 const Login: FC = () => {
   const size = useWindowSize();
