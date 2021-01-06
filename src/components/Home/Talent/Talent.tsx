@@ -73,7 +73,7 @@ const Talent: FC<TalentProps> = ({ plans, productDetails, action }) => {
         <h2 className="font-medium text-xl">{planTitle.toUpperCase()}</h2>
       </div>
       <div className="mt-4">
-        {productDetails.features.map((feature: any) => (
+        {productDetails && productDetails.features.map((feature: any) => (
           <div key={feature.name} className="flex flex-col mt-4">
             <div className="flex">
               {feature.available ? (
