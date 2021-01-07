@@ -26,7 +26,7 @@ const HrLeftSideItem = (props: Props) => {
         {header.icon}
         <h5 className="mx-2 h5">{header.name}</h5>
       </div>
-      <ul className="w-full flex flex-column bg-card-preview">
+      <ul className="w-full flex bg-card-preview">
         {list.map((li, index) => (
           <li
             className="flex p-1 px-3 pr-2 rounded-sm items-center justify-between w-full"

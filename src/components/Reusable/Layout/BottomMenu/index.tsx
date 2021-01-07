@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeIcon from '@material-ui/icons/Home';
-import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
-import LayersIcon from '@material-ui/icons/Layers';
+import {
+  Home,
+  Layers,
+  NotificationsOff,
+  PowerSettingsNew,
+  VpnKey,
+  AccountCircle
+} from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
+import { RootState } from 'redux/store';
 import './BottomMenu.scss';
 import { Routes } from 'utils/routes';
 
@@ -26,6 +33,21 @@ export default function BottomMenu() {
 
   const [value, setValue] = React.useState<number>(0);
 
+  const reducer = useSelector((state: RootState) => {
+    const { user } = state.users;
+
+    return { user };
+  });
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('ttlnt.refresh');
+
+    window.location.href = '/';
+
+    return undefined;
+  };
+
   useEffect(() => {
     switch (value) {
       case 1:
@@ -41,6 +63,41 @@ export default function BottomMenu() {
     }
   }, [value, history]);
 
+  if (!reducer.user) {
+    return (
+      <BottomNavigation
+        value={value}
+        onChange={(_: any, newValue: React.SetStateAction<number>) => {
+          setValue(newValue);
+        }}
+        showLabels
+        classes={classes}
+      >
+        <BottomNavigationAction
+          showLabel
+          label="Home"
+          icon={<Home />}
+          data-testid="home-navigation"
+          onClick={() => history.push(Routes.Home)}
+        />
+        <BottomNavigationAction
+          showLabel
+          label="Login"
+          icon={<VpnKey />}
+          data-testid="login"
+          onClick={() => history.push(Routes.Login)}
+        />
+        <BottomNavigationAction
+          showLabel
+          label="Get Started"
+          icon={<AccountCircle />}
+          data-testid="signup"
+          onClick={() => history.push(Routes.Register)}
+        />
+      </BottomNavigation>
+    );
+  }
+
   return (
     <BottomNavigation
       value={value}
@@ -52,21 +109,22 @@ export default function BottomMenu() {
     >
       <BottomNavigationAction
         showLabel
-        label="Home"
-        icon={<HomeIcon />}
-        data-testid="home-navigation"
-      />
-      <BottomNavigationAction
-        showLabel
         label="Account"
-        icon={<LayersIcon />}
+        icon={<Layers />}
         data-testid="account-navigation"
       />
       <BottomNavigationAction
         showLabel
         label="Notifications"
-        icon={<NotificationsOffIcon />}
+        icon={<NotificationsOff />}
         data-testid="notification-navigation"
+      />
+      <BottomNavigationAction
+        showLabel
+        label="Logout"
+        icon={<PowerSettingsNew />}
+        data-testid="logout"
+        onClick={logout}
       />
     </BottomNavigation>
   );

@@ -526,7 +526,7 @@ Object {
                   </h5>
                 </div>
                 <ul
-                  class="w-full flex flex-column bg-card-preview"
+                  class="w-full flex bg-card-preview"
                 >
                   <li
                     class="flex p-1 px-3 pr-2 rounded-sm items-center justify-between w-full"
@@ -1076,7 +1076,7 @@ Object {
                 </h5>
               </div>
               <ul
-                class="w-full flex flex-column bg-card-preview"
+                class="w-full flex bg-card-preview"
               >
                 <li
                   class="flex p-1 px-3 pr-2 rounded-sm items-center justify-between w-full"

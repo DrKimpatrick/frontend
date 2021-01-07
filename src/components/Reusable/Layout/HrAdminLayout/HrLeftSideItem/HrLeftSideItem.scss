@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 262px;
+  width: 300px;
   .item {
     position: relative;
     width: 100%;
@@ -16,6 +16,7 @@
     }
     ul {
       margin-top: 0.5rem;
+      flex-direction: column;
     }
   }
 }

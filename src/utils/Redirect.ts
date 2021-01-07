@@ -14,6 +14,9 @@ export const redirect = (value: string[]) => {
       case UserRole.SuperAdmin:
         return String(Routes.SuperAdminDashboard);
 
+      case UserRole.EducationUser:
+        return String(Routes.SchoolDashboard);
+
       default:
         return undefined;
     }

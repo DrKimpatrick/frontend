@@ -11,7 +11,9 @@ import {
   Code as CodeIcon,
   ImportantDevices,
   AccountCircle,
-  Link
+  Link,
+  Work,
+  LibraryBooks
 } from '@material-ui/icons';
 import { useLocation, useHistory } from 'react-router-dom';
 import { RootState } from 'redux/store';
@@ -66,7 +68,7 @@ export const HrLayout: FC<Props> = props => {
   const leftSideItem = () => {
     return (
       <div className="leftSide">
-        {usedCode && (
+        {role === UserRole.RecruitmentAdmin && usedCode && (
           <HrLeftSideItem
             item={{
               header: { name: 'Used code', icon: <Link /> },
@@ -75,6 +77,27 @@ export const HrLayout: FC<Props> = props => {
                   name: 'Used code',
                   rightItem:
                     usedCode.length > 0 ? String(usedCode.length) : 'N/A'
+                }
+              ]
+            }}
+          />
+        )}
+        {role === UserRole.EducationUser && (
+          <HrLeftSideItem
+            item={{
+              header: { name: 'Subsidy', icon: <Work /> },
+              list: [
+                {
+                  name: 'Monthly',
+                  rightItem: 'N/A'
+                },
+                {
+                  name: 'Number of students subsidised',
+                  rightItem: 'N/A'
+                },
+                {
+                  name: 'Number of students currently enrolled',
+                  rightItem: 'N/A'
                 }
               ]
             }}
@@ -140,15 +163,15 @@ export const HrLayout: FC<Props> = props => {
                         menu={[
                           {
                             name: Tab.SubsidyStudent,
-                            icon: <ImportantDevices />,
+                            icon: <Work />,
                             onClick: value => setCurrentTab(value),
-                            url: Routes.HrAdminDashboard
+                            url: Routes.SubsidyStudent
                           },
                           {
                             name: Tab.EnrolledStudent,
-                            icon: <AccountCircle />,
+                            icon: <LibraryBooks />,
                             onClick: value => setCurrentTab(value),
-                            url: Routes.PotentialCandidate
+                            url: '#'
                           }
                         ]}
                         currentTab={currentTab}

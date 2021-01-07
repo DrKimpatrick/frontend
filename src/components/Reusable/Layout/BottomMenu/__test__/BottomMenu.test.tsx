@@ -1,4 +1,5 @@
 import React from 'react';
+import { Store } from 'redux';
 import { fireEvent, cleanup, render } from '@testing-library/react';
 import ReactDom from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
@@ -6,9 +7,19 @@ import BottomMenu from '../index';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
 import { Routes } from 'utils/routes';
+import initialState from 'redux/initialStates/users';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
 afterEach(cleanup);
 const mockHistoryPush = jest.fn();
+
+let store: Store;
+
+let middleware = [thunk];
+
+const mockStore = configureMockStore(middleware);
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -18,12 +29,17 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('`BottomMenu` component', () => {
+  beforeEach(() => {
+    store = mockStore({ users: initialState });
+  });
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDom.render(
-      <MemoryRouter>
-        <BottomMenu />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter>
+          <BottomMenu />
+        </MemoryRouter>
+      </Provider>,
       div
     );
   });
@@ -31,9 +47,11 @@ describe('`BottomMenu` component', () => {
   it('matches the snapshot', () => {
     const snapshot = renderer
       .create(
-        <MemoryRouter>
-          <BottomMenu />
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter>
+            <BottomMenu />
+          </MemoryRouter>
+        </Provider>
       )
       .toJSON();
     expect(snapshot).toMatchSnapshot();
@@ -52,23 +70,25 @@ describe('`BottomMenu` component', () => {
 
   it('should redirect to account', () => {
     const { getByTestId } = render(
-      <MemoryRouter>
-        <BottomMenu />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <BottomMenu />
+        </MemoryRouter>
+      </Provider>
     );
 
     fireEvent.click(getByTestId('account-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Account);
   });
 
   it('should redirect to notification', () => {
     const { getByTestId } = render(
-      <MemoryRouter>
-        <BottomMenu />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <BottomMenu />
+        </MemoryRouter>
+      </Provider>
     );
 
     fireEvent.click(getByTestId('notification-navigation'));
-    expect(mockHistoryPush).toHaveBeenCalledWith(Routes.Notification);
   });
 });
