@@ -143,13 +143,14 @@
   }
   .account-label {
     color: #8a8a8a;
+    margin-bottom: 4rem;
   }
   .front-mob {
     width: 100% !important;
     & h3 {
       padding-top: 0;
-      padding-bottom: 20px;
-      margin-top: -84px;
+      // padding-bottom: 20px;
+      // margin-top: -84px;
       text-align: center;
       color: #737373;
       font-size: 17px;

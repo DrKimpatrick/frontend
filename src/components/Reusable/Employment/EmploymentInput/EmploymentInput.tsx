@@ -194,7 +194,7 @@ const EmploymentInput: FC<Props> = props => {
                   name: item,
                   value: item
                 }))}
-                placeholder="Supervisor"
+                placeholder="Employment Reference"
                 onChange={value => {
                   formik.setFieldValue('supervisor.name', value, true);
                   if (value === Supervisor.NA) {
@@ -250,60 +250,6 @@ const EmploymentInput: FC<Props> = props => {
                     value={get(values.supervisor.detail, 'phoneNumber', '')}
                     onChange={formik.handleChange}
                     name="supervisor.detail.phoneNumber"
-                  />
-                </div>
-              </>
-            )}
-            {values.showReference && (
-              <div className="text-gray-texts mt-2">
-                <CustomSelect
-                  option={Object.values(EmploymentReference).map(item => ({
-                    name: item,
-                    value: item
-                  }))}
-                  placeholder="Reference"
-                  onChange={value => {
-                    formik.setFieldValue('reference.name', value, true);
-                    formik.setFieldValue('showReferenceDetail', true);
-                    formik.setFieldValue('currentReference', value);
-                  }}
-                  name="reference.name"
-                  value={values.reference.name}
-                />
-                {getErrors('reference')}
-              </div>
-            )}
-
-            {values.showReferenceDetail && values.reference && (
-              <>
-                <div className="text-gray-texts mt-2">
-                  <input
-                    type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentReference} name`}
-                    value={get(values.reference.detail, 'name', '')}
-                    onChange={formik.handleChange}
-                    name="reference.detail.name"
-                  />
-                </div>
-                <div className="text-gray-texts mt-2">
-                  <input
-                    type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentReference} email`}
-                    value={get(values.reference.detail, 'email', '')}
-                    onChange={formik.handleChange}
-                    name="reference.detail.email"
-                  />
-                </div>
-                <div className="text-gray-texts mt-2">
-                  <input
-                    type="text"
-                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentReference} phone number`}
-                    value={get(values.reference.detail, 'phoneNumber', '')}
-                    onChange={formik.handleChange}
-                    name="reference.detail.phoneNumber"
                   />
                 </div>
               </>
@@ -379,6 +325,62 @@ const EmploymentInput: FC<Props> = props => {
               />
               <label htmlFor="">I am currently working here</label>
             </div>
+
+            {values.showReference && (
+              <div className="text-gray-texts mt-2">
+                <CustomSelect
+                  option={Object.values(EmploymentReference).map(item => ({
+                    name: item,
+                    value: item
+                  }))}
+                  placeholder="Reference"
+                  onChange={value => {
+                    formik.setFieldValue('reference.name', value, true);
+                    formik.setFieldValue('showReferenceDetail', true);
+                    formik.setFieldValue('currentReference', value);
+                  }}
+                  name="reference.name"
+                  value={values.reference.name}
+                />
+                {getErrors('reference')}
+              </div>
+            )}
+
+            {values.showReferenceDetail && values.reference && (
+              <>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} name`}
+                    value={get(values.reference.detail, 'name', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.name"
+                  />
+                </div>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} email`}
+                    value={get(values.reference.detail, 'email', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.email"
+                  />
+                </div>
+                <div className="text-gray-texts mt-2">
+                  <input
+                    type="text"
+                    className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
+                    placeholder={`${values.currentReference} phone number`}
+                    value={get(values.reference.detail, 'phoneNumber', '')}
+                    onChange={formik.handleChange}
+                    name="reference.detail.phoneNumber"
+                  />
+                </div>
+              </>
+            )}
+            
             {userSkill && userSkill.length > 0 && (
               <div className="text-gray-texts mt-2">
                 <Select

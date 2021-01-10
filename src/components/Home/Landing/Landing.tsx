@@ -6,7 +6,6 @@ import { accounts, testmonials } from 'utils/staticData';
 import useWindowSize from 'utils/useWindowSize';
 import { NavBar, BottomMenu, MainBackground } from 'components/Reusable';
 import { RootState } from 'redux/store';
-import IsLoggedIn from '../../Reusable/Layout/NavBar/IsLoggedIn';
 import { Testmonials, FrontView, Talent, HowItWork, AccountType } from '..';
 import './Landing.scss';
 
@@ -38,11 +37,8 @@ const Landing: FC = () => {
         {(size?.width && size?.width > 768) || reducer.user ? (
           <NavBar />
         ) : (
-          <div className="flex justify-between items-center">
+          <div className="flex justify-center">
             <NavBar />
-            <div className="flex flex-col mr-4 auth-container">
-              <IsLoggedIn />
-            </div>
           </div>
         )}
         <div className="front-view">
