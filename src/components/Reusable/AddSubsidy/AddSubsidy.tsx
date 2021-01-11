@@ -9,6 +9,7 @@ import { RootState } from '../../../redux/store';
 import { FormTitle } from '../Forms/FormTitle';
 import Loader from '../Loader/Loader';
 import { Routes } from '../../../utils/routes';
+import { subsidySchema } from './schema';
 
 interface ProductResponse {
   adminProducts: any[];
@@ -16,7 +17,7 @@ interface ProductResponse {
 }
 
 const AddSubsidy: React.FC = () => {
-  const defaultValues = { plan: '{}', tier: '{}' };
+  const defaultValues = { plan: '', tier: '' };
 
   const [plans, setPlans] = useState<Record<string, any>[]>([]);
   const [tiers, setTiers] = useState<Record<string, any>[]>([]);
@@ -76,7 +77,7 @@ const AddSubsidy: React.FC = () => {
       <Formik
         enableReinitialize={false}
         initialValues={defaultValues}
-        validateOnChange
+        validationSchema={subsidySchema}
         onSubmit={onSubmitHandler}
       >
         {formik => (

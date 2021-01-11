@@ -2,14 +2,14 @@
 
 exports[`Front View Component should render title and description correctly component correctly 1`] = `
 <div
-  className="sc-bdnylx jEnVUK"
+  className="sc-bdfBwQ lmLTRG"
   data-testid="frontView"
 >
   <div
-    className="sc-gtssRu gKWQKU"
+    className="sc-gsTCUz hcrBnt"
   >
     <h1
-      className="sc-dlnjPT hOHxbY pt-24 text-4xl text-white font-semibold"
+      className="sc-dlfnbm kBWZqa pt-24 text-4xl text-white font-semibold"
     >
       Tech Talent QA
     </h1>
@@ -17,7 +17,7 @@ exports[`Front View Component should render title and description correctly comp
       className="mt-4 text-white w-2/4 front-mob"
     >
       <ul
-        className="sc-hKFyIo bGDfPj"
+        className="sc-hKgILt gfurTp"
       >
         <li>
           Certified education and employment
@@ -34,12 +34,12 @@ exports[`Front View Component should render title and description correctly comp
       className="mt-4 text-white w-4/6 front-mob"
     >
       <h5
-        className="sc-eCApGN bmQaRK mb-1"
+        className="sc-eCssSg eCNzpr mb-1"
       >
         Tech Talent QA ensures
       </h5>
       <ul
-        className="sc-hKFyIo bGDfPj"
+        className="sc-hKgILt gfurTp"
       >
         <li>
           Members are current on the latest technology changes
@@ -53,7 +53,7 @@ exports[`Front View Component should render title and description correctly comp
       </ul>
     </div>
     <div
-      className="sc-jSFkmK fahdgH flex justify-between w-2/4 mt-8 pb-8 front-mob"
+      className="sc-jSgupP dfqLiH flex justify-between w-2/4 mt-8 pb-8 front-mob"
     >
       <a
         className="bg-green-500 w-40 text-white font-medium py-2 px-4 rounded text-center m-2"
