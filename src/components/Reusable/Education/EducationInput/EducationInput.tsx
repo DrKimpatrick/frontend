@@ -64,7 +64,7 @@ const EducationInput: FC<Props> = props => {
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
-                placeholder="School Name"
+                placeholder="School Name *"
                 name="schoolName"
                 value={values.schoolName}
                 onChange={formik.handleChange}
@@ -88,13 +88,13 @@ const EducationInput: FC<Props> = props => {
             <div className="text-gray-texts mt-2">
               <CustomSelect
                 name="level"
+                placeholder="Select level *"
                 value={values.level}
                 onChange={value => formik.setFieldValue('level', value, true)}
                 option={Object.values(EducationLevel).map(item => ({
                   name: item,
                   value: item
                 }))}
-                placeholder="Select level"
               />
               {errors && errors.level && (
                 <div className="inputError">{errors.level}</div>
@@ -106,7 +106,7 @@ const EducationInput: FC<Props> = props => {
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                placeholder="Degree or Certification Received"
+                placeholder="Degree or Certification Received *"
                 value={values.degreeOrCertification}
                 onChange={formik.handleChange}
                 name="degreeOrCertification"
@@ -130,8 +130,8 @@ const EducationInput: FC<Props> = props => {
             </div>
 
             <div className="flex justify-between text-gray-texts dateContainer">
-              <div className="item w-full h-full pt-1 pb-1 mt-2">
-                <label htmlFor="start date">Start date</label>
+              <div className="item w-full h-full pt-1 pb-1 mt-2 required">
+                <label htmlFor="start date">Start date *</label>
                 <input
                   id="date"
                   type="date"
@@ -217,7 +217,7 @@ const EducationInput: FC<Props> = props => {
                     <div className="responsibilities addBorder">
                       <input
                         type="text"
-                        placeholder="Specializations"
+                        placeholder="Specializations *"
                         className="outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
                         name="specialization"
                         value={values.specialization}

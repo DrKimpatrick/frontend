@@ -79,7 +79,7 @@ const FormCompanySchool: FC<Props> = ({
   return (
     <form className="form-company-school" onSubmit={formik.handleSubmit}>
       <div className="text-gray-texts mt-8">
-        <label>{label || 'Company'} Name</label>
+        <label>{label || 'Company'} Name *</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -92,7 +92,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>{label || 'Company'} Address</label>
+        <label>{label || 'Company'} Address *</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -105,7 +105,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>Website</label>
+        <label>Website *</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -118,7 +118,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>Account Manager Name/Title</label>
+        <label>Account Manager Name/Title *</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -131,7 +131,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>Email</label>
+        <label>Email *</label>
         <input
           type="email"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
@@ -144,7 +144,7 @@ const FormCompanySchool: FC<Props> = ({
         )}
       </div>
       <div className="text-gray-texts mt-4">
-        <label>Phone</label>
+        <label>Phone *</label>
         <input
           type="text"
           className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"

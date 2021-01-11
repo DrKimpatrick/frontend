@@ -136,7 +136,7 @@ const Login: FC = () => {
               type="email"
               name="username"
               className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full my-8 outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
-              placeholder="Email address"
+              placeholder="Email address *"
               onChange={onChangeInput}
               value={data.username}
             />
@@ -146,7 +146,7 @@ const Login: FC = () => {
                 type={hidden ? 'password' : 'text'}
                 name="password"
                 className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full my-8 outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
-                placeholder="Password"
+                placeholder="Password *"
                 onChange={onChangeInput}
                 value={data.password}
               />

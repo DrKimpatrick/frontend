@@ -158,7 +158,7 @@ const EmploymentInput: FC<Props> = props => {
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
-                placeholder="Company Name"
+                placeholder="Company Name *"
                 name="companyName"
                 value={values.companyName}
                 onChange={formik.handleChange}
@@ -175,7 +175,7 @@ const EmploymentInput: FC<Props> = props => {
                   name: item,
                   value: item
                 }))}
-                placeholder="Employment type"
+                placeholder="Employment type *"
                 value={values.employmentType}
                 onChange={value =>
                   formik.setFieldValue('employmentType', value, true)
@@ -194,7 +194,7 @@ const EmploymentInput: FC<Props> = props => {
                   name: item,
                   value: item
                 }))}
-                placeholder="Employment Reference"
+                placeholder="Employment Reference *"
                 onChange={value => {
                   formik.setFieldValue('supervisor.name', value, true);
                   if (value === Supervisor.NA) {
@@ -226,7 +226,7 @@ const EmploymentInput: FC<Props> = props => {
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentSupervisor} name`}
+                    placeholder={`${values.currentSupervisor} name *`}
                     value={get(values.supervisor.detail, 'name', '')}
                     onChange={formik.handleChange}
                     name="supervisor.detail.name"
@@ -236,7 +236,7 @@ const EmploymentInput: FC<Props> = props => {
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentSupervisor} email`}
+                    placeholder={`${values.currentSupervisor} email *`}
                     value={get(values.supervisor.detail, 'email', '')}
                     onChange={formik.handleChange}
                     name="supervisor.detail.email"
@@ -246,7 +246,7 @@ const EmploymentInput: FC<Props> = props => {
                   <input
                     type="text"
                     className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                    placeholder={`${values.currentSupervisor} phone number`}
+                    placeholder={`${values.currentSupervisor} phone number *`}
                     value={get(values.supervisor.detail, 'phoneNumber', '')}
                     onChange={formik.handleChange}
                     name="supervisor.detail.phoneNumber"
@@ -259,7 +259,7 @@ const EmploymentInput: FC<Props> = props => {
               <input
                 type="text"
                 className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
-                placeholder="Your Title"
+                placeholder="Your Title *"
                 value={values.title}
                 onChange={formik.handleChange}
                 name="title"
@@ -271,8 +271,8 @@ const EmploymentInput: FC<Props> = props => {
             </div>
 
             <div className="flex justify-between text-gray-texts dateContainer">
-              <div className="item w-full h-full pt-1 pb-1">
-                <label htmlFor="start date">Start date</label>
+              <div className="item w-full h-full pt-1 pb-1 required">
+                <label className="required" htmlFor="start date">Start date *</label>
                 <input
                   id="date"
                   type="date"

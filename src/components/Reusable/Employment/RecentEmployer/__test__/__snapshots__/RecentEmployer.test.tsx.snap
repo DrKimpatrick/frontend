@@ -44,7 +44,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
             className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height"
             name="companyName"
             onChange={[Function]}
-            placeholder="Company Name"
+            placeholder="Company Name *"
             type="text"
             value=""
           />
@@ -63,7 +63,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
               <option
                 value=""
               >
-                Employment type
+                Employment type *
               </option>
               <option
                 value="Contract"
@@ -115,7 +115,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
               <option
                 value=""
               >
-                Employment Reference
+                Employment Reference *
               </option>
               <option
                 value="Staffing"
@@ -165,7 +165,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
             className="border outline-none bg-transparent rounded w-full px-3 text-gray-texts input-height"
             name="title"
             onChange={[Function]}
-            placeholder="Your Title"
+            placeholder="Your Title *"
             type="text"
             value=""
           />
@@ -174,12 +174,13 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
           className="flex justify-between text-gray-texts dateContainer"
         >
           <div
-            className="item w-full h-full pt-1 pb-1"
+            className="item w-full h-full pt-1 pb-1 required"
           >
             <label
+              className="required"
               htmlFor="start date"
             >
-              Start date
+              Start date *
             </label>
             <input
               id="date"

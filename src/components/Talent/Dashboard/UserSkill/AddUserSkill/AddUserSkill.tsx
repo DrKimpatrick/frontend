@@ -157,7 +157,7 @@ const AddUserSkill: FC<Props> = props => {
                               setSkillItem(skills);
                             }
                           }}
-                          placeholder="write your skill"
+                          placeholder="Write your skill *"
                           className="input"
                         />
                         <button
@@ -207,7 +207,7 @@ const AddUserSkill: FC<Props> = props => {
                         onChange={formik.handleChange}
                         value={values.level}
                       >
-                        <option value="">select level</option>
+                        <option value="">select level *</option>
                         {Object.values(SkillLevel).map((level, index) => (
                           <option value={level} key={index}>
                             {level}

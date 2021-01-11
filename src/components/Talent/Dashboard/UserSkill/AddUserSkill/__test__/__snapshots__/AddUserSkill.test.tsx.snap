@@ -74,7 +74,7 @@ Object {
                 <option
                   value=""
                 >
-                  select level
+                  select level *
                 </option>
                 <option
                   value="beginner"
@@ -199,7 +199,7 @@ Object {
                 <option
                   value=""
                 >
-                  select level
+                  select level *
                 </option>
                 <option
                   value="beginner"

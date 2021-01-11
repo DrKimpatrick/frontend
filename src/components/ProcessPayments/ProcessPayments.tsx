@@ -232,7 +232,7 @@ const ProcessPayments = () => {
                 >
                   <div className="mb-4">
                     <label className="mb-2 text-gray-600 text-sm">
-                      Cardholder Name
+                      Cardholder Name *
                     </label>
                     <Field
                       type="text"
@@ -247,7 +247,7 @@ const ProcessPayments = () => {
 
                   <div className="mb-4">
                     <label className="mb-2 text-gray-600 text-sm">
-                      Billing Address
+                      Billing Address *
                     </label>
                     <Field
                       type="text"
@@ -262,7 +262,7 @@ const ProcessPayments = () => {
 
                   <div>
                     <label className="mb-2 text-gray-600 text-sm">
-                      Billing Details
+                      Billing Details *
                     </label>
                     <CardElement
                       className="stripe-input"

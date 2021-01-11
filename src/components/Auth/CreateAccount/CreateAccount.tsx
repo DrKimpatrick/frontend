@@ -142,7 +142,7 @@ const GetStarted: FC<props> = (props: any) => {
                 type="email"
                 name="email"
                 className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
-                placeholder="Email address"
+                placeholder="Email address *"
                 onChange={onChangeInput}
               />
               <p className="text-red-600 text-xs">
@@ -157,7 +157,7 @@ const GetStarted: FC<props> = (props: any) => {
                 type="text"
                 name="username"
                 className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
-                placeholder="Username"
+                placeholder="Username *"
                 onChange={onChangeInput}
               />
               <p className="text-red-600 text-xs">
@@ -172,7 +172,7 @@ const GetStarted: FC<props> = (props: any) => {
                   type={hidden ? 'password' : 'text'}
                   name="password"
                   className="border-0 bg-transparent text-white border-b-2 border-gray-600 w-full outline-none  h-10 px-3 placeholder-gray-100 placeholder-opacity-50 auth-input"
-                  placeholder="Password"
+                  placeholder="Password *"
                   onChange={onChangeInput}
                 />
                 {hidden ? (

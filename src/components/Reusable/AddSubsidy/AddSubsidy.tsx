@@ -84,7 +84,7 @@ const AddSubsidy: React.FC = () => {
           <form className="form-company-school" onSubmit={formik.handleSubmit}>
             <div className="text-gray-texts flex flex-col">
               <label htmlFor="plan" className="mt-4 mb-2">
-                Subsidy Term
+                Subsidy Term *
               </label>
               <select
                 className="w-full border border-gray-400 p-2 focus:outline-none focus:border-gray-500 rounded input-height"
@@ -115,7 +115,7 @@ const AddSubsidy: React.FC = () => {
 
             <div className="text-gray-texts flex flex-col">
               <label htmlFor="tier" className="mt-4 mb-2">
-                Number of subsidized students
+                Number of subsidized students *
               </label>
               <select
                 className="w-full border border-gray-400 p-2 focus:outline-none focus:border-gray-500 rounded input-height"
