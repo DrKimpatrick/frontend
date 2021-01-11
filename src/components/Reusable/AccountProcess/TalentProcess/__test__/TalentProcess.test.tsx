@@ -1,6 +1,6 @@
 import React from 'react';
 import Component from '../TalentProcess';
-import { cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Store } from 'redux';
@@ -99,15 +99,13 @@ describe('Talent Process', () => {
   });
 
   it('it should create snapshot', () => {
-    const tree = renderer
-      .create(
+    const tree = render(
         <Provider store={store}>
           <Router>
             <Component />
           </Router>
         </Provider>
-      )
-      .toJSON();
+      );
 
     expect(tree).toMatchSnapshot();
   });

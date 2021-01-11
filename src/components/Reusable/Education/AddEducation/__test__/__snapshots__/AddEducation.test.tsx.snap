@@ -72,6 +72,11 @@ exports[`\`AddEducation\` component matches the snapshot 1`] = `
             value=""
           >
             <option
+              value=""
+            >
+              Select level
+            </option>
+            <option
               value="High school"
             >
               High school

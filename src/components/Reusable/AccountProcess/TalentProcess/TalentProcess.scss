@@ -1,0 +1,22 @@
+.steppers {
+  position: relative;
+  width: 555px;
+  margin: auto;
+  .MuiMobileStepper-progress {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .MuiLinearProgress-barColorPrimary {
+    background-color: #5f5f5f3d;
+  }
+  .MuiLinearProgress-colorPrimary {
+    background-color: #e0e0e0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .steppers {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

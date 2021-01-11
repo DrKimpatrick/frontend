@@ -7,22 +7,18 @@ import {
   ImportContacts
 } from '@material-ui/icons';
 import './HotItWork.scss';
-import {
-  talentStep,
-  companyStep,
-  humanResourceStep,
-  schoolStep,
-  trainingStep
-} from 'utils/staticData';
+import useWindowSize from 'utils/useWindowSize';
+import { MobileHowItWork } from './MobileHowItWork';
+import { Step } from './Step';
 
-enum HowItWorkStep {
+export enum HowItWorkStep {
   Talent = 'Talent',
   School = 'School',
   Company = 'Companies',
   HumanResource = 'Human Resource',
   Training = 'Training'
 }
-const steps = [
+export const steps = [
   {
     name: HowItWorkStep.Talent,
     icon: <LaptopMac />
@@ -52,6 +48,8 @@ const HowItWork = (props: Props) => {
 
   const { setStepName } = props;
 
+  const size = useWindowSize();
+
   useEffect(() => {
     setStepName(activeStep);
   }, [activeStep, setStepName]);
@@ -64,91 +62,34 @@ const HowItWork = (props: Props) => {
       >
         How it works
       </h2>
-      <div className="my-10">
-        <ul className="flex flex-wrap list-none items-center justify-center">
-          {steps.map((item, i) => (
-            <li
-              className="w-full md:w-1/5 flex items-center justify-center"
-              key={i}
-            >
-              <div
-                className={`flex items-center buttons ${
-                  activeStep === item.name ? 'active' : ''
-                }`}
-                onClick={() => setActiveStep(item.name)}
-              >
-                {item.icon}
-                <h5 className="mx-1">{item.name}</h5>
-              </div>
-            </li>
-          ))}
-        </ul>
-        {activeStep === HowItWorkStep.School && (
-          <ul className="flex flex-wrap list-none items-center justify-center my-8 stepDetail">
-            {schoolStep.map((item, i) => (
+      {size && size.width && size.width > 768 ? (
+        <div className="my-10">
+          <ul className="flex flex-wrap list-none items-center justify-center">
+            {steps.map((item, i) => (
               <li
-                className="w-full md:w-1/5 flex items-center justify-center flex-col text-center"
+                className="w-full md:w-1/5 flex items-center justify-center"
                 key={i}
               >
-                <div className="font-bold stepNumber">{item.number}</div>
-                <div className="description">{item.description}</div>
+                <div
+                  className={`flex items-center buttons ${
+                    activeStep === item.name ? 'active' : ''
+                  }`}
+                  onClick={() => setActiveStep(item.name)}
+                >
+                  {item.icon}
+                  <h5 className="mx-1">{item.name}</h5>
+                </div>
               </li>
             ))}
           </ul>
-        )}
-        {activeStep === HowItWorkStep.Talent && (
-          <ul className="flex flex-wrap list-none items-center justify-center my-8 stepDetail">
-            {talentStep.map((item, i) => (
-              <li
-                className="w-full md:w-1/5 flex items-center justify-center flex-col text-center"
-                key={i}
-              >
-                <div className="font-bold stepNumber">{item.number}</div>
-                <div className="description">{item.description}</div>
-              </li>
-            ))}
-          </ul>
-        )}
-        {activeStep === HowItWorkStep.Company && (
-          <ul className="flex flex-wrap list-none items-center justify-center my-8 stepDetail">
-            {companyStep.map((item, i) => (
-              <li
-                className="w-full md:w-1/5 flex items-center justify-center flex-col text-center"
-                key={i}
-              >
-                <div className="font-bold stepNumber">{item.number}</div>
-                <div className="description">{item.description}</div>
-              </li>
-            ))}
-          </ul>
-        )}
-        {activeStep === HowItWorkStep.Training && (
-          <ul className="flex flex-wrap list-none items-center justify-center my-8 stepDetail">
-            {trainingStep.map((item, i) => (
-              <li
-                className="w-full md:w-1/5 flex items-center justify-center flex-col text-center"
-                key={i}
-              >
-                <div className="font-bold stepNumber">{item.number}</div>
-                <div className="description">{item.description}</div>
-              </li>
-            ))}
-          </ul>
-        )}
-        {activeStep === HowItWorkStep.HumanResource && (
-          <ul className="flex flex-wrap list-none items-center justify-center my-8 stepDetail">
-            {humanResourceStep.map((item, i) => (
-              <li
-                className="w-full md:w-1/5 flex items-center justify-center flex-col text-center"
-                key={i}
-              >
-                <div className="font-bold stepNumber">{item.number}</div>
-                <div className="description">{item.description}</div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+          <Step activeStep={activeStep} />
+        </div>
+      ) : (
+        <MobileHowItWork
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+        />
+      )}
     </div>
   );
 };

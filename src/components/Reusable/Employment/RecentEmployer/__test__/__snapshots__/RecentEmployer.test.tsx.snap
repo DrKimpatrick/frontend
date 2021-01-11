@@ -115,7 +115,7 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
               <option
                 value=""
               >
-                Supervisor
+                Employment Reference
               </option>
               <option
                 value="Staffing"

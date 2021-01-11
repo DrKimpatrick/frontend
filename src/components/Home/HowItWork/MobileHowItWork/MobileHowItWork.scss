@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  .mobHowItWork {
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    .heading{
+        position: relative;
+        color: rgba(115, 115, 115, 0.2);
+        h5{
+            margin-left: 10px;
+        }
+    }
+    ul{
+        margin-top: 0;
+    }
+  }
+}

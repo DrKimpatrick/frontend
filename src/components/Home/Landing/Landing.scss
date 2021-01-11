@@ -21,3 +21,30 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .type-title{
+    text-align: center;
+  }
+  .account-type-wrap {
+    width: 100%;
+    .account-type {
+      svg{
+        width: 14px;
+        height: 14px;
+      }
+      .account-type-title{
+        font-size: 13px;
+      }
+      .account-status {
+        height: auto;
+        padding: 15px;
+      }
+    }
+    .account-type-main-content {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -94,6 +94,7 @@ const EducationInput: FC<Props> = props => {
                   name: item,
                   value: item
                 }))}
+                placeholder="Select level"
               />
               {errors && errors.level && (
                 <div className="inputError">{errors.level}</div>

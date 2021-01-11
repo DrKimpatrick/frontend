@@ -42,15 +42,15 @@ export enum UserRole {
 }
 
 export enum TalentProcess {
-  CurrentRole = 'currentRole',
+  // CurrentRole = 'currentRole',
   SkillRanking = 'skillRanking',
   RecentEmployer = 'recentEmployer',
+  SingleEmployment = 'singleEmployment',
+  ListEmployment = 'listEmployment',
   AddEducation = 'addEducation',
-  Completed = 'completed',
   SingleEducation = 'singleEducation',
   ListEducation = 'listEducation',
-  SingleEmployment = 'singleEmployment',
-  ListEmployment = 'listEmployment'
+  Completed = 'completed'
 }
 
 export enum AdminsProcess {

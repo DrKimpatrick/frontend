@@ -380,7 +380,7 @@ const EmploymentInput: FC<Props> = props => {
                 </div>
               </>
             )}
-            
+
             {userSkill && userSkill.length > 0 && (
               <div className="text-gray-texts mt-2">
                 <Select
