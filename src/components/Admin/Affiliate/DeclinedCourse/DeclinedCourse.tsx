@@ -16,6 +16,8 @@ import { setActivePath } from 'redux/actions/user';
 const DeclinedCourse: FC = () => {
   const itemPerPage = 5;
 
+  const [loading = false, setLoading] = useState<boolean>();
+
   const [offset = 0, setOffset] = useState<number>();
 
   const [page = 0, setPage] = useState<number>();
@@ -25,12 +27,12 @@ const DeclinedCourse: FC = () => {
   const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, declinedCourse } = state.courses;
+    const { declinedCourse } = state.courses;
 
-    return { loading, declinedCourse };
+    return { declinedCourse };
   });
 
-  const { declinedCourse, loading } = reducer;
+  const { declinedCourse } = reducer;
 
   const loadItems = useCallback(() => {
     listCourseByStatus({
@@ -38,11 +40,19 @@ const DeclinedCourse: FC = () => {
       types: CourseTypes.ListDeclinedCourse,
       status: CourseStatus.Declined
     })(dispatch);
+
+    setLoading(true);
   }, [dispatch, offset]);
 
   useEffect(() => {
     setActivePath(location.pathname)(dispatch);
   }, [dispatch, location.pathname]);
+
+  useEffect(() => {
+    if (declinedCourse) {
+      setLoading(false);
+    }
+  }, [declinedCourse]);
 
   const pageChange: OnPageChangeCallback = value => {
     const selectedPage = value.selected;
@@ -74,6 +84,7 @@ const DeclinedCourse: FC = () => {
         { name: 'Affiliates', url: Routes.Affiliate },
         { name: 'Declined courses', url: Routes.DeclinedCourse }
       ]}
+      showCourse
     >
       <div className="acceptedCourse">
         {declinedCourse && declinedCourse.courses && (

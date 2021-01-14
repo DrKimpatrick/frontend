@@ -16,6 +16,8 @@ import { setActivePath } from 'redux/actions/user';
 const PendingCourse: FC = () => {
   const itemPerPage = 5;
 
+  const [loading = false, setLoading] = useState<boolean>();
+
   const [offset = 0, setOffset] = useState<number>();
 
   const [page = 0, setPage] = useState<number>();
@@ -25,12 +27,12 @@ const PendingCourse: FC = () => {
   const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
-    const { loading, pendingCourse } = state.courses;
+    const { pendingCourse } = state.courses;
 
-    return { loading, pendingCourse };
+    return { pendingCourse };
   });
 
-  const { pendingCourse, loading } = reducer;
+  const { pendingCourse } = reducer;
 
   const loadItems = useCallback(() => {
     listCourseByStatus({
@@ -38,11 +40,19 @@ const PendingCourse: FC = () => {
       types: CourseTypes.ListPendingCourse,
       status: CourseStatus.Pending
     })(dispatch);
+
+    setLoading(true);
   }, [dispatch, offset]);
 
   useEffect(() => {
     setActivePath(location.pathname)(dispatch);
   }, [dispatch, location.pathname]);
+
+  useEffect(() => {
+    if (pendingCourse) {
+      setLoading(false);
+    }
+  }, [pendingCourse]);
 
   const pageChange: OnPageChangeCallback = value => {
     const selectedPage = value.selected;
@@ -73,6 +83,7 @@ const PendingCourse: FC = () => {
         { name: 'Affiliates', url: Routes.Affiliate },
         { name: 'Pending courses', url: Routes.PendingCourse }
       ]}
+      showCourse
     >
       <div className="acceptedCourse">
         {pendingCourse && pendingCourse.courses && (

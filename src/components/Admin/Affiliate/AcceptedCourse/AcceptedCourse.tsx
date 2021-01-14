@@ -16,6 +16,8 @@ import { setActivePath } from 'redux/actions/user';
 const AcceptedCourse: FC = () => {
   const itemPerPage = 5;
 
+  const [loading = false, setLoading] = useState<boolean>();
+
   const [offset = 0, setOffset] = useState<number>();
 
   const [page = 0, setPage] = useState<number>();
@@ -25,12 +27,12 @@ const AcceptedCourse: FC = () => {
   const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
-    const { acceptedCourse, loading } = state.courses;
+    const { acceptedCourse, loading: loadingData } = state.courses;
 
-    return { acceptedCourse, loading };
+    return { acceptedCourse, loadingData };
   });
 
-  const { acceptedCourse, loading } = reducer;
+  const { acceptedCourse } = reducer;
 
   const loadItems = useCallback(() => {
     listCourseByStatus({
@@ -52,11 +54,19 @@ const AcceptedCourse: FC = () => {
 
   useEffect(() => {
     loadItems();
+
+    setLoading(true);
   }, [loadItems, offset]);
 
   useEffect(() => {
     setActivePath(location.pathname)(dispatch);
   }, [dispatch, location.pathname]);
+
+  useEffect(() => {
+    if (acceptedCourse) {
+      setLoading(false);
+    }
+  }, [acceptedCourse]);
 
   if (loading) {
     return (
@@ -74,6 +84,7 @@ const AcceptedCourse: FC = () => {
         { name: 'Affiliates', url: Routes.Affiliate },
         { name: 'Accepted courses', url: Routes.AcceptedCourse }
       ]}
+      showCourse
     >
       <div className="acceptedCourse">
         {acceptedCourse && acceptedCourse.courses && (

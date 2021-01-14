@@ -454,16 +454,6 @@ exports[`Accepted Course it should create snapshot 1`] = `
                   Company
                 </a>
               </li>
-              <li
-                className=""
-              >
-                <a
-                  href="/training-affiliate"
-                  onClick={[Function]}
-                >
-                  Training
-                </a>
-              </li>
             </ul>
           </li>
           <li>
@@ -532,6 +522,117 @@ exports[`Accepted Course it should create snapshot 1`] = `
           }
         }
       >
+        <div
+          className="courseStatistic w-full flex items-center"
+        >
+          <div
+            className="export"
+          >
+            <button
+              className="flex items-center"
+              type="button"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"
+                />
+              </svg>
+              <h5>
+                Export
+              </h5>
+            </button>
+          </div>
+          <div
+            className="statistic"
+          >
+            <ul>
+              <li>
+                <a
+                  href="/accepted-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Accepted Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#4d9b62",
+                      }
+                    }
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/pending-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Pending Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#1437b1",
+                      }
+                    }
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/declined-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Declined Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#8f2517",
+                      }
+                    }
+                  />
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                >
+                  Create Affiliate
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div
           className="acceptedCourse"
         >

@@ -36,9 +36,10 @@ interface Props {
   role: string;
 }
 export const HrLayout: FC<Props> = props => {
-  const [currentTab = Routes.HrAdminDashboard, setCurrentTab] = useState<
-    string
-  >();
+  const [
+    currentTab = Routes.HrAdminDashboard,
+    setCurrentTab
+  ] = useState<string>();
 
   const location = useLocation();
 

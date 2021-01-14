@@ -1,0 +1,38 @@
+.courseStatistic {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+  .export {
+    position: relative;
+    font-size: 14px;
+    color: rgb(161, 161, 161);
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    h5 {
+      color: rgb(161, 161, 161);
+      margin-bottom: 0;
+    }
+  }
+  .statistic {
+    flex-grow: 1;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      li {
+        margin-left: 40px;
+        button {
+          border: none;
+          background: #032499;
+          color: white;
+          font-size: 13px;
+          padding: 10px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}

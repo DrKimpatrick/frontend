@@ -272,7 +272,9 @@ const EmploymentInput: FC<Props> = props => {
 
             <div className="flex justify-between text-gray-texts dateContainer">
               <div className="item w-full h-full pt-1 pb-1 required">
-                <label className="required" htmlFor="start date">Start date *</label>
+                <label className="required" htmlFor="start date">
+                  Start date *
+                </label>
                 <input
                   id="date"
                   type="date"

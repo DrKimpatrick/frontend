@@ -4,7 +4,10 @@ export enum CourseTypes {
   ListAcceptedCourse = 'CourseTypes/ListAcceptedCourse',
   ListDeclinedCourse = 'CourseTypes/ListDeclinedCourse',
   Loading = 'CourseTypes/Loading',
-  Errors = 'CourseTypes/Errors'
+  Errors = 'CourseTypes/Errors',
+  NumberOfPendingCourse = 'CourseTypes/NumberOfPendingCourse',
+  NumberOfDeclinedCourse = 'CourseTypes/NumberOfDeclinedCourse',
+  NumberOfAcceptedCourse = 'CourseTypes/NumberOfAcceptedCourse'
 }
 
 export enum CourseStatus {
@@ -82,9 +85,45 @@ interface Errors {
   };
 }
 
+interface NumberOfPendingCourse {
+  type: typeof CourseTypes.NumberOfPendingCourse;
+  payload: {
+    data: {
+      data: Course[];
+      totalItems: number;
+      lastUpdatedItem: Course;
+    };
+  };
+}
+
+interface NumberOfDeclinedCourse {
+  type: typeof CourseTypes.NumberOfDeclinedCourse;
+  payload: {
+    data: {
+      data: Course[];
+      totalItems: number;
+      lastUpdatedItem: Course;
+    };
+  };
+}
+
+interface NumberOfAcceptedCourse {
+  type: typeof CourseTypes.NumberOfAcceptedCourse;
+  payload: {
+    data: {
+      data: Course[];
+      totalItems: number;
+      lastUpdatedItem: Course;
+    };
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
   | ListPendingCourse
   | Loading
-  | Errors;
+  | Errors
+  | NumberOfAcceptedCourse
+  | NumberOfDeclinedCourse
+  | NumberOfPendingCourse;

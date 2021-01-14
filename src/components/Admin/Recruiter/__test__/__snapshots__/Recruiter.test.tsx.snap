@@ -396,16 +396,6 @@ exports[`Recruiter it should create snapshot 1`] = `
                   Company
                 </a>
               </li>
-              <li
-                className=""
-              >
-                <a
-                  href="/training-affiliate"
-                  onClick={[Function]}
-                >
-                  Training
-                </a>
-              </li>
             </ul>
           </li>
           <li>

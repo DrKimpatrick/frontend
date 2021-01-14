@@ -9,15 +9,17 @@ import { listCurrentUser } from 'redux/actions/user';
 import { UserRole } from 'redux/action-types/user';
 import { NavBar, MainBackground } from '..';
 import { AdminMenu } from '.';
+import { CourseStatistic } from './CourseStatistic';
 import './AdminLayout.scss';
 
 interface Props {
   title?: string;
   topMenu?: { url: string; name: string }[];
+  showCourse?: boolean;
 }
 
 export const AdminLayout: FC<Props & WithStyles> = props => {
-  const { children, classes, topMenu } = props;
+  const { children, classes, topMenu, showCourse } = props;
 
   const history = useHistory();
 
@@ -81,6 +83,7 @@ export const AdminLayout: FC<Props & WithStyles> = props => {
           <div
             style={{ flexGrow: 1, position: 'relative', marginLeft: '20px' }}
           >
+            {showCourse && <CourseStatistic />}
             {children}
           </div>
         </div>

@@ -25,6 +25,9 @@ interface InitialState {
     lastUpdatedItem?: Course;
     currentPage?: number;
   };
+  numberOfPendingCourse?: number;
+  numberOfDeclinedCourse?: number;
+  numberOfAcceptedCourse?: number;
 }
 
 const initialState: InitialState = {};
@@ -72,6 +75,24 @@ export const courseReducer = (
 
     case CourseTypes.Errors:
       return { ...state, errors: action.payload.errors, loading: false };
+
+    case CourseTypes.NumberOfAcceptedCourse:
+      return {
+        ...state,
+        numberOfAcceptedCourse: action.payload.data.totalItems
+      };
+
+    case CourseTypes.NumberOfPendingCourse:
+      return {
+        ...state,
+        numberOfPendingCourse: action.payload.data.totalItems
+      };
+
+    case CourseTypes.NumberOfDeclinedCourse:
+      return {
+        ...state,
+        numberOfDeclinedCourse: action.payload.data.totalItems
+      };
 
     default:
       return state;

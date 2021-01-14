@@ -338,10 +338,10 @@ exports[`UserProfile should create snapshot 1`] = `
       <ul>
         <li>
           <a
-            href="/training-affiliate"
+            href="/affiliates"
             onClick={[Function]}
           >
-            Training Affiliate
+            Affiliate
           </a>
         </li>
         <li>
@@ -459,16 +459,6 @@ exports[`UserProfile should create snapshot 1`] = `
                   onClick={[Function]}
                 >
                   Company
-                </a>
-              </li>
-              <li
-                className=""
-              >
-                <a
-                  href="/training-affiliate"
-                  onClick={[Function]}
-                >
-                  Training
                 </a>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Admin Affiliate it should create snapshot 1`] = `
+exports[`TrainingAffiliate it should create snapshot 1`] = `
 <div
   className="adminLayout"
 >
@@ -396,16 +396,6 @@ exports[`Admin Affiliate it should create snapshot 1`] = `
                   Company
                 </a>
               </li>
-              <li
-                className=""
-              >
-                <a
-                  href="/training-affiliate"
-                  onClick={[Function]}
-                >
-                  Training
-                </a>
-              </li>
             </ul>
           </li>
           <li>
@@ -474,82 +464,223 @@ exports[`Admin Affiliate it should create snapshot 1`] = `
           }
         }
       >
-        <ul
-          className="userItems affiliates"
+        <div
+          className="courseStatistic w-full flex items-center"
         >
-          <li>
-            <div
-              className="details"
+          <div
+            className="export"
+          >
+            <button
+              className="flex items-center"
+              type="button"
             >
-              <h1>
-                Accepted
-              </h1>
-              <button
-                onClick={[Function]}
-                type="button"
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
               >
-                View
-              </button>
-            </div>
-            <div
-              className="action"
-            >
-              <h5
-                className="accepted"
-              >
-                0
+                <path
+                  d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"
+                />
+              </svg>
+              <h5>
+                Export
               </h5>
-            </div>
-          </li>
-          <li>
+            </button>
+          </div>
+          <div
+            className="statistic"
+          >
+            <ul>
+              <li>
+                <a
+                  href="/accepted-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Accepted Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#4d9b62",
+                      }
+                    }
+                  >
+                    4
+                  </small>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/pending-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Pending Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#1437b1",
+                      }
+                    }
+                  >
+                    4
+                  </small>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/declined-course"
+                  onClick={[Function]}
+                >
+                  <small
+                    style={
+                      Object {
+                        "color": "#a1a1a1",
+                      }
+                    }
+                  >
+                    Declined Courses:
+                  </small>
+                  <small
+                    className="font-bold mx-1"
+                    style={
+                      Object {
+                        "color": "#8f2517",
+                      }
+                    }
+                  >
+                    5
+                  </small>
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                >
+                  Create Affiliate
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div
+            className="userContainer"
+            style={
+              Object {
+                "border": "none",
+              }
+            }
+          >
             <div
-              className="details"
+              className="userItemList"
             >
-              <h1>
-                Pending
-              </h1>
-              <button
-                onClick={[Function]}
-                type="button"
+              <div
+                className="userNotFound"
               >
-                View
-              </button>
+                <div
+                  className="noItemFound"
+                >
+                  <div
+                    className="notItemImage"
+                  >
+                    <img
+                      alt=""
+                      src="itemNotFound.png"
+                    />
+                  </div>
+                  <div
+                    className="message"
+                  >
+                    There are no users
+                  </div>
+                </div>
+              </div>
             </div>
-            <div
-              className="action"
+            <ul
+              className="userItems userPagination"
             >
-              <h5
-                className="pending"
+              <li
+                className="paginationSection"
               >
-                0
-              </h5>
-            </div>
-          </li>
-          <li>
-            <div
-              className="details"
-            >
-              <h1>
-                Declined
-              </h1>
-              <button
-                onClick={[Function]}
-                type="button"
-              >
-                View
-              </button>
-            </div>
-            <div
-              className="action"
-            >
-              <h5
-                className="declined"
-              >
-                0
-              </h5>
-            </div>
-          </li>
-        </ul>
+                <ul>
+                  <li
+                    className="previous disabled"
+                  >
+                    <a
+                      aria-disabled="true"
+                      aria-label="Previous page"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      &lt;
+                    </a>
+                  </li>
+                  <li
+                    className="active"
+                  >
+                    <a
+                      aria-current="page"
+                      aria-label="Page 1 is your current page"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      1
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-current={null}
+                      aria-label="Page 2"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      2
+                    </a>
+                  </li>
+                  <li
+                    className="next"
+                  >
+                    <a
+                      aria-disabled="false"
+                      aria-label="Next page"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      &gt;
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@ import { Dispatch } from 'redux';
 import {
   CourseTypes,
   CoursePagination,
-  Course
+  Course,
+  CourseStatus
 } from 'redux/action-types/course';
 import ApiAction from 'helpers/apiAction';
 
@@ -71,6 +72,24 @@ export const changeCourseStatus = ({
           data: { offset, limit },
           types: type,
           status: course.verificationStatus
+        })(dispatch);
+        // update number of course by status
+        listCourseByStatus({
+          data: { offset, limit },
+          types: CourseTypes.NumberOfPendingCourse,
+          status: CourseStatus.Pending
+        })(dispatch);
+
+        listCourseByStatus({
+          data: { offset, limit },
+          types: CourseTypes.NumberOfAcceptedCourse,
+          status: CourseStatus.Accepted
+        })(dispatch);
+
+        listCourseByStatus({
+          data: { offset, limit },
+          types: CourseTypes.NumberOfDeclinedCourse,
+          status: CourseStatus.Declined
         })(dispatch);
       }
     })

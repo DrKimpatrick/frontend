@@ -28,7 +28,6 @@ import {
   AcceptedCourse,
   PendingCourse,
   DeclinedCourse,
-  TrainingAffiliate,
   Company,
   Recruiter,
   Skill
@@ -82,11 +81,6 @@ const AppRouter: FC = () => {
       path: Routes.DeclinedCourse,
       exact: true,
       component: <DeclinedCourse />
-    },
-    {
-      path: Routes.TrainingAffiliate,
-      exact: true,
-      component: <TrainingAffiliate />
     },
     { path: Routes.Company, exact: true, component: <Company /> },
     { path: Routes.Recruiter, exact: true, component: <Recruiter /> },

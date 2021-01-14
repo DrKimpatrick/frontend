@@ -10,7 +10,6 @@ enum ActiveMenu {
   Admin = 'Admin',
   HrAdmin = 'HrAdmin',
   Affiliate = 'Affiliate',
-  TrainingAffiliate = 'TrainingAffiliate',
   Company = 'Company',
   Recruiter = 'Recruiter',
   Skills = 'Skills',
@@ -57,11 +56,6 @@ const menuList = [
         name: 'Company',
         url: Routes.Company,
         active: ActiveMenu.Company
-      },
-      {
-        name: 'Training',
-        url: Routes.TrainingAffiliate,
-        active: ActiveMenu.TrainingAffiliate
       }
     ]
   },
@@ -116,9 +110,6 @@ const AdminMenu: FC = () => {
       case Routes.AcceptedCourse:
       case Routes.DeclinedCourse:
         setActive(ActiveMenu.Affiliate);
-        break;
-      case Routes.TrainingAffiliate:
-        setActive(ActiveMenu.TrainingAffiliate);
         break;
 
       case Routes.Company:

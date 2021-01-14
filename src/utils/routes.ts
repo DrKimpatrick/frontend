@@ -17,8 +17,6 @@ export enum Routes {
 
   Login = '/login',
 
-  TrainingAffiliate = '/training-affiliate',
-
   AdminViewUserProfile = '/profile/:username',
 
   Register = '/register',

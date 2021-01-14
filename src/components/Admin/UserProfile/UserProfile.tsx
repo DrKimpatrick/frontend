@@ -94,9 +94,9 @@ const UserProfile: FC = () => {
             break;
 
           case UserRole.TrainingAffiliate:
-            setActivePath(Routes.TrainingAffiliate)(dispatch);
+            setActivePath(Routes.Affiliate)(dispatch);
             setTopMenu([
-              { url: Routes.TrainingAffiliate, name: 'Training Affiliate' },
+              { url: Routes.Affiliate, name: 'Affiliate' },
               profilePath
             ]);
             break;
