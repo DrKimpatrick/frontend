@@ -84,7 +84,7 @@ const AffiliateItem: FC<Props> = props => {
                   </div>
                   <div className="details">
                     <h1>{item.name}</h1>
-                    <h6>{item.userId.username}</h6>
+                    <h6>{item.userId ? item.userId.username : ''}</h6>
                     <button
                       type="button"
                       onClick={() =>

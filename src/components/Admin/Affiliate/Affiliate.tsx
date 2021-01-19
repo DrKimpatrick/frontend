@@ -49,6 +49,7 @@ const Affiliate: FC = () => {
   useEffect(() => {
     setActivePath(location.pathname)(dispatch);
   }, [dispatch, location.pathname]);
+
   if (loading) {
     return (
       <AdminLayout>

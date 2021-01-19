@@ -573,6 +573,7 @@ exports[`TrainingAffiliate it should create snapshot 1`] = `
               </li>
               <li>
                 <button
+                  onClick={[Function]}
                   type="button"
                 >
                   Create Affiliate

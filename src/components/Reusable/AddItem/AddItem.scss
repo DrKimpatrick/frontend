@@ -1,0 +1,18 @@
+.addItem {
+  position: relative;
+  width: 550px;
+  background: white;
+  border-radius: 4px;
+  margin: auto;
+  padding: 50px;
+  margin-top: 50px;
+  .heading {
+    position: relative;
+    color: #747474;
+    h1 {
+      font-weight: bold;
+      font-size: 22px;
+      margin-left: 10px;
+    }
+  }
+}

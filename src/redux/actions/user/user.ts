@@ -1,7 +1,9 @@
 import { Dispatch } from 'redux';
 import { UserTypes } from 'redux/action-types/user';
 import { AddSkill, SkillTypes } from 'redux/action-types/skill';
+import { setMessage, setError } from 'redux/actions/message';
 import ApiAction from '../../../helpers/apiAction';
+import { AddAffiliateType } from './interface';
 
 export const listCurrentUser = () => (dispatchAction: Dispatch) => {
   return dispatchAction(
@@ -216,6 +218,106 @@ export const setProfileProcess = ({
         });
       },
       onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};
+
+export const uploadProfilePicture = (value: any) => (
+  dispatchAction: Dispatch
+) => {
+  const form = new FormData();
+
+  form.append('images', value);
+
+  return dispatchAction(
+    ApiAction({
+      method: 'POST',
+      url: '/users/upload',
+      data: form,
+      httpOptions: {
+        'Content-Type': 'multipart/form-data'
+      },
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.UploadProfilePictureLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        const { data } = res;
+        dispatch({
+          type: UserTypes.UploadProfilePictureLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.UploadProfilePicture,
+          payload: { data: data.files }
+        });
+
+        if (data.files && data.files.length > 0) {
+          setMessage('profile picture uploaded successfully')(dispatch);
+        } else {
+          setError('failed to upload image')(dispatch);
+        }
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.UploadProfilePictureLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};
+
+export const addAffiliateUser = (values: AddAffiliateType) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'POST',
+      url: '/auth/affiliate/register',
+      data: values,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.AddAffiliateLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.AddAffiliateLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.AddAffiliate,
+          payload: { data: true }
+        });
+
+        setMessage('affiliate added successfully')(dispatch);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.AddAffiliateLoading,
+          payload: { loading: false }
+        });
+
         dispatch({
           type: UserTypes.Errors,
           payload: { errors: error.response.data }

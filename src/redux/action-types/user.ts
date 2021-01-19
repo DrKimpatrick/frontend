@@ -1,3 +1,4 @@
+import { UploadedFileType } from 'redux/actions/user';
 import { Employment } from './employment';
 import { Education } from './education';
 import { Skill } from './skill';
@@ -21,7 +22,11 @@ export enum UserTypes {
   UserEducationLoading = 'User/UserEducationLoading',
   UserEmploymentLoading = 'User/UserEmploymentLoading',
   UserSkillLoading = 'User/UserSkillLoading',
-  SetProfileProcess = 'User/SetProfileProcess'
+  SetProfileProcess = 'User/SetProfileProcess',
+  UploadProfilePicture = 'User/UploadProfilePicture',
+  UploadProfilePictureLoading = 'User/UploadProfilePictureLoading',
+  AddAffiliate = 'User/AddAffiliate',
+  AddAffiliateLoading = 'User/AddAffiliateLoading'
 }
 
 export enum VerificationStatus {
@@ -241,6 +246,34 @@ interface SetProfileProcess {
     data: string;
   };
 }
+
+interface UploadProfilePicture {
+  type: typeof UserTypes.UploadProfilePicture;
+  payload: {
+    data: UploadedFileType[];
+  };
+}
+
+interface UploadProfilePictureLoading {
+  type: typeof UserTypes.UploadProfilePictureLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+interface AddAffiliate {
+  type: typeof UserTypes.AddAffiliate;
+  payload: {
+    data: boolean;
+  };
+}
+
+interface AddAffiliateLoading {
+  type: typeof UserTypes.AddAffiliateLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -259,4 +292,8 @@ export type UserTypeActions =
   | UserEducationLoading
   | UserEmploymentLoading
   | UserSkillLoading
-  | SetProfileProcess;
+  | SetProfileProcess
+  | UploadProfilePicture
+  | UploadProfilePictureLoading
+  | AddAffiliate
+  | AddAffiliateLoading;

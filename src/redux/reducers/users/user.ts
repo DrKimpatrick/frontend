@@ -49,6 +49,8 @@ import {
   EmploymentActionTypes
 } from 'redux/action-types/employment';
 
+import { UploadedFileType } from 'redux/actions/user';
+
 interface InitialState {
   currentUser: {
     isLoggedIn: boolean;
@@ -98,6 +100,10 @@ interface InitialState {
   userEducationLoading?: boolean;
   userEmploymentLoading?: boolean;
   userSkillLoading?: boolean;
+  uploadedImage?: UploadedFileType[];
+  uploadProfilePictureLoading?: boolean;
+  addAffiliate?: boolean;
+  addAffiliateLoading?: boolean;
 }
 
 const initialState: InitialState = {
@@ -442,6 +448,18 @@ export const userReducer = (
           ? { ...state.user, profileProcess: action.payload.data }
           : state.user
       };
+
+    case UserTypes.AddAffiliate:
+      return { ...state, addAffiliate: action.payload.data };
+
+    case UserTypes.AddAffiliateLoading:
+      return { ...state, addAffiliateLoading: action.payload.loading };
+
+    case UserTypes.UploadProfilePicture:
+      return { ...state, uploadedImage: action.payload.data };
+
+    case UserTypes.UploadProfilePictureLoading:
+      return { ...state, uploadProfilePictureLoading: action.payload.loading };
 
     default:
       return state;
