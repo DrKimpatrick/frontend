@@ -1,29 +1,29 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { withRouter, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
-import { Computer, School, Work } from '@material-ui/icons';
-import { AdminLayout as Layout, SideLoading } from 'components/Reusable';
 import {
-  listSpecificUser,
-  listUserSkill,
-  setActivePath
-} from 'redux/actions/user';
+  AdminLayout as Layout,
+  SideLoading,
+  AffiliateProfile
+} from 'components/Reusable';
+import { listSpecificUser, setActivePath } from 'redux/actions/user';
 import { RootState } from 'redux/store';
 import Avatar from 'assets/images/avatar.jpg';
-import { SkillLevel } from 'redux/action-types/skill';
 import { Routes } from 'utils/routes';
 import { UserRole } from 'redux/action-types/user';
-import { changeEducationStatus } from 'redux/actions/education';
-import { changeEmploymentStatus } from 'redux/actions/employment';
-import { changeSkillStatus } from 'redux/actions/skill';
-import { ListItem, ProfileNotFound } from '.';
+import { ProfileNotFound } from '.';
 import './UserProfile.scss';
+import { SkillSet } from './SkillSet';
+import { UserEducation } from './UserEducation';
+import { UserEmployment } from './UserEmployment';
 
 const UserProfile: FC = () => {
   const [topMenu = [], setTopMenu] = useState<
     { url: string; name: string }[]
   >();
+
+  const [showCourse = false, setShowCourse] = useState<boolean>();
 
   const location = useLocation<{ userId: string }>();
 
@@ -35,43 +35,31 @@ const UserProfile: FC = () => {
     const {
       specificUser,
       loading,
-      userSkill,
       errors,
       userEducationLoading,
-      userEmploymentLoading,
-      userSkillLoading
+      userEmploymentLoading
     } = state.users;
 
     return {
       specificUser,
       loading,
-      userSkill,
       errors,
       userEducationLoading,
-      userEmploymentLoading,
-      userSkillLoading
+      userEmploymentLoading
     };
   });
 
   const {
     specificUser,
-    userSkill,
     errors,
     loading,
     userEducationLoading,
-    userEmploymentLoading,
-    userSkillLoading
+    userEmploymentLoading
   } = reducer;
 
   useEffect(() => {
     listSpecificUser(params.username)(dispatch);
   }, [dispatch, params.username]);
-
-  useEffect(() => {
-    if (specificUser) {
-      listUserSkill(specificUser._id)(dispatch);
-    }
-  }, [dispatch, specificUser]);
 
   useEffect(() => {
     if (specificUser) {
@@ -99,6 +87,7 @@ const UserProfile: FC = () => {
               { url: Routes.Affiliate, name: 'Affiliate' },
               profilePath
             ]);
+            setShowCourse(true);
             break;
 
           case UserRole.Talent:
@@ -125,208 +114,6 @@ const UserProfile: FC = () => {
     }
   }, [dispatch, location, specificUser]);
 
-  const educationHistory = useMemo(() => {
-    if (specificUser && specificUser.educationHistory) {
-      const data = specificUser.educationHistory;
-
-      if (data && data.length > 0) {
-        return (
-          <div className="listItems">
-            {userEducationLoading && (
-              <div className="flex justify-center" style={{ width: 150 }}>
-                <SideLoading />
-              </div>
-            )}
-            {!userEducationLoading && (
-              <ul className="p-0 m-2 bg-card-preview">
-                {data.map((item, index) => (
-                  <ListItem
-                    listItem={{
-                      id: item._id,
-                      name: item.schoolName,
-                      status: item.verificationStatus
-                    }}
-                    changeStatus={value => {
-                      changeEducationStatus({ status: value, id: item._id })(
-                        dispatch
-                      );
-                    }}
-                    key={index}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-      return (
-        <div className="notFound">
-          <h5>There are no education</h5>
-        </div>
-      );
-    }
-    return <></>;
-  }, [dispatch, specificUser, userEducationLoading]);
-
-  const employmentHistory = useMemo(() => {
-    if (specificUser && specificUser.employmentHistory) {
-      const data = specificUser.employmentHistory;
-
-      if (data && data.length > 0) {
-        return (
-          <div className="listItems">
-            {userEmploymentLoading && (
-              <div className="flex justify-center" style={{ width: 150 }}>
-                <SideLoading />
-              </div>
-            )}
-            {!userEmploymentLoading && (
-              <ul className="p-0 m-2 bg-card-preview">
-                {data.map((item, index) => (
-                  <ListItem
-                    listItem={{
-                      id: item._id,
-                      name: item.companyName,
-                      status: item.verificationStatus
-                    }}
-                    key={index}
-                    changeStatus={value => {
-                      changeEmploymentStatus({ status: value, id: item._id })(
-                        dispatch
-                      );
-                    }}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-      return (
-        <div className="notFound">
-          <h5>There are no employment</h5>
-        </div>
-      );
-    }
-    return <></>;
-  }, [dispatch, specificUser, userEmploymentLoading]);
-
-  const beginnerSkills = useMemo(() => {
-    if (userSkill) {
-      const data = userSkill.filter(item => item.level === SkillLevel.Beginner);
-
-      if (data && data.length > 0) {
-        return (
-          <div className="listItems">
-            {!userSkillLoading && (
-              <ul className="p-0 m-2 bg-card-preview">
-                {data.map((item, index) => (
-                  <ListItem
-                    listItem={{
-                      id: item._id,
-                      name: item.skill.skill,
-                      status: item.verificationStatus
-                    }}
-                    key={index}
-                    changeStatus={value => {
-                      changeSkillStatus({ status: value, id: item._id })(
-                        dispatch
-                      );
-                    }}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-      return (
-        <div className="notFound">
-          <h5>There are no beginner skills</h5>
-        </div>
-      );
-    }
-    return null;
-  }, [dispatch, userSkill, userSkillLoading]);
-
-  const intermediateSkills = useMemo(() => {
-    if (userSkill) {
-      const data = userSkill.filter(
-        item => item.level === SkillLevel.Intermediate
-      );
-
-      if (data && data.length > 0) {
-        return (
-          <div className="listItems">
-            {!userSkillLoading && (
-              <ul className="p-0 m-2 bg-card-preview">
-                {data.map((item, index) => (
-                  <ListItem
-                    listItem={{
-                      id: item._id,
-                      name: item.skill.skill,
-                      status: item.verificationStatus
-                    }}
-                    key={index}
-                    changeStatus={value => {
-                      changeSkillStatus({ status: value, id: item._id })(
-                        dispatch
-                      );
-                    }}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-      return (
-        <div className="notFound">
-          <h5>There are no intermediate skills</h5>
-        </div>
-      );
-    }
-    return null;
-  }, [dispatch, userSkill, userSkillLoading]);
-
-  const advancedSkills = useMemo(() => {
-    if (userSkill) {
-      const data = userSkill.filter(item => item.level === SkillLevel.Advanced);
-
-      if (data && data.length > 0) {
-        return (
-          <div className="listItems">
-            {!userSkillLoading && (
-              <ul className="p-0 m-2 bg-card-preview">
-                {data.map((item, index) => (
-                  <ListItem
-                    listItem={{
-                      id: item._id,
-                      name: item.skill.skill,
-                      status: item.verificationStatus
-                    }}
-                    key={index}
-                    changeStatus={value => {
-                      changeSkillStatus({ status: value, id: item._id })(
-                        dispatch
-                      );
-                    }}
-                  />
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-      return (
-        <div className="notFound">
-          <h5>There are no advanced skills</h5>
-        </div>
-      );
-    }
-    return null;
-  }, [dispatch, userSkill, userSkillLoading]);
-
   if (loading) {
     return (
       <Layout>
@@ -346,82 +133,58 @@ const UserProfile: FC = () => {
   }
 
   return (
-    <Layout topMenu={topMenu}>
+    <Layout topMenu={topMenu} showCourse={showCourse}>
       {specificUser && (
         <div className="userProfile">
           <div className="profilePreview">
             <div className="profilePicture">
-              <img src={Avatar} alt="" />
+              <img
+                src={
+                  specificUser.profilePicture
+                    ? specificUser.profilePicture
+                    : Avatar
+                }
+                alt=""
+              />
             </div>
-            <div className="preview">
+            <div
+              className="preview"
+              style={{ marginTop: !specificUser.bio ? '40px' : '20px' }}
+            >
               <h5 className="title">{specificUser.username}</h5>
-              <div className="biography">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                maiores ipsum dolor sit amet consectetur adipisicing elit. Ullam
-              </div>
+              {specificUser.bio && (
+                <div className="biography">{specificUser.bio}</div>
+              )}
             </div>
           </div>
           <div className="profileShowcase">
-            <Grid container spacing={10}>
-              <Grid item xs={6}>
-                <div className="items">
-                  <div className="title">
-                    <Work />
-                    <h1>Skillset</h1>
-                  </div>
-                  {!userSkillLoading && userSkill && userSkill.length > 0 && (
-                    <>
-                      <div className="skillDivider">
-                        <div className="title">
-                          <h5 className="beginner">Beginners</h5>
-                        </div>
-                        {beginnerSkills}
-                      </div>
-                      <div className="skillDivider">
-                        <div className="title">
-                          <h5 className="intermediate">Intermediate</h5>
-                        </div>
-                        {intermediateSkills}
-                      </div>
-                      <div className="skillDivider">
-                        <div className="title">
-                          <h5 className="advanced">Advanced</h5>
-                        </div>
-                        {advancedSkills}
-                      </div>
-                    </>
-                  )}
-
-                  {!userSkillLoading && userSkill && userSkill.length <= 0 && (
-                    <div className="notFound">
-                      <h5>There are no skills</h5>
-                    </div>
-                  )}
-
-                  {userSkillLoading && (
-                    <div className="flex justify-center" style={{ width: 150 }}>
-                      <SideLoading />
-                    </div>
-                  )}
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div className="items">
-                  <div className="title">
-                    <Computer />
-                    <h1>Employment</h1>
-                  </div>
-                  {employmentHistory}
-                </div>
-                <div className="items educationItem">
-                  <div className="title">
-                    <School />
-                    <h1>Education</h1>
-                  </div>
-                  {educationHistory}
-                </div>
-              </Grid>
-            </Grid>
+            {specificUser.roles && (
+              <>
+                {specificUser.roles.includes(UserRole.Talent) && (
+                  <Grid container spacing={10}>
+                    <SkillSet userId={specificUser._id} />
+                    <Grid item xs={6}>
+                      {specificUser.employmentHistory && (
+                        <UserEmployment
+                          employment={specificUser.employmentHistory}
+                          userEmploymentLoading={userEmploymentLoading}
+                        />
+                      )}
+                      {specificUser.educationHistory && (
+                        <UserEducation
+                          education={specificUser.educationHistory}
+                          userEducationLoading={userEducationLoading}
+                        />
+                      )}
+                    </Grid>
+                  </Grid>
+                )}
+              </>
+            )}
+            {specificUser.roles &&
+              specificUser.roles.includes(UserRole.TrainingAffiliate) && (
+                <AffiliateProfile user={specificUser} />
+              )}
           </div>
         </div>
       )}

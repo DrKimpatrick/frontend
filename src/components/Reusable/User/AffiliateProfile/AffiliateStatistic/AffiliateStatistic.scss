@@ -1,0 +1,28 @@
+.listOfStatistic {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e3e3e3;
+  padding: 15px 0px 15px 0px;
+  &:last-child {
+    border-bottom: 1px solid #e3e3e3;
+  }
+  li {
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 13px;
+    align-items: center;
+    color: #727272;
+    cursor: pointer;
+    &:first-child {
+      margin-left: 0px;
+    }
+    .name {
+      margin-left: 5px;
+    }
+    .rate {
+      margin-left: 5px;
+    }
+  }
+}

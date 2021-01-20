@@ -2,6 +2,7 @@ import { UploadedFileType } from 'redux/actions/user';
 import { Employment } from './employment';
 import { Education } from './education';
 import { Skill } from './skill';
+import { Course } from './course';
 
 export enum UserTypes {
   CurrentUser = 'User/CurrentUser',
@@ -82,6 +83,7 @@ export interface User {
   profilePicture?: string;
   bio?: string;
   stripeSubscriptionId?: string;
+  courses?: Course[];
 }
 
 export interface UserSkill {

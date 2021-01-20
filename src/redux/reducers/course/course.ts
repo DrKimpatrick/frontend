@@ -28,6 +28,8 @@ interface InitialState {
   numberOfPendingCourse?: number;
   numberOfDeclinedCourse?: number;
   numberOfAcceptedCourse?: number;
+  courseDetail?: Course;
+  courseDetailLoading?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -93,6 +95,12 @@ export const courseReducer = (
         ...state,
         numberOfDeclinedCourse: action.payload.data.totalItems
       };
+
+    case CourseTypes.ListCourseDetail:
+      return { ...state, courseDetail: action.payload.data };
+
+    case CourseTypes.CourseDetailLoading:
+      return { ...state, courseDetailLoading: action.payload.loading };
 
     default:
       return state;

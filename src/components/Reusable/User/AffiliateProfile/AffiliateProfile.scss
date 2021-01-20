@@ -1,0 +1,22 @@
+.affiliateProfile {
+  position: relative;
+  .affiliateCourse {
+    position: relative;
+    margin-top: 20px;
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #747474;
+    }
+    .level {
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      span {
+        color: #3b3a3a;
+        font-weight: bold;
+      }
+    }
+  }
+}

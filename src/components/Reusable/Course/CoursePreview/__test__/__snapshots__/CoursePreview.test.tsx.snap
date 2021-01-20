@@ -1,0 +1,755 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoursePreview should create snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 0px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+      class="coursePreviewModal"
+      role="presentation"
+      style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="coursePreview"
+        tabindex="-1"
+      >
+        <div
+          class="closeModal"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </div>
+        <div
+          class="courseDetail"
+        >
+          <div
+            class="courseImage"
+          >
+            <img
+              alt=""
+              src="link"
+            />
+          </div>
+          <div
+            class="detail"
+          >
+            <span
+              class="title"
+            >
+              React Crash Course
+            </span>
+            <span
+              class="description"
+            >
+              desc
+            </span>
+            <div
+              class="w-full flex align-items-center owner"
+            >
+              <span>
+                5 Hr
+              </span>
+              <span
+                class="ml-2"
+              >
+                by 
+                <b>
+                  id
+                </b>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="courseStatistic"
+        >
+          <ul
+            class="listOfStatistic"
+          >
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 16c0 3.87 3.13 7 7 7s7-3.13 7-7v-4H5v4zM16.12 4.37l2.1-2.1-.82-.83-2.3 2.31C14.16 3.28 13.12 3 12 3s-2.16.28-3.09.75L6.6 1.44l-.82.83 2.1 2.1C6.14 5.64 5 7.68 5 10v1h14v-1c0-2.32-1.14-4.36-2.88-5.63zM9 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Views
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  10
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 9h4V5H3v4zm0 5h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zM8 9h4V5H8v4zm5-4v4h4V5h-4zm5 9h4v-4h-4v4zM3 19h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zm5 0h4v-4h-4v4zm0-14v4h4V5h-4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Conversation Rate
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20%
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-4 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Conversation
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20%
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Active Users
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  2
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Costs
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  $20
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Total users
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="whoPaidCourse"
+        >
+          <h5
+            class="title"
+          >
+            Users who signed up and paid
+          </h5>
+          <ul
+            class="bg-card-preview listWhoPaidCourse"
+          >
+            <li>
+              John doe
+            </li>
+            <li>
+              Jane doe
+            </li>
+            <li>
+              Steve Job
+            </li>
+            <li>
+              Elon Tesla
+            </li>
+          </ul>
+          <div
+            class="coursePagination"
+          >
+            <div
+              class="horizontalPagination"
+            >
+              <ul>
+                <li
+                  class="previous"
+                >
+                  <a
+                    aria-disabled="false"
+                    aria-label="Previous page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    &lt;
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Page 1"
+                    role="button"
+                    tabindex="0"
+                  >
+                    1
+                  </a>
+                </li>
+                <li
+                  class="active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 2 is your current page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Page 3"
+                    role="button"
+                    tabindex="0"
+                  >
+                    3
+                  </a>
+                </li>
+                <li
+                  class="next"
+                >
+                  <a
+                    aria-disabled="false"
+                    aria-label="Next page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    &gt;
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+    />
+    <div
+      class="coursePreviewModal"
+      role="presentation"
+      style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+    >
+      <div
+        aria-hidden="true"
+        style="z-index: -1; position: fixed; right: 0px; bottom: 0px; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.5);"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="coursePreview"
+        tabindex="-1"
+      >
+        <div
+          class="closeModal"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </div>
+        <div
+          class="courseDetail"
+        >
+          <div
+            class="courseImage"
+          >
+            <img
+              alt=""
+              src="link"
+            />
+          </div>
+          <div
+            class="detail"
+          >
+            <span
+              class="title"
+            >
+              React Crash Course
+            </span>
+            <span
+              class="description"
+            >
+              desc
+            </span>
+            <div
+              class="w-full flex align-items-center owner"
+            >
+              <span>
+                5 Hr
+              </span>
+              <span
+                class="ml-2"
+              >
+                by 
+                <b>
+                  id
+                </b>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="courseStatistic"
+        >
+          <ul
+            class="listOfStatistic"
+          >
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5 16c0 3.87 3.13 7 7 7s7-3.13 7-7v-4H5v4zM16.12 4.37l2.1-2.1-.82-.83-2.3 2.31C14.16 3.28 13.12 3 12 3s-2.16.28-3.09.75L6.6 1.44l-.82.83 2.1 2.1C6.14 5.64 5 7.68 5 10v1h14v-1c0-2.32-1.14-4.36-2.88-5.63zM9 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Views
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  10
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 9h4V5H3v4zm0 5h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zM8 9h4V5H8v4zm5-4v4h4V5h-4zm5 9h4v-4h-4v4zM3 19h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zm5 0h4v-4h-4v4zm0-14v4h4V5h-4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Conversation Rate
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20%
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-4 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Conversation
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20%
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Active Users
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  2
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Costs
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  $20
+                </span>
+              </div>
+            </li>
+            <li>
+              <div
+                class="flex items-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"
+                  />
+                </svg>
+                <span
+                  class="name"
+                >
+                  Total users
+                </span>
+              </div>
+              <div
+                class="rate"
+              >
+                <span>
+                  20
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="whoPaidCourse"
+        >
+          <h5
+            class="title"
+          >
+            Users who signed up and paid
+          </h5>
+          <ul
+            class="bg-card-preview listWhoPaidCourse"
+          >
+            <li>
+              John doe
+            </li>
+            <li>
+              Jane doe
+            </li>
+            <li>
+              Steve Job
+            </li>
+            <li>
+              Elon Tesla
+            </li>
+          </ul>
+          <div
+            class="coursePagination"
+          >
+            <div
+              class="horizontalPagination"
+            >
+              <ul>
+                <li
+                  class="previous"
+                >
+                  <a
+                    aria-disabled="false"
+                    aria-label="Previous page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    &lt;
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Page 1"
+                    role="button"
+                    tabindex="0"
+                  >
+                    1
+                  </a>
+                </li>
+                <li
+                  class="active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 2 is your current page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="Page 3"
+                    role="button"
+                    tabindex="0"
+                  >
+                    3
+                  </a>
+                </li>
+                <li
+                  class="next"
+                >
+                  <a
+                    aria-disabled="false"
+                    aria-label="Next page"
+                    role="button"
+                    tabindex="0"
+                  >
+                    &gt;
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -95,3 +95,44 @@ export const changeCourseStatus = ({
     })
   );
 };
+
+export const listCourseDetail = (courseId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/courses/${courseId}`,
+      method: 'GET',
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CourseDetailLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+
+        dispatch({
+          type: CourseTypes.CourseDetailLoading,
+          payload: { loading: false }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.ListCourseDetail,
+          payload: { data: res.data }
+        });
+
+        dispatch({
+          type: CourseTypes.CourseDetailLoading,
+          payload: { loading: false }
+        });
+      }
+    })
+  );
+};

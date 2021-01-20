@@ -1,0 +1,35 @@
+.listCourse {
+  position: relative;
+  display: flex;
+  padding: 8px 15px 8px 15px;
+  border-radius: 2px;
+  .name {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #3b3a3a;
+  }
+  .action {
+    display: flex;
+    width: 150px;
+    justify-content: flex-end;
+    align-items: center;
+    li {
+      margin-left: 7px;
+      margin-right: 7px;
+      background: none !important;
+      &:last-child {
+        margin-right: 0;
+        border-left: 1px solid #cccccc;
+        padding-left: 14px;
+      }
+      button {
+        background: none;
+        svg {
+          width: 16px;
+          height: 16px;
+          color: #30a3e6;
+        }
+      }
+    }
+  }
+}

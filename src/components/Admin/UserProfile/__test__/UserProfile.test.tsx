@@ -47,6 +47,8 @@ const initialState = {
       email: 'gramdb@gmail.com',
       dateRegistered: '2020-10-30T07:41:16.417Z',
       updatedAt: '2020-11-11T13:13:36.270Z',
+      bio: 'bio',
+      profilePicture: 'profile.png',
       employmentHistory: [
         {
           _id: 'id',
@@ -75,6 +77,11 @@ const initialState = {
     userEducationLoading: false,
     userEmploymentLoading: false,
     userSkillLoading: false
+  },
+  courses: {
+    numberOfAcceptedCourse: 10,
+    numberOfDeclinedCourse: 5,
+    numberOfPendingCourse: 5
   }
 };
 
@@ -128,68 +135,6 @@ describe('UserProfile', () => {
       });
     });
     it('should return message when no result found', () => {
-      render(
-        <Provider store={store}>
-          <Router>
-            <UserProfile />
-          </Router>
-        </Provider>
-      );
-    });
-  });
-
-  describe('should return data when there are user skills', () => {
-    beforeEach(() => {
-      store = mockStore({
-        ...initialState,
-        users: {
-          ...initialState.users,
-          userSkill: [
-            {
-              skill: {
-                _id: '5fb8cebd750b0131d5a18cc2',
-                skill: 'Typescript',
-                createdAt: '2020-11-21T08:24:29.802Z',
-                updatedAt: '2020-11-21T08:24:29.802Z'
-              },
-              level: 'advanced',
-              verificationStatus: 'unverified',
-              _id: '5fb8d5cb750b0131d5a18cd0',
-              createdAt: '2020-11-21T08:54:35.322Z',
-              updatedAt: '2020-11-21T08:54:35.322Z'
-            },
-            {
-              skill: {
-                _id: '5fb8cebd750b0131d5a18ccd',
-                skill: 'Vue JS',
-                createdAt: '2020-11-21T08:24:29.803Z',
-                updatedAt: '2020-11-21T08:24:29.803Z'
-              },
-              level: 'beginner',
-              verificationStatus: 'unverified',
-              _id: '5fb8d5cb750b0131d5a18cdb',
-              createdAt: '2020-11-21T08:54:35.323Z',
-              updatedAt: '2020-11-21T08:54:35.323Z'
-            },
-            {
-              skill: {
-                _id: '5fb8cebd750b0131d5a18cce',
-                skill: 'Jquery',
-                createdAt: '2020-11-21T08:24:29.804Z',
-                updatedAt: '2020-11-21T08:24:29.804Z'
-              },
-              level: 'intermediate',
-              verificationStatus: 'unverified',
-              _id: '5fb8d5cb750b0131d5a18cdc',
-              createdAt: '2020-11-21T08:54:35.323Z',
-              updatedAt: '2020-11-21T08:54:35.323Z'
-            }
-          ]
-        }
-      });
-    });
-
-    it('should return user skills', () => {
       render(
         <Provider store={store}>
           <Router>
