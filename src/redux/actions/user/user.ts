@@ -182,12 +182,10 @@ export const updateUser = (data: any, userId: string) => (
       },
       onSuccess: res => (dispatch: Dispatch) => {
         delete res.profile.__v;
-        // setTimeout(() => {
         dispatch({
           type: UserTypes.UpdateUser,
           payload: { data: res.profile }
         });
-        // }, [1000]);
       },
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({

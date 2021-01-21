@@ -1,7 +1,6 @@
 import React from 'react';
 import './AffiliateProfile.scss';
-import { User } from 'redux/action-types/user';
-import { CourseLevel } from 'redux/action-types/course';
+import { CourseLevel, Course } from 'redux/action-types/course';
 import {
   Adb,
   ViewComfy,
@@ -13,114 +12,16 @@ import {
   AttachMoney
 } from '@material-ui/icons';
 import { Grid } from '@material-ui/core';
-import { filter } from 'lodash';
-import { NoItemFound } from 'components/Reusable';
+import { NoItemFound, ListCourseByLevel } from 'components/Reusable';
 import { AffiliateStatistic } from './AffiliateStatistic';
-import { ListCourse } from './ListCourse';
 
 interface Props {
-  user: User;
+  courses?: Course[];
   allowEditDelete?: boolean;
 }
 
 const AffiliateProfile = (props: Props) => {
-  const { user, allowEditDelete } = props;
-
-  const beginnerCourse = () => {
-    if (user.courses && user.courses.length > 0) {
-      const beginner = filter(
-        user.courses,
-        item => item.level === CourseLevel.Beginner
-      );
-
-      if (beginner && beginner.length > 0) {
-        return (
-          <Grid item xs={4}>
-            <div className="my-1">
-              <div className="level w-full">
-                <span>Beginner</span>
-              </div>
-              <ul className="bg-card-preview">
-                {beginner.map((item, index) => (
-                  <ListCourse
-                    item={item}
-                    key={index}
-                    allowEditDelete={allowEditDelete}
-                  />
-                ))}
-              </ul>
-            </div>
-          </Grid>
-        );
-      }
-    }
-
-    return undefined;
-  };
-
-  const intermediateCourse = () => {
-    if (user.courses && user.courses.length > 0) {
-      const intermediate = filter(
-        user.courses,
-        item => item.level === CourseLevel.Intermediate
-      );
-
-      if (intermediate && intermediate.length > 0) {
-        return (
-          <Grid item xs={4}>
-            <div className="my-1">
-              <div className="level w-full">
-                <span>Intermediate</span>
-              </div>
-              <ul className="bg-card-preview">
-                {intermediate.map((item, index) => (
-                  <ListCourse
-                    item={item}
-                    key={index}
-                    allowEditDelete={allowEditDelete}
-                  />
-                ))}
-              </ul>
-            </div>
-          </Grid>
-        );
-      }
-    }
-
-    return undefined;
-  };
-
-  const advancedCourse = () => {
-    if (user.courses && user.courses.length > 0) {
-      const advanced = filter(
-        user.courses,
-        item => item.level === CourseLevel.Advanced
-      );
-
-      if (advanced && advanced.length > 0) {
-        return (
-          <Grid item xs={4}>
-            <div className="my-1">
-              <div className="level w-full">
-                <span>Advanced</span>
-              </div>
-              <ul className="bg-card-preview">
-                {advanced.map((item, index) => (
-                  <ListCourse
-                    item={item}
-                    key={index}
-                    allowEditDelete={allowEditDelete}
-                  />
-                ))}
-              </ul>
-            </div>
-          </Grid>
-        );
-      }
-    }
-
-    return undefined;
-  };
+  const { courses, allowEditDelete } = props;
 
   return (
     <div className="affiliateProfile">
@@ -146,14 +47,38 @@ const AffiliateProfile = (props: Props) => {
       </div>
       <div className="affiliateCourse">
         <span className="title">Courses</span>
-        {user.courses && user.courses.length > 0 && (
+        {courses && courses.length > 0 && (
           <Grid container spacing={3}>
-            {beginnerCourse()}
-            {intermediateCourse()}
-            {advancedCourse()}
+            <Grid item xs={4}>
+              <div className="my-1">
+                <ListCourseByLevel
+                  courses={courses}
+                  level={CourseLevel.Beginner}
+                  allowEditDelete={allowEditDelete}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              <div className="my-1">
+                <ListCourseByLevel
+                  courses={courses}
+                  level={CourseLevel.Intermediate}
+                  allowEditDelete={allowEditDelete}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              <div className="my-1">
+                <ListCourseByLevel
+                  courses={courses}
+                  level={CourseLevel.Advanced}
+                  allowEditDelete={allowEditDelete}
+                />
+              </div>
+            </Grid>
           </Grid>
         )}
-        {user.courses && user.courses.length <= 0 && <NoItemFound />}
+        {courses && courses.length <= 0 && <NoItemFound />}
       </div>
     </div>
   );

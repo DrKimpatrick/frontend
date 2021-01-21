@@ -17,6 +17,9 @@ export const redirect = (value: string[]) => {
       case UserRole.EducationUser:
         return String(Routes.SchoolDashboard);
 
+      case UserRole.TrainingAffiliate:
+        return String(Routes.AffiliateDashboard);
+
       default:
         return undefined;
     }

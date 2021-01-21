@@ -5,11 +5,11 @@ import { Grid } from '@material-ui/core';
 import {
   AdminLayout as Layout,
   SideLoading,
-  AffiliateProfile
+  AffiliateProfile,
+  ProfilePreview
 } from 'components/Reusable';
 import { listSpecificUser, setActivePath } from 'redux/actions/user';
 import { RootState } from 'redux/store';
-import Avatar from 'assets/images/avatar.jpg';
 import { Routes } from 'utils/routes';
 import { UserRole } from 'redux/action-types/user';
 import { ProfileNotFound } from '.';
@@ -136,27 +136,7 @@ const UserProfile: FC = () => {
     <Layout topMenu={topMenu} showCourse={showCourse}>
       {specificUser && (
         <div className="userProfile">
-          <div className="profilePreview">
-            <div className="profilePicture">
-              <img
-                src={
-                  specificUser.profilePicture
-                    ? specificUser.profilePicture
-                    : Avatar
-                }
-                alt=""
-              />
-            </div>
-            <div
-              className="preview"
-              style={{ marginTop: !specificUser.bio ? '40px' : '20px' }}
-            >
-              <h5 className="title">{specificUser.username}</h5>
-              {specificUser.bio && (
-                <div className="biography">{specificUser.bio}</div>
-              )}
-            </div>
-          </div>
+          <ProfilePreview user={specificUser} />
           <div className="profileShowcase">
             {specificUser.roles && (
               <>
@@ -183,7 +163,7 @@ const UserProfile: FC = () => {
             )}
             {specificUser.roles &&
               specificUser.roles.includes(UserRole.TrainingAffiliate) && (
-                <AffiliateProfile user={specificUser} />
+                <AffiliateProfile courses={specificUser.courses} />
               )}
           </div>
         </div>

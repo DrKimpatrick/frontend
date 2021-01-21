@@ -41,7 +41,8 @@ import {
   HrAdminCode
 } from 'components/HrAdmin';
 import { SchoolDashboard, SubsidyStudent } from 'components/School';
-import PaymentsSuccess from '../ProcessPayments/PaymentsSuccess';
+import { AffiliateAdmin } from 'components/AffiliateAdmin';
+import PaymentsSuccess from 'components/ProcessPayments/PaymentsSuccess';
 
 const AppRouter: FC = () => {
   const authorizedRoutes = [
@@ -136,6 +137,13 @@ const AppRouter: FC = () => {
     {
       path: Routes.SubsidyStudent,
       component: <SubsidyStudent />,
+      exact: true
+    },
+
+    // Affiliate Admin
+    {
+      path: Routes.AffiliateDashboard,
+      component: <AffiliateAdmin />,
       exact: true
     }
   ];

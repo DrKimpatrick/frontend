@@ -71,6 +71,8 @@ export enum Routes {
 
   HrAdminDashboard = '/hr-dashboard',
 
+  AffiliateDashboard = '/affiliate-dashboard',
+
   PotentialCandidate = '/hr/potential-candidate',
 
   Code = '/hr/code',

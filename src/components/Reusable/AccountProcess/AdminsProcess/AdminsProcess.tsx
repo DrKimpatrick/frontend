@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { AdminsProcess, UserRole } from 'redux/action-types/user';
+import {
+  AdminsProcess,
+  UserRole,
+  AffiliateProcess
+} from 'redux/action-types/user';
 import { RootState } from 'redux/store';
 import {
   NavBar,
   MainBackground,
   AddCompany,
-  AddSchool
+  AddSchool,
+  AddMoreInfo
 } from 'components/Reusable';
 import { AddSubsidy } from 'components/Reusable/AddSubsidy';
 import { Routes } from 'utils/routes';
@@ -44,6 +49,10 @@ export const AdminsProcessFlow = () => {
       ) {
         setStep(AdminsProcess.AddCompany);
       }
+
+      if (user.roles.includes(UserRole.TrainingAffiliate)) {
+        setStep(AffiliateProcess.AddMoreInfo);
+      }
     }
   }, [user]);
 
@@ -72,6 +81,10 @@ export const AdminsProcessFlow = () => {
     if (user.roles.includes(UserRole.EducationUser)) {
       return <Redirect to={Routes.SchoolDashboard} />;
     }
+
+    if (user.roles.includes(UserRole.TrainingAffiliate)) {
+      return <Redirect to={Routes.AffiliateDashboard} />;
+    }
   }
 
   return (
@@ -80,6 +93,7 @@ export const AdminsProcessFlow = () => {
       {step === AdminsProcess.AddCompany && <AddCompany />}
       {step === AdminsProcess.AddSchool && <AddSchool />}
       {step === AdminsProcess.AddPlan && <AddSubsidy />}
+      {step === AffiliateProcess.AddMoreInfo && <AddMoreInfo />}
       <MainBackground />
     </>
   );

@@ -10,3 +10,4 @@ export * from './AdminLayout';
 export * from './AuthLayout';
 export * from './HrAdminLayout';
 export * from './AdminTab';
+export * from './AffiliateLayout';

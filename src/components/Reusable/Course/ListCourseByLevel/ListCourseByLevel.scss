@@ -1,0 +1,14 @@
+.listCourseByLevel {
+  position: relative;
+  .level {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    span {
+      color: #3b3a3a;
+      font-weight: bold;
+    }
+  }
+}

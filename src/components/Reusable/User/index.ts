@@ -6,3 +6,4 @@ export * from './HrListItem';
 export * from './AddAffiliate';
 export * from './UploadProfilePicture';
 export * from './AffiliateProfile';
+export * from './ProfilePreview';

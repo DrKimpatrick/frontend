@@ -30,6 +30,11 @@ interface InitialState {
   numberOfAcceptedCourse?: number;
   courseDetail?: Course;
   courseDetailLoading?: boolean;
+  courses?: {
+    data: Course[];
+    totalItems: number;
+  };
+  courseLoading?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -101,6 +106,12 @@ export const courseReducer = (
 
     case CourseTypes.CourseDetailLoading:
       return { ...state, courseDetailLoading: action.payload.loading };
+
+    case CourseTypes.ListCourse:
+      return { ...state, courses: action.payload.data };
+
+    case CourseTypes.ListCourseLoading:
+      return { ...state, courseLoading: action.payload.loading };
 
     default:
       return state;

@@ -64,16 +64,16 @@ export const accounts = [
       'Ensure your students are receiving real time technical skills training.\nCreate a direct pipeline with companies looking to hire.'
   },
   {
-    id: 'training_admin',
-    title: 'Training',
-    description:
-      'Submit your training application to be a premiere training partner.'
-  },
-  {
     id: 'recruitment_admin',
     title: 'HR Recruitment',
     description:
       'Save time and money on candidate recruitment with access to pre verified and certified candidates.'
+  },
+  {
+    id: 'training_affiliate',
+    title: 'Affiliate',
+    description:
+      'Partner with us and we bring your training services to the TTLC platform.'
   }
 ];
 

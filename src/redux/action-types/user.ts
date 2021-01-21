@@ -67,6 +67,11 @@ export enum AdminsProcess {
   Completed = 'Completed'
 }
 
+export enum AffiliateProcess {
+  AddMoreInfo = 'AddMoreInfo',
+  Completed = 'Completed'
+}
+
 export interface User {
   _id: string;
   username: string;

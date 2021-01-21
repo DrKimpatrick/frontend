@@ -136,3 +136,45 @@ export const listCourseDetail = (courseId: string) => (
     })
   );
 };
+
+export const listCourse = (data?: CoursePagination) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: data
+        ? `/courses?offset=${data.offset}&limit=${data.limit}`
+        : `/courses`,
+      method: 'GET',
+      onStart: () => (dispatch: Dispatch) =>
+        dispatch({
+          type: CourseTypes.ListCourseLoading,
+          payload: { loading: true }
+        }),
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.ListCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.ListCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.ListCourse,
+          payload: { data: res }
+        });
+      }
+    })
+  );
+};

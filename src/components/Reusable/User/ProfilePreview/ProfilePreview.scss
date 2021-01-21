@@ -1,0 +1,31 @@
+.profilePreview {
+  position: relative;
+  display: flex;
+  .profilePicture {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 100%;
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4));
+    }
+  }
+  .preview {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #747474;
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .biography {
+      font-size: 15px;
+      width: 500px;
+    }
+  }
+}

@@ -34,6 +34,7 @@ export const AccountProcess = () => {
           case UserRole.HrAdmin:
           case UserRole.TrainingAdmin:
           case UserRole.EducationUser:
+          case UserRole.TrainingAffiliate:
             return <AdminsProcess />;
           default:
             return null;
