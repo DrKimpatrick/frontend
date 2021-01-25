@@ -35,6 +35,8 @@ interface InitialState {
     totalItems: number;
   };
   courseLoading?: boolean;
+  submitLoading?: boolean;
+  addCourse?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -112,6 +114,13 @@ export const courseReducer = (
 
     case CourseTypes.ListCourseLoading:
       return { ...state, courseLoading: action.payload.loading };
+
+    case CourseTypes.SubmitLoading:
+      return { ...state, submitLoading: action.payload.loading };
+
+    case CourseTypes.AddCourse:
+    case CourseTypes.UpdateCourse:
+      return { ...state, addCourse: action.payload.data };
 
     default:
       return state;

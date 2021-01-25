@@ -101,9 +101,13 @@ const AddAffiliate = (props: Props) => {
                   <UploadProfilePicture
                     setIsUploaded={setIsUploaded}
                     closeModal={() => setOpenUpload(false)}
-                    setUploadedImage={(value: string) =>
-                      formik.setFieldValue('profilePicture', value, true)
-                    }
+                    setUploadedImage={(value: string) => {
+                      formik.setFieldValue('profilePicture', value, true);
+
+                      setOpenUpload(false);
+
+                      return undefined;
+                    }}
                   />
                 )}
                 <form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -169,7 +173,7 @@ const AddAffiliate = (props: Props) => {
                   </div>
                   <div className="text-gray-texts mt-4">
                     <input
-                      type="text"
+                      type="url"
                       name="linkToPlatform"
                       placeholder="Website"
                       value={values.linkToPlatform}

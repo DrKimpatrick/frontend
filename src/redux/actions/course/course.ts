@@ -6,6 +6,8 @@ import {
   CourseStatus
 } from 'redux/action-types/course';
 import ApiAction from 'helpers/apiAction';
+import { setMessage } from 'redux/actions/message';
+import { CourseInitialValue } from './interface';
 
 export const listCourseByStatus = ({
   data,
@@ -174,6 +176,96 @@ export const listCourse = (data?: CoursePagination) => (
           type: CourseTypes.ListCourse,
           payload: { data: res }
         });
+      }
+    })
+  );
+};
+
+export const createCourse = (data: CourseInitialValue) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: '/courses',
+      method: 'POST',
+      data,
+      onStart: () => (dispatch: Dispatch) =>
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: true }
+        }),
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.AddCourse,
+          payload: { data: true }
+        });
+
+        setMessage('Course added successfully')(dispatch);
+
+        listCourse()(dispatch);
+      }
+    })
+  );
+};
+
+export const updateCourse = (data: CourseInitialValue, courseId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: `/courses/${courseId}`,
+      method: 'PUT',
+      data,
+      onStart: () => (dispatch: Dispatch) =>
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: true }
+        }),
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.SubmitLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.UpdateCourse,
+          payload: { data: true }
+        });
+
+        setMessage('Course updated successfully')(dispatch);
+
+        listCourse()(dispatch);
       }
     })
   );

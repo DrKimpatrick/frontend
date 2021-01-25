@@ -29,3 +29,4 @@ export * from './Pagination';
 export * from './Image';
 export * from './AddItem';
 export * from './Course';
+export * from './CustomInput';

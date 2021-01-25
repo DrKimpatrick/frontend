@@ -93,7 +93,9 @@ const CoursePreview = (props: Props) => {
                 <span className="title">{courseDetail.name}</span>
                 <span className="description">{courseDetail.description}</span>
                 <div className="w-full flex align-items-center owner">
-                  <span>{courseDetail.duration}</span>
+                  <span>{`${courseDetail.duration} ${
+                    courseDetail.format ? courseDetail.format : ''
+                  }`}</span>
                   <span className="ml-2">
                     by&nbsp;<b>{get(courseDetail.userId, 'username', 'N/A')}</b>
                   </span>

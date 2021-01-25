@@ -9,6 +9,7 @@ interface Props {
   setIsUploaded: (value: boolean) => void;
   closeModal: () => void;
   setUploadedImage: (value: string) => void;
+  title?: string;
 }
 
 export const UploadProfilePicture = (props: Props) => {
@@ -18,7 +19,7 @@ export const UploadProfilePicture = (props: Props) => {
 
   const [fileName, setFileName] = useState<string>();
 
-  const { closeModal, setIsUploaded, setUploadedImage } = props;
+  const { closeModal, setIsUploaded, setUploadedImage, title } = props;
 
   const dispatch = useDispatch();
 
@@ -69,14 +70,12 @@ export const UploadProfilePicture = (props: Props) => {
       setIsUploaded(true);
 
       setUploadedImage(uploadedImage[0].path);
-
-      closeModal();
     }
-  }, [closeModal, message, setIsUploaded, setUploadedImage, uploadedImage]);
+  }, [message, setIsUploaded, setUploadedImage, uploadedImage]);
 
   return (
     <AddItemOnModal
-      title="Upload profile picture"
+      title={title || 'Upload profile picture'}
       closeModal={() => {
         closeModal();
         setIsUploaded(false);
@@ -84,7 +83,7 @@ export const UploadProfilePicture = (props: Props) => {
         return undefined;
       }}
     >
-      <div className="uploadProfilePicture mt-4">
+      <div className="uploadProfilePictureSection mt-4">
         {error && <div className="inputError">{error}</div>}
         {errors && errors.message && (
           <div className="inputError">{errors.message}</div>

@@ -49,7 +49,7 @@ Object {
           </h1>
         </div>
         <div
-          class="uploadProfilePicture mt-4"
+          class="uploadProfilePictureSection mt-4"
         >
           <div
             class="inputError"
@@ -136,7 +136,7 @@ Object {
           </h1>
         </div>
         <div
-          class="uploadProfilePicture mt-4"
+          class="uploadProfilePictureSection mt-4"
         >
           <div
             class="inputError"

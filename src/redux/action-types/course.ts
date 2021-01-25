@@ -1,5 +1,6 @@
 export enum CourseTypes {
   AddCourse = 'CourseTypes/AddCourse',
+  UpdateCourse = 'CourseTypes/UpdateCourse',
   ListPendingCourse = 'CourseTypes/ListPendingCourse',
   ListAcceptedCourse = 'CourseTypes/ListAcceptedCourse',
   ListDeclinedCourse = 'CourseTypes/ListDeclinedCourse',
@@ -11,7 +12,8 @@ export enum CourseTypes {
   ListCourseDetail = 'CourseTypes/ListCourseDetail',
   CourseDetailLoading = 'CourseTypes/CourseDetailLoading',
   ListCourse = 'CourseTypes/ListCourse',
-  ListCourseLoading = 'CourseTypes/ListCourseLoading'
+  ListCourseLoading = 'CourseTypes/ListCourseLoading',
+  SubmitLoading = 'CourseTypes/SubmitLoading'
 }
 
 export enum CourseStatus {
@@ -51,6 +53,8 @@ export interface Course {
   level: string;
   description: string;
   duration: string;
+  format: string;
+  price: string;
 }
 
 export interface CoursePagination {
@@ -167,6 +171,27 @@ interface ListCourseLoading {
   };
 }
 
+interface AddCourse {
+  type: typeof CourseTypes.AddCourse;
+  payload: {
+    data: boolean;
+  };
+}
+
+interface UpdateCourse {
+  type: typeof CourseTypes.UpdateCourse;
+  payload: {
+    data: boolean;
+  };
+}
+
+interface SubmitLoading {
+  type: typeof CourseTypes.SubmitLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
@@ -179,4 +204,7 @@ export type CourseActionTypes =
   | ListCourseDetail
   | CourseDetailLoading
   | ListCourse
-  | ListCourseLoading;
+  | ListCourseLoading
+  | AddCourse
+  | UpdateCourse
+  | SubmitLoading;

@@ -10,14 +10,26 @@
     width: 100%;
   }
   input,
-  textarea {
+  textarea,
+  .customSelect, .customInput {
     border: 1px solid #dadada;
     border-radius: 2px;
   }
-  input {
-    height: 47px;
+  input,
+  .customSelect,
+  .customInput {
+    height: 40px;
     width: 100%;
     padding: 10px;
+  }
+  .customSelect {
+    padding: 0px;
+  }
+  .customInput input {
+    border: none;
+    height: 100%;
+    border-radius: 0px;
+    padding: 0;
   }
   textarea {
     width: 100%;
@@ -31,6 +43,40 @@
       font-weight: bold;
       font-size: 22px;
       margin-left: 10px;
+    }
+  }
+  .uploadProfilePicture {
+    position: relative;
+    width: 240px;
+    input {
+      opacity: 0;
+      width: 100%;
+    }
+    button {
+      position: absolute;
+      padding: 10px;
+      color: white;
+      background-color: #4d9b62;
+      border-radius: 2px;
+      width: 100%;
+      height: 42px;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+  }
+  .submitButton {
+    color: white;
+    background-color: #545454;
+    outline: none;
+    height: 42px;
+    border-radius: 2px;
+    min-width: 136px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-right: 15px;
     }
   }
 }

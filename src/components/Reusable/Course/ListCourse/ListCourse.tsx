@@ -3,13 +3,12 @@ import './ListCourse.scss';
 import { Course, CourseStatus } from 'redux/action-types/course';
 import {
   Edit,
-  Delete,
   Visibility,
   Announcement,
   DataUsage,
   VerifiedUser
 } from '@material-ui/icons';
-import { CoursePreview } from 'components/Reusable';
+import { CoursePreview, AddCourse } from 'components/Reusable';
 
 interface Props {
   item: Course;
@@ -19,7 +18,11 @@ interface Props {
 export const ListCourse = (props: Props) => {
   const [showAction = false, setShowAction] = useState<boolean>();
 
+  const [editCourse = false, setEditCourse] = useState<boolean>();
+
   const [courseId, setCourseId] = useState<string>();
+
+  const [course, setCourse] = useState<Course>();
 
   const { item, allowEditDelete } = props;
 
@@ -29,6 +32,26 @@ export const ListCourse = (props: Props) => {
         <CoursePreview
           courseId={courseId}
           closeModal={() => setCourseId(undefined)}
+        />
+      )}
+
+      {editCourse && course && (
+        <AddCourse
+          title="Edit Course"
+          add={false}
+          courseId={course._id}
+          initialValue={{
+            ...course,
+            currentLangSpecsUpdated: false
+          }}
+          isCoverImageUploaded
+          closeModal={() => {
+            setCourseId(undefined);
+            setCourse(undefined);
+            setEditCourse(false);
+
+            return undefined;
+          }}
         />
       )}
       <li
@@ -48,15 +71,23 @@ export const ListCourse = (props: Props) => {
               {allowEditDelete && (
                 <>
                   <li>
-                    <button type="button">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCourse(item);
+                        setEditCourse(true);
+
+                        return undefined;
+                      }}
+                    >
                       <Edit />
                     </button>
                   </li>
-                  <li>
+                  {/* <li>
                     <button type="button">
                       <Delete />
                     </button>
-                  </li>
+                  </li> */}
                 </>
               )}
             </>

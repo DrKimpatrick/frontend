@@ -6,7 +6,12 @@ import { Publish } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import { listCurrentUser } from 'redux/actions/user';
 import { UserRole } from 'redux/action-types/user';
-import { NavBar, MainBackground, SideLoading } from 'components/Reusable';
+import {
+  NavBar,
+  MainBackground,
+  SideLoading,
+  AddCourse
+} from 'components/Reusable';
 import './AffiliateLayout.scss';
 
 interface Props {
@@ -14,7 +19,6 @@ interface Props {
 }
 
 const AffiliateLayout: FC<Props> = props => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [add = false, setAdd] = useState<boolean>();
 
   const { children } = props;
@@ -46,6 +50,9 @@ const AffiliateLayout: FC<Props> = props => {
 
   return (
     <div className="adminLayout">
+      {add && (
+        <AddCourse title="Add course" closeModal={() => setAdd(false)} add />
+      )}
       <NavBar />
       <div style={{ position: 'relative', marginTop: 20, minHeight: 350 }}>
         {loading && <SideLoading />}

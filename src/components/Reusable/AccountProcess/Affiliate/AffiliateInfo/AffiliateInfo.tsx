@@ -91,7 +91,7 @@ const AddMoreInfo: FC = () => {
               <div className="text-gray-texts mt-4">
                 <label>Link to Platform*</label>
                 <input
-                  type="text"
+                  type="url"
                   className="border outline-none bg-transparent rounded-sm w-full px-3 text-gray-texts input-height mt-2"
                   name="linkToPlatform"
                   value={formik.values.linkToPlatform}
