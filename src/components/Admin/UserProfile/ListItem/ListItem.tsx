@@ -11,35 +11,42 @@ export interface ListItemProps {
 
 interface Props {
   listItem: ListItemProps;
+  hasModifyAccess?: boolean;
   changeStatus?: (value: string) => void;
 }
 
 const options = Object.values(VerificationStatus);
 
 const ListItem = (props: Props) => {
-  const { listItem: item, changeStatus } = props;
+  const { listItem: item, changeStatus, hasModifyAccess = true } = props;
 
   return (
     <li className="py-2 py-2 rounded-sm">
       <h5>{item.name}</h5>
       <div className="selectItems">
-        <select
-          value={item.status ? item.status : ''}
-          onChange={e => {
-            if (changeStatus) {
-              changeStatus(e.target.value);
-            }
-          }}
-        >
-          {options.map((opt, i) => (
-            <option value={opt} key={i}>
-              {opt}
-            </option>
-          ))}
-        </select>
-        <span className="customArrow">
-          <ArrowDropDown />
-        </span>
+        {hasModifyAccess ? (
+          <>
+            <select
+              value={item.status ? item.status : ''}
+              onChange={e => {
+                if (changeStatus) {
+                  changeStatus(e.target.value);
+                }
+              }}
+            >
+              {options.map((opt, i) => (
+                <option value={opt} key={i}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+            <span className="customArrow">
+              <ArrowDropDown />
+            </span>
+          </>
+        ) : (
+          <p className="status">{item.status}</p>
+        )}
       </div>
     </li>
   );

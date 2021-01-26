@@ -1,0 +1,53 @@
+.userProfile {
+  position: relative;
+  .profileShowcase {
+    position: relative;
+    margin-top: 50px;
+    .items {
+      position: relative;
+      .title {
+        padding-left: 8px;
+        display: flex;
+        margin-bottom: 20px;
+        color: #747474;
+        h1 {
+          margin-left: 10px;
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+      }
+    }
+    .educationItem {
+      margin-top: 50px;
+    }
+    .skillDivider {
+      position: relative;
+      margin-bottom: 40px;
+      .title {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        h5 {
+          font-weight: bold;
+          font-size: 14px;
+          width: 170px;
+        }
+      }
+      .beginner {
+        color: #8a8a8a;
+      }
+      .intermediate {
+        color: #30a3e6;
+      }
+      .advanced {
+        color: #178f1d;
+      }
+    }
+  }
+  .notFound {
+    margin: 14px;
+    h5 {
+      color: #747474;
+    }
+  }
+}

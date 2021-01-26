@@ -11,9 +11,10 @@ import { ListItem } from '..';
 
 interface Props {
   userId: string;
+  hasModifyAccess?: boolean;
 }
 export const SkillSet = (props: Props) => {
-  const { userId } = props;
+  const { userId, hasModifyAccess = true } = props;
 
   const dispatch = useDispatch();
 
@@ -51,6 +52,7 @@ export const SkillSet = (props: Props) => {
                         dispatch
                       );
                     }}
+                    hasModifyAccess={hasModifyAccess}
                   />
                 ))}
               </ul>
@@ -65,7 +67,7 @@ export const SkillSet = (props: Props) => {
       );
     }
     return null;
-  }, [dispatch, userSkill, userSkillLoading]);
+  }, [dispatch, hasModifyAccess, userSkill, userSkillLoading]);
 
   const intermediateSkills = useMemo(() => {
     if (userSkill) {
@@ -91,6 +93,7 @@ export const SkillSet = (props: Props) => {
                         dispatch
                       );
                     }}
+                    hasModifyAccess={hasModifyAccess}
                   />
                 ))}
               </ul>
@@ -105,7 +108,7 @@ export const SkillSet = (props: Props) => {
       );
     }
     return null;
-  }, [dispatch, userSkill, userSkillLoading]);
+  }, [dispatch, hasModifyAccess, userSkill, userSkillLoading]);
 
   const advancedSkills = useMemo(() => {
     if (userSkill) {
@@ -129,6 +132,7 @@ export const SkillSet = (props: Props) => {
                         dispatch
                       );
                     }}
+                    hasModifyAccess={hasModifyAccess}
                   />
                 ))}
               </ul>
@@ -143,7 +147,7 @@ export const SkillSet = (props: Props) => {
       );
     }
     return null;
-  }, [dispatch, userSkill, userSkillLoading]);
+  }, [dispatch, hasModifyAccess, userSkill, userSkillLoading]);
 
   return (
     <Grid item xs={6}>

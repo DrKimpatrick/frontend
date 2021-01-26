@@ -1,0 +1,12 @@
+.checkbox {
+  font-size: 13px;
+  color: #737373;
+  & label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & label span {
+    padding-left: 4px;
+  }
+}

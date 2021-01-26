@@ -872,6 +872,45 @@ exports[`UserProfile should create snapshot 1`] = `
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div
+          className="userProfile"
+        >
+          <div
+            className="profilePreview"
+          >
+            <div
+              className="profilePicture"
+            >
+              <img
+                alt=""
+                src="profile.png"
+              />
+            </div>
+            <div
+              className="preview"
+              style={
+                Object {
+                  "marginTop": "20px",
+                }
+              }
+            >
+              <h5
+                className="title"
+              >
+                gramdb
+              </h5>
+              <div
+                className="biography"
+              >
+                bio
+              </div>
+            </div>
+          </div>
+          <div
+            className="profileShowcase"
+          >
             <div
               className="affiliateProfile"
             >

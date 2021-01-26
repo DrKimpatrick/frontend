@@ -80,6 +80,7 @@ export interface User {
   updatedAt: string;
   dateRegistered: string;
   paymentStatus: string;
+  couponUsed?: string;
   featureChoice: string;
   verified: boolean;
   employmentHistory?: Employment[];

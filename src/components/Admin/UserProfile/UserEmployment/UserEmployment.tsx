@@ -9,10 +9,11 @@ import { ListItem } from '..';
 interface Props {
   employment: Employment[];
   userEmploymentLoading?: boolean;
+  hasModifyAccess?: boolean;
 }
 
 const UserEmployment = (props: Props) => {
-  const { employment, userEmploymentLoading } = props;
+  const { employment, userEmploymentLoading, hasModifyAccess = true } = props;
 
   const dispatch = useDispatch();
 
@@ -43,6 +44,7 @@ const UserEmployment = (props: Props) => {
                     dispatch
                   );
                 }}
+                hasModifyAccess={hasModifyAccess}
               />
             ))}
           </ul>

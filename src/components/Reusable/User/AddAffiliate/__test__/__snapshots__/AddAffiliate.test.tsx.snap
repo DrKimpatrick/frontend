@@ -106,7 +106,7 @@ Object {
               <input
                 name="linkToPlatform"
                 placeholder="Website"
-                type="text"
+                type="url"
                 value=""
               />
             </div>
@@ -279,7 +279,7 @@ Object {
               <input
                 name="linkToPlatform"
                 placeholder="Website"
-                type="text"
+                type="url"
                 value=""
               />
             </div>

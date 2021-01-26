@@ -5,13 +5,14 @@ import './HrListItem.scss';
 interface Props {
   name: string;
   link?: string;
+  onclickHandler?: () => void;
 }
 
 const AdminList = (props: Props) => {
-  const { name, link } = props;
+  const { name, link, onclickHandler } = props;
 
   return (
-    <li className="adList py-2 py-2 rounded-sm">
+    <li className="adList py-2 py-2 rounded-sm" onClick={onclickHandler}>
       <h5>{name}</h5>
       {link && (
         <div className="link">

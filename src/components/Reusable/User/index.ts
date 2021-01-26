@@ -7,3 +7,4 @@ export * from './AddAffiliate';
 export * from './UploadProfilePicture';
 export * from './AffiliateProfile';
 export * from './ProfilePreview';
+export * from './TalentProfile';

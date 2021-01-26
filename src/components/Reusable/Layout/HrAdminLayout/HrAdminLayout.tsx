@@ -5,7 +5,8 @@ import {
   NavBar,
   MainBackground,
   AdminProfile,
-  AdminTab
+  AdminTab,
+  SearchTalents
 } from 'components/Reusable';
 import {
   Code as CodeIcon,
@@ -134,6 +135,12 @@ export const HrLayout: FC<Props> = props => {
                   </div>
                   {size?.width && size?.width < 768 && leftSideItem()}
                   <div className="hrAdminChildren">
+                    {history.location.pathname ===
+                      Routes.PotentialCandidate && (
+                      <div className="mb-8 float-right search-wrapper">
+                        <SearchTalents />
+                      </div>
+                    )}
                     {role === UserRole.RecruitmentAdmin && (
                       <AdminTab
                         menu={[

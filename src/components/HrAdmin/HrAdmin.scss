@@ -6,3 +6,9 @@
     flex-direction: column;
   }
 }
+
+.addItem {
+  width: 60rem;
+  max-height: 85%;
+  overflow: auto;
+}

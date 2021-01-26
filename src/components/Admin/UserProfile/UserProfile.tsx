@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import { withRouter, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid } from '@material-ui/core';
 import {
   AdminLayout as Layout,
   SideLoading,
   AffiliateProfile,
-  ProfilePreview
+  ProfilePreview,
+  TalentProfile
 } from 'components/Reusable';
 import { listSpecificUser, setActivePath } from 'redux/actions/user';
 import { RootState } from 'redux/store';
@@ -14,9 +14,6 @@ import { Routes } from 'utils/routes';
 import { UserRole } from 'redux/action-types/user';
 import { ProfileNotFound } from '.';
 import './UserProfile.scss';
-import { SkillSet } from './SkillSet';
-import { UserEducation } from './UserEducation';
-import { UserEmployment } from './UserEmployment';
 
 const UserProfile: FC = () => {
   const [topMenu = [], setTopMenu] = useState<
@@ -135,38 +132,23 @@ const UserProfile: FC = () => {
   return (
     <Layout topMenu={topMenu} showCourse={showCourse}>
       {specificUser && (
-        <div className="userProfile">
-          <ProfilePreview user={specificUser} />
-          <div className="profileShowcase">
-            {specificUser.roles && (
-              <>
-                {specificUser.roles.includes(UserRole.Talent) && (
-                  <Grid container spacing={10}>
-                    <SkillSet userId={specificUser._id} />
-                    <Grid item xs={6}>
-                      {specificUser.employmentHistory && (
-                        <UserEmployment
-                          employment={specificUser.employmentHistory}
-                          userEmploymentLoading={userEmploymentLoading}
-                        />
-                      )}
-                      {specificUser.educationHistory && (
-                        <UserEducation
-                          education={specificUser.educationHistory}
-                          userEducationLoading={userEducationLoading}
-                        />
-                      )}
-                    </Grid>
-                  </Grid>
-                )}
-              </>
+        <>
+          <TalentProfile
+            user={specificUser}
+            userEducationLoading={userEducationLoading}
+            userEmploymentLoading={userEmploymentLoading}
+            hasModifyAccess
+          />
+          {specificUser.roles &&
+            specificUser.roles.includes(UserRole.TrainingAffiliate) && (
+              <div className="userProfile">
+                <ProfilePreview user={specificUser} />
+                <div className="profileShowcase">
+                  <AffiliateProfile courses={specificUser.courses} />
+                </div>
+              </div>
             )}
-            {specificUser.roles &&
-              specificUser.roles.includes(UserRole.TrainingAffiliate) && (
-                <AffiliateProfile courses={specificUser.courses} />
-              )}
-          </div>
-        </div>
+        </>
       )}
     </Layout>
   );
