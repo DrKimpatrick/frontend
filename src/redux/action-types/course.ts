@@ -1,3 +1,5 @@
+import { CourseOwnerType } from 'redux/actions/course';
+
 export enum CourseTypes {
   AddCourse = 'CourseTypes/AddCourse',
   UpdateCourse = 'CourseTypes/UpdateCourse',
@@ -13,7 +15,9 @@ export enum CourseTypes {
   CourseDetailLoading = 'CourseTypes/CourseDetailLoading',
   ListCourse = 'CourseTypes/ListCourse',
   ListCourseLoading = 'CourseTypes/ListCourseLoading',
-  SubmitLoading = 'CourseTypes/SubmitLoading'
+  SubmitLoading = 'CourseTypes/SubmitLoading',
+  ListCourseOwner = 'CourseTypes/ListCourseOwner',
+  CourseOwnerLoading = 'CourseTypes/CourseOwnerLoading'
 }
 
 export enum CourseStatus {
@@ -192,6 +196,20 @@ interface SubmitLoading {
   };
 }
 
+interface ListCourseOwner {
+  type: typeof CourseTypes.ListCourseOwner;
+  payload: {
+    data: CourseOwnerType;
+  };
+}
+
+interface CourseOwnerLoading {
+  type: typeof CourseTypes.CourseOwnerLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
@@ -207,4 +225,6 @@ export type CourseActionTypes =
   | ListCourseLoading
   | AddCourse
   | UpdateCourse
-  | SubmitLoading;
+  | SubmitLoading
+  | ListCourseOwner
+  | CourseOwnerLoading;

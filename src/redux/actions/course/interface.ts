@@ -11,3 +11,19 @@ export interface CourseInitialValue {
   description: string;
   price: string | number;
 }
+
+export interface OwnerDetailType {
+  _id: string;
+  count: number;
+  users: {
+    _id: string;
+    profilePicture: string;
+    username: string;
+  }[];
+}
+export interface CourseOwnerType {
+  data: OwnerDetailType[];
+  totalDocs: number;
+  currentPage: number;
+  limit: number;
+}

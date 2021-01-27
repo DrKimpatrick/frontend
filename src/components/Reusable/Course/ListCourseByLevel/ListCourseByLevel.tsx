@@ -23,19 +23,21 @@ export const ListCourseByLevel = (props: Props) => {
 
   return (
     <div className="listCourseByLevel">
-      <div className="level w-full">
-        <span>{level}</span>
-      </div>
       {data && data.length > 0 && (
-        <ul className="bg-card-preview">
-          {data.map((item, index) => (
-            <ListCourse
-              item={item}
-              key={index}
-              allowEditDelete={allowEditDelete}
-            />
-          ))}
-        </ul>
+        <>
+          <div className="level w-full">
+            <span>{level}</span>
+          </div>
+          <ul className="bg-card-preview">
+            {data.map((item, index) => (
+              <ListCourse
+                item={item}
+                key={index}
+                allowEditDelete={allowEditDelete}
+              />
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

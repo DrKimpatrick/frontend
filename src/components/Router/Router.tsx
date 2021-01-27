@@ -8,8 +8,7 @@ import {
   ResetPassword,
   AccountTypes
 } from 'components/Auth';
-// import { Auth } from 'components/Mobile';
-import { Dashboard } from 'components/Talent';
+import { Dashboard, Training } from 'components/Talent';
 import {
   StandardBilling,
   PremiumBilling,
@@ -49,6 +48,7 @@ const AppRouter: FC = () => {
     { path: Routes.Account, exact: true, component: <AccountTypes /> },
     { path: Routes.Notification, exact: true, component: <Dashboard /> },
     { path: Routes.UserDashboard, exact: true, component: <Dashboard /> },
+    { path: Routes.Training, exact: true, component: <Training /> },
     {
       path: Routes.PremiumBilling,
       exact: true,

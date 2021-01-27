@@ -4,6 +4,11 @@ exports[`\`PremiumBilling\` component matches the snapshot 1`] = `
 Array [
   <nav
     className="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+    style={
+      Object {
+        "background": "white",
+      }
+    }
   >
     <a
       className="text-gray-800"

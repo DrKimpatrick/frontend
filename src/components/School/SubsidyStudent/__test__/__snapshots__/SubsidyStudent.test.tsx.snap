@@ -7,6 +7,7 @@ Object {
     <div>
       <nav
         class="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+        style="background: white;"
       >
         <a
           class="text-gray-800"
@@ -555,6 +556,7 @@ Object {
   "container": <div>
     <nav
       class="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+      style="background: white;"
     >
       <a
         class="text-gray-800"

@@ -81,5 +81,7 @@ export enum Routes {
 
   SubsidyStudent = '/school/subsidy-student',
 
-  Auth = '/auth'
+  Auth = '/auth',
+
+  Training = '/training'
 }

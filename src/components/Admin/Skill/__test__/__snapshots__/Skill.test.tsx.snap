@@ -6,6 +6,11 @@ exports[`Skill Component should create snapshot 1`] = `
 >
   <nav
     className="flex items-center bg-white-800 px-20 py-5 flex-wrap"
+    style={
+      Object {
+        "background": "white",
+      }
+    }
   >
     <a
       className="text-gray-800"

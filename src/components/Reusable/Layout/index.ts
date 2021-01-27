@@ -11,3 +11,4 @@ export * from './AuthLayout';
 export * from './HrAdminLayout';
 export * from './AdminTab';
 export * from './AffiliateLayout';
+export * from './TalentLayout';

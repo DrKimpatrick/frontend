@@ -270,3 +270,46 @@ export const updateCourse = (data: CourseInitialValue, courseId: string) => (
     })
   );
 };
+
+export const listCourseOwner = (values?: { page: number; limit: number }) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: values
+        ? `/courses/group/owner/?limit=${values.limit}&page=${values.page}`
+        : '/courses/group/owner',
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CourseOwnerLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CourseOwnerLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CourseOwnerLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.ListCourseOwner,
+          payload: { data: res }
+        });
+      }
+    })
+  );
+};

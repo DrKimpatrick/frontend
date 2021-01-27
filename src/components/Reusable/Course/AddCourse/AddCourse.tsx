@@ -111,7 +111,7 @@ export const AddCourse = (props: Props) => {
                     setIsUploaded={setIsUploaded}
                     closeModal={() => setOpenUpload(false)}
                     setUploadedImage={(value: string) => {
-                      formik.setFieldValue('coverImageLink', value, true);
+                      formik.setFieldValue('coverImageLink', value);
 
                       setOpenUpload(false);
 
@@ -205,9 +205,7 @@ export const AddCourse = (props: Props) => {
                     <CustomInput
                       name="price"
                       value={String(values.price)}
-                      onChange={value =>
-                        formik.setFieldValue('price', value, true)
-                      }
+                      onChange={value => formik.setFieldValue('price', value)}
                       placeholder="Price"
                       icon={<AttachMoney />}
                     />
@@ -232,9 +230,7 @@ export const AddCourse = (props: Props) => {
                       }))}
                       name="level"
                       value={values.level}
-                      onChange={value =>
-                        formik.setFieldValue('level', value, true)
-                      }
+                      onChange={value => formik.setFieldValue('level', value)}
                     />
                     {errors && errors.level && (
                       <small className="inputError text-sm">
@@ -280,7 +276,7 @@ export const AddCourse = (props: Props) => {
                           name="format"
                           value={values.format}
                           onChange={value =>
-                            formik.setFieldValue('format', value, true)
+                            formik.setFieldValue('format', value)
                           }
                         />
                         {errors && errors.format && (
