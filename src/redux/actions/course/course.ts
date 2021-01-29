@@ -2,12 +2,11 @@ import { Dispatch } from 'redux';
 import {
   CourseTypes,
   CoursePagination,
-  Course,
   CourseStatus
 } from 'redux/action-types/course';
 import ApiAction from 'helpers/apiAction';
 import { setMessage } from 'redux/actions/message';
-import { CourseInitialValue } from './interface';
+import { CourseInitialValue, Course } from './interface';
 
 export const listCourseByStatus = ({
   data,
@@ -307,6 +306,50 @@ export const listCourseOwner = (values?: { page: number; limit: number }) => (
 
         dispatch({
           type: CourseTypes.ListCourseOwner,
+          payload: { data: res }
+        });
+      }
+    })
+  );
+};
+
+export const listUserCourse = (
+  id: string,
+  values?: { limit: number; page: number }
+) => (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: values
+        ? `/courses/affiliate/${id}/?limit=${values.limit}&page=${values.page}`
+        : `/courses/affiliate/${id}`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserCourseLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.UserCourse,
           payload: { data: res }
         });
       }

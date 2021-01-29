@@ -49,7 +49,7 @@ const AffiliateLayout: FC<Props> = props => {
   }
 
   return (
-    <div className="adminLayout">
+    <div className="adminLayout affiliateLayout">
       {add && (
         <AddCourse title="Add course" closeModal={() => setAdd(false)} add />
       )}

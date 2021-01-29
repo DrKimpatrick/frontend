@@ -58,7 +58,7 @@ Object {
               React Crash Course
             </span>
             <span
-              class="description"
+              class="description textCenterDescription"
             >
               desc
             </span>
@@ -404,7 +404,7 @@ Object {
               React Crash Course
             </span>
             <span
-              class="description"
+              class="description textCenterDescription"
             >
               desc
             </span>

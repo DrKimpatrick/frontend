@@ -19,6 +19,7 @@
     margin-left: 20px;
     margin-top: 20px;
     color: #747474;
+    flex-grow: 1;
     .title {
       font-weight: bold;
       font-size: 22px;
@@ -26,6 +27,22 @@
     .biography {
       font-size: 15px;
       width: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profilePreview {
+    width: 100%;
+    .profilePicture {
+      width: 90px;
+      height: 90px;
+    }
+    .preview {
+      position: relative;
+      .biography {
+        width: 100%;
+      }
     }
   }
 }

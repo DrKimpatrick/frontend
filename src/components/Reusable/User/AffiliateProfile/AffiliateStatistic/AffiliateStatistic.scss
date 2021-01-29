@@ -27,3 +27,15 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .listOfStatistic {
+    flex-wrap: wrap;
+    li {
+      flex-grow: 1;
+      margin: 5px;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+    }
+  }
+}

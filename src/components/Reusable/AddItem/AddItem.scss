@@ -11,7 +11,8 @@
   }
   input,
   textarea,
-  .customSelect, .customInput {
+  .customSelect,
+  .customInput {
     border: 1px solid #dadada;
     border-radius: 2px;
   }
@@ -78,5 +79,15 @@
     span {
       margin-right: 15px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .addItem {
+    width: 95% !important;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px !important;
+    max-height: 95vh !important;
   }
 }

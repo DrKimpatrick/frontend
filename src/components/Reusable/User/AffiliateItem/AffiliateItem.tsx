@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import './AffiliateItem.scss';
 import ReactPaginate from 'react-paginate';
-import { Course, CourseStatus } from 'redux/action-types/course';
+import { CourseStatus } from 'redux/action-types/course';
 import { ArrowDropDown } from '@material-ui/icons';
-import { changeCourseStatus } from 'redux/actions/course';
+import { changeCourseStatus, Course } from 'redux/actions/course';
 import { useDispatch } from 'react-redux';
 import { NoItemFound } from 'components/Reusable';
 import { OnPageChangeCallback } from '..';

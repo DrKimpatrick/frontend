@@ -1,4 +1,4 @@
-import { CourseOwnerType } from 'redux/actions/course';
+import { CourseOwnerType, Course, UserCourseType } from 'redux/actions/course';
 
 export enum CourseTypes {
   AddCourse = 'CourseTypes/AddCourse',
@@ -17,7 +17,9 @@ export enum CourseTypes {
   ListCourseLoading = 'CourseTypes/ListCourseLoading',
   SubmitLoading = 'CourseTypes/SubmitLoading',
   ListCourseOwner = 'CourseTypes/ListCourseOwner',
-  CourseOwnerLoading = 'CourseTypes/CourseOwnerLoading'
+  CourseOwnerLoading = 'CourseTypes/CourseOwnerLoading',
+  UserCourse = 'CourseTypes/UserCourse',
+  UserCourseLoading = 'CourseTypes/UserCourseLoading'
 }
 
 export enum CourseStatus {
@@ -35,30 +37,6 @@ export enum CourseLevel {
   Advanced = 'advanced',
   Beginner = 'beginner',
   Intermediate = 'intermediate'
-}
-
-export interface Course {
-  _id: string;
-  currentLangSpecsUpdated: boolean;
-  verificationStatus: string;
-  name: string;
-  instructor: string;
-  languageTaught: string;
-  existingCourseLink: string;
-  coverImageLink: string;
-  userId: {
-    _id: string;
-    username: string;
-    email: string;
-    avatar?: string;
-  };
-  createdAt: string;
-  updatedAt: string;
-  level: string;
-  description: string;
-  duration: string;
-  format: string;
-  price: string;
 }
 
 export interface CoursePagination {
@@ -210,6 +188,20 @@ interface CourseOwnerLoading {
   };
 }
 
+interface UserCourse {
+  type: typeof CourseTypes.UserCourse;
+  payload: {
+    data: UserCourseType;
+  };
+}
+
+interface UserCourseLoading {
+  type: typeof CourseTypes.UserCourseLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
@@ -227,4 +219,6 @@ export type CourseActionTypes =
   | UpdateCourse
   | SubmitLoading
   | ListCourseOwner
-  | CourseOwnerLoading;
+  | CourseOwnerLoading
+  | UserCourse
+  | UserCourseLoading;

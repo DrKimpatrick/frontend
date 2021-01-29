@@ -1,8 +1,8 @@
 import { UploadedFileType } from 'redux/actions/user';
+import { Course } from 'redux/actions/course';
 import { Employment } from './employment';
 import { Education } from './education';
 import { Skill } from './skill';
-import { Course } from './course';
 
 export enum UserTypes {
   CurrentUser = 'User/CurrentUser',

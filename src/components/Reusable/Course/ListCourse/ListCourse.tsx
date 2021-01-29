@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ListCourse.scss';
-import { Course, CourseStatus } from 'redux/action-types/course';
+import { CourseStatus } from 'redux/action-types/course';
+import { Course } from 'redux/actions/course';
 import {
   Edit,
   Visibility,
@@ -58,13 +59,21 @@ export const ListCourse = (props: Props) => {
         className="listCourse"
         onMouseOver={() => setShowAction(true)}
         onMouseLeave={() => setShowAction(false)}
+        onClick={() => setShowAction(true)}
       >
         <span className="name">{item.name}</span>
         <ul className="action">
           {showAction && (
             <>
               <li>
-                <button type="button" onClick={() => setCourseId(item._id)}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCourseId(item._id);
+
+                    return undefined;
+                  }}
+                >
                   <Visibility />
                 </button>
               </li>

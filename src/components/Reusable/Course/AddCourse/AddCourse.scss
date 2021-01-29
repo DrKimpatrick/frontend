@@ -1,9 +1,18 @@
-.addItem{
-    padding: 40px;
+.addItem {
+  padding: 40px;
+  width: 550px !important;
 }
-.addCourse{
-    max-height: 700px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 5px;
+.addCourse {
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .addItem {
+    width: 95% !important;
+    margin: auto;
+    margin-top: 10px;
+  }
 }

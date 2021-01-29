@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
+import { Grid } from '@material-ui/core';
 import {
   AddItemOnModal,
   ApiValidationError,
@@ -245,8 +246,8 @@ export const AddCourse = (props: Props) => {
                     )}
                   </div>
                   <div className="text-gray-texts mt-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
+                    <Grid container spacing={2}>
+                      <Grid item xs>
                         <input
                           type="number"
                           name="duration"
@@ -265,10 +266,10 @@ export const AddCourse = (props: Props) => {
                             errors={validationError}
                           />
                         )}
-                      </div>
-                      <div>
+                      </Grid>
+                      <Grid item xs>
                         <CustomSelect
-                          placeholder="Select time format"
+                          placeholder="Format"
                           option={Object.values(CourseTimeFormat).map(item => ({
                             name: item,
                             value: item
@@ -290,8 +291,8 @@ export const AddCourse = (props: Props) => {
                             errors={validationError}
                           />
                         )}
-                      </div>
-                    </div>
+                      </Grid>
+                    </Grid>
                   </div>
                   <div className="text-gray-texts mt-4">
                     <textarea

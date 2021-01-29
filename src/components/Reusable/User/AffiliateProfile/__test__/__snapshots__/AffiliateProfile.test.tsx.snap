@@ -312,45 +312,29 @@ Object {
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
             <div
-              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
             >
               <div
                 class="my-1"
               >
                 <div
                   class="listCourseByLevel"
-                >
-                  <div
-                    class="level w-full"
-                  >
-                    <span>
-                      beginner
-                    </span>
-                  </div>
-                </div>
+                />
               </div>
             </div>
             <div
-              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
             >
               <div
                 class="my-1"
               >
                 <div
                   class="listCourseByLevel"
-                >
-                  <div
-                    class="level w-full"
-                  >
-                    <span>
-                      intermediate
-                    </span>
-                  </div>
-                </div>
+                />
               </div>
             </div>
             <div
-              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
             >
               <div
                 class="my-1"
@@ -714,45 +698,29 @@ Object {
           class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
         >
           <div
-            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
           >
             <div
               class="my-1"
             >
               <div
                 class="listCourseByLevel"
-              >
-                <div
-                  class="level w-full"
-                >
-                  <span>
-                    beginner
-                  </span>
-                </div>
-              </div>
+              />
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
           >
             <div
               class="my-1"
             >
               <div
                 class="listCourseByLevel"
-              >
-                <div
-                  class="level w-full"
-                >
-                  <span>
-                    intermediate
-                  </span>
-                </div>
-              </div>
+              />
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
           >
             <div
               class="my-1"

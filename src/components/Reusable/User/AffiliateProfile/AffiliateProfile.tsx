@@ -1,6 +1,7 @@
 import React from 'react';
 import './AffiliateProfile.scss';
-import { CourseLevel, Course } from 'redux/action-types/course';
+import { CourseLevel } from 'redux/action-types/course';
+import { Course } from 'redux/actions/course';
 import {
   Adb,
   ViewComfy,
@@ -49,7 +50,7 @@ const AffiliateProfile = (props: Props) => {
         <span className="title">Courses</span>
         {courses && courses.length > 0 && (
           <Grid container spacing={3}>
-            <Grid item xs={4}>
+            <Grid item xs>
               <div className="my-1">
                 <ListCourseByLevel
                   courses={courses}
@@ -58,7 +59,7 @@ const AffiliateProfile = (props: Props) => {
                 />
               </div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs>
               <div className="my-1">
                 <ListCourseByLevel
                   courses={courses}
@@ -67,7 +68,7 @@ const AffiliateProfile = (props: Props) => {
                 />
               </div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs>
               <div className="my-1">
                 <ListCourseByLevel
                   courses={courses}

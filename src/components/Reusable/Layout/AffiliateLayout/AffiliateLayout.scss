@@ -1,1 +1,9 @@
 @import '../AdminLayout/CourseStatistic/CourseStatistic.scss';
+
+@media screen and (max-width: 768px) {
+  .affiliateLayout {
+    .customBackground {
+      display: none;
+    }
+  }
+}

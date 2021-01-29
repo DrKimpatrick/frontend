@@ -44,7 +44,9 @@ const CoursePreview = (props: Props) => {
   const { courseDetail, courseDetailLoading, errors } = selector;
 
   useEffect(() => {
-    listCourseDetail(courseId)(dispatch);
+    if (courseId) {
+      listCourseDetail(courseId)(dispatch);
+    }
   }, [courseId, dispatch]);
 
   return (
@@ -91,7 +93,15 @@ const CoursePreview = (props: Props) => {
               </div>
               <div className="detail">
                 <span className="title">{courseDetail.name}</span>
-                <span className="description">{courseDetail.description}</span>
+                <span
+                  className={`description ${
+                    courseDetail.description.length <= 48
+                      ? 'textCenterDescription'
+                      : ''
+                  }`}
+                >
+                  {courseDetail.description}
+                </span>
                 <div className="w-full flex align-items-center owner">
                   <span>{`${courseDetail.duration} ${
                     courseDetail.format ? courseDetail.format : ''

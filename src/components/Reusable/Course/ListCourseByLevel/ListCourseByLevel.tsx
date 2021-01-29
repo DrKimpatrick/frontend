@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Course } from 'redux/action-types/course';
+import { Course } from 'redux/actions/course';
 import './ListCourseByLevel.scss';
 import { filter } from 'lodash';
 import { ListCourse } from '../ListCourse';
