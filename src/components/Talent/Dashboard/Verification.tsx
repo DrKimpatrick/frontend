@@ -9,10 +9,10 @@ type props = {
 const Verification: FC<props> = ({ monitor }) => {
   return (
     <>
-      <div className="w-full my-3">
+      <div className="w-full verification">
         <ul
           className={`${
-            (monitor && 'flex justify-between mx-auto w-4/5') || 'p-0 m-0'
+            (monitor && 'flex justify-between mx-auto') || 'p-0 m-0'
           }`}
         >
           <li className="pb-4">

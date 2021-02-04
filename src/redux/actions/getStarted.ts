@@ -6,12 +6,14 @@ import {
   REGISTER_SUCCESS
 } from 'redux/action-types/getStarted';
 
-export const GetStartedAction = (newUser: Register) => {
+export const GetStartedAction = (newUser: Register, reference?: string) => {
   return (dispatchAction: any) =>
     dispatchAction(
       apiAction({
         method: 'POST',
-        url: '/auth/register',
+        url: reference
+          ? `/auth/register?reference=${reference}`
+          : '/auth/register',
         data: newUser,
         onStart: () => (dispatch: any) => {
           dispatch({ type: REGISTER_LOADING });

@@ -1,5 +1,5 @@
 import { HrAdmin } from 'redux/actions/hrAdmin';
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 
 export enum HrAdminType {
   Loading = 'HrAdminType/Loading',

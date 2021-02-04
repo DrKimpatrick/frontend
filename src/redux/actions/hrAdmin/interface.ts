@@ -1,4 +1,4 @@
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 
 export interface HrAdmin {
   usedBy: User[];

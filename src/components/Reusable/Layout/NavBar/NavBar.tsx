@@ -31,6 +31,12 @@ const dashboardItems = [
     item: 'Trainings',
     icon: <WorkIcon className="dashboard-list-icons" />,
     link: Routes.Training
+  },
+  {
+    id: 4,
+    item: 'Recommendation',
+    icon: <WorkIcon className="dashboard-list-icons" />,
+    link: Routes.TalentRecommendation
   }
 ];
 

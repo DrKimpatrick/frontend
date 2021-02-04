@@ -9,6 +9,9 @@
     border-radius: 2px;
     min-height: 300px;
     position: relative;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
     .closeModal {
       position: absolute;
       right: 0;

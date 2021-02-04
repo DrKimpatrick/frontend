@@ -1,5 +1,5 @@
 import React from 'react';
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 import Avatar from 'assets/images/avatar.jpg';
 import './ProfilePreview.scss';
 

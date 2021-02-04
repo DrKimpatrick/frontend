@@ -20,12 +20,7 @@ import {
   ForgotDispatchTypes
 } from 'redux/action-types/forgotPass';
 
-import {
-  UserTypeActions,
-  UserTypes,
-  User,
-  UserSkill
-} from 'redux/action-types/user';
+import { UserTypeActions, UserTypes } from 'redux/action-types/user';
 
 import {
   RESET_FAIL,
@@ -49,7 +44,7 @@ import {
   EmploymentActionTypes
 } from 'redux/action-types/employment';
 
-import { UploadedFileType } from 'redux/actions/user';
+import { UploadedFileType, User, UserSkill } from 'redux/actions/user';
 
 interface InitialState {
   currentUser: {
@@ -104,6 +99,9 @@ interface InitialState {
   uploadProfilePictureLoading?: boolean;
   addAffiliate?: boolean;
   addAffiliateLoading?: boolean;
+  recommendation?: User[];
+  recommendationLoading?: boolean;
+  specificUserLoading?: boolean;
 }
 
 const initialState: InitialState = {
@@ -258,7 +256,6 @@ export const userReducer = (
         ...state,
         specificUser: action.payload.data,
         loading: false,
-        errors: undefined,
         userEducationLoading: false,
         userEmploymentLoading: false,
         userSkillLoading: false
@@ -274,7 +271,9 @@ export const userReducer = (
       return { ...state, loading: true };
 
     case SkillTypes.GetSkillsSuccess:
-      return { ...state, skills: action.payload, loading: false, errors: null };
+      // errors: null - errors was here and I don't know why we need to set it to null
+      // if this cause error we can add it back, but i don't think errors should called here
+      return { ...state, skills: action.payload, loading: false };
 
     case SkillTypes.SkillFail:
       return { ...state, errors: action.payload, loading: false };
@@ -460,6 +459,15 @@ export const userReducer = (
 
     case UserTypes.UploadProfilePictureLoading:
       return { ...state, uploadProfilePictureLoading: action.payload.loading };
+
+    case UserTypes.Recommendation:
+      return { ...state, recommendation: action.payload.data };
+
+    case UserTypes.RecommendationLoading:
+      return { ...state, recommendationLoading: action.payload.loading };
+
+    case UserTypes.SpecificUserLoading:
+      return { ...state, specificUserLoading: action.payload.loading };
 
     default:
       return state;

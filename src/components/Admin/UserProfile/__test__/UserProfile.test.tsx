@@ -73,6 +73,7 @@ const initialState = {
       ]
     },
     loading: false,
+    specificUserLoading: false,
     userSkill: [],
     userEducationLoading: false,
     userEmploymentLoading: false,

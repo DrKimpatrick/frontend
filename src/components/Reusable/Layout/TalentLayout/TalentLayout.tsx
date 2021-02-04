@@ -4,7 +4,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { TalentProcess, UserRole } from 'redux/action-types/user';
 import { Routes } from 'utils/routes';
-import { CoverImage, NavBar, MainBackground } from 'components/Reusable';
+import {
+  CoverImage,
+  NavBar,
+  MainBackground,
+  SplashScreen
+} from 'components/Reusable';
 
 const TalentLayout: FC = props => {
   const [activePath = Routes.UserDashboard, setActivePath] = useState<string>();
@@ -16,16 +21,20 @@ const TalentLayout: FC = props => {
   const location = useLocation();
 
   const selector = useSelector((state: RootState) => {
-    const { user } = state.users;
+    const { user, errors } = state.users;
 
-    return { user };
+    return { user, apiError: errors };
   });
 
-  const { user } = selector;
+  const { user, apiError } = selector;
 
   useEffect(() => {
     setActivePath(location.pathname);
   }, [location.pathname]);
+
+  if (!user && !apiError) {
+    return <SplashScreen />;
+  }
 
   if (user && user.roles && user.roles.find(item => item !== UserRole.Talent)) {
     history.goBack();

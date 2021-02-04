@@ -1,0 +1,22 @@
+.quarter {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  color: #3b3a3a;
+  font-size: 14px;
+  div {
+    position: relative;
+    &:first-child {
+      flex-grow: 1;
+    }
+    &:last-child {
+      width: 30%;
+    }
+  }
+  .verified {
+    color: #008f72;
+  }
+  .notVerified {
+    color: #ad050e;
+  }
+}

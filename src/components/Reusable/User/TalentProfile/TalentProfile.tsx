@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
-import { UserRole, User } from 'redux/action-types/user';
+import { UserRole } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 import { ProfilePreview } from 'components/Reusable';
 import { SkillSet, UserEducation, UserEmployment } from 'components/Admin';
 import './TalentProfile.scss';

@@ -9,8 +9,8 @@ import {
   AddItemOnModal,
   TalentProfile
 } from 'components/Reusable';
-import { listSpecificUser } from 'redux/actions/user';
-import { UserRole, User } from 'redux/action-types/user';
+import { listSpecificUser, User } from 'redux/actions/user';
+import { UserRole } from 'redux/action-types/user';
 import { HrAdmin } from 'redux/actions/hrAdmin/interface';
 import '../HrAdmin.scss';
 

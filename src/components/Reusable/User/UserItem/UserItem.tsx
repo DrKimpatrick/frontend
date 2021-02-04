@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './UserItem.scss';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 import { differenceInYears, differenceInMonths } from 'date-fns';
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 import Avatar from 'assets/images/avatar.jpg';
 import { ArrowDropDown } from '@material-ui/icons';
 import { Employment } from 'redux/action-types/employment';

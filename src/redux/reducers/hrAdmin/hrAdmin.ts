@@ -1,6 +1,6 @@
 import { HrAdminActionType, HrAdminType } from 'redux/action-types/hrAdmin';
 import { HrAdmin } from 'redux/actions/hrAdmin/interface';
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 
 interface InitialState {
   readonly loading?: boolean;

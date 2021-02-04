@@ -83,5 +83,7 @@ export enum Routes {
 
   Auth = '/auth',
 
-  Training = '/training'
+  Training = '/training',
+
+  TalentRecommendation = '/t/recommendation'
 }

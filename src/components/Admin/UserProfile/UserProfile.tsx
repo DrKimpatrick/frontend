@@ -31,7 +31,7 @@ const UserProfile: FC = () => {
   const reducer = useSelector((state: RootState) => {
     const {
       specificUser,
-      loading,
+      specificUserLoading,
       errors,
       userEducationLoading,
       userEmploymentLoading
@@ -39,7 +39,7 @@ const UserProfile: FC = () => {
 
     return {
       specificUser,
-      loading,
+      loading: specificUserLoading,
       errors,
       userEducationLoading,
       userEmploymentLoading
@@ -121,7 +121,7 @@ const UserProfile: FC = () => {
     );
   }
 
-  if (errors || !specificUser) {
+  if (errors && !specificUser) {
     return (
       <Layout topMenu={topMenu}>
         <ProfileNotFound />

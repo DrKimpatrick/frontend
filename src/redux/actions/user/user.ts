@@ -35,17 +35,32 @@ export const listSpecificUser = (userId: string) => (
       method: 'GET',
       onStart: () => (dispatch: Dispatch) => {
         dispatch({ type: UserTypes.Loading, payload: { loading: true } });
+
+        dispatch({
+          type: UserTypes.SpecificUserLoading,
+          payload: { loading: true }
+        });
       },
       onSuccess: res => (dispatch: Dispatch) => {
         dispatch({
           type: UserTypes.ListSpecificUser,
           payload: { data: res.profile }
         });
+
+        dispatch({
+          type: UserTypes.SpecificUserLoading,
+          payload: { loading: false }
+        });
       },
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
           type: UserTypes.Errors,
           payload: { errors: error.response.data }
+        });
+
+        dispatch({
+          type: UserTypes.SpecificUserLoading,
+          payload: { loading: false }
         });
       }
     })
@@ -313,6 +328,43 @@ export const addAffiliateUser = (values: AddAffiliateType) => (
       onFailure: error => (dispatch: Dispatch) => {
         dispatch({
           type: UserTypes.AddAffiliateLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};
+
+export const listRecommendation = () => (dispatchAction: Dispatch) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: '/users/list/recommendation',
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.RecommendationLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.RecommendationLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.Recommendation,
+          payload: { data: res.data }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.RecommendationLoading,
           payload: { loading: false }
         });
 

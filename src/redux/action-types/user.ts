@@ -1,8 +1,4 @@
-import { UploadedFileType } from 'redux/actions/user';
-import { Course } from 'redux/actions/course';
-import { Employment } from './employment';
-import { Education } from './education';
-import { Skill } from './skill';
+import { UploadedFileType, User, UserSkill } from 'redux/actions/user';
 
 export enum UserTypes {
   CurrentUser = 'User/CurrentUser',
@@ -27,7 +23,10 @@ export enum UserTypes {
   UploadProfilePicture = 'User/UploadProfilePicture',
   UploadProfilePictureLoading = 'User/UploadProfilePictureLoading',
   AddAffiliate = 'User/AddAffiliate',
-  AddAffiliateLoading = 'User/AddAffiliateLoading'
+  AddAffiliateLoading = 'User/AddAffiliateLoading',
+  Recommendation = 'User/Recommendation',
+  RecommendationLoading = 'User/RecommendationLoading',
+  SpecificUserLoading = 'User/SpecificUserLoading'
 }
 
 export enum VerificationStatus {
@@ -70,35 +69,6 @@ export enum AdminsProcess {
 export enum AffiliateProcess {
   AddMoreInfo = 'AddMoreInfo',
   Completed = 'Completed'
-}
-
-export interface User {
-  _id: string;
-  username: string;
-  email: string;
-  roles: string[];
-  updatedAt: string;
-  dateRegistered: string;
-  paymentStatus: string;
-  couponUsed?: string;
-  featureChoice: string;
-  verified: boolean;
-  employmentHistory?: Employment[];
-  educationHistory?: Education[];
-  profileProcess?: string;
-  profilePicture?: string;
-  bio?: string;
-  stripeSubscriptionId?: string;
-  courses?: Course[];
-}
-
-export interface UserSkill {
-  _id: string;
-  verificationStatus: string;
-  level: string;
-  skill: Skill;
-  createdAt?: string;
-  updatedAt?: string;
 }
 
 interface CurrentUser {
@@ -282,6 +252,27 @@ interface AddAffiliateLoading {
   };
 }
 
+interface Recommendation {
+  type: typeof UserTypes.Recommendation;
+  payload: {
+    data: User[];
+  };
+}
+
+interface RecommendationLoading {
+  type: typeof UserTypes.RecommendationLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface SpecificUserLoading {
+  type: typeof UserTypes.SpecificUserLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -304,4 +295,7 @@ export type UserTypeActions =
   | UploadProfilePicture
   | UploadProfilePictureLoading
   | AddAffiliate
-  | AddAffiliateLoading;
+  | AddAffiliateLoading
+  | Recommendation
+  | RecommendationLoading
+  | SpecificUserLoading;

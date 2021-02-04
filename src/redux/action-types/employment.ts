@@ -1,4 +1,4 @@
-import { User } from 'redux/action-types/user';
+import { User } from 'redux/actions/user';
 
 export enum EmploymentTypes {
   AddEmployment = 'Employment/AddEmployment',

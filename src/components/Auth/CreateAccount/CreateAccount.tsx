@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
@@ -17,13 +17,17 @@ import { ReactComponent as LinkedInIcon } from '../../../assets/images/linkedIn.
 type props = {};
 const GetStarted: FC<props> = (props: any) => {
   const size = useWindowSize();
+
   const [hidden, setHidden] = useState(true);
+
   const [submitted, setSubmitted] = useState(false);
+
   const [data, setData] = useState({
     email: '',
     username: '',
     password: ''
   });
+
   const [dataError, setDataError] = useState({
     email: '',
     username: '',
@@ -31,6 +35,9 @@ const GetStarted: FC<props> = (props: any) => {
   });
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
+
   const user: any = useSelector((state: any) => state.users);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +88,9 @@ const GetStarted: FC<props> = (props: any) => {
     }
     setDataError(errors);
     if (validateForm(dataError)) {
-      await GetStartedAction(data)(dispatch);
+      const reference =
+        new URLSearchParams(location.search).get('reference') || undefined;
+      await GetStartedAction(data, reference)(dispatch);
       setSubmitted(true);
     }
   };
@@ -105,6 +114,7 @@ const GetStarted: FC<props> = (props: any) => {
   const sortErrors = (errors: any, type: string) => {
     return errors?.map((error: any) => error[type]);
   };
+
   return (
     <>
       {size?.width && size?.width < 768 ? (
