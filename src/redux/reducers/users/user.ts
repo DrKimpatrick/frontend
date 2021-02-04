@@ -145,7 +145,9 @@ export const userReducer = (
       return {
         ...state,
         loading: false,
+        errorSignup: null,
         currentUser: {
+          ...state.currentUser,
           data: action.payload,
           isLoggedIn: false,
           created: true,

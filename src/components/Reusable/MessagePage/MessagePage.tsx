@@ -1,35 +1,26 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import NavBar from 'components/Reusable/Layout/NavBar/NavBar';
 import EmailIcon from '@material-ui/icons/Email';
 import { VerifyAccAction } from 'redux/actions/verifyAcc';
-import { MainBackground } from 'components/Reusable/Layout/MainBackground';
+import { MainBackground, Loader } from 'components/Reusable';
 
 const MessagePage: FC<any> = (props: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [error, setError] = useState('');
-  const dispatch = useDispatch();
   const state: any = useSelector((appState: any) => appState.users);
 
-  const verifyRequest = () => {
-    const tokenValue = queryString.parse(props.history.location.search);
-
-    if (tokenValue.token) {
-      VerifyAccAction({ token: tokenValue.token })(dispatch);
-    }
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (state.error) {
-      setError(state.errorVerify);
-    }
+    const { token } = queryString.parse(props.history.location.search);
 
-    verifyRequest();
-  }, [state]);
+    if (token) {
+      VerifyAccAction({ token })(dispatch);
+    }
+  }, []);
 
   return (
     <>
@@ -43,9 +34,10 @@ const MessagePage: FC<any> = (props: any) => {
           }
         >
           <div>
-            <div className="flex">
-              <EmailIcon className="icon-fonts mt-2 mr-4" />
-              <h2 className="text-3xl font-black">Verify account</h2>
+            <div className="flex items-center">
+              <EmailIcon className="icon-fonts mr-4" />
+              <h2 className="text-3xl font-black mr-2">Verify account</h2>
+              <Loader loading={state.loading} />
             </div>
             <div className="mt-8">
               {state.errorVerify ? (
@@ -58,9 +50,12 @@ const MessagePage: FC<any> = (props: any) => {
                 </p>
               ) : (
                 <p className="text-sm">
-                  {state.message
-                    ? 'Your Account was verified, Procced to Login'
-                    : 'Please check Email sent to your link to verify'}
+                  {state.message &&
+                    !state.loading &&
+                    'Your Account was verified, Proceed to Login'}
+                  {!state.message &&
+                    !state.loading &&
+                    'Please check Email sent to your link to verify'}
                 </p>
               )}
             </div>
