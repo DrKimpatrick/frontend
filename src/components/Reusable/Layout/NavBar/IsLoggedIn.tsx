@@ -1,20 +1,22 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState, useRef, MouseEvent } from 'react';
+import React, { useState, useRef, MouseEvent, useEffect } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
-import SettingsIcon from '@material-ui/icons/Settings';
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import LayersIcon from '@material-ui/icons/Layers';
+import {
+  Dashboard,
+  Notifications,
+  NotificationsOff,
+  Settings,
+  PowerSettingsNew,
+  Layers
+} from '@material-ui/icons';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import InitialStateInterface from 'types/initialState';
 import { Routes } from 'utils/routes';
-import UserAvatar from 'assets/images/avatar.webp';
+import UserAvatar from 'assets/images/avatar.jpg';
+import { redirect } from 'utils/Redirect';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -29,13 +31,24 @@ const useStyles = makeStyles(() =>
 
 const typedUseSelector: TypedUseSelectorHook<InitialStateInterface> = useSelector;
 const IsLoggedIn = (props: any) => {
-  const { currentUser } = typedUseSelector(({ users }) => users);
-  const { isLoggedIn, data } = currentUser;
-  const classes = useStyles();
-  const { userDashboard, user } = props;
   const [open, setOpen] = useState(false);
+
   const [notificationOpen, setNotificationOpen] = useState(false);
+
+  const { currentUser } = typedUseSelector(({ users }) => users);
+
+  const [dashboardLink, setDashboardLink] = useState<string>();
+
+  const { isLoggedIn, data } = currentUser;
+
+  const classes = useStyles();
+
+  const history = useHistory();
+
+  const { userDashboard, user } = props;
+
   const anchorRef = useRef<HTMLDivElement>(null);
+
   const anchorNotificationRef = useRef<HTMLDivElement>(null);
 
   const userState: any = useSelector((state: any) => state.users);
@@ -83,6 +96,18 @@ const IsLoggedIn = (props: any) => {
     setNotificationOpen(prevOpen => !prevOpen);
   };
 
+  useEffect(() => {
+    if (user && user.roles) {
+      if (user.roles) {
+        const link = redirect(user.roles);
+
+        setDashboardLink(link);
+      } else {
+        setDashboardLink(Routes.Account);
+      }
+    }
+  }, [user]);
+
   if (isLoggedIn || userState?.isLoggedIn) {
     return (
       <div
@@ -111,7 +136,7 @@ const IsLoggedIn = (props: any) => {
                       >
                         <span>9+</span>
                       </div>
-                      <NotificationsIcon
+                      <Notifications
                         style={{ color: '#ff0000' }}
                         className="cursor-pointer"
                       />
@@ -121,7 +146,7 @@ const IsLoggedIn = (props: any) => {
                       className="text-gray-600 relative notification-icon"
                       onClick={handleToggleNotification}
                     >
-                      <NotificationsOffIcon className="cursor-pointer" />
+                      <NotificationsOff className="cursor-pointer" />
                     </div>
                   )}
 
@@ -159,7 +184,7 @@ const IsLoggedIn = (props: any) => {
           </div>
 
           <div className="text-gray-600 relative">
-            <LayersIcon />
+            <Layers />
           </div>
         </div>
         {user && (
@@ -202,9 +227,20 @@ const IsLoggedIn = (props: any) => {
                   }`}
                 >
                   <MenuList>
+                    {dashboardLink && (
+                      <MenuItem
+                        onClick={() => history.push(dashboardLink)}
+                        className="text-gray-600"
+                      >
+                        <div className="text-gray-600 w-56 space-x-3 text-sm py-2">
+                          <Dashboard />
+                          <span>Dashboard</span>
+                        </div>
+                      </MenuItem>
+                    )}
                     <MenuItem onClick={handleClose} className="text-gray-600">
                       <div className="text-gray-600 w-56 space-x-3 text-sm py-2">
-                        <SettingsIcon />
+                        <Settings />
                         <span>Settings</span>
                       </div>
                     </MenuItem>
@@ -213,7 +249,7 @@ const IsLoggedIn = (props: any) => {
                         className="text-gray-600 w-56 space-x-3 text-sm py-2"
                         onClick={logout}
                       >
-                        <PowerSettingsNewIcon />
+                        <PowerSettingsNew />
                         <span>Logout</span>
                       </div>
                     </MenuItem>

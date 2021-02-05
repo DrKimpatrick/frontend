@@ -8,7 +8,7 @@
     position: relative;
   }
   .itemCenter {
-    width: 550px;
+    width: 100%;
     margin: auto;
     position: relative;
     .profileDetail {
@@ -17,6 +17,46 @@
     .hrAdminChildren {
       position: relative;
       margin-top: 17px;
+      .searchAndLink {
+        margin-bottom: 30px;
+        .shared {
+          color: #6e6d6d;
+          font-size: 13px;
+          .heading {
+            span {
+              font-weight: bold;
+              font-size: 13px;
+              &:last-child {
+                margin-left: 7px;
+              }
+            }
+          }
+          .sharedLink {
+            position: relative;
+            border: 1px solid #dadada42;
+            border-radius: 5px;
+            height: 30px;
+            width: 500px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+            input {
+              border: none;
+              height: 100%;
+              width: 100%;
+              padding-left: 10px;
+              padding-right: 10px;
+              background: none;
+              cursor: pointer;
+            }
+            span {
+              position: absolute;
+              right: 0;
+              pointer-events: none;
+              padding-top: 1px;
+            }
+          }
+        }
+      }
     }
   }
   .search-wrapper {
@@ -33,6 +73,22 @@
         .adminProfile {
           .coverImage {
             height: 150px;
+          }
+        }
+      }
+      .hrAdminChildren {
+        .searchAndLink {
+          flex-wrap: wrap;
+          margin-bottom: 0px;
+          .shared {
+            width: 100%;
+            margin-bottom: 10px;
+            .sharedLink {
+              width: 100%;
+            }
+          }
+          .search-wrapper {
+            width: 100%;
           }
         }
       }

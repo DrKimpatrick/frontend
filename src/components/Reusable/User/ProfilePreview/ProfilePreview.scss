@@ -1,6 +1,12 @@
 .profilePreview {
   position: relative;
   display: flex;
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid #f8f8f8;
+  background-color: #f3f3f345;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   .profilePicture {
     position: relative;
     width: 130px;
@@ -29,20 +35,32 @@
       width: 500px;
     }
   }
+  .m40 {
+    margin-top: 40px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .profilePreview {
     width: 100%;
+    padding: 0px;
+    background-color: white;
+    border-radius: 0px;
+    border: none;
     .profilePicture {
       width: 90px;
       height: 90px;
     }
     .preview {
       position: relative;
+      width: 70%;
+      margin-top: 5px;
       .biography {
         width: 100%;
       }
+    }
+    .m40 {
+      margin-top: 20px;
     }
   }
 }

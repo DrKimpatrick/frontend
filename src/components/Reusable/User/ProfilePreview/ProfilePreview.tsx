@@ -14,10 +14,7 @@ const ProfilePreview = (props: Props) => {
       <div className="profilePicture">
         <img src={user.profilePicture ? user.profilePicture : Avatar} alt="" />
       </div>
-      <div
-        className="preview"
-        style={{ marginTop: !user.bio ? '40px' : '20px' }}
-      >
+      <div className={`preview ${!user.bio ? 'm40' : 'm20'}`}>
         <h5 className="title">{user.username}</h5>
         {user.bio && <div className="biography">{user.bio}</div>}
       </div>

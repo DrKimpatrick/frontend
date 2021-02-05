@@ -14,12 +14,14 @@ import {
   Apps,
   PeopleOutline,
   AttachMoney,
-  Close
+  Close,
+  Cached
 } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import { listCourseDetail } from 'redux/actions/course';
 import avatar from 'assets/images/avatar.jpg';
 import { get } from 'lodash';
+import { UserRole } from 'redux/action-types/user';
 
 interface Props {
   courseId: string;
@@ -31,6 +33,8 @@ const paidUser = ['John doe', 'Jane doe', 'Steve Job', 'Elon Tesla'];
 const CoursePreview = (props: Props) => {
   const [open = true, setOpen] = useState<boolean>();
 
+  const [showStatistic, setShowStatistic] = useState<boolean>();
+
   const { courseId, closeModal } = props;
 
   const dispatch = useDispatch();
@@ -38,16 +42,29 @@ const CoursePreview = (props: Props) => {
   const selector = useSelector((state: RootState) => {
     const { courseDetail, courseDetailLoading, errors } = state.courses;
 
-    return { courseDetail, courseDetailLoading, errors };
+    const { user } = state.users;
+
+    return { courseDetail, courseDetailLoading, errors, user };
   });
 
-  const { courseDetail, courseDetailLoading, errors } = selector;
+  const { courseDetail, courseDetailLoading, errors, user } = selector;
 
   useEffect(() => {
     if (courseId) {
       listCourseDetail(courseId)(dispatch);
     }
   }, [courseId, dispatch]);
+
+  useEffect(() => {
+    if (user && courseDetail && courseDetail.userId) {
+      if (user._id === courseDetail.userId._id) {
+        setShowStatistic(true);
+      }
+      if (user.roles && user.roles.includes(UserRole.SuperAdmin)) {
+        setShowStatistic(true);
+      }
+    }
+  }, [user, courseDetail]);
 
   return (
     <Modal
@@ -112,37 +129,58 @@ const CoursePreview = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="courseStatistic">
-              <AffiliateStatistic
-                item={[
-                  { name: 'Views', rate: '10', icon: <Adb /> },
-                  {
-                    name: 'Conversation Rate',
-                    rate: '20%',
-                    icon: <ViewComfy />
-                  },
-                  { name: 'Conversation', rate: '20%', icon: <Grain /> },
-                  { name: 'Active Users', rate: '2', icon: <Apps /> },
-                  { name: 'Costs', rate: '$20', icon: <AttachMoney /> },
-                  { name: 'Total users', rate: '20', icon: <PeopleOutline /> }
-                ]}
-              />
-            </div>
-            <div className="whoPaidCourse">
-              <h5 className="title">Users who signed up and paid</h5>
-              <ul className="bg-card-preview listWhoPaidCourse">
-                {paidUser.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-              <div className="coursePagination">
-                <HorizontalPagination
-                  page={1}
-                  pageCount={3}
-                  onPageChange={() => ''}
-                />
+            {!showStatistic && (
+              <div className="flex justify-center items-center">
+                <button
+                  type="button"
+                  className="payButton flex justify-between items-center"
+                >
+                  <span>Pay for this course</span>
+                  <span>
+                    <Cached />
+                  </span>
+                </button>
               </div>
-            </div>
+            )}
+            {showStatistic && (
+              <>
+                <div className="courseStatistic">
+                  <AffiliateStatistic
+                    item={[
+                      { name: 'Views', rate: '10', icon: <Adb /> },
+                      {
+                        name: 'Conversation Rate',
+                        rate: '20%',
+                        icon: <ViewComfy />
+                      },
+                      { name: 'Conversation', rate: '20%', icon: <Grain /> },
+                      { name: 'Active Users', rate: '2', icon: <Apps /> },
+                      { name: 'Costs', rate: '$20', icon: <AttachMoney /> },
+                      {
+                        name: 'Total users',
+                        rate: '20',
+                        icon: <PeopleOutline />
+                      }
+                    ]}
+                  />
+                </div>
+                <div className="whoPaidCourse">
+                  <h5 className="title">Users who signed up and paid</h5>
+                  <ul className="bg-card-preview listWhoPaidCourse">
+                    {paidUser.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="coursePagination">
+                    <HorizontalPagination
+                      page={1}
+                      pageCount={3}
+                      onPageChange={() => ''}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </>
         )}
       </div>

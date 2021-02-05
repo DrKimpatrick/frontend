@@ -42,7 +42,7 @@ const Company: FC = () => {
     listUserByRole({
       page: pages,
       limit: itemPerPage,
-      role: UserRole.CompanyAdmin
+      role: UserRole.EducationUser
     })(dispatch);
   }, [dispatch, page]);
 

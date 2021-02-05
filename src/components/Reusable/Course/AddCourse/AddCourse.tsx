@@ -186,7 +186,7 @@ export const AddCourse = (props: Props) => {
                     <input
                       type="url"
                       name="existingCourseLink"
-                      placeholder="Course link"
+                      placeholder="Course link(https://example.com)"
                       value={values.existingCourseLink}
                       onChange={formik.handleChange}
                     />

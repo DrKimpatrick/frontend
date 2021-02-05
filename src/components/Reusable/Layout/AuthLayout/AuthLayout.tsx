@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import '../Layout.scss';
 import { RootState } from 'redux/store';
 import { redirect } from 'utils/Redirect';
+import { Routes } from 'utils/routes';
 import { BottomMenu, Footer } from '..';
 
 interface Props {
@@ -19,11 +20,19 @@ const AuthLayout = ({ children }: Props): ReactElement => {
   const size = useWindowSize();
 
   const redirectBack = () => {
-    if (userState.user && redirect(userState.user.roles)) {
-      const redirectRoute = redirect(userState.user.roles);
+    if (userState.user) {
+      if (
+        userState.user &&
+        userState.user.roles &&
+        Array.isArray(userState.user.roles)
+      ) {
+        const redirectRoute = redirect(userState.user.roles);
 
-      if (redirectRoute) {
-        return <Redirect to={redirectRoute} />;
+        if (redirectRoute) {
+          return <Redirect to={redirectRoute} />;
+        }
+      } else {
+        return <Redirect to={Routes.Account} />;
       }
     }
     history.goBack();

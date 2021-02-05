@@ -89,7 +89,8 @@ describe('Account Type Component', () => {
         },
         created: true,
         isLoggedIn: false,
-        error: null
+        error: null,
+        loading: false
       },
       loading: false
     };

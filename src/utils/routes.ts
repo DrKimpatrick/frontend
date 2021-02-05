@@ -11,7 +11,7 @@ export enum Routes {
 
   HrAdmin = '/hr-admin',
 
-  Company = '/company',
+  Education = '/education',
 
   Recruiter = '/recruiter',
 
@@ -85,5 +85,7 @@ export enum Routes {
 
   Training = '/training',
 
-  TalentRecommendation = '/t/recommendation'
+  TalentRecommendation = '/t/recommendation',
+
+  HrAdminRecommendation = '/h/recommendation'
 }

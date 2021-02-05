@@ -1,15 +1,15 @@
-
 .adList {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 60px 0px 40px;
-    color:#3b3a3a;
-    font-size: 12px;
-    font-weight: normal;
-    height: 49px;
-    align-items: center;
-    .link{
-      cursor: pointer;
-    }
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 60px 0px 40px;
+  color: #3b3a3a;
+  font-size: 12px;
+  font-weight: normal;
+  height: 49px;
+  align-items: center;
+  cursor: pointer;
+  .link {
+    cursor: pointer;
   }
+}

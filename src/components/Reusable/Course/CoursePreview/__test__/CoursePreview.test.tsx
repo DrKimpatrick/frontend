@@ -6,6 +6,7 @@ import { Store } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
+import { UserRole } from 'redux/action-types/user';
 
 let store: Store;
 
@@ -37,6 +38,13 @@ const initialState = {
       updatedAt: 'date'
     },
     errors: {}
+  },
+  users: {
+    user: {
+      _id: 'id',
+      username: 'username',
+      roles: [UserRole.SuperAdmin]
+    }
   }
 };
 

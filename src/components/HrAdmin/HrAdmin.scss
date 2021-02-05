@@ -1,6 +1,8 @@
 .hrAdminDashboard {
   position: relative;
   padding-top: 20px;
+  width: 700px;
+  margin: auto;
   .ulList {
     display: flex;
     flex-direction: column;
@@ -11,4 +13,11 @@
   width: 60rem;
   max-height: 85%;
   overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .hrAdminDashboard {
+    width: 100%;
+    padding-bottom: 50px;
+  }
 }

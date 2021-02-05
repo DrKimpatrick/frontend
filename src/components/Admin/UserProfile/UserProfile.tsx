@@ -22,6 +22,8 @@ const UserProfile: FC = () => {
 
   const [showCourse = false, setShowCourse] = useState<boolean>();
 
+  const [showPreview = false, setShowPreview] = useState<boolean>();
+
   const location = useLocation<{ userId: string }>();
 
   const dispatch = useDispatch();
@@ -65,17 +67,22 @@ const UserProfile: FC = () => {
 
       roles.map(item => {
         switch (item) {
-          case UserRole.CompanyAdmin:
-            setActivePath(Routes.Company)(dispatch);
-            setTopMenu([{ url: Routes.Company, name: 'Company' }, profilePath]);
+          case UserRole.EducationUser:
+            setActivePath(Routes.Education)(dispatch);
+            setTopMenu([
+              { url: Routes.Education, name: 'Education' },
+              profilePath
+            ]);
+            setShowPreview(true);
             break;
 
           case UserRole.HrAdmin:
-            setActivePath(Routes.Company)(dispatch);
+            setActivePath(Routes.HrAdmin)(dispatch);
             setTopMenu([
               { url: Routes.HrAdmin, name: 'Hr Admin' },
               profilePath
             ]);
+            setShowPreview(true);
             break;
 
           case UserRole.TrainingAffiliate:
@@ -85,6 +92,7 @@ const UserProfile: FC = () => {
               profilePath
             ]);
             setShowCourse(true);
+            setShowPreview(false);
             break;
 
           case UserRole.Talent:
@@ -93,6 +101,7 @@ const UserProfile: FC = () => {
               { url: Routes.SuperAdminDashboard, name: 'Talent' },
               profilePath
             ]);
+            setShowPreview(false);
             break;
 
           case UserRole.RecruitmentAdmin:
@@ -101,9 +110,12 @@ const UserProfile: FC = () => {
               { url: Routes.Recruiter, name: 'Recruiter' },
               profilePath
             ]);
+
+            setShowPreview(true);
             break;
 
           default:
+            setShowPreview(true);
             return undefined;
         }
         return undefined;
@@ -148,6 +160,11 @@ const UserProfile: FC = () => {
                 </div>
               </div>
             )}
+          {showPreview && (
+            <div className="userProfile">
+              <ProfilePreview user={specificUser} />
+            </div>
+          )}
         </>
       )}
     </Layout>

@@ -10,10 +10,9 @@ enum ActiveMenu {
   Admin = 'Admin',
   HrAdmin = 'HrAdmin',
   Affiliate = 'Affiliate',
-  Company = 'Company',
+  Education = 'Education',
   Recruiter = 'Recruiter',
   Skills = 'Skills',
-  Education = 'Education',
   Employment = 'Employment'
 }
 
@@ -28,11 +27,6 @@ const menuList = [
         name: 'Talent',
         url: Routes.SuperAdminDashboard,
         active: ActiveMenu.Admin
-      },
-      {
-        name: 'Hr Admin',
-        url: Routes.HrAdmin,
-        active: ActiveMenu.HrAdmin
       },
       {
         name: 'Affiliates',
@@ -53,9 +47,9 @@ const menuList = [
         active: ActiveMenu.Recruiter
       },
       {
-        name: 'Company',
-        url: Routes.Company,
-        active: ActiveMenu.Company
+        name: 'Education',
+        url: Routes.Education,
+        active: ActiveMenu.Education
       }
     ]
   },
@@ -73,7 +67,7 @@ const menuList = [
       {
         name: 'Education',
         url: '#',
-        active: ActiveMenu.Education
+        active: '#'
       },
       {
         name: 'Employment',
@@ -112,8 +106,8 @@ const AdminMenu: FC = () => {
         setActive(ActiveMenu.Affiliate);
         break;
 
-      case Routes.Company:
-        setActive(ActiveMenu.Company);
+      case Routes.Education:
+        setActive(ActiveMenu.Education);
         break;
 
       case Routes.Recruiter:

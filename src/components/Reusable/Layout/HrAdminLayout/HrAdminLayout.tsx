@@ -1,28 +1,30 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import {
   NavBar,
   MainBackground,
-  AdminProfile,
   AdminTab,
-  SearchTalents
+  SearchTalents,
+  ProfilePreview,
+  SplashScreen
 } from 'components/Reusable';
 import {
   Code as CodeIcon,
   ImportantDevices,
   AccountCircle,
-  Link,
   Work,
-  LibraryBooks
+  LibraryBooks,
+  Share,
+  FileCopy,
+  FolderShared
 } from '@material-ui/icons';
 import { useLocation, useHistory } from 'react-router-dom';
 import { RootState } from 'redux/store';
 import { Routes } from 'utils/routes';
 import { listUsedCode } from 'redux/actions/hrAdmin';
-import useWindowSize from 'utils/useWindowSize';
 import { UserRole } from 'redux/action-types/user';
-import { HrLeftSideItem } from './HrLeftSideItem';
 import './HrAdminLayout.scss';
 
 export enum Tab {
@@ -30,7 +32,8 @@ export enum Tab {
   UsedCode = 'Used code',
   Code = 'codes',
   SubsidyStudent = 'Subsidy students',
-  EnrolledStudent = 'Enrolled students'
+  EnrolledStudent = 'Enrolled students',
+  Recommendation = 'Recommendation'
 }
 
 interface Props {
@@ -42,71 +45,31 @@ export const HrLayout: FC<Props> = props => {
     setCurrentTab
   ] = useState<string>();
 
+  const [link, setLink] = useState<string>();
+
+  const linkRef = useRef<any>();
+
   const location = useLocation();
 
   const history = useHistory();
-
-  const size = useWindowSize();
 
   const dispatch = useDispatch();
 
   const { children, role } = props;
 
   const reducer = useSelector((state: RootState) => {
-    const { user } = state.users;
+    const { user, errors } = state.users;
 
     const { usedCode } = state.hrAdmin;
 
-    return { user, usedCode };
+    return { user, usedCode, apiError: errors };
   });
 
-  const { user, usedCode } = reducer;
+  const { user, apiError } = reducer;
 
   const redirectBack = () => {
     history.goBack();
     return <></>;
-  };
-
-  const leftSideItem = () => {
-    return (
-      <div className="leftSide">
-        {role === UserRole.RecruitmentAdmin && usedCode && (
-          <HrLeftSideItem
-            item={{
-              header: { name: 'Used code', icon: <Link /> },
-              list: [
-                {
-                  name: 'Used code',
-                  rightItem:
-                    usedCode.length > 0 ? String(usedCode.length) : 'N/A'
-                }
-              ]
-            }}
-          />
-        )}
-        {role === UserRole.EducationUser && (
-          <HrLeftSideItem
-            item={{
-              header: { name: 'Subsidy', icon: <Work /> },
-              list: [
-                {
-                  name: 'Monthly',
-                  rightItem: 'N/A'
-                },
-                {
-                  name: 'Number of students subsidised',
-                  rightItem: 'N/A'
-                },
-                {
-                  name: 'Number of students currently enrolled',
-                  rightItem: 'N/A'
-                }
-              ]
-            }}
-          />
-        )}
-      </div>
-    );
   };
 
   useEffect(() => {
@@ -118,7 +81,7 @@ export const HrLayout: FC<Props> = props => {
   }, [dispatch]);
 
   if (!user) {
-    return null;
+    return <SplashScreen />;
   }
 
   return (
@@ -131,16 +94,55 @@ export const HrLayout: FC<Props> = props => {
               <div className="layout">
                 <div className="itemCenter">
                   <div className="profileDetail">
-                    <AdminProfile />
+                    <ProfilePreview user={user} />
                   </div>
-                  {size?.width && size?.width < 768 && leftSideItem()}
+                  {apiError && apiError.message && (
+                    <div style={{ marginTop: 5 }}>
+                      <Alert severity="error">{apiError.message}</Alert>
+                    </div>
+                  )}
+                  {apiError && apiError.error && (
+                    <div style={{ marginTop: 5 }}>
+                      <Alert severity="error">{apiError.error}</Alert>
+                    </div>
+                  )}
                   <div className="hrAdminChildren">
-                    {history.location.pathname ===
-                      Routes.PotentialCandidate && (
-                      <div className="mb-8 float-right search-wrapper">
-                        <SearchTalents />
-                      </div>
-                    )}
+                    <div className="searchAndLink flex justify-between items-center">
+                      {user.sharedLink && (
+                        <div className="flex flex-col shared">
+                          <div className="flex items-center w-full heading">
+                            <Share />
+                            <span>Shareable link</span>
+                          </div>
+                          <div
+                            className="sharedLink flex justify-between w-full"
+                            onClick={() => {
+                              if (linkRef && linkRef.current) {
+                                linkRef.current.select();
+                                document.execCommand('copy');
+                              }
+                              return undefined;
+                            }}
+                          >
+                            <input
+                              type="text"
+                              value={link || user.sharedLink}
+                              ref={linkRef}
+                              onChange={() => setLink(user.sharedLink)}
+                            />
+                            <span>
+                              <FileCopy />
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {history.location.pathname ===
+                        Routes.PotentialCandidate && (
+                        <div className="mb-8 float-right search-wrapper">
+                          <SearchTalents />
+                        </div>
+                      )}
+                    </div>
                     {role === UserRole.RecruitmentAdmin && (
                       <AdminTab
                         menu={[
@@ -161,6 +163,12 @@ export const HrLayout: FC<Props> = props => {
                             icon: <CodeIcon />,
                             onClick: value => setCurrentTab(value),
                             url: Routes.Code
+                          },
+                          {
+                            name: Tab.Recommendation,
+                            icon: <FolderShared />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.HrAdminRecommendation
                           }
                         ]}
                         currentTab={currentTab}
@@ -180,6 +188,12 @@ export const HrLayout: FC<Props> = props => {
                             icon: <LibraryBooks />,
                             onClick: value => setCurrentTab(value),
                             url: '#'
+                          },
+                          {
+                            name: Tab.Recommendation,
+                            icon: <FolderShared />,
+                            onClick: value => setCurrentTab(value),
+                            url: Routes.HrAdminRecommendation
                           }
                         ]}
                         currentTab={currentTab}
@@ -188,7 +202,6 @@ export const HrLayout: FC<Props> = props => {
                     {children}
                   </div>
                 </div>
-                {size?.width && size?.width > 768 && leftSideItem()}
               </div>
             </Container>
           </div>

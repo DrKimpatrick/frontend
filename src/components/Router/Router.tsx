@@ -27,7 +27,7 @@ import {
   AcceptedCourse,
   PendingCourse,
   DeclinedCourse,
-  Company,
+  Education,
   Recruiter,
   Skill
 } from 'components/Admin';
@@ -37,7 +37,8 @@ import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
 import {
   HrAdminDashboard,
   PotentialCandidate,
-  HrAdminCode
+  HrAdminCode,
+  HrRecommendation
 } from 'components/HrAdmin';
 import { SchoolDashboard, SubsidyStudent } from 'components/School';
 import { AffiliateAdmin } from 'components/AffiliateAdmin';
@@ -88,7 +89,7 @@ const AppRouter: FC = () => {
       exact: true,
       component: <DeclinedCourse />
     },
-    { path: Routes.Company, exact: true, component: <Company /> },
+    { path: Routes.Education, exact: true, component: <Education /> },
     { path: Routes.Recruiter, exact: true, component: <Recruiter /> },
     {
       path: Routes.CompleteProfile,
@@ -130,6 +131,11 @@ const AppRouter: FC = () => {
     {
       path: Routes.Code,
       component: <HrAdminCode />,
+      exact: true
+    },
+    {
+      path: Routes.HrAdminRecommendation,
+      component: <HrRecommendation />,
       exact: true
     },
 

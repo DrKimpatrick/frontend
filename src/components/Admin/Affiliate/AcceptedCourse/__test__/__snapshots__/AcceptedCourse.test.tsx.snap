@@ -398,16 +398,6 @@ exports[`Accepted Course it should create snapshot 1`] = `
                 className=""
               >
                 <a
-                  href="/hr-admin"
-                  onClick={[Function]}
-                >
-                  Hr Admin
-                </a>
-              </li>
-              <li
-                className=""
-              >
-                <a
                   href="/affiliates"
                   onClick={[Function]}
                 >
@@ -453,10 +443,10 @@ exports[`Accepted Course it should create snapshot 1`] = `
                 className=""
               >
                 <a
-                  href="/company"
+                  href="/education"
                   onClick={[Function]}
                 >
-                  Company
+                  Education
                 </a>
               </li>
             </ul>

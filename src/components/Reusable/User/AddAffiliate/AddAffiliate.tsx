@@ -175,7 +175,7 @@ const AddAffiliate = (props: Props) => {
                     <input
                       type="url"
                       name="linkToPlatform"
-                      placeholder="Website"
+                      placeholder="Website (https://example.com)"
                       value={values.linkToPlatform}
                       onChange={formik.handleChange}
                     />

@@ -44,7 +44,7 @@ const AffiliateAdmin: FC = () => {
     <Layout>
       <div className="affiliateAdmin">
         <ProfilePreview user={user} />
-        <div className="listCourse my-4">
+        <div className="listAllCourse">
           <AffiliateProfile courses={courses.data} allowEditDelete />
         </div>
       </div>

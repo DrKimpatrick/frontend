@@ -7,6 +7,13 @@
           margin-right: 20px;
           margin-left: 20px;
         }
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
       }
     }
   }
@@ -14,6 +21,7 @@
 
 @media screen and (max-width: 768px) {
   .affiliateAdmin {
+    padding-bottom: 50px;
     .affiliateProfile {
       .affiliateStatistic {
         .listOfStatistic {
@@ -23,9 +31,6 @@
           }
         }
       }
-    }
-    .listCourse {
-      padding: 8px;
     }
   }
 }

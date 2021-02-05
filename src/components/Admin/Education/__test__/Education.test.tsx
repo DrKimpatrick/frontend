@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import thunk from 'redux-thunk';
-import Company from '../Company';
+import Company from '../Education';
 import configureMockStore from 'redux-mock-store';
 import { cleanup, render } from '@testing-library/react';
 
