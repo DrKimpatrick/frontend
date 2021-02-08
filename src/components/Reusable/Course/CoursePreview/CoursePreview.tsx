@@ -22,6 +22,7 @@ import { listCourseDetail } from 'redux/actions/course';
 import avatar from 'assets/images/avatar.jpg';
 import { get } from 'lodash';
 import { UserRole } from 'redux/action-types/user';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   courseId: string;
@@ -32,22 +33,17 @@ const paidUser = ['John doe', 'Jane doe', 'Steve Job', 'Elon Tesla'];
 
 const CoursePreview = (props: Props) => {
   const [open = true, setOpen] = useState<boolean>();
-
   const [showStatistic, setShowStatistic] = useState<boolean>();
-
   const { courseId, closeModal } = props;
-
   const dispatch = useDispatch();
-
   const selector = useSelector((state: RootState) => {
     const { courseDetail, courseDetailLoading, errors } = state.courses;
-
     const { user } = state.users;
 
     return { courseDetail, courseDetailLoading, errors, user };
   });
-
   const { courseDetail, courseDetailLoading, errors, user } = selector;
+  const history = useHistory();
 
   useEffect(() => {
     if (courseId) {
@@ -134,6 +130,14 @@ const CoursePreview = (props: Props) => {
                 <button
                   type="button"
                   className="payButton flex justify-between items-center"
+                  onClick={() =>
+                    history.push({
+                      pathname: '/payment',
+                      state: {
+                        plan: {},
+                        course: courseDetail._id
+                      }
+                    })}
                 >
                   <span>Pay for this course</span>
                   <span>

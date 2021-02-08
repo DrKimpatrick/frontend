@@ -39,6 +39,14 @@ export enum CourseLevel {
   Intermediate = 'intermediate'
 }
 
+export enum CourseBillingOptions {
+  ONE_TIME = 'one-time',
+  DAILY = 'day',
+  WEEKLY = 'week',
+  MONTHLY = 'month',
+  YEARLY = 'year',
+}
+
 export interface CoursePagination {
   offset?: number;
   limit?: number;

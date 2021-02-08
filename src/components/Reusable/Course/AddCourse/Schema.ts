@@ -1,4 +1,5 @@
 import { object, string } from 'yup';
+import { CourseBillingOptions } from 'redux/action-types/course';
 
 export const AddCourseSchema = object().shape({
   name: string()
@@ -16,6 +17,6 @@ export const AddCourseSchema = object().shape({
   existingCourseLink: string()
     .required('course link is required')
     .url('course link must be valid'),
-
-  price: string().required('price is required')
+  price: string().required('price is required'),
+  billing: string().oneOf(Object.values(CourseBillingOptions)).required('level is required'),
 });

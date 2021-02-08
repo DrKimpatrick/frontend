@@ -10,6 +10,7 @@ export interface CourseInitialValue {
   duration: string | number;
   description: string;
   price: string | number;
+  billing: string;
 }
 
 export interface OwnerDetailType {
@@ -50,6 +51,7 @@ export interface Course {
   duration: string;
   format: string;
   price: string;
+  billing: string;
 }
 
 export interface UserCourseType {
