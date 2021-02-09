@@ -89,7 +89,7 @@ const EmploymentHistory: FC<Props> = props => {
               <div className=" text-white font-bold py-3 px-4 card-title">
                 Skills Used
               </div>
-              <div className="py-3 px-4 card-content h-32">
+              <div className="py-3 px-4 card-content">
                 {data.map((skill: any, index: number) => (
                   <p key={index}>- {skill}</p>
                 ))}

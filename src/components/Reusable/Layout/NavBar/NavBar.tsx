@@ -5,7 +5,8 @@ import logo from 'assets/images/logo-image.png';
 import useWindowSize from 'utils/useWindowSize';
 import {
   Dashboard as DashboardIcon,
-  Work as WorkIcon
+  Work as WorkIcon,
+  RecordVoiceOver
 } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import Avatar from 'assets/images/avatar.webp';
@@ -20,12 +21,12 @@ const dashboardItems = [
     icon: <DashboardIcon className="dashboard-list-icons" />,
     link: Routes.UserDashboard
   },
-  {
-    id: 2,
-    item: 'Applied Jobs',
-    icon: <WorkIcon className="dashboard-list-icons" />,
-    link: '#'
-  },
+  // {
+  //   id: 2,
+  //   item: 'Applied Jobs',
+  //   icon: <WorkIcon className="dashboard-list-icons" />,
+  //   link: '#'
+  // },
   {
     id: 3,
     item: 'Trainings',
@@ -35,7 +36,7 @@ const dashboardItems = [
   {
     id: 4,
     item: 'Recommendation',
-    icon: <WorkIcon className="dashboard-list-icons" />,
+    icon: <RecordVoiceOver className="dashboard-list-icons" />,
     link: Routes.TalentRecommendation
   }
 ];

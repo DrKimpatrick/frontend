@@ -12,10 +12,8 @@ import {
 } from 'components/Reusable';
 import {
   Code as CodeIcon,
-  ImportantDevices,
   AccountCircle,
   Work,
-  LibraryBooks,
   Share,
   FileCopy,
   FolderShared
@@ -29,10 +27,8 @@ import './HrAdminLayout.scss';
 
 export enum Tab {
   PotentialCandidate = 'Potential Candidates',
-  UsedCode = 'Used code',
   Code = 'codes',
   SubsidyStudent = 'Subsidy students',
-  EnrolledStudent = 'Enrolled students',
   Recommendation = 'Recommendation'
 }
 
@@ -147,16 +143,10 @@ export const HrLayout: FC<Props> = props => {
                       <AdminTab
                         menu={[
                           {
-                            name: Tab.UsedCode,
-                            icon: <ImportantDevices />,
-                            onClick: value => setCurrentTab(value),
-                            url: Routes.HrAdminDashboard
-                          },
-                          {
                             name: Tab.PotentialCandidate,
                             icon: <AccountCircle />,
                             onClick: value => setCurrentTab(value),
-                            url: Routes.PotentialCandidate
+                            url: Routes.HrAdminDashboard
                           },
                           {
                             name: Tab.Code,
@@ -181,13 +171,7 @@ export const HrLayout: FC<Props> = props => {
                             name: Tab.SubsidyStudent,
                             icon: <Work />,
                             onClick: value => setCurrentTab(value),
-                            url: Routes.SubsidyStudent
-                          },
-                          {
-                            name: Tab.EnrolledStudent,
-                            icon: <LibraryBooks />,
-                            onClick: value => setCurrentTab(value),
-                            url: '#'
+                            url: Routes.SchoolDashboard
                           },
                           {
                             name: Tab.Recommendation,

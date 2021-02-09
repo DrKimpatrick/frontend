@@ -321,7 +321,7 @@ Object {
                     class=""
                   >
                     <a
-                      href="/school/subsidy-student"
+                      href="/school-dashboard"
                     >
                       <svg
                         aria-hidden="true"
@@ -335,27 +335,6 @@ Object {
                       </svg>
                       <h5>
                         Subsidy students
-                      </h5>
-                    </a>
-                  </li>
-                  <li
-                    class=""
-                  >
-                    <a
-                      href="/"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"
-                        />
-                      </svg>
-                      <h5>
-                        Enrolled students
                       </h5>
                     </a>
                   </li>
@@ -384,144 +363,21 @@ Object {
                 <div
                   class="hrAdminDashboard"
                 >
-                  <ul
-                    class="ulList w-full flex flex-column bg-card-preview"
-                  >
-                    <li
-                      class="adList py-2 py-2 rounded-sm"
-                    >
-                      <h5>
-                        gratien
-                      </h5>
-                      <div
-                        class="link"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                          />
-                        </svg>
-                      </div>
-                    </li>
-                    <li
-                      class="adList py-2 py-2 rounded-sm"
-                    >
-                      <h5>
-                        gratien
-                      </h5>
-                      <div
-                        class="link"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                          />
-                        </svg>
-                      </div>
-                    </li>
-                    <li
-                      class="adList py-2 py-2 rounded-sm"
-                    >
-                      <h5>
-                        gratien
-                      </h5>
-                      <div
-                        class="link"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                          />
-                        </svg>
-                      </div>
-                    </li>
-                  </ul>
                   <div
-                    class="my-10 w-full flex items-center justify-center"
+                    class="noItemFound"
                   >
                     <div
-                      class="horizontalPagination"
+                      class="notItemImage"
                     >
-                      <ul>
-                        <li
-                          class="previous disabled"
-                        >
-                          <a
-                            aria-disabled="true"
-                            aria-label="Previous page"
-                            role="button"
-                            tabindex="0"
-                          >
-                            &lt;
-                          </a>
-                        </li>
-                        <li
-                          class="active"
-                        >
-                          <a
-                            aria-current="page"
-                            aria-label="Page 1 is your current page"
-                            role="button"
-                            tabindex="0"
-                          >
-                            1
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            aria-label="Page 2"
-                            role="button"
-                            tabindex="0"
-                          >
-                            2
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            aria-label="Page 3"
-                            role="button"
-                            tabindex="0"
-                          >
-                            3
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            aria-label="Page 4"
-                            role="button"
-                            tabindex="0"
-                          >
-                            4
-                          </a>
-                        </li>
-                        <li
-                          class="next"
-                        >
-                          <a
-                            aria-disabled="false"
-                            aria-label="Next page"
-                            role="button"
-                            tabindex="0"
-                          >
-                            &gt;
-                          </a>
-                        </li>
-                      </ul>
+                      <img
+                        alt=""
+                        src="itemNotFound.png"
+                      />
+                    </div>
+                    <div
+                      class="message"
+                    >
+                      No result found
                     </div>
                   </div>
                 </div>
@@ -857,7 +713,7 @@ Object {
                   class=""
                 >
                   <a
-                    href="/school/subsidy-student"
+                    href="/school-dashboard"
                   >
                     <svg
                       aria-hidden="true"
@@ -871,27 +727,6 @@ Object {
                     </svg>
                     <h5>
                       Subsidy students
-                    </h5>
-                  </a>
-                </li>
-                <li
-                  class=""
-                >
-                  <a
-                    href="/"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"
-                      />
-                    </svg>
-                    <h5>
-                      Enrolled students
                     </h5>
                   </a>
                 </li>
@@ -920,144 +755,21 @@ Object {
               <div
                 class="hrAdminDashboard"
               >
-                <ul
-                  class="ulList w-full flex flex-column bg-card-preview"
-                >
-                  <li
-                    class="adList py-2 py-2 rounded-sm"
-                  >
-                    <h5>
-                      gratien
-                    </h5>
-                    <div
-                      class="link"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                        />
-                      </svg>
-                    </div>
-                  </li>
-                  <li
-                    class="adList py-2 py-2 rounded-sm"
-                  >
-                    <h5>
-                      gratien
-                    </h5>
-                    <div
-                      class="link"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                        />
-                      </svg>
-                    </div>
-                  </li>
-                  <li
-                    class="adList py-2 py-2 rounded-sm"
-                  >
-                    <h5>
-                      gratien
-                    </h5>
-                    <div
-                      class="link"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                        />
-                      </svg>
-                    </div>
-                  </li>
-                </ul>
                 <div
-                  class="my-10 w-full flex items-center justify-center"
+                  class="noItemFound"
                 >
                   <div
-                    class="horizontalPagination"
+                    class="notItemImage"
                   >
-                    <ul>
-                      <li
-                        class="previous disabled"
-                      >
-                        <a
-                          aria-disabled="true"
-                          aria-label="Previous page"
-                          role="button"
-                          tabindex="0"
-                        >
-                          &lt;
-                        </a>
-                      </li>
-                      <li
-                        class="active"
-                      >
-                        <a
-                          aria-current="page"
-                          aria-label="Page 1 is your current page"
-                          role="button"
-                          tabindex="0"
-                        >
-                          1
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          aria-label="Page 2"
-                          role="button"
-                          tabindex="0"
-                        >
-                          2
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          aria-label="Page 3"
-                          role="button"
-                          tabindex="0"
-                        >
-                          3
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          aria-label="Page 4"
-                          role="button"
-                          tabindex="0"
-                        >
-                          4
-                        </a>
-                      </li>
-                      <li
-                        class="next"
-                      >
-                        <a
-                          aria-disabled="false"
-                          aria-label="Next page"
-                          role="button"
-                          tabindex="0"
-                        >
-                          &gt;
-                        </a>
-                      </li>
-                    </ul>
+                    <img
+                      alt=""
+                      src="itemNotFound.png"
+                    />
+                  </div>
+                  <div
+                    class="message"
+                  >
+                    No result found
                   </div>
                 </div>
               </div>

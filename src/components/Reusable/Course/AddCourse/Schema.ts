@@ -18,5 +18,7 @@ export const AddCourseSchema = object().shape({
     .required('course link is required')
     .url('course link must be valid'),
   price: string().required('price is required'),
-  billing: string().oneOf(Object.values(CourseBillingOptions)).required('level is required'),
+  billing: string()
+    .oneOf(Object.values(CourseBillingOptions))
+    .required('level is required')
 });

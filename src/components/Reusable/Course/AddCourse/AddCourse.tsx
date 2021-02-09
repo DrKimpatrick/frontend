@@ -11,7 +11,11 @@ import {
   CustomInput
 } from 'components/Reusable';
 import { RootState } from 'redux/store';
-import { CourseBillingOptions, CourseLevel, CourseTimeFormat } from 'redux/action-types/course';
+import {
+  CourseBillingOptions,
+  CourseLevel,
+  CourseTimeFormat
+} from 'redux/action-types/course';
 import {
   CourseInitialValue,
   createCourse,
@@ -223,29 +227,35 @@ export const AddCourse = (props: Props) => {
                       />
                     )}
                   </div>
-                 {add && <div className="text-gray-texts mt-4">
-                    <CustomSelect
-                      placeholder="Pay per ..."
-                      option={Object.values(CourseBillingOptions).map(item => ({
-                        name: item,
-                        value: item
-                      }))}
-                      name="billing"
-                      value={values.billing}
-                      onChange={value => formik.setFieldValue('billing', value)}
-                    />
-                    {errors && errors.billing && (
-                      <small className="inputError text-sm">
-                        {errors.billing}
-                      </small>
-                    )}
-                    {validationError && (
-                      <ApiValidationError
-                        fieldName="billing"
-                        errors={validationError}
+                  {add && (
+                    <div className="text-gray-texts mt-4">
+                      <CustomSelect
+                        placeholder="Pay per ..."
+                        option={Object.values(CourseBillingOptions).map(
+                          item => ({
+                            name: item,
+                            value: item
+                          })
+                        )}
+                        name="billing"
+                        value={values.billing}
+                        onChange={value =>
+                          formik.setFieldValue('billing', value)
+                        }
                       />
-                    )}
-                  </div>}
+                      {errors && errors.billing && (
+                        <small className="inputError text-sm">
+                          {errors.billing}
+                        </small>
+                      )}
+                      {validationError && (
+                        <ApiValidationError
+                          fieldName="billing"
+                          errors={validationError}
+                        />
+                      )}
+                    </div>
+                  )}
                   <div className="text-gray-texts mt-4">
                     <CustomSelect
                       placeholder="Select course level"

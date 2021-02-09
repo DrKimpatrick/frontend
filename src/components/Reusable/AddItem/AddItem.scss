@@ -82,8 +82,16 @@
   }
 }
 
+.largeSize {
+  width: 1200px !important;
+  max-height: 85%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 @media screen and (max-width: 768px) {
-  .addItem {
+  .addItem,
+  .largeSize {
     width: 95% !important;
     margin: auto;
     margin-top: 10px;

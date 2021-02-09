@@ -44,7 +44,7 @@ export enum CourseBillingOptions {
   DAILY = 'day',
   WEEKLY = 'week',
   MONTHLY = 'month',
-  YEARLY = 'year',
+  YEARLY = 'year'
 }
 
 export interface CoursePagination {

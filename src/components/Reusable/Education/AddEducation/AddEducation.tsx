@@ -59,12 +59,15 @@ const AddEducation: FC<Props> = props => {
             }}
             submit={(values: InitialEducationValue) => {
               if (reducer.user) {
-                const { startDate, endDate } = values;
+                const { startDate, endDate, isCurrentEducation } = values;
+
                 addEducation(
                   {
                     ...values,
                     startDate: format(new Date(startDate), 'yyyy-MM-dd'),
-                    endDate: format(new Date(String(endDate)), 'yyyy-MM-dd')
+                    endDate: isCurrentEducation
+                      ? undefined
+                      : format(new Date(String(endDate)), 'yyyy-MM-dd')
                   },
                   {
                     profileProcess: TalentProcess.SingleEducation,

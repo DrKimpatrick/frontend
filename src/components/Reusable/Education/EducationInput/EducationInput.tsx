@@ -49,11 +49,11 @@ const EducationInput: FC<Props> = props => {
       initialValues={initialValue}
       validationSchema={educationSchema}
       validateOnChange={false}
-      onSubmit={values => {
-        return submit({
+      onSubmit={values =>
+        submit({
           ...values
-        });
-      }}
+        })
+      }
     >
       {formik => {
         const { values, errors } = formik;

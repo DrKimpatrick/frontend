@@ -133,12 +133,15 @@ const PotentialCandidate = () => {
             <AddItemOnModal
               title="Talent Profile"
               closeModal={() => closeModel()}
+              isLarge
             >
-              {specificUser && !userLoading && !userError ? (
-                <TalentProfile user={specificUser} />
-              ) : (
-                userErrorOrLoading
-              )}
+              <div className="mt-3">
+                {specificUser && !userLoading && !userError ? (
+                  <TalentProfile user={specificUser} />
+                ) : (
+                  userErrorOrLoading
+                )}
+              </div>
             </AddItemOnModal>
           )}
         </>

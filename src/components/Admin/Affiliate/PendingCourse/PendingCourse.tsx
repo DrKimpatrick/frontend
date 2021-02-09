@@ -97,6 +97,7 @@ const PendingCourse: FC = () => {
             setOffset={setOffset}
             offset={offset}
             type={CourseTypes.ListPendingCourse}
+            showFilter
           />
         )}
       </div>

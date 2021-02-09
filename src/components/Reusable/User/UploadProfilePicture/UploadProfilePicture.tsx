@@ -77,8 +77,11 @@ export const UploadProfilePicture = (props: Props) => {
     <AddItemOnModal
       title={title || 'Upload profile picture'}
       closeModal={() => {
-        closeModal();
-        setIsUploaded(false);
+        if (setIsUploaded) {
+          setIsUploaded(false);
+        } else {
+          closeModal();
+        }
 
         return undefined;
       }}

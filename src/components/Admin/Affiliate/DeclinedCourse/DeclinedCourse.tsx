@@ -98,6 +98,7 @@ const DeclinedCourse: FC = () => {
             setOffset={setOffset}
             offset={offset}
             type={CourseTypes.ListDeclinedCourse}
+            showFilter
           />
         )}
       </div>

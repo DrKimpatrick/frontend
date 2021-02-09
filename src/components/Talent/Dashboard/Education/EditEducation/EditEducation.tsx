@@ -67,10 +67,9 @@ const EditEducation: FC<Props> = props => {
               specialization: '',
               accomplishment: '',
               startDate: format(new Date(education.startDate), 'yyyy-MM-dd'),
-              endDate: format(
-                new Date(String(education.endDate)),
-                'yyyy-MM-dd'
-              ),
+              endDate: education.endDate
+                ? format(new Date(String(education.endDate)), 'yyyy-MM-dd')
+                : '',
               schoolWebsite: education.schoolWebsite
                 ? education.schoolWebsite
                 : '',
@@ -79,7 +78,7 @@ const EditEducation: FC<Props> = props => {
                 : ''
             }}
             submit={(values: InitialEducationValue) => {
-              const { startDate, endDate } = values;
+              const { startDate, endDate, isCurrentEducation } = values;
               if (!reducer.user) {
                 return null;
               }
@@ -87,7 +86,9 @@ const EditEducation: FC<Props> = props => {
                 {
                   ...values,
                   startDate: format(new Date(startDate), 'yyyy-MM-dd'),
-                  endDate: format(new Date(String(endDate)), 'yyyy-MM-dd')
+                  endDate: isCurrentEducation
+                    ? undefined
+                    : format(new Date(String(endDate)), 'yyyy-MM-dd')
                 },
                 String(reducer.user._id),
                 education._id

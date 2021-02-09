@@ -666,52 +666,6 @@ exports[`Accepted Course it should create snapshot 1`] = `
                       View
                     </button>
                   </div>
-                  <div
-                    className="action"
-                  >
-                    <h5>
-                      Change Status
-                    </h5>
-                    <div
-                      className="customSelect"
-                    >
-                      <select
-                        name="options"
-                        onChange={[Function]}
-                      >
-                        <option />
-                        <option
-                          value="accepted"
-                        >
-                          accepted
-                        </option>
-                        <option
-                          value="pending"
-                        >
-                          pending
-                        </option>
-                        <option
-                          value="declined"
-                        >
-                          declined
-                        </option>
-                      </select>
-                      <span
-                        className="customArrow"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M7 10l5 5 5-5z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
                 </li>
               </ul>
             </div>

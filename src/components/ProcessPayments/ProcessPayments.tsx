@@ -38,7 +38,14 @@ const ProcessPayments = () => {
   }>({ message: '', show: false, level: AlertLevel.ERROR });
   const { data: userData } = useSWR('/users/me');
   const {
-    state: { plan: productPlan, featureChoice, coupon, subsidy, successPage, course }
+    state: {
+      plan: productPlan,
+      featureChoice,
+      coupon,
+      subsidy,
+      successPage,
+      course
+    }
   } = useLocation<any>();
   const history = useHistory();
 
@@ -64,10 +71,10 @@ const ProcessPayments = () => {
       profileProcess: subsidy
         ? AdminsProcess.Completed
         : TalentProcess.Completed,
-        coupon,
-        subsidy,
-        course,
-        featureChoice
+      coupon,
+      subsidy,
+      course,
+      featureChoice
     };
 
     const { data } = await axiosInstance.post(

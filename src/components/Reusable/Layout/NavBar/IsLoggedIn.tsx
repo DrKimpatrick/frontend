@@ -2,14 +2,7 @@ import React, { useState, useRef, MouseEvent, useEffect } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import {
-  Dashboard,
-  Notifications,
-  NotificationsOff,
-  Settings,
-  PowerSettingsNew,
-  Layers
-} from '@material-ui/icons';
+import { Dashboard, PowerSettingsNew } from '@material-ui/icons';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Link, withRouter, useHistory } from 'react-router-dom';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
@@ -33,7 +26,7 @@ const typedUseSelector: TypedUseSelectorHook<InitialStateInterface> = useSelecto
 const IsLoggedIn = (props: any) => {
   const [open, setOpen] = useState(false);
 
-  const [notificationOpen, setNotificationOpen] = useState(false);
+  // const [notificationOpen, setNotificationOpen] = useState(false);
 
   const { currentUser } = typedUseSelector(({ users }) => users);
 
@@ -49,7 +42,7 @@ const IsLoggedIn = (props: any) => {
 
   const anchorRef = useRef<HTMLDivElement>(null);
 
-  const anchorNotificationRef = useRef<HTMLDivElement>(null);
+  // const anchorNotificationRef = useRef<HTMLDivElement>(null);
 
   const userState: any = useSelector((state: any) => state.users);
 
@@ -81,20 +74,20 @@ const IsLoggedIn = (props: any) => {
     setOpen(false);
   };
 
-  const handleNotificationClose = (event: MouseEvent<EventTarget>) => {
-    if (
-      anchorNotificationRef.current &&
-      anchorNotificationRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
+  // const handleNotificationClose = (event: MouseEvent<EventTarget>) => {
+  //   if (
+  //     anchorNotificationRef.current &&
+  //     anchorNotificationRef.current.contains(event.target as HTMLElement)
+  //   ) {
+  //     return;
+  //   }
 
-    setNotificationOpen(false);
-  };
+  //   setNotificationOpen(false);
+  // };
 
-  const handleToggleNotification = () => {
-    setNotificationOpen(prevOpen => !prevOpen);
-  };
+  // const handleToggleNotification = () => {
+  //   setNotificationOpen(prevOpen => !prevOpen);
+  // };
 
   useEffect(() => {
     if (user && user.roles) {
@@ -113,7 +106,7 @@ const IsLoggedIn = (props: any) => {
       <div
         className={`lg:inline-flex items-center ${userDashboard && '-mt-24'}`}
       >
-        <div className="px-8 lg:inline-flex items-center">
+        {/* <div className="px-8 lg:inline-flex items-center">
           <div className={classes.root}>
             <div>
               <ClickAwayListener onClickAway={handleNotificationClose}>
@@ -186,7 +179,7 @@ const IsLoggedIn = (props: any) => {
           <div className="text-gray-600 relative">
             <Layers />
           </div>
-        </div>
+        </div> */}
         {user && (
           <div className="text-gray-600">
             <span>{user.username}</span>
@@ -238,12 +231,12 @@ const IsLoggedIn = (props: any) => {
                         </div>
                       </MenuItem>
                     )}
-                    <MenuItem onClick={handleClose} className="text-gray-600">
+                    {/* <MenuItem onClick={handleClose} className="text-gray-600">
                       <div className="text-gray-600 w-56 space-x-3 text-sm py-2">
                         <Settings />
                         <span>Settings</span>
                       </div>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem onClick={handleClose} className="text-gray-600">
                       <div
                         className="text-gray-600 w-56 space-x-3 text-sm py-2"

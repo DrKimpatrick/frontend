@@ -30,6 +30,7 @@ interface Props {
   setOffset: (value: number) => void;
   offset: number;
   type: string;
+  showFilter?: boolean;
 }
 
 const AffiliateItem: FC<Props> = props => {
@@ -42,7 +43,8 @@ const AffiliateItem: FC<Props> = props => {
     setOffset,
     setPage,
     offset,
-    type
+    type,
+    showFilter
   } = props;
 
   const pageCount = Math.ceil(totalItems / itemPerPage);
@@ -94,36 +96,40 @@ const AffiliateItem: FC<Props> = props => {
                       View
                     </button>
                   </div>
-                  <div className="action">
-                    <h5>Change Status</h5>
-                    <div className="customSelect">
-                      <select
-                        name="options"
-                        value={item.verificationStatus}
-                        onChange={e =>
-                          changeStatus({
-                            status: e.target.value,
-                            course: item,
-                            pageCount
-                          })
-                        }
-                      >
-                        <option value={item.verificationStatus}>
-                          {item.verificationStatus}
-                        </option>
-                        {options
-                          .filter(opt => opt.value !== item.verificationStatus)
-                          .map((opt, i) => (
-                            <option key={i} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                      </select>
-                      <span className="customArrow">
-                        <ArrowDropDown />
-                      </span>
+                  {showFilter && (
+                    <div className="action">
+                      <h5>Change Status</h5>
+                      <div className="customSelect">
+                        <select
+                          name="options"
+                          value={item.verificationStatus}
+                          onChange={e => {
+                            changeStatus({
+                              status: e.target.value,
+                              course: item,
+                              pageCount
+                            });
+                          }}
+                        >
+                          <option value={item.verificationStatus}>
+                            {item.verificationStatus}
+                          </option>
+                          {options
+                            .filter(
+                              opt => opt.value !== item.verificationStatus
+                            )
+                            .map((opt, i) => (
+                              <option key={i} value={opt.value}>
+                                {opt.label}
+                              </option>
+                            ))}
+                        </select>
+                        <span className="customArrow">
+                          <ArrowDropDown />
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </li>
               ))}
               {pageCount > 1 && (

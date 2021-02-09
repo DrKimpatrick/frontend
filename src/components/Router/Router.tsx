@@ -35,12 +35,11 @@ import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
 import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
 import {
-  HrAdminDashboard,
   PotentialCandidate,
   HrAdminCode,
   HrRecommendation
 } from 'components/HrAdmin';
-import { SchoolDashboard, SubsidyStudent } from 'components/School';
+import { SubsidyStudent } from 'components/School';
 import { AffiliateAdmin } from 'components/AffiliateAdmin';
 import PaymentsSuccess from 'components/ProcessPayments/PaymentsSuccess';
 
@@ -120,7 +119,7 @@ const AppRouter: FC = () => {
     // Hr Admin
     {
       path: Routes.HrAdminDashboard,
-      component: <HrAdminDashboard />,
+      component: <PotentialCandidate />,
       exact: true
     },
     {
@@ -142,11 +141,6 @@ const AppRouter: FC = () => {
     // School or Education
     {
       path: Routes.SchoolDashboard,
-      component: <SchoolDashboard />,
-      exact: true
-    },
-    {
-      path: Routes.SubsidyStudent,
       component: <SubsidyStudent />,
       exact: true
     },

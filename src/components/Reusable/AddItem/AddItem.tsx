@@ -6,12 +6,13 @@ import { ArrowBackTwoTone } from '@material-ui/icons';
 interface Props {
   closeModal: () => void;
   title: string;
+  isLarge?: boolean;
 }
 
 const AddItem: FC<Props> = props => {
   const [open = true, setOpen] = useState<boolean>();
 
-  const { closeModal, children, title } = props;
+  const { closeModal, children, title, isLarge } = props;
 
   return (
     <Modal
@@ -23,7 +24,7 @@ const AddItem: FC<Props> = props => {
       tabIndex={0}
       style={{ zIndex: 100 }}
     >
-      <div className="addItem">
+      <div className={isLarge ? 'addItem largeSize' : 'addItem'}>
         <div className="flex relative h-auto heading">
           <button
             className="back-arrow cursor-pointer"

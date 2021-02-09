@@ -137,7 +137,8 @@ const CoursePreview = (props: Props) => {
                         plan: {},
                         course: courseDetail._id
                       }
-                    })}
+                    })
+                  }
                 >
                   <span>Pay for this course</span>
                   <span>

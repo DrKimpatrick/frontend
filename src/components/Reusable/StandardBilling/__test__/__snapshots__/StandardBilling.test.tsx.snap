@@ -147,9 +147,13 @@ Array [
         <div
           className="pricing"
         >
-          <span>
-            Yearly
-          </span>
+          <div
+            className="flex justify-start items-center"
+          >
+            <span>
+              Yearly
+            </span>
+          </div>
           <button
             className="monthly w-full text-white py-2 mt-1 flex justify-center"
             onClick={[Function]}
@@ -163,9 +167,13 @@ Array [
         <div
           className="pricing"
         >
-          <span>
-            Annual 15% Discount
-          </span>
+          <div
+            className="flex justify-start items-center"
+          >
+            <span>
+              Annual 15% Discount
+            </span>
+          </div>
           <button
             className="annually w-full text-white py-2 mt-1 flex justify-center relative"
             onClick={[Function]}
@@ -193,6 +201,20 @@ Array [
         placeholder="Promo Code"
         type="text"
       />
+      <button
+        className="w-full border-none outline-none rounded-sm mt-4 font-bold"
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "#545454",
+            "color": "white",
+            "height": "50px",
+          }
+        }
+        type="button"
+      >
+        Next
+      </button>
     </div>
   </section>,
   <div
