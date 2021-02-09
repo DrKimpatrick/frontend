@@ -4,8 +4,8 @@ import './CoursePreview.scss';
 import { Modal } from '@material-ui/core';
 import {
   AffiliateStatistic,
-  HorizontalPagination,
-  SideLoading
+  SideLoading,
+  NoItemFound
 } from 'components/Reusable';
 import {
   Adb,
@@ -18,7 +18,7 @@ import {
   Cached
 } from '@material-ui/icons';
 import { RootState } from 'redux/store';
-import { listCourseDetail } from 'redux/actions/course';
+import { listCourseDetail, listUserWhoPaidCourse } from 'redux/actions/course';
 import avatar from 'assets/images/avatar.jpg';
 import { get } from 'lodash';
 import { UserRole } from 'redux/action-types/user';
@@ -29,21 +29,48 @@ interface Props {
   closeModal: () => void;
 }
 
-const paidUser = ['John doe', 'Jane doe', 'Steve Job', 'Elon Tesla'];
-
 const CoursePreview = (props: Props) => {
   const [open = true, setOpen] = useState<boolean>();
+
   const [showStatistic, setShowStatistic] = useState<boolean>();
+
+  const [showPayButton, setShowPayButton] = useState<boolean>();
+
   const { courseId, closeModal } = props;
+
   const dispatch = useDispatch();
+
+  const history = useHistory();
+
   const selector = useSelector((state: RootState) => {
-    const { courseDetail, courseDetailLoading, errors } = state.courses;
+    const {
+      courseDetail,
+      courseDetailLoading,
+      errors,
+      userWhoPaidCourse,
+      userWhoPaidCourseLoading
+    } = state.courses;
+
     const { user } = state.users;
 
-    return { courseDetail, courseDetailLoading, errors, user };
+    return {
+      courseDetail,
+      courseDetailLoading,
+      errors,
+      user,
+      userWhoPaidCourse,
+      userWhoPaidCourseLoading
+    };
   });
-  const { courseDetail, courseDetailLoading, errors, user } = selector;
-  const history = useHistory();
+
+  const {
+    courseDetail,
+    courseDetailLoading,
+    errors,
+    user,
+    userWhoPaidCourse,
+    userWhoPaidCourseLoading
+  } = selector;
 
   useEffect(() => {
     if (courseId) {
@@ -55,12 +82,29 @@ const CoursePreview = (props: Props) => {
     if (user && courseDetail && courseDetail.userId) {
       if (user._id === courseDetail.userId._id) {
         setShowStatistic(true);
+
+        listUserWhoPaidCourse(courseId)(dispatch);
       }
       if (user.roles && user.roles.includes(UserRole.SuperAdmin)) {
         setShowStatistic(true);
+
+        listUserWhoPaidCourse(courseId)(dispatch);
       }
     }
-  }, [user, courseDetail]);
+  }, [user, courseDetail, dispatch, courseId]);
+
+  useEffect(() => {
+    if (
+      user &&
+      user.paidCourses &&
+      user.paidCourses.length > 0 &&
+      user.paidCourses.includes(courseId)
+    ) {
+      setShowPayButton(false);
+    } else {
+      setShowPayButton(true);
+    }
+  }, [user, courseId]);
 
   return (
     <Modal
@@ -127,24 +171,35 @@ const CoursePreview = (props: Props) => {
             </div>
             {!showStatistic && (
               <div className="flex justify-center items-center">
-                <button
-                  type="button"
-                  className="payButton flex justify-between items-center"
-                  onClick={() =>
-                    history.push({
-                      pathname: '/payment',
-                      state: {
-                        plan: {},
-                        course: courseDetail._id
+                {typeof showPayButton !== 'undefined' && (
+                  <button
+                    type="button"
+                    className={`flex justify-between items-center ${
+                      showPayButton ? 'payButton' : 'viewCourseButton'
+                    }`}
+                    onClick={() => {
+                      if (showPayButton) {
+                        history.push({
+                          pathname: '/payment',
+                          state: {
+                            plan: {},
+                            course: courseDetail._id
+                          }
+                        });
+                      } else {
+                        window.open(courseDetail.existingCourseLink, '_blank');
                       }
-                    })
-                  }
-                >
-                  <span>Pay for this course</span>
-                  <span>
-                    <Cached />
-                  </span>
-                </button>
+                      return undefined;
+                    }}
+                  >
+                    <span>
+                      {showPayButton ? 'Pay for this course' : 'View course'}
+                    </span>
+                    <span>
+                      <Cached />
+                    </span>
+                  </button>
+                )}
               </div>
             )}
             {showStatistic && (
@@ -171,18 +226,23 @@ const CoursePreview = (props: Props) => {
                 </div>
                 <div className="whoPaidCourse">
                   <h5 className="title">Users who signed up and paid</h5>
-                  <ul className="bg-card-preview listWhoPaidCourse">
-                    {paidUser.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                  <div className="coursePagination">
-                    <HorizontalPagination
-                      page={1}
-                      pageCount={3}
-                      onPageChange={() => ''}
-                    />
-                  </div>
+                  {userWhoPaidCourseLoading && (
+                    <div className="mt-3 w-full">
+                      <SideLoading />
+                    </div>
+                  )}
+                  {userWhoPaidCourse && !userWhoPaidCourseLoading && (
+                    <>
+                      {userWhoPaidCourse.length > 0 && (
+                        <ul className="bg-card-preview listWhoPaidCourse">
+                          {userWhoPaidCourse.map((item, index) => (
+                            <li key={index}>{item.username}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {userWhoPaidCourse.length <= 0 && <NoItemFound />}
+                    </>
+                  )}
                 </div>
               </>
             )}

@@ -1,4 +1,5 @@
 import { CourseOwnerType, Course, UserCourseType } from 'redux/actions/course';
+import { User } from 'redux/actions/user';
 
 export enum CourseTypes {
   AddCourse = 'CourseTypes/AddCourse',
@@ -19,7 +20,9 @@ export enum CourseTypes {
   ListCourseOwner = 'CourseTypes/ListCourseOwner',
   CourseOwnerLoading = 'CourseTypes/CourseOwnerLoading',
   UserCourse = 'CourseTypes/UserCourse',
-  UserCourseLoading = 'CourseTypes/UserCourseLoading'
+  UserCourseLoading = 'CourseTypes/UserCourseLoading',
+  UserWhoPaidCourse = 'CourseTypes/UserWhoPaidCourse',
+  UserWhoPaidCourseLoading = 'CourseTypes/UserWhoPaidCourseLoading'
 }
 
 export enum CourseStatus {
@@ -210,6 +213,20 @@ interface UserCourseLoading {
   };
 }
 
+interface UserWhoPaidCourse {
+  type: typeof CourseTypes.UserWhoPaidCourse;
+  payload: {
+    data: User[];
+  };
+}
+
+interface UserWhoPaidCourseLoading {
+  type: typeof CourseTypes.UserWhoPaidCourseLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
@@ -229,4 +246,6 @@ export type CourseActionTypes =
   | ListCourseOwner
   | CourseOwnerLoading
   | UserCourse
-  | UserCourseLoading;
+  | UserCourseLoading
+  | UserWhoPaidCourse
+  | UserWhoPaidCourseLoading;

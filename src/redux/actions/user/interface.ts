@@ -43,6 +43,7 @@ export interface User {
   courses?: Course[];
   sharedLink?: string;
   recommendedBy?: string;
+  paidCourses?: string[] | any;
 }
 
 export interface UserSkill {

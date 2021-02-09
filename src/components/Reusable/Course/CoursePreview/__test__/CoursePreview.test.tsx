@@ -37,7 +37,9 @@ const initialState = {
       createdAt: 'date',
       updatedAt: 'date'
     },
-    errors: {}
+    errors: {},
+    userWhoPaidCourseLoading: false,
+    userWhoPaidCourse: []
   },
   users: {
     user: {

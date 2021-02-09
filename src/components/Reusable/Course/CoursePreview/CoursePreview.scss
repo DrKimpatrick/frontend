@@ -96,7 +96,8 @@
         margin-bottom: 50px;
       }
     }
-    .payButton {
+    .payButton,
+    .viewCourseButton {
       background: #4d9b62;
       height: 42px;
       border-radius: 2px;
@@ -106,11 +107,15 @@
       outline: none;
       cursor: pointer;
       box-shadow: none;
+      margin-top: 10px;
       span {
         &:last-child {
           margin-left: 20px;
         }
       }
+    }
+    .viewCourseButton {
+      background: #2d3748 !important;
     }
   }
 }

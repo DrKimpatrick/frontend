@@ -4,10 +4,12 @@ import ArrowBackTwoToneIcon from '@material-ui/icons/ArrowBackTwoTone';
 import { useHistory } from 'react-router-dom';
 import { MainBackground, NavBar, SplashScreen } from 'components/Reusable';
 import { Talent } from 'components/Home';
+import { Routes } from 'utils/routes';
 import './FeatureChoice.scss';
 
 const FeatureChoice = () => {
   const { data: productResponse } = useSWR('/stripe/products');
+
   const history = useHistory();
 
   if (!productResponse) {
@@ -32,11 +34,11 @@ const FeatureChoice = () => {
           {productResponse && (
             <div className="flex flex-col items-center md:justify-between lg:items-start lg:flex-row">
               {productResponse.products.map((product: any) => {
-                let productAction = '/notification';
+                let productAction = Routes.UserDashboard;
                 if (product.name.includes('Standard')) {
-                  productAction = '/standard-billing';
+                  productAction = Routes.StandardBilling;
                 } else if (product.name.includes('Premium')) {
-                  productAction = '/premium-billing';
+                  productAction = Routes.PremiumBilling;
                 }
                 return (
                   <Talent

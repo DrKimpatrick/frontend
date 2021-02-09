@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import {
   DesktopWindowsOutlined,
   School,
@@ -11,6 +11,7 @@ import {
 } from '@material-ui/icons';
 import { Container } from '@material-ui/core';
 import { TalentLayout } from 'components/Reusable';
+import { Routes } from 'utils/routes';
 import useWindowSize from 'utils/useWindowSize';
 import { RootState } from 'redux/store';
 import Headline from './Headline';
@@ -27,6 +28,8 @@ const Dashboard: FC = () => {
   const size = useWindowSize();
 
   const linkRef = useRef<any>();
+
+  const history = useHistory();
 
   const reducer = useSelector((state: RootState) => {
     const { user } = state.users;
@@ -77,6 +80,15 @@ const Dashboard: FC = () => {
                   <FileCopy />
                 </span>
               </div>
+              {user && !user.stripeSubscriptionId && (
+                <button
+                  type="button"
+                  className="subscribeButton"
+                  onClick={() => history.push(Routes.FeatureChoice)}
+                >
+                  Subscribe
+                </button>
+              )}
             </div>
           </Container>
         )}

@@ -1,5 +1,6 @@
 import { CourseActionTypes, CourseTypes } from 'redux/action-types/course';
 import { CourseOwnerType, Course, UserCourseType } from 'redux/actions/course';
+import { User } from 'redux/actions/user';
 
 interface InitialState {
   loading?: boolean;
@@ -38,6 +39,8 @@ interface InitialState {
   courseOwnerLoading?: boolean;
   userCourseLoading?: boolean;
   userCourse?: UserCourseType;
+  userWhoPaidCourse?: User[];
+  userWhoPaidCourseLoading?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -134,6 +137,12 @@ export const courseReducer = (
 
     case CourseTypes.UserCourseLoading:
       return { ...state, userCourseLoading: action.payload.loading };
+
+    case CourseTypes.UserWhoPaidCourseLoading:
+      return { ...state, userWhoPaidCourseLoading: action.payload.loading };
+
+    case CourseTypes.UserWhoPaidCourse:
+      return { ...state, userWhoPaidCourse: action.payload.data };
 
     default:
       return state;

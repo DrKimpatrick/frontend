@@ -356,3 +356,44 @@ export const listUserCourse = (
     })
   );
 };
+
+export const listUserWhoPaidCourse = (courseId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: `/courses/${courseId}/customers`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserWhoPaidCourseLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserWhoPaidCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.UserWhoPaidCourseLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.UserWhoPaidCourse,
+          payload: { data: res.data }
+        });
+      }
+    })
+  );
+};

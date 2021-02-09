@@ -49,14 +49,6 @@ const TalentLayout: FC = props => {
     return <Redirect to={Routes.CompleteProfile} />;
   }
 
-  if (
-    user &&
-    user.profileProcess === TalentProcess.Completed &&
-    !user.stripeSubscriptionId
-  ) {
-    return <Redirect to={Routes.GetHired} />;
-  }
-
   return (
     <>
       <CoverImage />
