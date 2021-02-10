@@ -23,6 +23,8 @@ export enum CourseTypes {
   UserCourseLoading = 'CourseTypes/UserCourseLoading',
   UserWhoPaidCourse = 'CourseTypes/UserWhoPaidCourse',
   UserWhoPaidCourseLoading = 'CourseTypes/UserWhoPaidCourseLoading',
+  AddingViewsLoading = 'CourseTypes/AddingViewsLoading',
+  AddingViews = 'CourseTypes/AddingViews',
   CoursesStats = 'CourseTypes/CoursesStats',
   CoursesStatsLoading = 'CourseTypes/CoursesStatsLoading',
   QuarterlyCommission = 'CourseTypes/QuarterlyCommission',
@@ -231,6 +233,19 @@ interface UserWhoPaidCourseLoading {
   };
 }
 
+interface AddingViewsLoading {
+  type: typeof CourseTypes.AddingViewsLoading,
+  payload: {
+    loading: boolean;
+  }
+}
+
+interface AddingViews {
+  type: typeof CourseTypes.AddingViews,
+  payload: {
+    data: any
+  }
+}
 interface CoursesStats {
   type: typeof CourseTypes.CoursesStats;
   payload: {
@@ -284,6 +299,8 @@ export type CourseActionTypes =
   | UserCourseLoading
   | UserWhoPaidCourse
   | UserWhoPaidCourseLoading
+  | AddingViewsLoading
+  | AddingViews
   | CoursesStats
   | CoursesStatsLoading
   | QuarterlyCommission

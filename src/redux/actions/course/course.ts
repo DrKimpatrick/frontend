@@ -398,6 +398,49 @@ export const listUserWhoPaidCourse = (courseId: string) => (
   );
 };
 
+export const saveView = (courseId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'PUT',
+      url: `/courses/${courseId}/views`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.AddingViewsLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        console.log('gaggagaga1212', error)
+        dispatch({
+          type: CourseTypes.AddingViewsLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        console.log('gaggagaga', res)
+        dispatch({
+          type: CourseTypes.AddingViewsLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.AddingViews,
+          payload: { data: res.data }
+        });
+      }
+    })
+  );
+};
+
 export const getCoursesStats = (affiliateId: string) => (
   dispatchAction: Dispatch
 ) => {

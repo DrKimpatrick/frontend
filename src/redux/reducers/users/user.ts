@@ -65,6 +65,7 @@ interface InitialState {
     users?: User[];
     currentPage?: number;
   };
+  viewList?: boolean;
   // skills?: AddedSkill[];
   activePath: string | null;
   userTrainingAffiliate?: {
@@ -257,6 +258,7 @@ export const userReducer = (
       return {
         ...state,
         specificUser: action.payload.data,
+        viewList: false,
         loading: false,
         userEducationLoading: false,
         userEmploymentLoading: false,
@@ -299,6 +301,7 @@ export const userReducer = (
           totalDocs: action.payload.data.totalDocs,
           currentPage: action.payload.data.currentPage
         },
+        viewList: true,
         loading: false
       };
 

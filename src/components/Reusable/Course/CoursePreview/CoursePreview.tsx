@@ -7,18 +7,13 @@ import {
   SideLoading,
   NoItemFound
 } from 'components/Reusable';
-import {
-  Adb,
-  ViewComfy,
-  Grain,
-  Apps,
-  PeopleOutline,
-  AttachMoney,
-  Close,
-  Cached
-} from '@material-ui/icons';
+import { Adb, Apps, AttachMoney, Close, Cached } from '@material-ui/icons';
 import { RootState } from 'redux/store';
-import { listCourseDetail, listUserWhoPaidCourse } from 'redux/actions/course';
+import {
+  listCourseDetail,
+  listUserWhoPaidCourse,
+  saveView
+} from 'redux/actions/course';
 import avatar from 'assets/images/avatar.jpg';
 import { get } from 'lodash';
 import { UserRole } from 'redux/action-types/user';
@@ -75,6 +70,7 @@ const CoursePreview = (props: Props) => {
   useEffect(() => {
     if (courseId) {
       listCourseDetail(courseId)(dispatch);
+      saveView(courseId)(dispatch);
     }
   }, [courseId, dispatch]);
 
@@ -207,19 +203,20 @@ const CoursePreview = (props: Props) => {
                 <div className="courseStatistic">
                   <AffiliateStatistic
                     item={[
-                      { name: 'Views', rate: '10', icon: <Adb /> },
                       {
-                        name: 'Conversation Rate',
-                        rate: '20%',
-                        icon: <ViewComfy />
+                        name: 'Views',
+                        rate: courseDetail.views.length,
+                        icon: <Adb />
                       },
-                      { name: 'Conversation', rate: '20%', icon: <Grain /> },
-                      { name: 'Active Users', rate: '2', icon: <Apps /> },
-                      { name: 'Costs', rate: '$20', icon: <AttachMoney /> },
                       {
-                        name: 'Total users',
-                        rate: '20',
-                        icon: <PeopleOutline />
+                        name: 'Active Users',
+                        rate: userWhoPaidCourse ? userWhoPaidCourse?.length : 0,
+                        icon: <Apps />
+                      },
+                      {
+                        name: 'Costs',
+                        rate: `${courseDetail.price} $`,
+                        icon: <AttachMoney />
                       }
                     ]}
                   />

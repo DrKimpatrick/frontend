@@ -28,6 +28,7 @@ import './AddCourse.scss';
 interface Props {
   initialValue?: CourseInitialValue;
   closeModal: () => void;
+  downLoad: () => void;
   title: string;
   add: boolean;
   courseId?: string;
@@ -59,6 +60,7 @@ export const AddCourse = (props: Props) => {
   const {
     initialValue,
     closeModal,
+    downLoad,
     add,
     title,
     courseId,
@@ -86,8 +88,10 @@ export const AddCourse = (props: Props) => {
   useEffect(() => {
     if (addCourse && message) {
       closeModal();
+
+      downLoad();
     }
-  }, [closeModal, addCourse, message]);
+  }, [closeModal, addCourse, message, downLoad]);
 
   return (
     <AddItemOnModal closeModal={closeModal} title={title}>

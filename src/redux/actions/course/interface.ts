@@ -52,6 +52,8 @@ export interface Course {
   format: string;
   price: string;
   billing: string;
+  views: string[];
+  userWhoPaidCourse: string[];
 }
 
 export interface UserCourseType {

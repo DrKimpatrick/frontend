@@ -3,7 +3,7 @@ import './AffiliateStatistic.scss';
 
 export interface StatisticItem {
   name: string;
-  rate: string;
+  rate: number | string;
   icon: any;
 }
 interface Props {

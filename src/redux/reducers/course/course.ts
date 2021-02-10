@@ -41,6 +41,7 @@ interface InitialState {
   userCourse?: UserCourseType;
   userWhoPaidCourse?: User[];
   userWhoPaidCourseLoading?: boolean;
+  addingViewsLoading?: boolean;
   coursesStats?: {
     views?: number;
     conversionRate?: number;
@@ -152,6 +153,12 @@ export const courseReducer = (
 
     case CourseTypes.UserWhoPaidCourse:
       return { ...state, userWhoPaidCourse: action.payload.data };
+    
+    case CourseTypes.AddingViewsLoading:
+      return { ...state, addingViewsLoading: action.payload.loading };
+    
+    case CourseTypes.AddingViews:
+      return { ...state, addingViews: action.payload.data };
 
     case CourseTypes.CoursesStatsLoading:
       return { ...state, coursesStatsLoading: action.payload.loading };

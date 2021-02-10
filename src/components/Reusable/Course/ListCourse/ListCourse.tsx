@@ -53,6 +53,7 @@ export const ListCourse = (props: Props) => {
 
             return undefined;
           }}
+          downLoad = {() => {}}
         />
       )}
       <li
