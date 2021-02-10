@@ -397,3 +397,75 @@ export const listUserWhoPaidCourse = (courseId: string) => (
     })
   );
 };
+
+export const getCoursesStats = (affiliateId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: `/courses/affiliate/${affiliateId}/stats`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CoursesStatsLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CoursesStatsLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.CoursesStats,
+          payload: res
+        });
+      }
+    })
+  );
+};
+
+export const getQuarterlyCommission = (affiliateId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: `/courses/affiliate/${affiliateId}/quarterly-commission`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.QuarterlyCommissionLoading,
+          payload: { loading: true }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.QuarterlyCommissionLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: CourseTypes.Errors,
+          payload: {
+            errors: error.response.data
+          }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: CourseTypes.QuarterlyCommission,
+          payload: res
+        });
+      }
+    })
+  );
+};

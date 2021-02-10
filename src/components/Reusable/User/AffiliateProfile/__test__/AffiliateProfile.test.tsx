@@ -1,8 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Component from '../AffiliateProfile';
+import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
 import { cleanup, render } from '@testing-library/react';
-import { UserRole } from 'redux/action-types/user';
+import Component from '../AffiliateProfile';
+
+let store: Store;
+
+const middleware = [thunk];
+
+const mockStore = configureMockStore(middleware);
+
+const initialState = {
+  courses: {
+    coursesStats: {
+    views: 4,
+    conversionRate: 23
+  },
+  coursesStatsLoading: false,
+  quarterlyCommission: 120,
+  quarterlyCommissionLoading: false
+  }
+};
 
 const props = {
   courses: [
@@ -26,20 +49,41 @@ const props = {
       createdAt: 'date',
       updatedAt: 'date'
     }
-  ]
+  ],
+   affiliateId: 'affiliateId'
 };
+
 describe('AffiliateProfile', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+  
   afterEach(cleanup);
 
   it('should render without crashing', () => {
     const div = document.createElement('div');
 
-    ReactDOM.render(<Component {...props} />, div);
+    ReactDOM.render(
+      <Provider store={store}>
+        <Router>
+          <Component {...props} />
+        </Router>
+      </Provider>,
+      div
+    );
   });
 
   it('should create snapshot', () => {
-    const tree = render(<Component {...props} />);
-
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Router>
+            <Component {...props} />
+          </Router>
+        </Provider>
+      )
+      .toJSON();
+    
     expect(tree).toMatchSnapshot();
   });
 });

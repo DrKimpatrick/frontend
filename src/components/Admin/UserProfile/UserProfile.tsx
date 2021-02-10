@@ -156,7 +156,10 @@ const UserProfile: FC = () => {
               <div className="userProfile">
                 <ProfilePreview user={specificUser} />
                 <div className="profileShowcase">
-                  <AffiliateProfile courses={specificUser.courses} />
+                  <AffiliateProfile
+                    courses={specificUser.courses}
+                    affiliateId={specificUser._id}
+                  />
                 </div>
               </div>
             )}

@@ -45,7 +45,11 @@ const AffiliateAdmin: FC = () => {
       <div className="affiliateAdmin">
         <ProfilePreview user={user} />
         <div className="listAllCourse">
-          <AffiliateProfile courses={courses.data} allowEditDelete />
+          <AffiliateProfile
+            courses={courses.data}
+            affiliateId={user._id}
+            allowEditDelete
+          />
         </div>
       </div>
     </Layout>

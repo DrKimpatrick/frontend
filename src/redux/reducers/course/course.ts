@@ -41,6 +41,15 @@ interface InitialState {
   userCourse?: UserCourseType;
   userWhoPaidCourse?: User[];
   userWhoPaidCourseLoading?: boolean;
+  coursesStats?: {
+    views?: number;
+    conversionRate?: number;
+    totalCoursesPrice?: number;
+    totalCoursesLinks?: number;
+  };
+  coursesStatsLoading?: boolean;
+  quarterlyCommission?: number;
+  quarterlyCommissionLoading?: boolean;
 }
 
 const initialState: InitialState = {};
@@ -143,6 +152,26 @@ export const courseReducer = (
 
     case CourseTypes.UserWhoPaidCourse:
       return { ...state, userWhoPaidCourse: action.payload.data };
+
+    case CourseTypes.CoursesStatsLoading:
+      return { ...state, coursesStatsLoading: action.payload.loading };
+
+    case CourseTypes.CoursesStats:
+      return {
+        ...state,
+        coursesStats: action.payload,
+        coursesStatsLoading: false
+      };
+
+    case CourseTypes.QuarterlyCommissionLoading:
+      return { ...state, quarterlyCommissionLoading: action.payload.loading };
+
+    case CourseTypes.QuarterlyCommission:
+      return {
+        ...state,
+        quarterlyCommission: action.payload.quarterlyCommission,
+        quarterlyCommissionLoading: false
+      };
 
     default:
       return state;

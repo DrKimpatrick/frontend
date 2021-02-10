@@ -22,7 +22,11 @@ export enum CourseTypes {
   UserCourse = 'CourseTypes/UserCourse',
   UserCourseLoading = 'CourseTypes/UserCourseLoading',
   UserWhoPaidCourse = 'CourseTypes/UserWhoPaidCourse',
-  UserWhoPaidCourseLoading = 'CourseTypes/UserWhoPaidCourseLoading'
+  UserWhoPaidCourseLoading = 'CourseTypes/UserWhoPaidCourseLoading',
+  CoursesStats = 'CourseTypes/CoursesStats',
+  CoursesStatsLoading = 'CourseTypes/CoursesStatsLoading',
+  QuarterlyCommission = 'CourseTypes/QuarterlyCommission',
+  QuarterlyCommissionLoading = 'CourseTypes/QuarterlyCommissionLoading'
 }
 
 export enum CourseStatus {
@@ -227,6 +231,37 @@ interface UserWhoPaidCourseLoading {
   };
 }
 
+interface CoursesStats {
+  type: typeof CourseTypes.CoursesStats;
+  payload: {
+    conversionRate: number;
+    views: number;
+    totalCoursesPrice: number;
+    totalCoursesLinks: number;
+  };
+}
+
+interface CoursesStatsLoading {
+  type: typeof CourseTypes.CoursesStatsLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface QuarterlyCommission {
+  type: typeof CourseTypes.QuarterlyCommission;
+  payload: {
+    quarterlyCommission: number;
+  };
+}
+
+interface QuarterlyCommissionLoading {
+  type: typeof CourseTypes.QuarterlyCommissionLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 export type CourseActionTypes =
   | ListAcceptedCourse
   | ListDeclinedCourse
@@ -248,4 +283,8 @@ export type CourseActionTypes =
   | UserCourse
   | UserCourseLoading
   | UserWhoPaidCourse
-  | UserWhoPaidCourseLoading;
+  | UserWhoPaidCourseLoading
+  | CoursesStats
+  | CoursesStatsLoading
+  | QuarterlyCommission
+  | QuarterlyCommissionLoading;
