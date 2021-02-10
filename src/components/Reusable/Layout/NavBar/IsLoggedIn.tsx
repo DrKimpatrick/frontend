@@ -101,7 +101,7 @@ const IsLoggedIn = (props: any) => {
     }
   }, [user]);
 
-  if (isLoggedIn || userState?.isLoggedIn) {
+  if (isLoggedIn || userState?.isLoggedIn || user) {
     return (
       <div
         className={`lg:inline-flex items-center ${userDashboard && '-mt-24'}`}

@@ -239,7 +239,15 @@ export const userReducer = (
       };
 
     case UserTypes.CurrentUser:
-      return { ...state, user: action.payload.data, loading: false };
+      return {
+        ...state,
+        user: action.payload.data,
+        currentUser: {
+          ...state.currentUser,
+          isLoggedIn: true
+        },
+        loading: false
+      };
 
     case UserTypes.Errors:
       return {
