@@ -1,2 +1,2 @@
 export * from './TopPart';
-export * from './MiddlePart'
+export * from './MiddlePart';

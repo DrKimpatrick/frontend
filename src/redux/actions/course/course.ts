@@ -398,9 +398,7 @@ export const listUserWhoPaidCourse = (courseId: string) => (
   );
 };
 
-export const saveView = (courseId: string) => (
-  dispatchAction: Dispatch
-) => {
+export const saveView = (courseId: string) => (dispatchAction: Dispatch) => {
   return dispatchAction(
     ApiAction({
       method: 'PUT',
@@ -412,7 +410,6 @@ export const saveView = (courseId: string) => (
         });
       },
       onFailure: error => (dispatch: Dispatch) => {
-        console.log('gaggagaga1212', error)
         dispatch({
           type: CourseTypes.AddingViewsLoading,
           payload: { loading: false }
@@ -426,7 +423,6 @@ export const saveView = (courseId: string) => (
         });
       },
       onSuccess: res => (dispatch: Dispatch) => {
-        console.log('gaggagaga', res)
         dispatch({
           type: CourseTypes.AddingViewsLoading,
           payload: { loading: false }

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { TopPart } from 'components/Reusable/Reports';
-import { MiddlePart } from 'components/Reusable/Reports';
+import { MiddlePart, TopPart } from 'components/Reusable/Reports';
 import { Page, Document, StyleSheet } from '@react-pdf/renderer';
 
 interface Props {

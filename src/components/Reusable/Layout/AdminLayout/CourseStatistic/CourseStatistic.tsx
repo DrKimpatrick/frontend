@@ -53,13 +53,7 @@ const CourseStatistic = () => {
 
   const headersList = ['courses', 'approved', 'Amount Paid', 'CR'];
 
-  const headers = [
-    'Price',
-    'Duration',
-    'Level',
-    'Views',
-    'Instructor'
-  ];
+  const headers = ['Price', 'Duration', 'Level', 'Views', 'Instructor'];
 
   useEffect(() => {
     listCourseByStatus({
@@ -105,14 +99,14 @@ const CourseStatistic = () => {
               }
               fileName="ttlc-report.pdf"
             >
-              {({ blob, url, loading, error }) =>
+              {({ loading }) =>
                 loading ? (
                   <button
                     data-testid="next-button"
                     className="next-btn text-white font-semibold py-1 px-3 w-32 rounded-sm flex justify-around"
                     type="submit"
                   >
-                    <Loader loading={true} command={<></>} />
+                    <Loader loading command={<></>} />
                   </button>
                 ) : (
                   <button type="button" className="flex items-center">

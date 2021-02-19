@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet
-} from '@react-pdf/renderer';
+import { Text, View, StyleSheet } from '@react-pdf/renderer';
 
 interface Props {
   nameValue?: string;
@@ -51,25 +47,25 @@ const MiddlePart: FC<Props> = ({
       flexDirection: 'row'
     },
     tableCol1Header: {
-      width: COL1_WIDTH + '%',
+      width: `${COL1_WIDTH}%`,
       borderStyle: BORDER_STYLE,
       borderBottomColor: BORDER_COLOR,
       borderBottomWidth: 1
     },
     tableColHeader: {
-      width: COLN_WIDTH + '%',
+      width: `${COLN_WIDTH}%`,
       borderStyle: BORDER_STYLE,
       borderBottomColor: BORDER_COLOR,
       borderBottomWidth: 1
     },
     tableCol1: {
-      width: COL1_WIDTH + '%',
+      width: `${COL1_WIDTH}%`,
       borderStyle: BORDER_STYLE,
       borderBottomColor: BORDER_COLOR,
       borderBottomWidth: 1
     },
     tableCol: {
-      width: COLN_WIDTH + '%',
+      width: `${COLN_WIDTH}%`,
       borderStyle: BORDER_STYLE,
       borderBottomColor: BORDER_COLOR,
       borderBottomWidth: 1
@@ -118,13 +114,15 @@ const MiddlePart: FC<Props> = ({
                     <Text style={styles.tableCell}>{item.price}</Text>
                   </View>
                   <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{ `${item.duration} ${item.format}`}</Text>
+                    <Text
+                      style={styles.tableCell}
+                    >{`${item.duration} ${item.format}`}</Text>
                   </View>
                   <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{ item.level}</Text>
+                    <Text style={styles.tableCell}>{item.level}</Text>
                   </View>
                   <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{ item.views.length}</Text>
+                    <Text style={styles.tableCell}>{item.views.length}</Text>
                   </View>
                   <View style={styles.tableCol}>
                     <Text style={styles.tableCell}>{item.instructor}</Text>

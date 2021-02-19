@@ -44,7 +44,12 @@ import {
   EmploymentActionTypes
 } from 'redux/action-types/employment';
 
-import { UploadedFileType, User, UserSkill } from 'redux/actions/user';
+import {
+  UploadedFileType,
+  User,
+  UserSkill,
+  SubscriptionRecommendation
+} from 'redux/actions/user';
 
 interface InitialState {
   currentUser: {
@@ -103,6 +108,8 @@ interface InitialState {
   recommendation?: User[];
   recommendationLoading?: boolean;
   specificUserLoading?: boolean;
+  subscriptionOfRecommendedUser?: SubscriptionRecommendation[];
+  subscriptionOfRecommendedUserLoading?: boolean;
 }
 
 const initialState: InitialState = {
@@ -481,6 +488,15 @@ export const userReducer = (
 
     case UserTypes.SpecificUserLoading:
       return { ...state, specificUserLoading: action.payload.loading };
+
+    case UserTypes.SubscriptionOfRecommendedUser:
+      return { ...state, subscriptionOfRecommendedUser: action.payload.data };
+
+    case UserTypes.SubscriptionOfRecommendedUserLoading:
+      return {
+        ...state,
+        subscriptionOfRecommendedUserLoading: action.payload.loading
+      };
 
     default:
       return state;

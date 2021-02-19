@@ -376,3 +376,42 @@ export const listRecommendation = () => (dispatchAction: Dispatch) => {
     })
   );
 };
+
+export const listSubscriptionOfRecommendedUser = (userId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      method: 'GET',
+      url: `/users/subscription/recommendation/${userId}`,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.SubscriptionOfRecommendedUserLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.SubscriptionOfRecommendedUserLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.SubscriptionOfRecommendedUser,
+          payload: { data: res.data }
+        });
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: UserTypes.SubscriptionOfRecommendedUserLoading,
+          payload: { loading: false }
+        });
+
+        dispatch({
+          type: UserTypes.Errors,
+          payload: { errors: error.response.data }
+        });
+      }
+    })
+  );
+};

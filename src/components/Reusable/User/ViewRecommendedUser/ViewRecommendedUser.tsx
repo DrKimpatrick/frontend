@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Grid } from '@material-ui/core';
+import { Modal } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { Close, AccountBalanceWallet, AcUnit } from '@material-ui/icons';
+import { Close, AccountBalanceWallet } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { SideLoading } from 'components/Reusable';
+import { SideLoading, NoItemFound } from 'components/Reusable';
 import { RootState } from 'redux/store';
-import { listSpecificUser } from 'redux/actions/user';
+import {
+  listSpecificUser,
+  listSubscriptionOfRecommendedUser
+} from 'redux/actions/user';
 import Avatar from 'assets/images/avatar.jpg';
 import './ViewRecommendedUser.scss';
-import useWindowSize from 'utils/useWindowSize';
+import { QuarterCommission, QuarterCommissionType } from 'utils/Quarter';
 import { QuarterList } from './QuarterList';
 
 interface Props {
@@ -19,27 +22,50 @@ interface Props {
 export const ViewRecommendedUser = (props: Props) => {
   const [open = true, setOpen] = useState<boolean>();
 
+  const [commission, setCommission] = useState<QuarterCommissionType[]>();
+
   const { userId, closeModal } = props;
 
   const dispatch = useDispatch();
 
-  const size = useWindowSize();
-
   const selector = useSelector((state: RootState) => {
-    const { errors, specificUser, specificUserLoading } = state.users;
+    const {
+      errors,
+      specificUser,
+      specificUserLoading,
+      subscriptionOfRecommendedUser,
+      subscriptionOfRecommendedUserLoading
+    } = state.users;
 
     return {
       apiError: errors,
       user: specificUser,
-      loading: specificUserLoading
+      loading: specificUserLoading,
+      subscription: subscriptionOfRecommendedUser,
+      subscriptionLoading: subscriptionOfRecommendedUserLoading
     };
   });
 
-  const { apiError, user, loading } = selector;
+  const {
+    apiError,
+    user,
+    loading,
+    subscription,
+    subscriptionLoading
+  } = selector;
 
   useEffect(() => {
     listSpecificUser(userId)(dispatch);
+    listSubscriptionOfRecommendedUser(userId)(dispatch);
   }, [dispatch, userId]);
+
+  useEffect(() => {
+    if (subscription && subscription.length > 0) {
+      const f = QuarterCommission(subscription);
+
+      setCommission(f);
+    }
+  }, [subscription]);
 
   return (
     <Modal
@@ -96,36 +122,38 @@ export const ViewRecommendedUser = (props: Props) => {
                 )}
               </div>
             </div>
-            <div className="paymentInfo w-full">
-              <Grid
-                container
-                spacing={size?.width && size?.width > 768 ? 10 : 2}
-              >
-                <Grid item xs={12} sm={6}>
-                  <div className="heading flex items-center justify-start">
-                    <span>
-                      <AccountBalanceWallet />
-                    </span>
-                    <span>Standard</span>
-                  </div>
-                  <ul className="my-3 bg-card-preview">
-                    <QuarterList isPaid={false} name="Quarter 1" amount="$25" />
-                    <QuarterList isPaid name="Quarter 1" amount="$25" />
+            {subscription && !subscriptionLoading && (
+              <div className="paymentInfo w-full">
+                <div className="heading flex items-center justify-start">
+                  <span>
+                    <AccountBalanceWallet />
+                  </span>
+                  <span>Quarter & Commission</span>
+                </div>
+                {subscription.length <= 0 && <NoItemFound />}
+                {commission && commission.length > 0 && (
+                  <ul className="my-3 flex flex-wrap items-center w-full">
+                    {commission.map((item, index) => (
+                      <li key={index}>
+                        <div className="year flex justify-end">{item.year}</div>
+                        {item.quarters && item.quarters.length > 0 && (
+                          <ul className="bg-card-preview flex flex-wrap items-center w-full">
+                            {item.quarters.map((it, i) => (
+                              <QuarterList
+                                isPaid
+                                name={`Quarter ${it.q}`}
+                                amount={`$ ${it.amount.toFixed(2)}`}
+                                key={i}
+                              />
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
                   </ul>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <div className="heading flex items-center justify-start">
-                    <span>
-                      <AcUnit />
-                    </span>
-                    <span>Premium</span>
-                  </div>
-                  <ul className="my-3 bg-card-preview">
-                    <QuarterList isPaid name="Quarter 1" amount="$25" />
-                  </ul>
-                </Grid>
-              </Grid>
-            </div>
+                )}
+              </div>
+            )}
           </>
         )}
       </div>

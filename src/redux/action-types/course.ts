@@ -234,17 +234,17 @@ interface UserWhoPaidCourseLoading {
 }
 
 interface AddingViewsLoading {
-  type: typeof CourseTypes.AddingViewsLoading,
+  type: typeof CourseTypes.AddingViewsLoading;
   payload: {
     loading: boolean;
-  }
+  };
 }
 
 interface AddingViews {
-  type: typeof CourseTypes.AddingViews,
+  type: typeof CourseTypes.AddingViews;
   payload: {
-    data: any
-  }
+    data: any;
+  };
 }
 interface CoursesStats {
   type: typeof CourseTypes.CoursesStats;

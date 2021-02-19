@@ -54,3 +54,22 @@ export interface UserSkill {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface SubscriptionPayment {
+  _id: string;
+  amount: number;
+  featureChoice: string;
+  upTo?: number;
+  paidOn: Date | string;
+  subscriptionPriceId: string;
+  interval: string;
+}
+export interface SubscriptionRecommendation {
+  _id: string;
+  userId?: User;
+  year: number;
+  payment: SubscriptionPayment[];
+  nextPaymentDate: Date | string;
+  dateRegistered: Date | string;
+  updatedAt: Date | string;
+}

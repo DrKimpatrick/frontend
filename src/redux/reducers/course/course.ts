@@ -153,10 +153,10 @@ export const courseReducer = (
 
     case CourseTypes.UserWhoPaidCourse:
       return { ...state, userWhoPaidCourse: action.payload.data };
-    
+
     case CourseTypes.AddingViewsLoading:
       return { ...state, addingViewsLoading: action.payload.loading };
-    
+
     case CourseTypes.AddingViews:
       return { ...state, addingViews: action.payload.data };
 

@@ -13,9 +13,9 @@ import { listRecommendation } from 'redux/actions/user';
 import '../Training/Training.scss';
 
 const Recommendation = () => {
-  const [open = false, setOpen] = useState<boolean>();
+  const [open = true, setOpen] = useState<boolean>();
 
-  const [userId, setUserId] = useState<string>();
+  const [userId = '602ba6db86853e55570d1855', setUserId] = useState<string>();
 
   const dispatch = useDispatch();
 
@@ -41,10 +41,6 @@ const Recommendation = () => {
     );
   }
 
-  if (!recommendation) {
-    return null;
-  }
-
   return (
     <Layout>
       {userId && open && (
@@ -66,8 +62,8 @@ const Recommendation = () => {
           {apiError && apiError.error && (
             <Alert severity="error">{apiError.error}</Alert>
           )}
-          {recommendation.length <= 0 && <NoItemFound />}
-          {recommendation.length > 0 && (
+          {recommendation && recommendation.length <= 0 && <NoItemFound />}
+          {recommendation && recommendation.length > 0 && (
             <ul>
               {recommendation.map((item, index) => (
                 <li

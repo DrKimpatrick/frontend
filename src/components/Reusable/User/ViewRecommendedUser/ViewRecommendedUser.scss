@@ -63,10 +63,33 @@
         position: relative;
         color: #747474;
         text-transform: uppercase;
+        margin-bottom: 20px;
         span {
           &:last-child {
             margin-left: 10px;
             font-size: 15px;
+          }
+        }
+      }
+      ul {
+        li {
+          width: 30%;
+          margin: 10px;
+          &:first-child {
+            margin-left: 0px;
+          }
+          .year {
+            color: #8a8a8a;
+            font-weight: bold;
+            font-size: 13px;
+            padding-right: 76px;
+          }
+          ul {
+            width: 100%;
+            li {
+              width: 100%;
+              margin-left: 0px;
+            }
           }
         }
       }
@@ -104,6 +127,19 @@
         }
         .addFlex {
           height: 100%;
+        }
+      }
+      .paymentInfo {
+        ul {
+          li {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            .year{
+              padding-right: 3px;
+            }
+          }
         }
       }
     }

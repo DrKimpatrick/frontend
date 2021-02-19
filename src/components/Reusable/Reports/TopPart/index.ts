@@ -1,3 +1,3 @@
 import TopPart from './TopPart';
 
-export { TopPart }
+export { TopPart };

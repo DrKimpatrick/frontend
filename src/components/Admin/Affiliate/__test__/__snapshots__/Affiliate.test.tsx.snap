@@ -315,6 +315,7 @@ exports[`TrainingAffiliate it should create snapshot 1`] = `
           >
             <button
               className="flex items-center"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -328,7 +329,7 @@ exports[`TrainingAffiliate it should create snapshot 1`] = `
                 />
               </svg>
               <h5>
-                Export
+                Generate Report
               </h5>
             </button>
           </div>

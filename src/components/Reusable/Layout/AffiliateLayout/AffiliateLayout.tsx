@@ -46,13 +46,7 @@ const AffiliateLayout: FC<Props> = props => {
   const { user, loading } = reducer;
   const { courses } = courseReducer;
 
-  const headers = [
-    'Price',
-    'Duration',
-    'Level',
-    'Views',
-    'Instructor',
-  ];
+  const headers = ['Price', 'Duration', 'Level', 'Views', 'Instructor'];
 
   useEffect(() => {
     listCurrentUser()(dispatch);
@@ -75,7 +69,6 @@ const AffiliateLayout: FC<Props> = props => {
     history.goBack();
     return <></>;
   }
-
 
   return (
     <div className="adminLayout affiliateLayout">
@@ -104,20 +97,20 @@ const AffiliateLayout: FC<Props> = props => {
                         description={user?.bio}
                         headers={headers}
                         items={courses?.data}
-                        mainHeader={'Course'}
-                        type={'course'}
+                        mainHeader="Course"
+                        type="course"
                       />
                     }
                     fileName="ttlc-report.pdf"
                   >
-                    {({ blob, url, loading, error }) =>
-                      loading ? (
+                    {({ loading: loadingP }) =>
+                      loadingP ? (
                         <button
                           data-testid="next-button"
                           className="next-btn text-white font-semibold py-1 px-3 w-32 rounded-sm flex justify-around"
                           type="submit"
                         >
-                          <Loader loading={true} command={<></>} />
+                          <Loader loading command={<></>} />
                         </button>
                       ) : (
                         <button type="button" className="flex items-center">

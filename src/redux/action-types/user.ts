@@ -1,4 +1,9 @@
-import { UploadedFileType, User, UserSkill } from 'redux/actions/user';
+import {
+  UploadedFileType,
+  User,
+  UserSkill,
+  SubscriptionRecommendation
+} from 'redux/actions/user';
 
 export enum UserTypes {
   CurrentUser = 'User/CurrentUser',
@@ -26,7 +31,9 @@ export enum UserTypes {
   AddAffiliateLoading = 'User/AddAffiliateLoading',
   Recommendation = 'User/Recommendation',
   RecommendationLoading = 'User/RecommendationLoading',
-  SpecificUserLoading = 'User/SpecificUserLoading'
+  SpecificUserLoading = 'User/SpecificUserLoading',
+  SubscriptionOfRecommendedUser = 'User/SubscriptionOfRecommendedUser',
+  SubscriptionOfRecommendedUserLoading = 'User/SubscriptionOfRecommendedUserLoading'
 }
 
 export enum VerificationStatus {
@@ -273,6 +280,19 @@ interface SpecificUserLoading {
   };
 }
 
+interface SubscriptionOfRecommendedUserLoading {
+  type: typeof UserTypes.SubscriptionOfRecommendedUserLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface SubscriptionOfRecommendedUser {
+  type: typeof UserTypes.SubscriptionOfRecommendedUser;
+  payload: {
+    data: SubscriptionRecommendation[];
+  };
+}
 export type UserTypeActions =
   | CurrentUser
   | Errors
@@ -298,4 +318,6 @@ export type UserTypeActions =
   | AddAffiliateLoading
   | Recommendation
   | RecommendationLoading
-  | SpecificUserLoading;
+  | SpecificUserLoading
+  | SubscriptionOfRecommendedUser
+  | SubscriptionOfRecommendedUserLoading;

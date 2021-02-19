@@ -1,3 +1,3 @@
 import AdminReports from './AdminReports';
 
-export { AdminReports }
+export { AdminReports };
