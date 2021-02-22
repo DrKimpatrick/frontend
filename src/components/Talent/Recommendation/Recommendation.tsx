@@ -15,7 +15,7 @@ import '../Training/Training.scss';
 const Recommendation = () => {
   const [open = true, setOpen] = useState<boolean>();
 
-  const [userId = '602ba6db86853e55570d1855', setUserId] = useState<string>();
+  const [userId, setUserId] = useState<string>();
 
   const dispatch = useDispatch();
 

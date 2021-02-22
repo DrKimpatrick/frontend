@@ -789,7 +789,9 @@ exports[`UserProfile should create snapshot 1`] = `
             >
               <div
                 className="affiliateStatistic"
-              />
+              >
+                
+              </div>
               <div
                 className="affiliateCourse"
               >

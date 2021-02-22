@@ -10,11 +10,8 @@ import {
 import {
   Adb,
   ViewComfy,
-  // Grain,
-  // Link,
   AllInclusive,
   Apps,
-  // PeopleOutline,
   AttachMoney
 } from '@material-ui/icons';
 import { Grid } from '@material-ui/core';
@@ -58,49 +55,43 @@ const AffiliateProfile = (props: Props) => {
     <div className="affiliateProfile">
       <div className="affiliateStatistic">
         {reducer.coursesStats &&
-          reducer.quarterlyCommission &&
-          reducer.coursesStatsLoading === false &&
-          reducer.quarterlyCommissionLoading === false && (
-            <AffiliateStatistic
-              item={[
-                {
-                  name: 'Total clicks',
-                  rate: `${reducer.coursesStats.views}`,
-                  icon: <Adb />
-                },
-                {
-                  name: 'Conversion Rate',
-                  rate: `${reducer.coursesStats.conversionRate}%`,
-                  icon: <ViewComfy />
-                },
-                // { name: 'Conversation', rate: '20%', icon: <Grain /> },
-                {
-                  name: 'Quarterly Commission',
-                  rate: `${reducer.quarterlyCommission}$`,
-                  icon: <Apps />
-                },
-                {
-                  name: 'Total Links',
-                  rate: `${reducer.coursesStats.totalCoursesLinks}`,
-                  icon: <AllInclusive />
-                },
-                // { name: 'New Links', rate: '20%', icon: <Link /> },
-                {
-                  name: 'Amount',
-                  rate: `${reducer.coursesStats.totalCoursesPrice}`,
-                  icon: <AttachMoney />
-                }
-              ]}
-            />
-          )}
-        {/* <AffiliateStatistic
-          item={[
-            { name: 'Converted', rate: '20%', icon: <PeopleOutline /> },
-            { name: 'Amount', rate: '20%', icon: <AttachMoney /> },
-            { name: 'Amount Paid', rate: '20%', icon: <AttachMoney /> },
-            { name: 'Balance', rate: '20%', icon: <AttachMoney /> }
-          ]}
-        /> */}
+        reducer.quarterlyCommission &&
+        reducer.coursesStatsLoading === false &&
+        reducer.quarterlyCommissionLoading === false ? (
+          <AffiliateStatistic
+            item={[
+              {
+                name: 'Total clicks',
+                rate: `${reducer.coursesStats.views}`,
+                icon: <Adb />
+              },
+              {
+                name: 'Conversion Rate',
+                rate: `${reducer.coursesStats.conversionRate}%`,
+                icon: <ViewComfy />
+              },
+              // { name: 'Conversation', rate: '20%', icon: <Grain /> },
+              {
+                name: 'Quarterly Commission',
+                rate: `${reducer.quarterlyCommission}$`,
+                icon: <Apps />
+              },
+              {
+                name: 'Total Links',
+                rate: `${reducer.coursesStats.totalCoursesLinks}`,
+                icon: <AllInclusive />
+              },
+              // { name: 'New Links', rate: '20%', icon: <Link /> },
+              {
+                name: 'Amount',
+                rate: `${reducer.coursesStats.totalCoursesPrice}`,
+                icon: <AttachMoney />
+              }
+            ]}
+          />
+        ) : (
+          ''
+        )}
       </div>
       <div className="affiliateCourse">
         <span className="title">Courses</span>
