@@ -7,6 +7,7 @@ Object {
     <div>
       <div
         class="customSelect"
+        style="width: 100%;"
       >
         <select
           name="name"
@@ -46,6 +47,7 @@ Object {
   "container": <div>
     <div
       class="customSelect"
+      style="width: 100%;"
     >
       <select
         name="name"

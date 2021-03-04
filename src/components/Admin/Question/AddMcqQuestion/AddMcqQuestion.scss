@@ -1,0 +1,26 @@
+.addMultiChoice {
+  position: relative;
+  background: white;
+  display: block;
+  padding: 50px;
+  flex: start;
+  border-radius: 4px;
+  width: 550px;
+  color: #747474;
+  margin-top: 10px;
+  outline: none !important;
+  input {
+    height: 47px;
+    display: flex;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 1px solid #dadada;
+  }
+}
+
+.choice {
+  display: flex;
+  text-align: center;
+}

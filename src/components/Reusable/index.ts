@@ -29,6 +29,7 @@ export * from './Pagination';
 export * from './Image';
 export * from './AddItem';
 export * from './Course';
-export * from './CustomInput';
 export * from './Search';
 export * from './Checkbox';
+export * from './Question';
+export * from './CustomInput';

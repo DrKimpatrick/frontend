@@ -29,7 +29,8 @@ import {
   DeclinedCourse,
   Education,
   Recruiter,
-  Skill
+  Skill,
+  AddMcqQuestion
 } from 'components/Admin';
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
@@ -115,7 +116,6 @@ const AppRouter: FC = () => {
       exact: true,
       component: <FeatureChoice />
     },
-
     // Hr Admin
     {
       path: Routes.HrAdminDashboard,
@@ -150,6 +150,13 @@ const AppRouter: FC = () => {
       path: Routes.AffiliateDashboard,
       component: <AffiliateAdmin />,
       exact: true
+    },
+
+    // Super admin
+    {
+      path: Routes.AddMultipleChoice,
+      exact: true,
+      component: <AddMcqQuestion />
     }
   ];
 

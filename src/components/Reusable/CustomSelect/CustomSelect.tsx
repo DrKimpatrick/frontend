@@ -12,12 +12,13 @@ interface Props {
   name: string;
   value: string;
   placeholder?: string;
+  width?: string;
 }
 
 const CustomSelect = (props: Props) => {
-  const { onChange, option, name, value, placeholder } = props;
+  const { onChange, option, name, value, placeholder, width } = props;
   return (
-    <div className="customSelect">
+    <div className="customSelect" style={{ width: width || '100%' }}>
       <select
         value={value}
         onChange={e => onChange(e.target.value)}

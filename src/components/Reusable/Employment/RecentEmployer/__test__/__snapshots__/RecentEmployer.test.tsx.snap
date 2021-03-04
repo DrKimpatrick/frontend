@@ -54,6 +54,11 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
         >
           <div
             className="customSelect"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
           >
             <select
               name="employmentType"
@@ -106,6 +111,11 @@ exports[`\`RecentEmployer\` component should create a snapshot 1`] = `
         >
           <div
             className="customSelect"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
           >
             <select
               name="supervisor.name"

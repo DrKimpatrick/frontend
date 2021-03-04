@@ -13,6 +13,8 @@ export enum Routes {
 
   Education = '/education',
 
+  AddMultipleChoice = '/question/addmcq/:testId',
+
   Recruiter = '/recruiter',
 
   Login = '/login',

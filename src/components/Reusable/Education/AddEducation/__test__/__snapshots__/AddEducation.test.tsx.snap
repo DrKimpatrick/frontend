@@ -65,6 +65,11 @@ exports[`\`AddEducation\` component matches the snapshot 1`] = `
       >
         <div
           className="customSelect"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
         >
           <select
             name="level"
