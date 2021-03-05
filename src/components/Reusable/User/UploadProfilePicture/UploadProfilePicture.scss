@@ -38,9 +38,10 @@
       }
     }
   }
-  .previewImage {
+  .preview {
     position: relative;
     margin-top: 1rem;
+    outline: none !important;
     .img {
       position: relative;
       width: 100%;
@@ -55,6 +56,18 @@
         width: 200px;
         height: 200px;
         border-radius: 100%;
+      }
+    }
+    .selectedVideo {
+      width: 100%;
+      position: relative;
+      outline: none !important;
+      div {
+        width: 100% !important;
+
+        video {
+          outline: none !important;
+        }
       }
     }
     .upload {

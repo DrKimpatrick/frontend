@@ -21,7 +21,6 @@ const AddItem: FC<Props> = props => {
         setOpen(false);
         closeModal();
       }}
-      tabIndex={0}
       style={{ zIndex: 100 }}
     >
       <div className={isLarge ? 'addItem largeSize' : 'addItem'}>

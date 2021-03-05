@@ -13,7 +13,8 @@ enum ActiveMenu {
   Education = 'Education',
   Recruiter = 'Recruiter',
   Skills = 'Skills',
-  Employment = 'Employment'
+  Employment = 'Employment',
+  Tests = 'Tests'
 }
 
 const menuList = [
@@ -73,6 +74,11 @@ const menuList = [
         name: 'Employment',
         url: '#',
         active: ActiveMenu.Employment
+      },
+      {
+        name: 'Tests',
+        url: Routes.Tests,
+        active: ActiveMenu.Tests
       }
     ]
   }
@@ -116,6 +122,10 @@ const AdminMenu: FC = () => {
 
       case Routes.Skill:
         setActive(ActiveMenu.Skills);
+        break;
+
+      case Routes.Tests:
+        setActive(ActiveMenu.Tests);
         break;
 
       default:

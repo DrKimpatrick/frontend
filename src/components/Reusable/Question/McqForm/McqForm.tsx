@@ -1,5 +1,5 @@
-import React from 'react';
-import './AddMcq.scss';
+import React, { useState } from 'react';
+import './McqForm.scss';
 import { Formik } from 'formik';
 import {
   QuestionInput,
@@ -9,10 +9,11 @@ import {
   QuestionChoice,
   QuestionButton,
   QuestionButtonBackgroundEnum,
-  ApiValidationError
+  ApiValidationError,
+  UploadProfilePicture
 } from 'components/Reusable';
 import { Language, Level } from 'redux/action-types/question';
-import { AddMcqSchema } from './Schema';
+import { QuestionSchema } from './Schema';
 
 interface InitialValue {
   name: string;
@@ -30,15 +31,20 @@ interface Props {
   onSubmit: (value: InitialValue) => void;
   loading?: boolean;
   apiError?: any;
+  isVideoQuestion?: boolean;
 }
 
-export const AddMcq = (props: Props) => {
-  const { initialValue, onSubmit, apiError, loading } = props;
+export const McqForm = (props: Props) => {
+  const [videoUpload = false, setVideoUpload] = useState<boolean>();
+
+  const [isUploaded = false, setIsUploaded] = useState<boolean>();
+
+  const { initialValue, onSubmit, apiError, loading, isVideoQuestion } = props;
 
   return (
     <Formik
       initialValues={initialValue}
-      validationSchema={AddMcqSchema}
+      validationSchema={QuestionSchema({ isVideoQuestion })}
       onSubmit={values => onSubmit(values)}
       validateOnChange={false}
     >
@@ -51,6 +57,21 @@ export const AddMcq = (props: Props) => {
             autoComplete="off"
             className="questionForm"
           >
+            {videoUpload && (
+              <UploadProfilePicture
+                video
+                title="Upload Video Question"
+                setIsUploaded={() => ''}
+                closeModal={() => setVideoUpload(false)}
+                setUploadedImage={value => {
+                  formik.setFieldValue('question', value, false);
+
+                  setIsUploaded(true);
+
+                  return undefined;
+                }}
+              />
+            )}
             <div className="formGroup flex items-center">
               <QuestionLabel name="Name" />
               <div className="inputGroup">
@@ -97,18 +118,36 @@ export const AddMcq = (props: Props) => {
             </div>
             <div className="formGroup flex items-center">
               <QuestionLabel
-                name="Text Questions"
-                shortDescription="Please be clear and specific"
+                name={isVideoQuestion ? ' Video Question' : 'Text Questions'}
+                shortDescription={
+                  isVideoQuestion
+                    ? 'The video question be clear and specific'
+                    : 'Please be clear and specific'
+                }
               />
               <div className="inputGroup">
-                <QuestionTextArea
-                  name="question"
-                  onChange={value =>
-                    formik.setFieldValue('question', value, false)
-                  }
-                  placeholder="Text Questions"
-                  value={values.question}
-                />
+                {isVideoQuestion ? (
+                  <div className="videoInput">
+                    <button
+                      type="button"
+                      className={`uploadVideoButton ${
+                        isUploaded ? 'uploadSuccess' : ''
+                      }`}
+                      onClick={() => setVideoUpload(true)}
+                    >
+                      {isUploaded ? ' Uploaded' : 'Upload video question'}
+                    </button>
+                  </div>
+                ) : (
+                  <QuestionTextArea
+                    name="question"
+                    onChange={value =>
+                      formik.setFieldValue('question', value, false)
+                    }
+                    placeholder="Text Questions"
+                    value={values.question}
+                  />
+                )}
                 {errors && errors.question && (
                   <small className="inputError">{errors.question}</small>
                 )}
@@ -195,4 +234,4 @@ export const AddMcq = (props: Props) => {
   );
 };
 
-export default AddMcq;
+export default McqForm;

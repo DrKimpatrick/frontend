@@ -67,6 +67,8 @@ export enum Routes {
 
   payment = '/payment',
 
+  Tests = '/tests',
+
   FeatureChoice = '/feature-choice',
 
   SubsidySuccessPayment = '/subsidy/add/complete',
@@ -89,5 +91,7 @@ export enum Routes {
 
   TalentRecommendation = '/t/recommendation',
 
-  HrAdminRecommendation = '/h/recommendation'
+  HrAdminRecommendation = '/h/recommendation',
+
+  AddVideoQuestion = '/question/addvq/:testId'
 }

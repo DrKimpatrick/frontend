@@ -30,7 +30,8 @@ import {
   Education,
   Recruiter,
   Skill,
-  AddMcqQuestion
+  AddMcqQuestion,
+  AddVideoQuestion
 } from 'components/Admin';
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
@@ -157,6 +158,11 @@ const AppRouter: FC = () => {
       path: Routes.AddMultipleChoice,
       exact: true,
       component: <AddMcqQuestion />
+    },
+    {
+      path: Routes.AddVideoQuestion,
+      exact: true,
+      component: <AddVideoQuestion />
     }
   ];
 

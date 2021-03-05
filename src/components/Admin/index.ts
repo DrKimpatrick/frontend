@@ -6,4 +6,4 @@ export * from './Education';
 export * from './Recruiter';
 export * from './Skill';
 export * from '../AffiliateAdmin';
-export * from './Question';
+export * from './Testing';

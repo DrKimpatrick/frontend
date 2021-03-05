@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { RootState } from 'redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AdminLayout, AddMcq } from 'components/Reusable';
+import { AdminLayout, McqForm } from 'components/Reusable';
 import { addMcqQuestion as addMcqQuestionAction } from 'redux/actions/question/mcq';
 import { Alert } from '@material-ui/lab';
 import { QuestionTypeEnum } from 'redux/action-types/question';
@@ -49,7 +49,7 @@ export const AddMcqQuestion = () => {
       </div>
 
       <div className="addQuestion relative" style={{ marginTop: '40px' }}>
-        <AddMcq
+        <McqForm
           initialValue={{
             name: '',
             language: '',

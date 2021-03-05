@@ -352,6 +352,16 @@ exports[`Accepted Course it should create snapshot 1`] = `
                   Employment
                 </a>
               </li>
+              <li
+                className=""
+              >
+                <a
+                  href="/tests"
+                  onClick={[Function]}
+                >
+                  Tests
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

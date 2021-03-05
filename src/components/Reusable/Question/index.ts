@@ -1,4 +1,4 @@
-export * from './AddMcq';
+export * from './McqForm';
 export * from './QuestionInput';
 export * from './QuestionTextArea';
 export * from './QuestionLabel';
