@@ -1,6 +1,7 @@
 .addAffiliate {
   position: relative;
   width: 100%;
+  outline: none;
   form {
     width: 100%;
   }
@@ -8,6 +9,7 @@
   textarea {
     border: 1px solid #dadada;
     border-radius: 2px;
+    outline: none !important;
   }
   input {
     height: 47px;
@@ -37,6 +39,7 @@
       left: 0;
       right: 0;
       top: 0;
+      outline: none;
     }
   }
   .submitButton {

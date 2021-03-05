@@ -70,6 +70,8 @@ export const McqForm = (props: Props) => {
 
                   return undefined;
                 }}
+                isOpen={videoUpload}
+                setIsOpen={setVideoUpload}
               />
             )}
             <div className="formGroup flex items-center">

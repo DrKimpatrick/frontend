@@ -13,6 +13,8 @@ interface Props {
   setUploadedImage: (value: string) => void;
   title?: string;
   video?: boolean;
+  isOpen?: boolean;
+  setIsOpen?: (value: boolean) => void;
 }
 
 export const UploadProfilePicture = (props: Props) => {
@@ -24,7 +26,15 @@ export const UploadProfilePicture = (props: Props) => {
 
   const [videoPath, setVideoPath] = useState<string>();
 
-  const { closeModal, setIsUploaded, setUploadedImage, title, video } = props;
+  const {
+    closeModal,
+    setIsUploaded,
+    setUploadedImage,
+    title,
+    video,
+    isOpen,
+    setIsOpen
+  } = props;
 
   const dispatch = useDispatch();
 
@@ -127,6 +137,8 @@ export const UploadProfilePicture = (props: Props) => {
 
         return undefined;
       }}
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
     >
       <div className="uploadProfilePictureSection mt-4">
         {error && <div className="inputError">{error}</div>}

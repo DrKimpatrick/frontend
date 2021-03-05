@@ -128,6 +128,8 @@ export const AddCourse = (props: Props) => {
                       return undefined;
                     }}
                     title="Upload Cover Image"
+                    isOpen={openUpload}
+                    setIsOpen={setOpenUpload}
                   />
                 )}
                 <form onSubmit={formik.handleSubmit} autoComplete="off">

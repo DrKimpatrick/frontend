@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useEffect } from 'react';
 import './AddItem.scss';
 import { Modal } from '@material-ui/core';
 import { ArrowBackTwoTone } from '@material-ui/icons';
@@ -7,19 +7,33 @@ interface Props {
   closeModal: () => void;
   title: string;
   isLarge?: boolean;
+  isOpen?: boolean;
+  setIsOpen?: (value: boolean) => void;
 }
 
 const AddItem: FC<Props> = props => {
   const [open = true, setOpen] = useState<boolean>();
 
-  const { closeModal, children, title, isLarge } = props;
+  const { closeModal, children, title, isLarge, isOpen, setIsOpen } = props;
+
+  useEffect(() => {
+    if (isOpen) {
+      setOpen(true);
+    }
+  }, [isOpen]);
 
   return (
     <Modal
-      open={open}
+      open={isOpen || open}
       onClose={() => {
         setOpen(false);
         closeModal();
+
+        if (setIsOpen) {
+          setIsOpen(false);
+        }
+
+        return undefined;
       }}
       style={{ zIndex: 100 }}
     >
@@ -30,6 +44,12 @@ const AddItem: FC<Props> = props => {
             onClick={() => {
               closeModal();
               setOpen(false);
+
+              if (setIsOpen) {
+                setIsOpen(false);
+              }
+
+              return undefined;
             }}
             type="button"
           >

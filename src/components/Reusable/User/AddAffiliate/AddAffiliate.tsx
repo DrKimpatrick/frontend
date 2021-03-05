@@ -108,6 +108,8 @@ const AddAffiliate = (props: Props) => {
 
                       return undefined;
                     }}
+                    setIsOpen={setOpenUpload}
+                    isOpen={openUpload}
                   />
                 )}
                 <form onSubmit={formik.handleSubmit} autoComplete="off">
