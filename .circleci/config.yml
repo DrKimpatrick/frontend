@@ -1,0 +1,145 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+
+workflows:
+  build-test-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - aws-ecr/build-and-push-image:
+          attach-workspace: true
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: PRO_AWS_ACCESS_KEY_ID
+          aws-secret-access-key: PRO_AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: Dockerfile.prod
+          path: .
+          region: AWS_REGION
+          repo: "$DEPLOYMENT_ENVIRONMENT"
+          tag: "$CIRCLE_SHA1"
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+
+      - deploy_to_aws_eks:
+          requires:
+            - aws-ecr/build-and-push-image
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+
+configure_awscli: &configure_awscli
+  run:
+    name: configuring awscloud default settings
+    command: |
+      apt-get update && apt-get install -y curl unzip
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      ./aws/install
+      aws configure set region $AWS_REGION
+      aws configure set aws_secret_access_key $PRO_AWS_SECRET_ACCESS_KEY
+      aws configure set aws_access_key_id $PRO_AWS_ACCESS_KEY_ID
+
+install_kubectl: &install_kubectl
+  run:
+    name: installing kubectl
+    command: |
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get install -y apt-transport-https gnupg2 git-all
+      curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+      echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+      apt-get update
+      apt-get install -y gettext kubectl
+
+deploy_to_kubernetes: &deploy_to_kubernetes
+  run:
+    name: Deploying kubernetes objects
+    command: |
+      git clone -b develop git@github.com:Tech-Talent/tech-talent-deployment-scripts.git
+      cd tech-talent-deployment-scripts
+      
+      if [[ "$CIRCLE_BRANCH" == 'develop' ]]; then
+        export DEPLOYMENT_ENVIRONMENT=staging
+      fi
+      if [[ "$CIRCLE_BRANCH" == 'master' ]]; then
+        export DEPLOYMENT_ENVIRONMENT=production
+      fi
+
+      aws eks --region $AWS_REGION update-kubeconfig --name $DEPLOYMENT_ENVIRONMENT
+      envsubst < ./deploy-k8s/frontend/deployment.yml.tpl > deployment.yml
+      envsubst < ./deploy-k8s/frontend/service.yml.tpl > service.yml
+      envsubst < ./deploy-k8s/frontend/autoscaler.yml.tpl > autoscaler.yml
+      envsubst < ./deploy-k8s/shared/nginx-service.yml.tpl > nginx-service.yml
+      envsubst < ./deploy-k8s/shared/shared-ingress-service.yml.tpl > shared-ingress-service.yml
+
+      kubectl apply -f deployment.yml
+      kubectl apply -f service.yml
+      kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
+      kubectl apply -f nginx-service.yml
+      kubectl apply -f shared-ingress-service.yml
+      kubectl apply -f autoscaler.yml
+
+
+jobs:
+  build:
+    working_directory: ~/public
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run:
+          name: installing dependencies
+          command: yarn install
+      - run:
+          name: building application
+          command: yarn build
+
+  test:
+    working_directory: ~/public
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run:
+          name: installing dependencies
+          command: yarn install
+      - run:
+          name: creating .env file
+          command: |
+            printenv | grep REACT_APP_STRIPE_PK >> .env
+            printenv | grep REACT_APP_BACKEND_API >> .env
+            if [[ "$CIRCLE_BRANCH" == 'develop' ]]; then
+              export DEPLOYMENT_ENVIRONMENT=staging
+            fi
+            if [[ "$CIRCLE_BRANCH" == 'master' ]]; then
+              export DEPLOYMENT_ENVIRONMENT=production
+            fi
+            if [[ "$CIRCLE_BRANCH" != 'develop' ]] || [[ "$CIRCLE_BRANCH" != 'master' ]]; then
+              export DEPLOYMENT_ENVIRONMENT=testing
+            fi
+      - persist_to_workspace:
+          root: ~/public
+          paths:
+            - .
+      - run:
+          name: testing application
+          command: yarn run test -w 1
+
+  deploy_to_aws_eks:
+    docker:
+      - image: ubuntu:18.04
+    steps:
+      - checkout
+      - *configure_awscli
+      - *install_kubectl
+      - *deploy_to_kubernetes

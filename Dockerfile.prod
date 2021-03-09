@@ -1,0 +1,15 @@
+FROM node:14-alpine3.13
+
+ENV SKIP_PREFLIGHT_CHECK=true
+
+WORKDIR /app
+
+COPY . .
+
+RUN yarn install
+
+RUN yarn build
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]
