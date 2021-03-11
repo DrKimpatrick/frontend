@@ -6,7 +6,8 @@ import {
   AdminLayout,
   SideLoading,
   Card,
-  TestHeadline
+  TestHeadline,
+  NoItemFound
 } from 'components/Reusable';
 import { setActivePath } from 'redux/actions/user';
 import { getAllTests } from 'redux/actions/testsetup';
@@ -43,7 +44,10 @@ const ViewTests: FC = () => {
       <div className="">
         <div className="reviewPage">
           <TestHeadline />
-          <Card data={tests} inviteCandidates verificationStatus />
+          {tests && tests.length > 0 && (
+            <Card data={tests} inviteCandidates verificationStatus />
+          )}
+          {tests && tests.length <= 0 && <NoItemFound />}
         </div>
       </div>
     </AdminLayout>

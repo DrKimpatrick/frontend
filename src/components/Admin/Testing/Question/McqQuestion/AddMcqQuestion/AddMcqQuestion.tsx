@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { AdminLayout, McqForm } from 'components/Reusable';
 import { addMcqQuestion as addMcqQuestionAction } from 'redux/actions/question/mcq';
 import { Alert } from '@material-ui/lab';
-import { QuestionTypeEnum } from 'redux/action-types/question';
 
 export const AddMcqQuestion = () => {
   const params = useParams<{ testId: string }>();
@@ -63,8 +62,7 @@ export const AddMcqQuestion = () => {
           }}
           onSubmit={values =>
             addMcqQuestionAction({
-              ...values,
-              questionType: QuestionTypeEnum.MultipleChoice
+              ...values
             })(dispatch)
           }
           loading={loading}

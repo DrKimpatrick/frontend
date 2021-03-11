@@ -34,7 +34,7 @@ interface Props {
   isVideoQuestion?: boolean;
 }
 
-export const McqForm = (props: Props) => {
+const McqForm = (props: Props) => {
   const [videoUpload = false, setVideoUpload] = useState<boolean>();
 
   const [isUploaded = false, setIsUploaded] = useState<boolean>();
@@ -60,11 +60,11 @@ export const McqForm = (props: Props) => {
             {videoUpload && (
               <UploadProfilePicture
                 video
-                title="Upload Video Question"
+                title="Upload video solution"
                 setIsUploaded={() => ''}
                 closeModal={() => setVideoUpload(false)}
                 setUploadedImage={value => {
-                  formik.setFieldValue('question', value, false);
+                  formik.setFieldValue('solution', [value], false);
 
                   setIsUploaded(true);
 
@@ -96,39 +96,65 @@ export const McqForm = (props: Props) => {
                 />
               </div>
             </div>
-            <div className="formGroup flex items-center">
-              <QuestionLabel name="Language" />
-              <div className="inputGroup">
-                <CustomSelect
-                  option={Object.values(Language).map(item => ({
-                    name: item,
-                    value: item
-                  }))}
-                  name="language"
-                  onChange={value =>
-                    formik.setFieldValue('language', value, false)
-                  }
-                  value={values.language}
-                  placeholder="Language"
-                  width="300px"
-                />
-                {errors && errors.language && (
-                  <small className="inputError">{errors.language}</small>
-                )}
-                <ApiValidationError fieldName="language" errors={apiError} />
+            {!isVideoQuestion && (
+              <div className="formGroup flex items-center">
+                <QuestionLabel name="Language" />
+                <div className="inputGroup">
+                  <CustomSelect
+                    option={Object.values(Language).map(item => ({
+                      name: item,
+                      value: item
+                    }))}
+                    name="language"
+                    onChange={value =>
+                      formik.setFieldValue('language', value, false)
+                    }
+                    value={values.language}
+                    placeholder="Language"
+                    width="300px"
+                  />
+                  {errors && errors.language && (
+                    <small className="inputError">{errors.language}</small>
+                  )}
+                  <ApiValidationError fieldName="language" errors={apiError} />
+                </div>
               </div>
-            </div>
+            )}
+
             <div className="formGroup flex items-center">
               <QuestionLabel
-                name={isVideoQuestion ? ' Video Question' : 'Text Questions'}
-                shortDescription={
-                  isVideoQuestion
-                    ? 'The video question be clear and specific'
-                    : 'Please be clear and specific'
-                }
+                name="Text Questions"
+                shortDescription="The text of the question, 
+                be clear and specific."
               />
               <div className="inputGroup">
-                {isVideoQuestion ? (
+                <QuestionTextArea
+                  name="questions"
+                  onChange={value =>
+                    formik.setFieldValue('question', value, false)
+                  }
+                  placeholder="Text Questions"
+                  value={values.question}
+                />
+                {errors && errors.question && (
+                  <small className="inputError">{errors.question}</small>
+                )}
+                <ApiValidationError fieldName="question" errors={apiError} />
+              </div>
+            </div>
+            <div className="formGroup flex">
+              <div>
+                <QuestionLabel
+                  name={`${(isVideoQuestion && 'Video Solution') || 'choice'}`}
+                  shortDescription={`${
+                    (isVideoQuestion &&
+                      'The video solution should be clear and specific.') ||
+                    ''
+                  }`}
+                />
+              </div>
+              <div className="inputGroup">
+                {(isVideoQuestion && (
                   <div className="videoInput">
                     <button
                       type="button"
@@ -137,37 +163,23 @@ export const McqForm = (props: Props) => {
                       }`}
                       onClick={() => setVideoUpload(true)}
                     >
-                      {isUploaded ? ' Uploaded' : 'Upload video question'}
+                      {isUploaded ? ' Uploaded' : 'Upload your solution'}
                     </button>
                   </div>
-                ) : (
-                  <QuestionTextArea
-                    name="question"
-                    onChange={value =>
-                      formik.setFieldValue('question', value, false)
-                    }
-                    placeholder="Text Questions"
-                    value={values.question}
+                )) || (
+                  <QuestionChoice
+                    formik={formik}
+                    choice={values.choice}
+                    solution={values.solution}
                   />
                 )}
-                {errors && errors.question && (
-                  <small className="inputError">{errors.question}</small>
+                {isVideoQuestion && errors && errors.solution && (
+                  <small className="inputError">{errors.solution}</small>
                 )}
-                <ApiValidationError fieldName="question" errors={apiError} />
-              </div>
-            </div>
-            <div className="formGroup flex">
-              <div style={{ marginTop: '20px' }}>
-                <QuestionLabel name="Choices" />
-              </div>
-              <div className="inputGroup">
-                <QuestionChoice
-                  formik={formik}
-                  choice={values.choice}
-                  solution={values.solution}
+                <ApiValidationError
+                  fieldName={(isVideoQuestion && 'solution') || 'choice'}
+                  errors={apiError}
                 />
-
-                <ApiValidationError fieldName="choice" errors={apiError} />
               </div>
             </div>
             <div className="formGroup flex items-center">

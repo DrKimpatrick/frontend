@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AddItemOnModal, Loader } from 'components/Reusable';
 import { RootState } from 'redux/store';
 import { uploadProfilePicture } from 'redux/actions/user';
-import { uploadVideoAction } from 'redux/actions/question/videoQuestion';
+import { uploadVideoAction } from 'redux/actions/question/video';
 import ReactPlayer from 'react-player';
 
 interface Props {

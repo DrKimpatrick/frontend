@@ -7,5 +7,7 @@ export const ApiEndPoint = {
 
   test: '/test',
 
-  verifiedQuestions: '/question/filter/Verified'
+  verifiedQuestions: '/question/filter/Verified',
+
+  addVideoQuestion: '/question/video'
 };

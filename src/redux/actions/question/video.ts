@@ -3,6 +3,7 @@ import ApiAction from 'helpers/apiAction';
 import { ApiEndPoint } from 'utils/ApiEndpoints';
 import { setMessage } from 'redux/actions/message/message';
 import { QuestionTypes } from 'redux/action-types/question';
+import { VideoQuestionParamType } from './interface';
 
 export const uploadVideoAction = (data: any) => (dispatchAction: Dispatch) => {
   const form = new FormData();
@@ -51,12 +52,12 @@ export const uploadVideoAction = (data: any) => (dispatchAction: Dispatch) => {
   );
 };
 
-export const addVideoQuestionAction = (data: any) => (
+export const addVideoQuestionAction = (data: VideoQuestionParamType) => (
   dispatchAction: Dispatch
 ) => {
   return dispatchAction(
     ApiAction({
-      url: ApiEndPoint.addMcqQuestion,
+      url: ApiEndPoint.addVideoQuestion,
       method: 'POST',
       data,
       onStart: () => (dispatch: Dispatch) => {

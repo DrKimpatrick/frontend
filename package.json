@@ -87,7 +87,8 @@
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "eslint src/**/*.ts{,x}",
     "watch:css": "watch 'npm run build:css' ./src",
-    "test:noCoverage": "react-scripts test --u"
+    "test:noCoverage": "react-scripts test --u",
+    "start:dev": "react-app-rewired start"
   },
   "eslintConfig": {
     "extends": "airbnb-typescript"

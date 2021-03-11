@@ -3,9 +3,8 @@ import { RootState } from 'redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { AdminLayout, McqForm } from 'components/Reusable';
-import { addVideoQuestionAction } from 'redux/actions/question/videoQuestion';
+import { addVideoQuestionAction } from 'redux/actions/question/video';
 import { Alert } from '@material-ui/lab';
-import { QuestionTypeEnum } from 'redux/action-types/question';
 
 export const AddVideoQuestion = () => {
   const params = useParams<{ testId: string }>();
@@ -61,12 +60,11 @@ export const AddVideoQuestion = () => {
             expectedTime: '',
             question: ''
           }}
-          onSubmit={values =>
+          onSubmit={values => {
             addVideoQuestionAction({
-              ...values,
-              questionType: QuestionTypeEnum.Video
-            })(dispatch)
-          }
+              ...values
+            })(dispatch);
+          }}
           loading={loading}
           apiError={apiError && apiError.errors ? apiError.errors : undefined}
           isVideoQuestion

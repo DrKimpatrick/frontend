@@ -2,10 +2,15 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { RootState } from 'redux/store';
-import { AdminLayout, SideLoading, Card } from 'components/Reusable';
+import {
+  AdminLayout,
+  SideLoading,
+  Card,
+  NoItemFound
+} from 'components/Reusable';
 import { setActivePath } from 'redux/actions/user';
 import { getAllTests } from 'redux/actions/testsetup';
-import { getVerifiedQuestions } from 'redux/actions/question/verifiedQuestions';
+import { getVerifiedQuestions } from 'redux/actions/question';
 
 const TestQuestion: FC = () => {
   const dispatch = useDispatch();
@@ -13,12 +18,12 @@ const TestQuestion: FC = () => {
   const location = useLocation();
 
   const reducer = useSelector((state: RootState) => {
-    const { createTestLoading, tests, createTest } = state.tests;
+    const { tests, createTest } = state.tests;
 
     const { verifiedQuestionsLoading, verifiedQuestions } = state.questions;
 
     return {
-      loading: createTestLoading,
+      loading: verifiedQuestionsLoading,
       tests,
       createTest,
       verifiedQuestionsLoading,
@@ -43,11 +48,15 @@ const TestQuestion: FC = () => {
       </AdminLayout>
     );
   }
+
+  if (!verifiedQuestions) {
+    return null;
+  }
   return (
     <AdminLayout>
       <div className="">
         <div className="reviewPage">
-          {verifiedQuestions && (
+          {verifiedQuestions && verifiedQuestions.length > 0 && (
             <Card
               titles
               skillsFilter
@@ -58,6 +67,9 @@ const TestQuestion: FC = () => {
               expectedTime={`${verifiedQuestions[0].expectedTime} min`}
               questionOwner={verifiedQuestions[0].owner.username || 'User'}
             />
+          )}
+          {verifiedQuestions && verifiedQuestions.length <= 0 && (
+            <NoItemFound />
           )}
         </div>
       </div>

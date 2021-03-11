@@ -1,7 +1,7 @@
 import { Level, QuestionTypeEnum } from 'redux/action-types/question';
 
 export interface Question {
-  _id: string;
+  testId: string;
   name: string;
   expectedTime: string;
   dateRegistered?: Date;
@@ -9,7 +9,6 @@ export interface Question {
   choice?: string[];
   solution?: string[];
   level: Level;
-  testId: string;
   questionType: QuestionTypeEnum;
   coding?: {
     template: string;
@@ -17,4 +16,24 @@ export interface Question {
   };
   language: string;
   library?: string;
+}
+
+export interface VideoQuestionParamType {
+  name: string;
+  question: string;
+  solution: string[];
+  level: string;
+  expectedTime: string;
+}
+
+export interface McQuestionParamType {
+  name: string;
+  language: string;
+  library?: string;
+  solution: string[];
+  choice: string[];
+  testId: string;
+  level: string;
+  expectedTime: string;
+  question: string;
 }
