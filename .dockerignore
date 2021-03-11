@@ -7,7 +7,6 @@ coverage/
 .circleci/
 .github/
 .editorconfig
-.env
 .env.example
 Procfile
 README.npm_modules
