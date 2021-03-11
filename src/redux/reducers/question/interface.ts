@@ -8,4 +8,7 @@ export interface QuestionInitialStateType {
   addVideoQuestionLoading?: boolean;
   uploadVideoLoading?: boolean;
   uploadVideoError?: boolean;
+  verifiedQuestions?: any;
+  verifiedQuestionsLoading?: boolean;
+  verifiedQuestionsError?: any;
 }

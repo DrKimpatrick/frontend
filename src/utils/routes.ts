@@ -93,5 +93,9 @@ export enum Routes {
 
   HrAdminRecommendation = '/h/recommendation',
 
-  AddVideoQuestion = '/question/addvq/:testId'
+  AddVideoQuestion = '/question/addvq/:testId',
+
+  CreateTest = '/test/create',
+
+  TestQuestion = '/test/questions'
 }

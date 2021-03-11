@@ -1,0 +1,31 @@
+.modalCenter {
+  color: #857f7f;
+  width: 1100px;
+  outline: none;
+  border-radius: 4px;
+  padding: 30px 50px 30px 50px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 93%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .modalTitle {
+    font-size: 15px;
+    color: #a6a4a4;
+    h1 {
+      font-size: 30px;
+      font-weight: normal;
+    }
+  }
+  .questionChoice {
+    border-radius: 4px;
+    border: 2px solid #a6a4a467;
+    margin: 20px;
+    width: 32%;
+    height: 300px;
+    h1 {
+      font-size: 14px;
+    }
+  }
+}

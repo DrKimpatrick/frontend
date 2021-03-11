@@ -7,7 +7,10 @@ export enum QuestionTypes {
   AddVideoQuestionLoading = 'QuestionTypes/AddVideoQuestionLoading',
   AddVideoQuestion = 'QuestionTypes/AddVideoQuestion',
   AddVideoQuestionError = 'QuestionTypes/AddVideoQuestionError',
-  UploadVideo = 'QuestionTypes/UploadVideo'
+  UploadVideo = 'QuestionTypes/UploadVideo',
+  VerifiedQuestions = 'QuestionTypes/VerifiedQuestions',
+  VerifiedQuestionsError = 'QuestionTypes/VerifiedQuestionsError',
+  VerifiedQuestionsLoading = 'QuestionTypes/VerifiedQuestionsLoading'
 }
 
 export enum Language {
@@ -89,6 +92,26 @@ interface UploadVideo {
     data: any;
   };
 }
+
+interface VerifiedQuestions {
+  type: typeof QuestionTypes.VerifiedQuestions;
+  payload: {
+    data: any;
+  };
+}
+
+interface VerifiedQuestionsError {
+  type: typeof QuestionTypes.VerifiedQuestionsError;
+  payload: {
+    errors: any;
+  };
+}
+interface VerifiedQuestionsLoading {
+  type: typeof QuestionTypes.VerifiedQuestionsLoading;
+  payload: {
+    loading: boolean;
+  };
+}
 export type QuestionActionTypes =
   | AddMcqQuestion
   | AddMcqQuestionLoading
@@ -98,4 +121,7 @@ export type QuestionActionTypes =
   | UploadVideoLoading
   | AddVideoQuestionError
   | AddVideoQuestionLoading
-  | UploadVideo;
+  | UploadVideo
+  | VerifiedQuestions
+  | VerifiedQuestionsError
+  | VerifiedQuestionsLoading;

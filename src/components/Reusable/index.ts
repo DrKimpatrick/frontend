@@ -33,3 +33,4 @@ export * from './Search';
 export * from './Checkbox';
 export * from './Question';
 export * from './CustomInput';
+export * from './Tests';

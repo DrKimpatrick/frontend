@@ -1,0 +1,13 @@
+.languageFilter {
+  button {
+    box-shadow: 0 2px 2px;
+    background-color: #f8f8f8;
+    font-size: small;
+    font-weight: bold;
+    padding: 2px 11px;
+    outline: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}

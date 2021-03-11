@@ -1,0 +1,23 @@
+.headlines {
+  .statuses {
+    position: absolute;
+    left: 25%;
+  }
+  .headlineButtons {
+    position: absolute;
+    right: 0;
+    .createAffilate {
+      font-family: Quicksand;
+      background-color: #032499;
+      font-size: 12px;
+      border-radius: 3px;
+      color: #ffffff;
+    }
+    .createButton {
+      background-color: #02751d;
+      font-size: 13zpx;
+      border-radius: 3px;
+      color: #ffffff;
+    }
+  }
+}

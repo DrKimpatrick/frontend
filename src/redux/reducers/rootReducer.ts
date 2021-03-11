@@ -9,6 +9,7 @@ import { companyReducer } from './company';
 import { schoolReducer } from './school';
 import { hrAdminReducer } from './hrAdmin';
 import { questionReducer } from './question';
+import { testReducer } from './testsetup';
 
 const rootReducer = combineReducers({
   users: userReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   schools: schoolReducer,
   companies: companyReducer,
   hrAdmin: hrAdminReducer,
-  questions: questionReducer
+  questions: questionReducer,
+  tests: testReducer
 });
 
 export default rootReducer;

@@ -43,6 +43,12 @@ export const questionReducer = (
 
     case QuestionTypes.UploadingVideoLoading:
       return { ...state, uploadVideoLoading: action.payload.loading };
+    case QuestionTypes.VerifiedQuestions:
+      return { ...state, verifiedQuestions: action.payload.data };
+    case QuestionTypes.VerifiedQuestionsLoading:
+      return { ...state, verifiedQuestionsLoading: action.payload.loading };
+    case QuestionTypes.VerifiedQuestionsError:
+      return { ...state, verifiedQuestionsError: action.payload.errors };
     default:
       return state;
   }

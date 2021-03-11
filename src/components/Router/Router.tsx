@@ -31,8 +31,10 @@ import {
   Recruiter,
   Skill,
   AddMcqQuestion,
-  AddVideoQuestion
+  AddVideoQuestion,
+  ViewTests
 } from 'components/Admin';
+import { CreateTest, TestQuestion } from 'components/Admin/Testing/TestSetup';
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
 import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
@@ -101,6 +103,21 @@ const AppRouter: FC = () => {
       path: Routes.Skill,
       exact: true,
       component: <Skill />
+    },
+    {
+      path: Routes.Tests,
+      exact: true,
+      component: <ViewTests />
+    },
+    {
+      path: Routes.CreateTest,
+      exact: true,
+      component: <CreateTest />
+    },
+    {
+      path: Routes.TestQuestion,
+      exact: true,
+      component: <TestQuestion />
     },
     {
       path: Routes.payment,

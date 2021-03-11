@@ -3,5 +3,9 @@ export const ApiEndPoint = {
 
   deleteQuestion: (questionId: string) => `/question/mcq/${questionId}`,
 
-  UploadVideo: '/upload/video'
+  UploadVideo: '/upload/video',
+
+  test: '/test',
+
+  verifiedQuestions: '/question/filter/Verified'
 };

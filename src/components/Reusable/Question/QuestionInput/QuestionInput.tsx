@@ -4,7 +4,7 @@ import './QuestionInput.scss';
 interface Props {
   onChange: (value: string) => void;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
   type?: string;
   width?: string;
