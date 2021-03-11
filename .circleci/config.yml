@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
+  slack: circleci/slack@4.3.0
 
 workflows:
   build-test-deploy:
@@ -103,6 +104,12 @@ jobs:
       - run:
           name: building application
           command: yarn build
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   test:
     working_directory: ~/public
@@ -134,6 +141,12 @@ jobs:
       - run:
           name: testing application
           command: yarn run test -w 1
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
   deploy_to_aws_eks:
     docker:
@@ -143,3 +156,9 @@ jobs:
       - *configure_awscli
       - *install_kubectl
       - *deploy_to_kubernetes
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
