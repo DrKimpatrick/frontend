@@ -47,7 +47,7 @@ export const AddMcqQuestion = () => {
         {message && <Alert severity="success">{message}</Alert>}
       </div>
 
-      <div className="addQuestion relative" style={{ marginTop: '40px' }}>
+      <div className="addQuestion relative" style={{ marginTop: '10px' }}>
         <McqForm
           initialValue={{
             name: '',

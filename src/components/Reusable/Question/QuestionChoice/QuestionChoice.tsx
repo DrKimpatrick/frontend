@@ -105,6 +105,7 @@ const QuestionChoice = (props: Props) => {
             name="Add new"
             background={QuestionButtonBackgroundEnum.Blue}
             onClick={() => arrayHelper.push('')}
+            color="white"
           />
         </div>
       )}

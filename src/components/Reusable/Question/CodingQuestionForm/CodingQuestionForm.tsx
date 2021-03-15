@@ -185,11 +185,13 @@ export const CodingQuestionForm = (props: Props) => {
               background={QuestionButtonBackgroundEnum.Green}
               onClick={() => formik.submitForm()}
               loading={loading}
+              color="white"
             />
             <QuestionButton
               name="Preview"
               background={QuestionButtonBackgroundEnum.Blue}
               onClick={() => ''}
+              color="white"
             />
           </div>
         </div>

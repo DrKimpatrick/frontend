@@ -69,6 +69,7 @@ export const CodePartQuestion = (props: Props) => {
               name="Run solution"
               onClick={() => 'run'}
               background={QuestionButtonBackgroundEnum.Green}
+              color="white"
             />
           </div>
           <div className="w75">
@@ -104,6 +105,7 @@ export const CodePartQuestion = (props: Props) => {
               name="Run solution"
               onClick={() => 'run'}
               background={QuestionButtonBackgroundEnum.Green}
+              color="white"
             />
           </div>
           {errors && errors.testCase && (

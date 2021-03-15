@@ -4,7 +4,8 @@ import { Loader } from 'components/Reusable';
 export enum QuestionButtonBackgroundEnum {
   Green = '#02751d',
   Red = '#8a2b03',
-  Blue = '#004e9c'
+  Blue = '#004e9c',
+  white = '#FFFFFF'
 }
 
 interface Props {
@@ -12,10 +13,25 @@ interface Props {
   background: QuestionButtonBackgroundEnum;
   onClick: () => void;
   loading?: boolean;
+  color: string;
+  width?: string;
+  paddingLeft?: string;
+  paddingTop?: string;
+  paddingRight?: string;
 }
 
 const QuestionButton = (props: Props) => {
-  const { name, background, onClick, loading } = props;
+  const {
+    name,
+    background,
+    onClick,
+    loading,
+    color,
+    width,
+    paddingLeft,
+    paddingTop,
+    paddingRight
+  } = props;
 
   return (
     <button
@@ -23,11 +39,13 @@ const QuestionButton = (props: Props) => {
       onClick={onClick}
       style={{
         background,
-        color: 'white',
+        width: `${width}`,
+        color: `${color}`,
         borderRadius: '4px',
         height: '42px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
+        paddingLeft: paddingLeft || '20px',
+        paddingRight: paddingRight || '20px',
+        paddingTop: `${paddingTop}`,
         outline: 'none',
         boxShadow: 'none',
         fontSize: '14px'

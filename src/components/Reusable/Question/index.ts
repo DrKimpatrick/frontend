@@ -6,3 +6,4 @@ export * from './QuestionChoice';
 export * from './QuestionButton';
 export * from './CustomQuestion';
 export * from './CodingQuestionForm';
+export * from './PreviewMcq';

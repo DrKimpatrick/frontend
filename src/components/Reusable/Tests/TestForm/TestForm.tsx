@@ -194,6 +194,7 @@ const TestForm = (props: Props) => {
                         background={QuestionButtonBackgroundEnum.Green}
                         onClick={() => formik.submitForm()}
                         loading={loading}
+                        color="white"
                       />
                     </div>
                     <div className="deleteButton md:flex-initial md:ml-5">
@@ -201,6 +202,7 @@ const TestForm = (props: Props) => {
                         name={cancelButtonName}
                         background={QuestionButtonBackgroundEnum.Blue}
                         onClick={() => ''}
+                        color="white"
                       />
                     </div>
                   </div>

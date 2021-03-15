@@ -1,0 +1,22 @@
+.choices {
+  .title {
+    font-size: 14px;
+    color: #b3b3b3;
+    text-decoration: rgb(179, 179, 179);
+    font-weight: bold;
+  }
+  .solutions-list {
+    width: 100%;
+    font-family: Quicksand;
+    font-weight: bold;
+    font-size: 13px;
+    color: #b3b3b3;
+    margin-top: 10px;
+    padding-left: 10px;
+    text-decoration: rgb(120, 119, 119);
+    input {
+      position: relative;
+      vertical-align: middle;
+    }
+  }
+}
