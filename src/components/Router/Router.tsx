@@ -32,6 +32,7 @@ import {
   Skill,
   AddMcqQuestion,
   AddVideoQuestion,
+  EditVideoQuestion,
   ViewTests
 } from 'components/Admin';
 import {
@@ -189,6 +190,11 @@ const AppRouter: FC = () => {
       path: Routes.AddVideoQuestion,
       exact: true,
       component: <AddVideoQuestion />
+    },
+    {
+      path: Routes.EditVideoQuestion,
+      exact: true,
+      component: <EditVideoQuestion />
     }
   ];
 

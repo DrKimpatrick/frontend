@@ -20,5 +20,9 @@ export const ApiEndPoint = {
 
   singleTest: (testId: string) => `/test/${testId}`,
 
-  updateTest: (testId: string) => `/test/${testId}`
+  updateTest: (testId: string) => `/test/${testId}`,
+
+  editVideoQuestion: (questionId?: string) => `/question/video/${questionId}`,
+
+  getQuestion: (questionId?: string) => `/question/${questionId}`
 };

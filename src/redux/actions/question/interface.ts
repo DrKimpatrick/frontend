@@ -27,6 +27,7 @@ export interface VideoQuestionParamType {
   solution: string[];
   level: string;
   expectedTime: string;
+  questionId?: string;
 }
 
 export interface McQuestionParamType {

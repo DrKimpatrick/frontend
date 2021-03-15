@@ -1,4 +1,4 @@
-import { QuestionWithPaginationType } from 'redux/actions/question';
+import { QuestionWithPaginationType, Question } from 'redux/actions/question';
 
 export interface QuestionInitialStateType {
   addMcqQuestionErrors?: any;
@@ -13,4 +13,10 @@ export interface QuestionInitialStateType {
   verifiedQuestions?: QuestionWithPaginationType;
   verifiedQuestionsLoading?: boolean;
   verifiedQuestionsError?: any;
+  editVideoQuestion?: boolean;
+  editVideoQuestionError?: any;
+  editVideoQuestionLoading?: boolean;
+  getQuestion?: Question;
+  getQuestionError?: any;
+  getQuestionLoading?: boolean;
 }

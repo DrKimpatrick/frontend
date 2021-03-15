@@ -26,6 +26,7 @@ export const questionReducer = (
     case QuestionTypes.AddMcqQuestionLoading:
       return { ...state, addMcqQuestionLoading: action.payload.loading };
 
+    // add video question
     case QuestionTypes.AddVideoQuestion:
       return { ...state, addVideoQuestion: action.payload.data };
 
@@ -35,6 +36,7 @@ export const questionReducer = (
     case QuestionTypes.AddVideoQuestionLoading:
       return { ...state, addVideoQuestionLoading: action.payload.loading };
 
+    // Upload video question
     case QuestionTypes.UploadVideo:
       return { ...state, uploadedVideo: action.payload.data };
 
@@ -52,6 +54,27 @@ export const questionReducer = (
 
     case QuestionTypes.VerifiedQuestionsError:
       return { ...state, verifiedQuestionsError: action.payload.errors };
+
+    // edit video question
+    case QuestionTypes.EditVideoQuestion:
+      return { ...state, editVideoQuestion: action.payload.data };
+
+    case QuestionTypes.EditVideoQuestionError:
+      return { ...state, editVideoQuestionError: action.payload.errors };
+
+    case QuestionTypes.EditVideoQuestionLoading:
+      return { ...state, editVideoQuestionLoading: action.payload.loading };
+
+    // get question by id
+    case QuestionTypes.GetQuestion:
+      return { ...state, getQuestion: action.payload.data };
+
+    case QuestionTypes.GetQuestionError:
+      return { ...state, getQuestionError: action.payload.errors };
+
+    case QuestionTypes.GetQuestionLoading:
+      return { ...state, getQuestionLoading: action.payload.loading };
+
     default:
       return state;
   }

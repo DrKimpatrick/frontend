@@ -101,5 +101,7 @@ export enum Routes {
 
   TestQuestion = '/test/questions',
 
-  AdminViewSingleTest = '/test/:testId'
+  AdminViewSingleTest = '/test/:testId',
+
+  EditVideoQuestion = '/question/editvq/:questionId'
 }

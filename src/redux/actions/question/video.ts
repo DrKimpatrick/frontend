@@ -93,3 +93,86 @@ export const addVideoQuestionAction = (data: VideoQuestionParamType) => (
     })
   );
 };
+
+export const editVideoQuestionAction = (data: VideoQuestionParamType) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: ApiEndPoint.editVideoQuestion(data?.questionId),
+      method: 'PUT',
+      data,
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.EditVideoQuestionLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.EditVideoQuestion,
+          payload: { data: res.data }
+        });
+
+        dispatch({
+          type: QuestionTypes.EditVideoQuestionLoading,
+          payload: { loading: false }
+        });
+
+        setMessage(res.message)(dispatch);
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.EditVideoQuestionError,
+          payload: { errors: error.response.data }
+        });
+
+        dispatch({
+          type: QuestionTypes.EditVideoQuestionLoading,
+          payload: { loading: false }
+        });
+      }
+    })
+  );
+};
+
+export const getQuestionAction = (questionId: string) => (
+  dispatchAction: Dispatch
+) => {
+  return dispatchAction(
+    ApiAction({
+      url: ApiEndPoint.getQuestion(questionId),
+      method: 'GET',
+      onStart: () => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.GetQuestionLoading,
+          payload: { loading: true }
+        });
+      },
+      onSuccess: res => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.GetQuestion,
+          payload: { data: res.data }
+        });
+
+        dispatch({
+          type: QuestionTypes.GetQuestionLoading,
+          payload: { loading: false }
+        });
+
+        setMessage(res.message)(dispatch);
+      },
+      onFailure: error => (dispatch: Dispatch) => {
+        dispatch({
+          type: QuestionTypes.GetQuestionError,
+          payload: { errors: error.response.data }
+        });
+
+        dispatch({
+          type: QuestionTypes.GetQuestionLoading,
+          payload: { loading: false }
+        });
+      }
+    })
+  );
+};

@@ -1,4 +1,4 @@
-import { QuestionWithPaginationType } from 'redux/actions/question';
+import { QuestionWithPaginationType, Question } from 'redux/actions/question';
 
 export enum QuestionTypes {
   AddMcqQuestion = 'QuestionTypes/AddMcqQuestion',
@@ -12,7 +12,13 @@ export enum QuestionTypes {
   UploadVideo = 'QuestionTypes/UploadVideo',
   VerifiedQuestions = 'QuestionTypes/VerifiedQuestions',
   VerifiedQuestionsError = 'QuestionTypes/VerifiedQuestionsError',
-  VerifiedQuestionsLoading = 'QuestionTypes/VerifiedQuestionsLoading'
+  VerifiedQuestionsLoading = 'QuestionTypes/VerifiedQuestionsLoading',
+  EditVideoQuestionLoading = 'QuestionTypes/EditVideoQuestionLoading',
+  EditVideoQuestion = 'QuestionTypes/EditVideoQuestion',
+  EditVideoQuestionError = 'QuestionTypes/EditVideoQuestionError',
+  GetQuestionLoading = 'QuestionTypes/GetQuestionLoading',
+  GetQuestion = 'QuestionTypes/GetQuestion',
+  GetQuestionError = 'QuestionTypes/GetQuestionError'
 }
 
 export enum Language {
@@ -114,6 +120,48 @@ interface VerifiedQuestionsLoading {
     loading: boolean;
   };
 }
+
+interface EditVideoQuestion {
+  type: typeof QuestionTypes.EditVideoQuestion;
+  payload: {
+    data: boolean;
+  };
+}
+
+interface EditVideoQuestionError {
+  type: typeof QuestionTypes.EditVideoQuestionError;
+  payload: {
+    errors: any;
+  };
+}
+
+interface EditVideoQuestionLoading {
+  type: typeof QuestionTypes.EditVideoQuestionLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
+interface GetQuestion {
+  type: typeof QuestionTypes.GetQuestion;
+  payload: {
+    data: Question;
+  };
+}
+
+interface GetQuestionError {
+  type: typeof QuestionTypes.GetQuestionError;
+  payload: {
+    errors: any;
+  };
+}
+
+interface GetQuestionLoading {
+  type: typeof QuestionTypes.GetQuestionLoading;
+  payload: {
+    loading: boolean;
+  };
+}
 export type QuestionActionTypes =
   | AddMcqQuestion
   | AddMcqQuestionLoading
@@ -126,4 +174,10 @@ export type QuestionActionTypes =
   | UploadVideo
   | VerifiedQuestions
   | VerifiedQuestionsError
-  | VerifiedQuestionsLoading;
+  | VerifiedQuestionsLoading
+  | EditVideoQuestion
+  | EditVideoQuestionError
+  | EditVideoQuestionLoading
+  | GetQuestion
+  | GetQuestionError
+  | GetQuestionLoading;

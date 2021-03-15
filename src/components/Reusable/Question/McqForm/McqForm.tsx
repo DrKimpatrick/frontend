@@ -32,6 +32,7 @@ interface Props {
   loading?: boolean;
   apiError?: any;
   isVideoQuestion?: boolean;
+  buttonName?: string;
 }
 
 const McqForm = (props: Props) => {
@@ -39,7 +40,14 @@ const McqForm = (props: Props) => {
 
   const [isUploaded = false, setIsUploaded] = useState<boolean>();
 
-  const { initialValue, onSubmit, apiError, loading, isVideoQuestion } = props;
+  const {
+    initialValue,
+    onSubmit,
+    apiError,
+    loading,
+    isVideoQuestion,
+    buttonName
+  } = props;
 
   return (
     <Formik
@@ -229,7 +237,7 @@ const McqForm = (props: Props) => {
               <div style={{ width: '150px' }} />
               <div className="flex buttons">
                 <QuestionButton
-                  name="Save"
+                  name={buttonName || 'Save'}
                   background={QuestionButtonBackgroundEnum.Green}
                   onClick={() => formik.submitForm()}
                   loading={loading}
