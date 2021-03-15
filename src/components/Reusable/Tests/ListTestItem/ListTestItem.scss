@@ -1,0 +1,21 @@
+.listTestItem {
+  .statusAction {
+    .reviewButton {
+      button {
+        width: 133px;
+        height: 47px;
+        border-radius: 2px;
+        background-color: #ededed;
+        background-size: cover;
+        font-size: 20px;
+        text-decoration: none solid rgb(133, 127, 127);
+        text-align: center;
+        outline: none;
+      }
+      button:hover {
+        background-color: #857f7f;
+        color: #ededed;
+      }
+    }
+  }
+}

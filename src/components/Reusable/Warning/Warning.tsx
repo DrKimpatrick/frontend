@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './Warning.scss';
 
 interface Props {
-  message: string;
+  message?: string;
   cancel: () => void;
   accept: () => void;
 }
@@ -40,7 +40,9 @@ const Warning: FC<Props> = props => {
           <div>
             <Delete className={classes.deleteIcon} />
           </div>
-          <div className="message">{message}</div>
+          <div className="message">
+            {message || 'Are you sure you want to perform this action'}
+          </div>
         </div>
         <div className="buttons">
           <Button type="button" onClick={() => cancel()} className="no">

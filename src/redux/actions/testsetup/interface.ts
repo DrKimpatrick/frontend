@@ -13,12 +13,13 @@ export interface TestOwner {
 }
 
 export interface Test {
+  _id?: string;
   name: string;
   description: string;
   timePolicy: string;
   status?: string;
   questions?: string[] | any[];
-  dateRegistered?: Date;
+  createdAt?: Date;
   updatedAt?: Date;
   owner: string | TestOwner;
 }

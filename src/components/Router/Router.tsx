@@ -34,7 +34,11 @@ import {
   AddVideoQuestion,
   ViewTests
 } from 'components/Admin';
-import { CreateTest, TestQuestion } from 'components/Admin/Testing/TestSetup';
+import {
+  CreateTest,
+  TestQuestion,
+  UpdateTest
+} from 'components/Admin/Testing/TestSetup';
 import { Routes } from 'utils/routes';
 import { ProcessPayments } from 'components/ProcessPayments';
 import FeatureChoice from 'components/FeatureChoice/FeatureChoice';
@@ -113,6 +117,11 @@ const AppRouter: FC = () => {
       path: Routes.CreateTest,
       exact: true,
       component: <CreateTest />
+    },
+    {
+      path: Routes.UpdateTest,
+      exact: true,
+      component: <UpdateTest />
     },
     {
       path: Routes.TestQuestion,

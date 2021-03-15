@@ -1,3 +1,5 @@
+import { PaginationValueType } from 'redux/actions/question';
+
 export const ApiEndPoint = {
   addMcqQuestion: `/question/mcq`,
 
@@ -7,7 +9,16 @@ export const ApiEndPoint = {
 
   test: '/test',
 
-  verifiedQuestions: '/question/filter/Verified',
+  filterQuestion: (status: string, pagination?: PaginationValueType) => {
+    if (pagination) {
+      return `/question/filter/${status}/?limit=${pagination.limit}&page=${pagination.page}`;
+    }
+    return '/question/filter/Verified';
+  },
 
-  addVideoQuestion: '/question/video'
+  addVideoQuestion: '/question/video',
+
+  singleTest: (testId: string) => `/test/${testId}`,
+
+  updateTest: (testId: string) => `/test/${testId}`
 };

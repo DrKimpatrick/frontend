@@ -1,7 +1,8 @@
 import { Level, QuestionTypeEnum } from 'redux/action-types/question';
+import { TestVerification } from 'redux/action-types/test';
 
 export interface Question {
-  testId: string;
+  _id: string;
   name: string;
   expectedTime: string;
   dateRegistered?: Date;
@@ -16,6 +17,8 @@ export interface Question {
   };
   language: string;
   library?: string;
+  status: TestVerification;
+  owner: string | { _id: string; username: string; email: string };
 }
 
 export interface VideoQuestionParamType {
@@ -36,4 +39,15 @@ export interface McQuestionParamType {
   level: string;
   expectedTime: string;
   question: string;
+}
+
+export interface QuestionWithPaginationType {
+  data: Question[];
+  totalDocs: number;
+  page: number;
+}
+
+export interface PaginationValueType {
+  limit: number;
+  page: number;
 }

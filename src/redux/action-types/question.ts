@@ -1,3 +1,5 @@
+import { QuestionWithPaginationType } from 'redux/actions/question';
+
 export enum QuestionTypes {
   AddMcqQuestion = 'QuestionTypes/AddMcqQuestion',
   AddMcqQuestionLoading = 'QuestionTypes/AddMcqQuestionLoading',
@@ -96,7 +98,7 @@ interface UploadVideo {
 interface VerifiedQuestions {
   type: typeof QuestionTypes.VerifiedQuestions;
   payload: {
-    data: any;
+    data: QuestionWithPaginationType;
   };
 }
 

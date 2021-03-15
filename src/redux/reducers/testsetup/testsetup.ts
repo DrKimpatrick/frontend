@@ -26,6 +26,27 @@ export const testReducer = (state = initialState, action: TestActionTypes) => {
     case TestTypes.CreateTestErrors:
       return { ...state, createTestErrors: action.payload.errors };
 
+    case TestTypes.UpdateTestSuccess:
+      return { ...state, updateTest: action.payload.data };
+
+    case TestTypes.UpdateTestLoading:
+      return { ...state, updateTestLoading: action.payload.loading };
+
+    case TestTypes.UpdateTestErrors:
+      return { ...state, updateTestErrors: action.payload.errors };
+
+    case TestTypes.GetSingleTestSuccess:
+      return { ...state, getSingleTest: action.payload.data };
+
+    case TestTypes.GetSingleTestLoading:
+      return { ...state, getSingleTestLoading: action.payload.loading };
+
+    case TestTypes.GetSingleTestErrors:
+      return { ...state, getSingleTestErrors: action.payload.errors };
+
+    case TestTypes.ClearTest:
+      return { ...state, getSingleTest: action.payload.data };
+
     default:
       return state;
   }

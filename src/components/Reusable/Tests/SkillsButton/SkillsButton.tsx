@@ -8,6 +8,7 @@ interface Props {
 
 const SkillsButton = (props: Props) => {
   const { javascript, python } = props;
+
   return (
     <div>
       <div className="languageFilter flex pt-2">

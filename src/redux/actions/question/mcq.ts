@@ -2,8 +2,9 @@ import { Dispatch } from 'redux';
 import ApiAction from 'helpers/apiAction';
 import { ApiEndPoint } from 'utils/ApiEndpoints';
 import { QuestionTypes } from 'redux/action-types/question';
+import { TestVerification } from 'redux/action-types/test';
 import { setMessage } from 'redux/actions/message/message';
-import { McQuestionParamType } from './interface';
+import { McQuestionParamType, PaginationValueType } from './interface';
 
 export const addMcqQuestion = (value: McQuestionParamType) => (
   dispatchAction: Dispatch
@@ -47,11 +48,16 @@ export const addMcqQuestion = (value: McQuestionParamType) => (
   );
 };
 
-export const getVerifiedQuestions = () => (dispatchAction: Dispatch) => {
+export const getVerifiedQuestions = (paginationValue?: PaginationValueType) => (
+  dispatchAction: Dispatch
+) => {
   return dispatchAction(
     ApiAction({
       method: 'GET',
-      url: ApiEndPoint.verifiedQuestions,
+      url: ApiEndPoint.filterQuestion(
+        TestVerification.Verified,
+        paginationValue
+      ),
       onStart: () => (dispatch: Dispatch) => {
         dispatch({
           type: QuestionTypes.VerifiedQuestionsLoading,
@@ -75,7 +81,7 @@ export const getVerifiedQuestions = () => (dispatchAction: Dispatch) => {
         });
         dispatch({
           type: QuestionTypes.VerifiedQuestions,
-          payload: { data: res.data }
+          payload: { data: res }
         });
       }
     })

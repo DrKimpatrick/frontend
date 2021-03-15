@@ -5,6 +5,12 @@ export interface TestsInitialStateType {
   getAllTestErrors?: any;
   createTestErrors?: any;
   tests?: Test[];
+  getSingleTest?: Test;
+  getSingleTestLoading?: boolean;
+  getSingleTestErrors?: any;
   createTest?: Test;
   createTestLoading?: boolean;
+  updateTest?: Test;
+  updateTestLoading?: boolean;
+  updateTestErrors?: any;
 }
