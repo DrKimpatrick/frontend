@@ -105,5 +105,6 @@ export enum Routes {
 
   EditVideoQuestion = '/question/editvq/:questionId',
 
-  AddCodingQuestion = '/question/addcq'
+  AddCodingQuestion = '/question/addcq',
+  TalentAssessment = '/t/assessment'
 }

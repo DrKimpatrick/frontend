@@ -6,7 +6,8 @@ import useWindowSize from 'utils/useWindowSize';
 import {
   Dashboard as DashboardIcon,
   Work as WorkIcon,
-  RecordVoiceOver
+  RecordVoiceOver,
+  Assignment
 } from '@material-ui/icons';
 import { RootState } from 'redux/store';
 import Avatar from 'assets/images/avatar.webp';
@@ -38,6 +39,12 @@ const dashboardItems = [
     item: 'Recommendation',
     icon: <RecordVoiceOver className="dashboard-list-icons" />,
     link: Routes.TalentRecommendation
+  },
+  {
+    id: 5,
+    item: 'Assessments',
+    icon: <Assignment className="dashboard-list-icons" />,
+    link: Routes.TalentAssessment
   }
 ];
 

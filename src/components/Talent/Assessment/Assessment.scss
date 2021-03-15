@@ -1,0 +1,121 @@
+.assessment-container {
+  background: #f3f3f3;
+  padding-top: 40px;
+
+  .content-container {
+    width: 30%;
+  }
+
+  // Headline style
+  .new-assessment {
+    color: #f26d00;
+  }
+
+  .status {
+    color: #0275b8;
+  }
+
+  .passed {
+    color: #008f72;
+  }
+
+  .btn-border {
+    border-right: 1px solid #cccccc;
+  }
+
+  // Custom list actions
+  .assessmentListAction {
+    margin-right: 10px;
+
+    button {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    button:nth-child(odd) {
+      border-right: 1px solid #cccccc;
+    }
+    .start {
+      color: #008f72;
+    }
+    .reject {
+      color: #8f2517;
+    }
+    .passed {
+      color: #029609;
+    }
+    .incomplete {
+      color: #F26D00;
+    }
+    .inprogress {
+      color: #0275B8;
+    }
+    .failed {
+      color: #B41E26;
+    }
+  }
+// Without border on button
+  .assessmentListAction2 {
+    margin-right: 10px;
+
+    button {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .start {
+      color: #008f72;
+    }
+    .reject {
+      color: #8f2517;
+    }
+    .passed {
+      color: #029609;
+    }
+    .incomplete {
+      color: #F26D00;
+    }
+    .inprogress {
+      color: #0275B8;
+    }
+    .failed {
+      color: #B41E26;
+    }
+  }
+
+  // tab styles
+  .assessment-items-ul {
+    // background-color: blue;
+    li {
+      cursor: pointer;
+      padding: 1rem;
+
+      div {
+        &:hover {
+          color: #0e0140 !important;
+        }
+      }
+    }
+
+    .assessment-active {
+      background: #f3f3f3;
+      padding: 1em;
+      span {
+        font-weight: 600 !important;
+        color: black !important;
+      }
+    }
+
+    .assessment-active-line {
+      height: 1px;
+      background-image: linear-gradient(#4d9b62, #1437b1);
+      margin-left: 10px;
+      width: 170px;
+    }
+
+    .assessment-line {
+      height: 1px;
+      background: #f3f3f3;
+      margin-left: 10px;
+      width: 170px;
+    }
+  }
+}

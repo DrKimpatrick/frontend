@@ -52,6 +52,7 @@ import {
 import { SubsidyStudent } from 'components/School';
 import { AffiliateAdmin } from 'components/AffiliateAdmin';
 import PaymentsSuccess from 'components/ProcessPayments/PaymentsSuccess';
+import { Assessment } from 'components/Talent/Assessment';
 
 const AppRouter: FC = () => {
   const authorizedRoutes = [
@@ -201,6 +202,12 @@ const AppRouter: FC = () => {
       path: Routes.AddCodingQuestion,
       exact: true,
       component: <AddCodingQuestion />
+    },
+    // Talent Assessment
+    {
+      path: Routes.TalentAssessment,
+      exact: true,
+      component: <Assessment />
     }
   ];
 

@@ -57,23 +57,30 @@ const AccordionMenu: FC<elements> = ({ components }) => {
   };
   return (
     <>
-      <div>
-        <ul className="flex flex-col">
+      <div style={{ width: 'auto' }}>
+        <ul style={{ width: '100%' }}>
           {components.map((component: any) => (
-            <li className="accordion-menu-custom" key={component.id}>
+            <li
+              className="accordion-menu-custom w-full"
+              key={component.id}
+              style={{ width: 'auto' }}
+            >
               <Accordion
                 square
                 expanded={expanded === `panel${component.id}`}
                 onChange={handleChange(`panel${component.id}`)}
+                className="w-full"
+                style={{ background: '#F3F3F3' }}
               >
                 <AccordionSummary
                   aria-controls="panel1d-content"
                   id="panel1d-header"
+                  className="w-full"
                   expandIcon={
                     expanded === `panel${component.id}` ? (
                       <RemoveOutlinedIcon className="light-font" />
                     ) : (
-                      <AddOutlinedIcon />
+                      <AddOutlinedIcon className="light-font" />
                     )
                   }
                 >
