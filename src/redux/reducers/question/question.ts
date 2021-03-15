@@ -75,6 +75,15 @@ export const questionReducer = (
     case QuestionTypes.GetQuestionLoading:
       return { ...state, getQuestionLoading: action.payload.loading };
 
+    case QuestionTypes.AddCodingQuestion:
+      return { ...state, addCodingQuestion: action.payload.data };
+
+    case QuestionTypes.AddCodingQuestionError:
+      return { ...state, addCodingQuestionError: action.payload.errors };
+
+    case QuestionTypes.AddCodingQuestionLoading:
+      return { ...state, addCodingQuestionLoading: action.payload.loading };
+
     default:
       return state;
   }

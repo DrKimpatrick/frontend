@@ -33,7 +33,8 @@ import {
   AddMcqQuestion,
   AddVideoQuestion,
   EditVideoQuestion,
-  ViewTests
+  ViewTests,
+  AddCodingQuestion
 } from 'components/Admin';
 import {
   CreateTest,
@@ -195,6 +196,11 @@ const AppRouter: FC = () => {
       path: Routes.EditVideoQuestion,
       exact: true,
       component: <EditVideoQuestion />
+    },
+    {
+      path: Routes.AddCodingQuestion,
+      exact: true,
+      component: <AddCodingQuestion />
     }
   ];
 

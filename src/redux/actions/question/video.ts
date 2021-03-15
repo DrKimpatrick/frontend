@@ -57,7 +57,7 @@ export const addVideoQuestionAction = (data: VideoQuestionParamType) => (
 ) => {
   return dispatchAction(
     ApiAction({
-      url: ApiEndPoint.addVideoQuestion,
+      url: ApiEndPoint.AddVideoQuestion,
       method: 'POST',
       data,
       onStart: () => (dispatch: Dispatch) => {
@@ -99,7 +99,7 @@ export const editVideoQuestionAction = (data: VideoQuestionParamType) => (
 ) => {
   return dispatchAction(
     ApiAction({
-      url: ApiEndPoint.editVideoQuestion(data?.questionId),
+      url: ApiEndPoint.EditVideoQuestion(data?.questionId),
       method: 'PUT',
       data,
       onStart: () => (dispatch: Dispatch) => {
@@ -141,7 +141,7 @@ export const getQuestionAction = (questionId: string) => (
 ) => {
   return dispatchAction(
     ApiAction({
-      url: ApiEndPoint.getQuestion(questionId),
+      url: ApiEndPoint.GetQuestion(questionId),
       method: 'GET',
       onStart: () => (dispatch: Dispatch) => {
         dispatch({

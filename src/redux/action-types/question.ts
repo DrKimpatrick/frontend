@@ -18,7 +18,10 @@ export enum QuestionTypes {
   EditVideoQuestionError = 'QuestionTypes/EditVideoQuestionError',
   GetQuestionLoading = 'QuestionTypes/GetQuestionLoading',
   GetQuestion = 'QuestionTypes/GetQuestion',
-  GetQuestionError = 'QuestionTypes/GetQuestionError'
+  GetQuestionError = 'QuestionTypes/GetQuestionError',
+  AddCodingQuestion = 'QuestionTypes/AddCodingQuestion',
+  AddCodingQuestionLoading = 'QuestionTypes/AddCodingQuestionLoading',
+  AddCodingQuestionError = 'QuestionTypes/AddCodingQuestionError'
 }
 
 export enum Language {
@@ -30,6 +33,18 @@ export enum Level {
   Advanced = 'advanced',
   Beginner = 'beginner',
   Intermediate = 'intermediate'
+}
+
+export enum JsFramework {
+  React = 'React JS',
+  Angular = 'Angular',
+  Vue = 'Vue',
+  NodeJs = 'Node JS'
+}
+
+export enum PythonFramework {
+  Django = 'Django',
+  Flask = 'Flask'
 }
 
 export enum QuestionTypeEnum {
@@ -142,6 +157,20 @@ interface EditVideoQuestionLoading {
   };
 }
 
+interface AddCodingQuestion {
+  type: typeof QuestionTypes.AddCodingQuestion;
+  payload: {
+    data: Question;
+  };
+}
+
+interface AddCodingQuestionLoading {
+  type: typeof QuestionTypes.AddCodingQuestionLoading;
+  payload: {
+    loading: boolean;
+  };
+}
+
 interface GetQuestion {
   type: typeof QuestionTypes.GetQuestion;
   payload: {
@@ -151,6 +180,12 @@ interface GetQuestion {
 
 interface GetQuestionError {
   type: typeof QuestionTypes.GetQuestionError;
+  payload: {
+    errors: any;
+  };
+}
+interface AddCodingQuestionError {
+  type: typeof QuestionTypes.AddCodingQuestionError;
   payload: {
     errors: any;
   };
@@ -180,4 +215,7 @@ export type QuestionActionTypes =
   | EditVideoQuestionLoading
   | GetQuestion
   | GetQuestionError
-  | GetQuestionLoading;
+  | GetQuestionLoading
+  | AddCodingQuestion
+  | AddCodingQuestionError
+  | AddCodingQuestionLoading;

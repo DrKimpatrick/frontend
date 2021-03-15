@@ -1,0 +1,27 @@
+.codingQuestionRunner {
+  position: relative;
+  width: 100%;
+  .outputHeading {
+    color: #a1a1a1;
+    font-size: 13px;
+    span {
+      &:last-child {
+        margin-left: 50px;
+      }
+    }
+  }
+  .runner {
+    position: relative;
+    margin-top: 5px;
+    border-radius: 4px;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #cfcfcf;
+    padding: 10px;
+    .placeHolder {
+      color: #b3b3b3;
+      font-size: 13px;
+    }
+  }
+}

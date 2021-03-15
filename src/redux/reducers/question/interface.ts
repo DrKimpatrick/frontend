@@ -19,4 +19,7 @@ export interface QuestionInitialStateType {
   getQuestion?: Question;
   getQuestionError?: any;
   getQuestionLoading?: boolean;
+  addCodingQuestion?: Question;
+  addCodingQuestionError?: any;
+  addCodingQuestionLoading?: boolean;
 }

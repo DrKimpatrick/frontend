@@ -18,6 +18,7 @@ const QuestionTextArea = (props: Props) => {
       placeholder={placeholder || 'text question'}
       className="questionTextArea"
       style={{ width: width || '75%' }}
+      value={value}
     >
       {value}
     </textarea>

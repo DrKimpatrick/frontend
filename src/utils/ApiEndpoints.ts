@@ -1,28 +1,30 @@
 import { PaginationValueType } from 'redux/actions/question';
 
 export const ApiEndPoint = {
-  addMcqQuestion: `/question/mcq`,
+  AddMcqQuestion: `/question/mcq`,
 
-  deleteQuestion: (questionId: string) => `/question/mcq/${questionId}`,
+  DeleteQuestion: (questionId: string) => `/question/mcq/${questionId}`,
 
   UploadVideo: '/upload/video',
 
-  test: '/test',
+  Test: '/test',
 
-  filterQuestion: (status: string, pagination?: PaginationValueType) => {
+  FilterQuestion: (status: string, pagination?: PaginationValueType) => {
     if (pagination) {
       return `/question/filter/${status}/?limit=${pagination.limit}&page=${pagination.page}`;
     }
     return '/question/filter/Verified';
   },
 
-  addVideoQuestion: '/question/video',
+  AddVideoQuestion: '/question/video',
 
-  singleTest: (testId: string) => `/test/${testId}`,
+  SingleTest: (testId: string) => `/test/${testId}`,
 
-  updateTest: (testId: string) => `/test/${testId}`,
+  UpdateTest: (testId: string) => `/test/${testId}`,
 
-  editVideoQuestion: (questionId?: string) => `/question/video/${questionId}`,
+  EditVideoQuestion: (questionId?: string) => `/question/video/${questionId}`,
 
-  getQuestion: (questionId?: string) => `/question/${questionId}`
+  GetQuestion: (questionId?: string) => `/question/${questionId}`,
+
+  AddCodingQuestion: '/question/coding'
 };

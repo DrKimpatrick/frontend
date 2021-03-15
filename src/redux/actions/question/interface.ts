@@ -18,7 +18,14 @@ export interface Question {
   language: string;
   library?: string;
   status: TestVerification;
-  owner: string | { _id: string; username: string; email: string };
+  owner:
+    | string
+    | {
+        _id: string;
+        username: string;
+        email: string;
+        profilePicture?: string;
+      };
 }
 
 export interface VideoQuestionParamType {
@@ -51,4 +58,15 @@ export interface QuestionWithPaginationType {
 export interface PaginationValueType {
   limit: number;
   page: number;
+}
+export interface CodingInitialValue {
+  name: string;
+  template: string;
+  testCase: string;
+  solution: string[];
+  language: string;
+  library?: string;
+  question: string;
+  level: string;
+  expectedTime: string;
 }

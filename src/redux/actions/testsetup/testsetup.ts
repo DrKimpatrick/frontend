@@ -16,7 +16,7 @@ export const getAllTests = () => (dispatchAction: Dispatch) => {
   return dispatchAction(
     ApiAction({
       method: 'GET',
-      url: ApiEndPoint.test,
+      url: ApiEndPoint.Test,
       onStart: () => (dispatch: Dispatch) => {
         dispatch({
           type: TestTypes.GetAllTestLoading,
@@ -54,7 +54,7 @@ export const createTestAction = (value: AddTestParamType) => (
     ApiAction({
       method: 'POST',
       data: value,
-      url: ApiEndPoint.test,
+      url: ApiEndPoint.Test,
       onStart: () => (dispatch: Dispatch) => {
         dispatch({
           type: TestTypes.CreateTestLoading,
@@ -91,7 +91,7 @@ export const updateTestAction = (values: AddTestParamType, id: string) => (
 ) => {
   return dispatchAction(
     ApiAction({
-      url: `/test/${id}`,
+      url: ApiEndPoint.UpdateTest(id),
       method: 'PUT',
       data: {
         name: values.name,
@@ -136,7 +136,7 @@ export const getSingleTestAction = (testId: string) => (
   return dispatchAction(
     ApiAction({
       method: 'GET',
-      url: ApiEndPoint.singleTest(testId),
+      url: ApiEndPoint.SingleTest(testId),
       onStart: () => (dispatch: Dispatch) => {
         dispatch({
           type: TestTypes.GetSingleTestLoading,

@@ -11,7 +11,7 @@ export const addMcqQuestion = (value: McQuestionParamType) => (
 ) => {
   return dispatchAction(
     ApiAction({
-      url: ApiEndPoint.addMcqQuestion,
+      url: ApiEndPoint.AddMcqQuestion,
       data: value,
       method: 'POST',
       onStart: () => (dispatch: Dispatch) => {
@@ -54,7 +54,7 @@ export const getVerifiedQuestions = (paginationValue?: PaginationValueType) => (
   return dispatchAction(
     ApiAction({
       method: 'GET',
-      url: ApiEndPoint.filterQuestion(
+      url: ApiEndPoint.FilterQuestion(
         TestVerification.Verified,
         paginationValue
       ),
